@@ -1,3 +1,4 @@
+using back.data.entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace back.infra
@@ -11,7 +12,7 @@ namespace back.infra
         }
 
 
-
+        public DbSet<Usuario> usuarios { get; set; }
 
     }
 }
