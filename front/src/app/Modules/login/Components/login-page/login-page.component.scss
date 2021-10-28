@@ -75,3 +75,17 @@ input[type="text"] {
   justify-content: space-evenly;
   align-items: baseline;
 }
+
+.btn-danger {
+  flex: 0 0 auto;
+  width: 20rem;
+  border: none !important;
+  border-radius: 35px;
+  background-color: #fc636b;
+}
+
+.form-check-label {
+  margin-right: 20px;
+  text-decoration: none;
+  color:#fff;
+}
