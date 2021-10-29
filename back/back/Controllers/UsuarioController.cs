@@ -1,7 +1,16 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace back.Controllers
 {
-    public class UsuarioController
+    [ApiController]
+    [Route("[controller]")]
+    public class UsuarioController : ControllerBase
     {
-        
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok("UsuarioController");
+        }
+
     }
 }
