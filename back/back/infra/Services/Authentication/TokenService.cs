@@ -19,7 +19,7 @@ namespace back.infra.Services.Authentication
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Username.ToString())
+                    new Claim(ClaimTypes.Name, user.UsuarioNome)
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = signingCredentials
