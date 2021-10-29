@@ -1,3 +1,3 @@
 ## Estrutura da arquitetura
 
-![alt text](/requirement\MicrosoftTeams-image.png "Title")
+![alt text](https://github.com/DevGrupoLitoral/FV/blob/main/requirement/MicrosoftTeams-image.png?raw=true "Title")
