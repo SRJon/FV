@@ -32,7 +32,6 @@ namespace back.infra.Data.Repositories
         {
             base.ValidPaginate(page, limit);
             var savedSearches = _ctx.Usuario.Skip(base.skip).OrderBy(o => o.UsuarioId).Take(base.limit);//.Include(x => x.Parameters);
-            System.Console.WriteLine(base.page);
             return await savedSearches.ToListAsync();
         }
 

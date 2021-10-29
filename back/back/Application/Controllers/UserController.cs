@@ -5,7 +5,7 @@ using back.data.entities.User;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace back.Controllers
+namespace back.Application.Controllers
 {
     [ApiController]
     [Route("[controller]")]
