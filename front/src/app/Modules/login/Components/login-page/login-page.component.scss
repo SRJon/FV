@@ -90,12 +90,23 @@ input[type="text"] {
   color:#fff;
 }
 
-.form-check-input{
-  
-
-}
-
 .form-check-input:checked {
   background-color: #fc636b;
   border-color: #fc636b;
+}
+
+.bottom-grid, .bottom-grid1 {
+  display: -webkit-flex;
+  color: #fff;
+  justify-content: space-between;
+}
+
+.links-unordered-list li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.links-unordered-list li a {
+  color: #fff;
+  text-decoration: none;
 }
