@@ -12,8 +12,8 @@ namespace back.domain.entities
         public string UsuarioEmail { get; set; }
         public bool UsuarioAtivo { get; set; }
         public decimal PerfilId { get; set; }
-        public decimal SgVendedorUCod { get; set; }
-        public DateTime UsuarioDtUltAltSenha { get; set; }
+        public Nullable<decimal> SgVendedorUCod { get; set; }
+        public Nullable<DateTime> UsuarioDtUltAltSenha { get; set; }
 
     }
 }

@@ -1,16 +1,17 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace back.data.entities.User
 {
-    public static class UserConfig
+    public class UserConfig : IEntityTypeConfiguration<Usuario>
     {
 
-        public static ModelBuilder UserConfigurations(this ModelBuilder modelBuilder)
+        public void Configure(EntityTypeBuilder<Usuario> modelBuilder)
         {
-            // modelBuilder.Entity<Usuario>()
-            //     .HasIndex(u => u.)
-            //     .IsUnique();
-            return modelBuilder;
+            modelBuilder.Property(u => u.SgVendedorUCod).HasPrecision(10, 2);
+            modelBuilder.Property(u => u.PerfilId).HasPrecision(10, 0);
+            modelBuilder.Property(u => u.UsuarioId).HasPrecision(10, 0);
+
         }
     }
 }
