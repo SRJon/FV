@@ -1,4 +1,4 @@
-namespace back.data.entities.User
+namespace back.data.http
 {
     public abstract class ValidPagination
     {

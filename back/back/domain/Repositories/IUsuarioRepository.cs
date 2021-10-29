@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.User;
+using back.data.http;
 
 namespace back.domain.Repositories
 {

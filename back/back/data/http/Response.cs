@@ -1,6 +1,5 @@
 using back.domain.entities;
-
-namespace back.data.entities.User
+namespace back.data.http
 {
     public class Response<O> : IResponse<O>
     {

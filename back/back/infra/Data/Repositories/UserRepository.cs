@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using back.data.entities.User;
+using back.data.http;
 using back.domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
