@@ -4,12 +4,12 @@ using back.domain.Repositories;
 
 namespace back.infra.Data.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UserRepository : IUserRepository
     {
         private readonly DbAppContext _ctx;
 
 
-        public UsuarioRepository(DbAppContext ctx)
+        public UserRepository(DbAppContext ctx)
         {
             _ctx = ctx;
 

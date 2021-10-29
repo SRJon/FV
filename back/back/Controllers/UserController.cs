@@ -10,10 +10,10 @@ namespace back.Controllers
     [Route("[controller]")]
     public class UsuarioController : ControllerBase
     {
-        protected readonly IUsuarioRepository _usuarioRepository;
+        protected readonly IUserRepository _usuarioRepository;
 
 
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        public UsuarioController(IUserRepository usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
         }

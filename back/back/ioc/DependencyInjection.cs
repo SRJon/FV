@@ -12,7 +12,7 @@ namespace back.ioc
             services.AddDbContext<DbAppContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly(typeof(DbAppContext).Assembly.FullName)));
 
 
-
+            services.AddRepositoriesInject();
             return services;
         }
 
