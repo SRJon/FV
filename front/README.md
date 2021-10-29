@@ -1,3 +1,3 @@
 ## Estrutura da arquitetura
 
-![alt text](/ requirement\MicrosoftTeams-image.png "Title")
+![alt text](/requirement\MicrosoftTeams-image.png "Title")
