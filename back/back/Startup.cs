@@ -28,7 +28,9 @@ namespace back
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors();
             services.AddControllers();
+            services.tokenConfigution();
             services.AddInfraestruture(Configuration);
             services.AddSwaggerGen(c =>
             {
@@ -49,6 +51,10 @@ namespace back
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(x => x.
+            AllowAnyOrigin().
+            AllowAnyMethod().
+            AllowAnyHeader());
 
             app.UseAuthorization();
 
