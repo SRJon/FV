@@ -6,11 +6,7 @@ namespace back.Controllers
     [Route("[controller]")]
     public class UsuarioController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok("UsuarioController");
-        }
+
 
     }
 }
