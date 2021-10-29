@@ -13,11 +13,15 @@ namespace back.data.entities.User
 
         protected void ValidPaginate(int page, int limit)
         {
+            this.page = page;
+            this.limit = limit;
+
+
             if (page == 0)
-                page = 1;
+                this.page = 1;
 
             if (limit == 0)
-                limit = int.MaxValue;
+                this.limit = int.MaxValue;
             skip = (page - 1) * limit;
         }
     }

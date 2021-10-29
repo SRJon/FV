@@ -19,8 +19,8 @@ namespace back.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
-        [HttpGet]
-        public async Task<List<Usuario>> GetAll(int page = 1, int limit = 0)
+        [HttpGet("/")]
+        public async Task<List<Usuario>> GetAll(int page = 1, int limit = 10)
         {
 
 

@@ -31,9 +31,9 @@ namespace back.infra.Data.Repositories
         public async Task<List<Usuario>> GetAllAsync(int page, int limit)
         {
             base.ValidPaginate(page, limit);
-            var savedSearches = _ctx.Usuario.Skip(base.skip).Take(base.limit);//.Include(x => x.Parameters);
-
-            return await _ctx.Usuario.ToListAsync();
+            var savedSearches = _ctx.Usuario.Skip(base.skip).OrderBy(o => o.UsuarioId).Take(base.limit);//.Include(x => x.Parameters);
+            System.Console.WriteLine(base.page);
+            return await savedSearches.ToListAsync();
         }
 
         public Task<Usuario> GetById(int id)

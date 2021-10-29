@@ -10,7 +10,7 @@ namespace back.data.entities.User
         {
             modelBuilder.Property(u => u.SgVendedorUCod).HasPrecision(10, 2);
             modelBuilder.Property(u => u.PerfilId).HasPrecision(10, 0);
-            modelBuilder.Property(u => u.UsuarioId).HasPrecision(10, 0);
+            modelBuilder.Property(u => u.UsuarioId).HasPrecision(12, 0);
 
         }
     }
