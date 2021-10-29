@@ -1,0 +1,23 @@
+using System;
+using back.Application.Mappings;
+using back.data.entities.User;
+using back.DTO.Authentication;
+using Microsoft.Extensions.DependencyInjection;
+
+
+
+namespace back.MappingConfig
+{
+    public static class AutoMapperConfig
+    {
+        public static void AddAutoMapperConfiguration(this IServiceCollection service)
+        {
+
+            if (service == null) throw new ArgumentException(nameof(service));
+
+
+            service.AddAutoMapper(typeof(DomainToViewModelMappingProfile),
+                                  typeof(ViewModelToDomainMappingProfile));
+        }
+    }
+}

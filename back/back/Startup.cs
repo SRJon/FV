@@ -1,4 +1,5 @@
 using back.ioc;
+using back.MappingConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,8 +29,11 @@ namespace back
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors();
             services.AddControllers();
+            services.tokenConfigution();
             services.AddInfraestruture(Configuration);
+            services.AddAutoMapperConfiguration();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "back", Version = "v1" });
@@ -49,6 +53,10 @@ namespace back
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(x => x.
+            AllowAnyOrigin().
+            AllowAnyMethod().
+            AllowAnyHeader());
 
             app.UseAuthorization();
 

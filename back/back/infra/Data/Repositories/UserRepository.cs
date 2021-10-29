@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
 using back.domain.Repositories;
@@ -103,6 +104,20 @@ namespace back.infra.Data.Repositories
                 return response;
             }
 
+        }
+
+        public decimal UserValidation(LoginEntity user)
+        {
+
+            var exist = _ctx.Usuario.FirstOrDefault(x => x.UsuarioLogin == user.name);
+            if (exist != null)
+            {
+                return exist.UsuarioId;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

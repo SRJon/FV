@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
 
@@ -15,6 +16,7 @@ namespace back.domain.Repositories
 
         public Response<Usuario> GetByIdAsync(int id);
         public bool ProductExists(int id);
+        public decimal UserValidation(LoginEntity user);
 
     }
 }
