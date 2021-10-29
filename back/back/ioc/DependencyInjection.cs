@@ -9,10 +9,10 @@ namespace back.ioc
     {
         public static IServiceCollection AddInfraestruture(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DbAppContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly(typeof(DbAppContext).Assembly.FullName)));
+            services.AddDbContext<DbAppContext>(options => options.UseSqlServer(configuration.GetConnectionString("test_grupoLitoral"), b => b.MigrationsAssembly(typeof(DbAppContext).Assembly.FullName)));
 
 
-
+            services.AddRepositoriesInject();
             return services;
         }
 
