@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.User;
+using back.data.http;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,14 +44,9 @@ namespace back.Application.Controllers
         {
             var response = _usuarioRepository.GetByIdAsync(id);
 
-            if (response.Success)
-            {
-                return Ok(response);
-            }
-            else
-            {
-                return BadRequest(response);
-            }
+            var result = new HttpAdapter<Usuario>(response.StatusCode, response);
+
+            return result.GetResponse();
         }
     }
 }
