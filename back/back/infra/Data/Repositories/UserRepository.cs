@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using back.data.entities.User;
 using back.domain.Repositories;
@@ -6,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : ValidPagination, IUserRepository
     {
         private readonly DbAppContext _ctx;
 
 
-        public UserRepository(DbAppContext ctx)
+        public UserRepository(DbAppContext ctx) : base()
         {
             _ctx = ctx;
 
@@ -27,8 +28,11 @@ namespace back.infra.Data.Repositories
             throw new System.NotImplementedException();
         }
 
-        public async Task<List<Usuario>> GetAllAsync()
+        public async Task<List<Usuario>> GetAllAsync(int page, int limit)
         {
+            base.ValidPaginate(page, limit);
+            var savedSearches = _ctx.Usuario.Skip(base.skip).Take(base.limit);//.Include(x => x.Parameters);
+
             return await _ctx.Usuario.ToListAsync();
         }
 

@@ -6,7 +6,7 @@ namespace back.domain.Repositories
 {
     public interface IUserRepository
     {
-        public Task<List<Usuario>> GetAllAsync();
+        public Task<List<Usuario>> GetAllAsync(int page, int limit);
         public Task<Usuario> GetById(int id);
         public Task<bool> Create(Usuario usuario);
         public Task<bool> Update(Usuario usuario);

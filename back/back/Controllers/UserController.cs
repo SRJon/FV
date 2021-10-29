@@ -20,9 +20,11 @@ namespace back.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Usuario>> GetAll()
+        public async Task<List<Usuario>> GetAll(int page = 1, int limit = 0)
         {
-            return await _usuarioRepository.GetAllAsync();
+
+
+            return await _usuarioRepository.GetAllAsync(page, limit);
         }
     }
 }
