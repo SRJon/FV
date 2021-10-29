@@ -84,8 +84,18 @@ input[type="text"] {
   background-color: #fc636b;
 }
 
-.form-check-label {
+.form-check-label, .text-right {
   margin-right: 20px;
   text-decoration: none;
   color:#fff;
+}
+
+.form-check-input{
+  
+
+}
+
+.form-check-input:checked {
+  background-color: #fc636b;
+  border-color: #fc636b;
 }
