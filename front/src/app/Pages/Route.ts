@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { IRoutes } from '../Repository/IRoutes';
 
 export class Route implements IRoutes {
-
   readonly routes: Routes = [
     {
       path: '',
@@ -13,6 +12,11 @@ export class Route implements IRoutes {
       path: 'login',
       loadChildren: () =>
         import('../Modules/login/login.module').then((m) => m.LoginModule),
+    },
+    {
+      path: 'home',
+      loadChildren: () =>
+        import('../Modules/home/home.module').then((m) => m.HomeModule),
     },
   ];
 
