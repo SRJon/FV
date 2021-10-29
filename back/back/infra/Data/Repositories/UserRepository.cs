@@ -1,6 +1,8 @@
 using System.Collections.Generic;
-using back.data.entities;
+using System.Threading.Tasks;
+using back.data.entities.User;
 using back.domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories
 {
@@ -14,27 +16,28 @@ namespace back.infra.Data.Repositories
             _ctx = ctx;
 
         }
-        public bool Create(Usuario usuario)
+
+        public Task<bool> Create(Usuario usuario)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Delete(int id)
+        public Task<bool> Delete(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<Usuario> GetAll()
+        public async Task<List<Usuario>> GetAllAsync()
+        {
+            return await _ctx.Usuario.ToListAsync();
+        }
+
+        public Task<Usuario> GetById(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public Usuario GetById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Update(Usuario usuario)
+        public Task<bool> Update(Usuario usuario)
         {
             throw new System.NotImplementedException();
         }

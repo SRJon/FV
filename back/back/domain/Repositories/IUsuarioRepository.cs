@@ -1,15 +1,16 @@
 using System.Collections.Generic;
-using back.data.entities;
+using System.Threading.Tasks;
+using back.data.entities.User;
 
 namespace back.domain.Repositories
 {
     public interface IUserRepository
     {
-        public List<Usuario> GetAll();
-        public Usuario GetById(int id);
-        public bool Create(Usuario usuario);
-        public bool Update(Usuario usuario);
-        public bool Delete(int id);
+        public Task<List<Usuario>> GetAllAsync();
+        public Task<Usuario> GetById(int id);
+        public Task<bool> Create(Usuario usuario);
+        public Task<bool> Update(Usuario usuario);
+        public Task<bool> Delete(int id);
 
     }
 }

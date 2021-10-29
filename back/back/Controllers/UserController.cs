@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using back.data.entities;
+using System.Threading.Tasks;
+using back.data.entities.User;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,9 +20,9 @@ namespace back.Controllers
         }
 
         [HttpGet]
-        public List<Usuario> GetAll()
+        public async Task<List<Usuario>> GetAll()
         {
-            return _usuarioRepository.GetAll();
+            return await _usuarioRepository.GetAllAsync();
         }
     }
 }
