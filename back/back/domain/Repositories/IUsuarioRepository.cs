@@ -14,6 +14,7 @@ namespace back.domain.Repositories
         public Task<Response<bool>> Delete(int id);
 
         public Response<Usuario> GetByIdAsync(int id);
+        public bool ProductExists(int id);
 
     }
 }

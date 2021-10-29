@@ -21,30 +21,23 @@ namespace back.Application.Controllers
         }
 
         [HttpGet("/")]
-        public async Task<IActionResult> GetAll(int page = 1, int limit = 10)
+        public async Task<ActionResult<Response<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
         {
 
 
             var response = await _usuarioRepository.GetAllAsync(page, limit);
 
-
-            if (response.Success)
-            {
-                return Ok(response);
-            }
-            else
-            {
-                return BadRequest(response);
-            }
+            var result = new HttpAdapter<Response<List<Usuario>>>(response.StatusCode, response);
+            return result.GetResponse();
         }
 
 
         [HttpGet("/{id}")]
-        public ActionResult<Usuario> GetById(int id)
+        public ActionResult<Response<Usuario>> GetById(int id)
         {
             var response = _usuarioRepository.GetByIdAsync(id);
 
-            var result = new HttpAdapter<Usuario>(response.StatusCode, response);
+            var result = new HttpAdapter<Response<Usuario>>(response.StatusCode, response);
 
             return result.GetResponse();
         }

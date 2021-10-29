@@ -6,9 +6,9 @@ namespace back.data.http
     public class HttpAdapter<T>
     {
         public int StatusCode { get; set; }
-        public IResponse<T> Response { get; set; }
+        public T Response { get; set; }
         public ActionResult result { get; set; }
-        public HttpAdapter(int statusCode, IResponse<T> response)
+        public HttpAdapter(int statusCode, T response)
         {
             StatusCode = statusCode;
             Response = response;

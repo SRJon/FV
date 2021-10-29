@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -61,13 +62,22 @@ namespace back.infra.Data.Repositories
             throw new System.NotImplementedException();
         }
 
+
+
+        public Task<Response<bool>> Update(Usuario usuario)
+        {
+            throw new System.NotImplementedException();
+        }
+        public bool ProductExists(int id) => _ctx.Usuario.Any(e => e.UsuarioId == id);
+
         public Response<Usuario> GetByIdAsync(int id)
         {
             var response = new Response<Usuario>();
             try
             {
                 var savedSearches = _ctx.Usuario.FirstOrDefaultAsync(x => x.UsuarioId == id);
-                if (ProductExists(id))
+                var exist = ProductExists(id);
+                if (exist)
                 {
 
                     response.Data = savedSearches.Result;
@@ -85,20 +95,14 @@ namespace back.infra.Data.Repositories
 
                 return response;
             }
-            catch (System.Exception)
+            catch (Exception e)
             {
+                System.Console.WriteLine(e);
                 response.Data = null;
                 response.StatusCode = 400;
                 return response;
             }
 
         }
-
-        public Task<Response<bool>> Update(Usuario usuario)
-        {
-            throw new System.NotImplementedException();
-        }
-        public bool ProductExists(int id) => _ctx.Usuario.Any(e => e.UsuarioId == id);
-
     }
 }
