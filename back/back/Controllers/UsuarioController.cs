@@ -13,12 +13,15 @@ namespace back.Controllers
         protected readonly IUsuarioRepository _usuarioRepository;
 
 
-
+        public UsuarioController(IUsuarioRepository usuarioRepository)
+        {
+            _usuarioRepository = usuarioRepository;
+        }
 
         [HttpGet]
         public List<Usuario> GetAll()
         {
-            throw new NotImplementedException();
+            return _usuarioRepository.GetAll();
         }
     }
 }
