@@ -3,7 +3,7 @@ using back.data.entities;
 
 namespace back.domain.Repositories
 {
-    public interface IUsuarioController
+    public interface IUsuarioRepository
     {
         public List<Usuario> GetAll();
         public Usuario GetById(int id);
