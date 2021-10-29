@@ -27,6 +27,10 @@
   background-size: cover;
 }
 
+.img-fluid {
+  width: 150px;
+}
+
 .form-container {
   width: 20rem;
 }
@@ -87,12 +91,16 @@ input[type="text"] {
 .form-check-label, .text-right {
   margin-right: 20px;
   text-decoration: none;
-  color:#fff;
+  color:rgb(255, 255, 255);
 }
 
 .form-check-input:checked {
   background-color: #fc636b;
   border-color: #fc636b;
+}
+
+.form-check-input{
+  background-color: #67594b
 }
 
 .bottom-grid, .bottom-grid1 {
@@ -109,4 +117,8 @@ input[type="text"] {
 .links-unordered-list li a {
   color: #fff;
   text-decoration: none;
+}
+
+ul{
+  margin-bottom: 2rem;
 }
