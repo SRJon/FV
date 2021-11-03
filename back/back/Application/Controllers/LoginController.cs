@@ -1,5 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using back.data.entities.Login;
+using back.data.entities.User;
 using back.domain.Repositories;
 using back.DTO.Authentication;
 using back.infra.Services.Authentication;
@@ -35,12 +37,21 @@ namespace back.Application.Controllers
 
             if (UserId > 0)
             {
-                var userCredentials = _userRepository.GetByIdAsync(int.Parse(UserId.ToString()));
-                var userDto = _mapper.Map<UserAuthenticateDto>(userCredentials);
-                var token = TokenService.GenerateToken(userDto);
+                Usuario userCredentials = _userRepository.GetByIdAsync(int.Parse(UserId.ToString()));
+                var token = TokenService.GenerateToken(userCredentials.ToDto());
                 return Ok(new { token });
             }
             return BadRequest("Invalid login");
+        }
+
+
+
+        [HttpGet("/logout")]
+        [Authorize]
+        public ActionResult teste()
+        {
+
+            return Ok();
         }
 
     }

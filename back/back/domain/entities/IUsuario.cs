@@ -1,4 +1,6 @@
 using System;
+using back.data.entities.User;
+using back.DTO.Authentication;
 
 namespace back.domain.entities
 {
@@ -14,6 +16,9 @@ namespace back.domain.entities
         public decimal PerfilId { get; set; }
         public Nullable<decimal> SgVendedorUCod { get; set; }
         public Nullable<DateTime> UsuarioDtUltAltSenha { get; set; }
+
+        public UserAuthenticateDto ToDto();
+        public Usuario ToModel();
 
     }
 }
