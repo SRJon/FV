@@ -1,12 +1,12 @@
 <div class="wrapper">
   <!-- Navbar -->
-  <app-NavBar></app-NavBar>
+  <app-NavBar *ngIf="!isLogin"></app-NavBar>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <app-MainSidebarContainer></app-MainSidebarContainer>
+  <app-MainSidebarContainer *ngIf="!isLogin"></app-MainSidebarContainer>
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="{{ isLogin ? '' : 'content-wrapper' }}">
     <router-outlet></router-outlet>
   </div>
   <!-- /.content-wrapper -->
