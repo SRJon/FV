@@ -1,8 +1,10 @@
-namespace back.data.entities.Tela
+using System;
+
+namespace back.domain.entities
 {
-    public class Tela
+    public interface ITela
     {
-        public long TelaId { get; set; }
+        public decimal TelaId { get; set; }
         public string TelaNome { get; set; }
         public string TelaUrl { get; set; }
         public string TelaAddUrl { get; set; }
@@ -13,5 +15,7 @@ namespace back.data.entities.Tela
         public bool TelaSd { get; set; }
         public string TelaImagemSd { get; set; }
         public string TelaIconClass { get; set; }
+        public Nullable<decimal> SgTelaId { get; set; }
+        public Nullable<int> TelaAppSD { get; set; }
     }
 }
