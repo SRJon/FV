@@ -1,5 +1,7 @@
 
+using back.domain.Enum;
 using back.infra;
+using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,8 +12,15 @@ namespace back.ioc
     {
         public static IServiceCollection AddInfraestruture(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DbAppContext>(options => options.UseSqlServer(configuration.GetConnectionString("test_grupoLitoral"), b => b.MigrationsAssembly(typeof(DbAppContext).Assembly.FullName)));
+            services.AddDbContext<DbAppContextGrupoLitoral>(options =>
+            options.UseSqlServer(new Settings()
+            .getConnectionString(((int)ConnectionNames.GRUPOLITORAL)),
+            b => b.MigrationsAssembly(typeof(DbAppContextGrupoLitoral)
+            .Assembly.FullName
+            )));
 
+
+            services.AddScoped<DbContexts>();
 
             services.AddRepositoriesInject();
             return services;

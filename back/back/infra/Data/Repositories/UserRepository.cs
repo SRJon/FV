@@ -6,43 +6,45 @@ using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
 using back.domain.Repositories;
+using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories
 {
     public class UserRepository : ValidPagination, IUserRepository
     {
-        private readonly DbAppContext _ctx;
+        private readonly DbContexts _ctxs;
 
 
-        public UserRepository(DbAppContext ctx) : base()
+        public UserRepository(DbContexts ctxs) : base()
         {
-            _ctx = ctx;
+            _ctxs = ctxs;
 
         }
 
-        public Task<Response<bool>> Create(Usuario usuario)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<Response<bool>> Delete(int id)
+        public Task<bool> Create(Usuario usuario)
         {
             throw new System.NotImplementedException();
         }
 
-        public async Task<Response<List<Usuario>>> GetAllAsync(int page, int limit)
+        public Task<bool> Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<Response<List<Usuario>>> GetAllPaginateAsync(int page, int limit)
         {
             var response = new Response<List<Usuario>>();
+            var GRUPOLITORAL = _ctxs.GetGrupoLitoral();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = _ctx.Usuario.Skip(base.skip).OrderBy(o => o.UsuarioId).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = GRUPOLITORAL.Usuario.Skip(base.skip).OrderBy(o => o.UsuarioId).Take(base.limit);//.Include(x => x.Parameters);
 
 
 
                 response.Data = await savedSearches.ToListAsync();
-                response.TotalPages = await _ctx.Usuario.CountAsync();
+                response.TotalPages = await GRUPOLITORAL.Usuario.CountAsync();
                 response.Page = page;
                 response.TotalPages = (response.TotalPages / base.limit) + 1;
                 response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
@@ -58,50 +60,35 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public Task<Response<Usuario>> GetById(int id)
+        public Task<Usuario> GetById(int id)
         {
             throw new System.NotImplementedException();
         }
 
 
 
-        public Task<Response<bool>> Update(Usuario usuario)
+        public Task<bool> Update(Usuario usuario)
         {
             throw new System.NotImplementedException();
         }
-        public bool ProductExists(int id) => _ctx.Usuario.Any(e => e.UsuarioId == id);
+        public bool ProductExists(int id) => _ctxs.GetGrupoLitoral().Usuario.Any(e => e.UsuarioId == id);
 
-        public Response<Usuario> GetByIdAsync(int id)
+        public Usuario GetByIdAsync(int id)
         {
             var response = new Response<Usuario>();
             try
             {
-                var savedSearches = _ctx.Usuario.FirstOrDefaultAsync(x => x.UsuarioId == id);
-                var exist = ProductExists(id);
-                if (exist)
-                {
-
-                    response.Data = savedSearches.Result;
-                    response.Success = true;
-                    response.StatusCode = 200;
-
-                }
-                else
-                {
-                    response.Data = null;
-                    response.Success = false;
-                    response.StatusCode = 404;
-                }
+                var savedSearches = _ctxs.GetGrupoLitoral().Usuario.FirstOrDefaultAsync(x => x.UsuarioId == id);
 
 
-                return response;
+
+                return savedSearches.Result;
             }
             catch (Exception e)
             {
                 System.Console.WriteLine(e);
-                response.Data = null;
-                response.StatusCode = 400;
-                return response;
+
+                return null;
             }
 
         }
@@ -109,7 +96,7 @@ namespace back.infra.Data.Repositories
         public decimal UserValidation(LoginEntity user)
         {
 
-            var exist = _ctx.Usuario.FirstOrDefault(x => x.UsuarioLogin == user.name);
+            var exist = _ctxs.GetGrupoLitoral().Usuario.FirstOrDefault(x => x.UsuarioLogin == user.name);
             if (exist != null)
             {
                 return exist.UsuarioId;

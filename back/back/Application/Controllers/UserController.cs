@@ -25,7 +25,7 @@ namespace back.Application.Controllers
         {
 
 
-            var response = await _usuarioRepository.GetAllAsync(page, limit);
+            var response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
 
             var result = new HttpAdapter<Response<List<Usuario>>>(response.StatusCode, response);
             return result.GetResponse();
@@ -33,13 +33,14 @@ namespace back.Application.Controllers
 
 
         [HttpGet("/{id}")]
-        public ActionResult<Response<Usuario>> GetById(int id)
+        public ActionResult<Usuario> GetById(int id)
         {
             var response = _usuarioRepository.GetByIdAsync(id);
 
-            var result = new HttpAdapter<Response<Usuario>>(response.StatusCode, response);
+            // var result = new HttpAdapter<Response<Usuario>>(response.StatusCode, response);
 
-            return result.GetResponse();
+            // return result.GetResponse();
+            return response;
         }
     }
 }

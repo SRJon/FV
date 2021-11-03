@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace back.infra
 {
-    public class DbAppContext : DbContext
+    public class DbAppContextGrupoLitoral : DbContext
     {
 
 
-        public DbAppContext(DbContextOptions<DbAppContext> options)
+        public DbAppContextGrupoLitoral(DbContextOptions<DbAppContextGrupoLitoral> options)
         : base(options)
         {
         }
