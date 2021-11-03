@@ -54,7 +54,8 @@
           "
         >
           <span class="fa fa-user" aria-hidden="true"></span>
-          <input type="text" placeholder="Usuário" />
+          <input type="text" placeholder="Usuário"  [(ngModel)]="user" />
+
         </div>
       </div>
       <div class="col-3 title">
@@ -68,11 +69,11 @@
           "
         >
           <span class="fas fa-lock"></span>
-          <input type="text" placeholder="Senha" />
+          <input type="text" [(ngModel)]="password" placeholder="Senha" />
         </div>
       </div>
       <div class="col-3 title">
-        <button class="btn btn-danger">Logar</button>
+        <button class="btn btn-danger" (click)="login()">Logar</button>
         <div class="form-check form-switch">
           <input
             class="form-check-input"
