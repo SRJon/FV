@@ -10,16 +10,15 @@ export class AuthenticationService {
       name: user,
       password,
     };
-    await axios
-      .post('https://localhost:5001/login', payload)
+    return await axios
+      .post('/login', payload)
       .then((result) => {
         let token = result.data.token;
         this.setTokenToHeader(token);
       })
       .catch((e) => {
-        console.log(e);
+        throw e;
       });
-    console.log(user, password);
   }
 
   setTokenToHeader(token: string) {
@@ -33,9 +32,6 @@ export class AuthenticationService {
   }
 
   teste() {
-    axios
-      .get('https://localhost:5001/logout')
-      .then(console.log)
-      .catch(console.log);
+    axios.get('/logout').then(console.log).catch(console.log);
   }
 }
