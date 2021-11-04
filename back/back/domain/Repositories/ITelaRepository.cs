@@ -10,8 +10,8 @@ namespace back.domain.Repositories
         public Task<Response<List<Tela>>> GetAllPaginateAsync(int page, int limit);
         public Task<List<Tela>> GetAll(int page, int limit);
         public Task<Tela> GetById(int id);
-        public Task<bool> Create(Tela usuario);
-        public Task<bool> Update(Tela usuario);
+        public Task<bool> Create(Tela tela);
+        public Task<bool> Update(Tela tela);
         public Task<bool> Delete(int id);
 
         public Tela GetByIdAsync(int id);

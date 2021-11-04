@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Context
 {
-    public class DbAppContextGrupoLitoral : DbContext
+    public class DbAppContextFVUDB_TESTE : DbContext
     {
 
 
-        public DbAppContextGrupoLitoral(DbContextOptions<DbAppContextGrupoLitoral> options)
+        public DbAppContextFVUDB_TESTE(DbContextOptions<DbAppContextFVUDB_TESTE> options)
         : base(options)
         {
         }

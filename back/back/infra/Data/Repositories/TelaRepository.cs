@@ -21,9 +21,15 @@ namespace back.infra.Data.Repositories
 
         }
 
-        public Task<bool> Create(Tela usuario)
+        public Task<bool> Create(Tela tela)
         {
-            throw new System.NotImplementedException();
+
+            _ctxs.GetGrupoLitoral().Tela.Add(tela);
+            var result = _ctxs.GetGrupoLitoral().SaveChanges();
+
+
+            return result > 0 ? Task.FromResult(true) : Task.FromResult(false);
+
         }
 
         public Task<bool> Delete(int id)
@@ -43,7 +49,7 @@ namespace back.infra.Data.Repositories
 
 
                 response.Data = await savedSearches.ToListAsync();
-                response.TotalPages = await GRUPOLITORAL.Usuario.CountAsync();
+                response.TotalPages = await GRUPOLITORAL.Tela.CountAsync();
                 response.Page = page;
                 response.TotalPages = (response.TotalPages / base.limit) + 1;
                 response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
@@ -51,26 +57,24 @@ namespace back.infra.Data.Repositories
                 response.StatusCode = 200;
                 return response;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.Data = null;
-                response.StatusCode = 400;
-                return response;
+                throw e;
             }
         }
 
-        public Task<Tela> GetById(int id)
+        public async Task<Tela> GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return await this._ctxs.GetGrupoLitoral().Tela.FirstOrDefaultAsync(x => x.TelaId == (decimal)id);
         }
 
 
 
-        public Task<bool> Update(Tela usuario)
+        public Task<bool> Update(Tela tela)
         {
             throw new System.NotImplementedException();
         }
-        public bool ProductExists(int id) => _ctxs.GetGrupoLitoral().Usuario.Any(e => e.UsuarioId == id);
+        public bool ProductExists(int id) => _ctxs.GetGrupoLitoral().Tela.Any(e => e.TelaId == id);
 
         public Tela GetByIdAsync(int id)
         {

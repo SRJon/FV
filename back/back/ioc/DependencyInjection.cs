@@ -21,6 +21,7 @@ namespace back.ioc
 
 
             services.AddScoped<DbContexts>();
+            // services.AddScoped<DbAppContextFVUDB_TESTE>();
 
             services.AddRepositoriesInject();
             return services;
