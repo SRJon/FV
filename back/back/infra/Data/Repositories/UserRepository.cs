@@ -35,11 +35,11 @@ namespace back.infra.Data.Repositories
         public async Task<Response<List<Usuario>>> GetAllPaginateAsync(int page, int limit)
         {
             var response = new Response<List<Usuario>>();
-            var GRUPOLITORAL = _ctxs.GetGrupoLitoral();
+            var GRUPOLITORAL = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = GRUPOLITORAL.Usuario.Skip(base.skip).OrderBy(o => o.UsuarioId).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = GRUPOLITORAL.Usuario.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
 
 
 
@@ -71,14 +71,14 @@ namespace back.infra.Data.Repositories
         {
             throw new System.NotImplementedException();
         }
-        public bool ProductExists(int id) => _ctxs.GetGrupoLitoral().Usuario.Any(e => e.UsuarioId == id);
+        public bool ProductExists(int id) => _ctxs.GetVFU().Usuario.Any(e => e.Id == id);
 
         public Usuario GetByIdAsync(int id)
         {
             var response = new Response<Usuario>();
             try
             {
-                var savedSearches = _ctxs.GetGrupoLitoral().Usuario.FirstOrDefaultAsync(x => x.UsuarioId == id);
+                var savedSearches = _ctxs.GetVFU().Usuario.FirstOrDefaultAsync(x => x.Id == id);
 
 
 
@@ -96,10 +96,10 @@ namespace back.infra.Data.Repositories
         public decimal UserValidation(LoginEntity user)
         {
 
-            var exist = _ctxs.GetGrupoLitoral().Usuario.FirstOrDefault(x => x.UsuarioLogin == user.name);
+            var exist = _ctxs.GetVFU().Usuario.FirstOrDefault(x => x.Login == user.name);
             if (exist != null)
             {
-                return exist.UsuarioId;
+                return exist.Id;
             }
             else
             {

@@ -12,10 +12,10 @@ namespace back.ioc
     {
         public static IServiceCollection AddInfraestruture(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DbAppContextGrupoLitoral>(options =>
+            services.AddDbContext<DbAppContextFVUDB_TESTE>(options =>
             options.UseSqlServer(new Settings()
-            .getConnectionString(((int)ConnectionNames.GRUPOLITORAL)),
-            b => b.MigrationsAssembly(typeof(DbAppContextGrupoLitoral)
+            .getConnectionString(((int)ConnectionNames.SANKHYA_FVU_TESTE)),
+            b => b.MigrationsAssembly(typeof(DbAppContextFVUDB_TESTE)
             .Assembly.FullName
             )));
 

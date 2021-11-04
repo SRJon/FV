@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using back.data.entities.Screen;
 using back.data.http;
 using back.domain.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace back.Application.Controllers
@@ -19,6 +20,7 @@ namespace back.Application.Controllers
             _telaRepository = telaRepository;
         }
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<Response<List<Tela>>>> GetAllAsync([FromQuery] ScreenGetAllEntity payload)
 
         {
@@ -44,6 +46,7 @@ namespace back.Application.Controllers
 
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Response<Tela>>> getById(int id)
         {
             Response<Tela> response = null;
@@ -92,6 +95,7 @@ namespace back.Application.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Response<bool>>> create(Tela tela)
         {
 

@@ -20,11 +20,11 @@ namespace back.infra.Services.Authentication
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.PerfilId.ToString()),
-                    new Claim(ClaimTypes.Name, user.UsuarioNome),
-                    new Claim(ClaimTypes.Name, user.UsuarioAtivo.ToString()),
-                    new Claim(ClaimTypes.Name, user.UsuarioDtUltAltSenha.ToString()),
-                    new Claim(ClaimTypes.Name, user.UsuarioEmail),
-                    new Claim(ClaimTypes.Name, user.UsuarioSenha.ToString()),
+                    new Claim(ClaimTypes.Name, user.Nome),
+                    new Claim(ClaimTypes.Name, user.Ativo.ToString()),
+                    new Claim(ClaimTypes.Name, user.DtUltAltSenha.ToString()),
+                    new Claim(ClaimTypes.Name, user.Email),
+                    new Claim(ClaimTypes.Name, user.Senha.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = signingCredentials

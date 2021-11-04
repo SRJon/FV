@@ -5,19 +5,23 @@ namespace back.infra.Data.Context
     public class DbContexts
     {
         public ConnectionEnvironment environment;
-        private DbAppContextGrupoLitoral dbAppContextGrupoLitoral;
-        // private DbAppContextFVUDB_TESTE dbAppContextFVUDB_TESTE;
+        // private DbAppContextGrupoLitoral dbAppContextGrupoLitoral;
+        private DbAppContextFVUDB_TESTE dbAppContextFVUDB_TESTE;
 
-        public DbContexts(DbAppContextGrupoLitoral dbAppContextGrupoLitoral)
+        public DbContexts(DbAppContextFVUDB_TESTE dbFvu )
         {
             this.environment = Settings.ConnectionName;
-            this.dbAppContextGrupoLitoral = dbAppContextGrupoLitoral;
-            // this.dbAppContextFVUDB_TESTE = dbFvu;
+            // this.dbAppContextGrupoLitoral = dbAppContextGrupoLitoral;
+            this.dbAppContextFVUDB_TESTE = dbFvu;
         }
-        public DbAppContextGrupoLitoral GetGrupoLitoral()
+        public DbAppContextFVUDB_TESTE GetVFU()
         {
-            return dbAppContextGrupoLitoral;
+            return dbAppContextFVUDB_TESTE;
         }
+        // public DbAppContextGrupoLitoral GetGrupoLitoral()
+        // {
+        //     return dbAppContextGrupoLitoral;
+        // }
 
     }
 }

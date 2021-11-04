@@ -7,6 +7,7 @@ using back.data.http;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using back.infra.Services.TelaServices;
 
 namespace back.infra.Data.Repositories
 {
@@ -23,13 +24,13 @@ namespace back.infra.Data.Repositories
 
         public Task<bool> Create(Tela tela)
         {
-
-            _ctxs.GetGrupoLitoral().Tela.Add(tela);
-            var result = _ctxs.GetGrupoLitoral().SaveChanges();
-
-
-            return result > 0 ? Task.FromResult(true) : Task.FromResult(false);
-
+            try
+            {
+                return _ctxs.GetVFU().Create(tela);
+            } catch(Exception e)
+            {
+                return Task.FromResult(false);
+            }
         }
 
         public Task<bool> Delete(int id)
@@ -40,11 +41,11 @@ namespace back.infra.Data.Repositories
         public async Task<Response<List<Tela>>> GetAllPaginateAsync(int page, int limit)
         {
             var response = new Response<List<Tela>>();
-            var GRUPOLITORAL = _ctxs.GetGrupoLitoral();
+            var GRUPOLITORAL = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = GRUPOLITORAL.Tela.Skip(base.skip).OrderBy(o => o.TelaId).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = GRUPOLITORAL.Tela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
 
 
 
@@ -65,7 +66,7 @@ namespace back.infra.Data.Repositories
 
         public async Task<Tela> GetById(int id)
         {
-            return await this._ctxs.GetGrupoLitoral().Tela.FirstOrDefaultAsync(x => x.TelaId == (decimal)id);
+            return await this._ctxs.GetVFU().Tela.FirstOrDefaultAsync(x => x.Id == (decimal)id);
         }
 
 
@@ -74,14 +75,14 @@ namespace back.infra.Data.Repositories
         {
             throw new System.NotImplementedException();
         }
-        public bool ProductExists(int id) => _ctxs.GetGrupoLitoral().Tela.Any(e => e.TelaId == id);
+        public bool ProductExists(int id) => _ctxs.GetVFU().Tela.Any(e => e.Id == id);
 
         public Tela GetByIdAsync(int id)
         {
             var response = new Response<Tela>();
             try
             {
-                var savedSearches = _ctxs.GetGrupoLitoral().Tela.FirstOrDefaultAsync(x => x.TelaId == id);
+                var savedSearches = _ctxs.GetVFU().Tela.FirstOrDefaultAsync(x => x.Id == id);
 
 
 

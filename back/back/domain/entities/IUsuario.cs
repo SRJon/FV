@@ -7,15 +7,18 @@ namespace back.domain.entities
     public interface IUsuario
     {
 
-        public decimal UsuarioId { get; set; }
-        public string UsuarioLogin { get; set; }
-        public string UsuarioSenha { get; set; }
-        public string UsuarioNome { get; set; }
-        public string UsuarioEmail { get; set; }
-        public bool UsuarioAtivo { get; set; }
-        public decimal PerfilId { get; set; }
-        public Nullable<decimal> SgVendedorUCod { get; set; }
-        public Nullable<DateTime> UsuarioDtUltAltSenha { get; set; }
+        public int Id { get; set; }
+        public string Login { get; set; }
+        public string Senha { get; set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public bool Ativo { get; set; }
+        public int PerfilId { get; set; }
+        public Nullable<int> VendedorUCod { get; set; }
+        public Nullable<bool> AltSenha { get; set; }
+        public Nullable<DateTime> DtUltAltSenha { get; set; }
+        public string LoginSnk { get; set; }
+        public Nullable<int> SGTSIUSU_USU_COD { get; set; }
 
         public UserAuthenticateDto ToDto();
         public Usuario ToModel();
