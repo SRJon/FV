@@ -53,25 +53,31 @@
       >
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li class="nav-item " *ngFor="let screen of screens">
-          <a  class="nav-link" routerLink="{{screen.route}}"  routerLinkActive="active">
+        <li class="nav-item" *ngFor="let screen of screens">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="{{ screen.url != '' ? screen.url : '#' }}"
+          >
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-             {{screen.TelaNome}}
+              {{ screen.nome }}
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview" >
+          <ul class="nav nav-treeview">
             <li class="nav-item" *ngFor="let subScreens of screen.relateds">
-              <a  routerLink="{{subScreens.route}}" class="nav-link"  routerLinkActive="active">
+              <a
+                routerLink="{{ subScreens.url }}"
+                class="nav-link"
+                routerLinkActive="active"
+              >
                 <i class="far fa-circle nav-icon"></i>
-                <p>{{subScreens.TelaNome}}</p>
+                <p>{{ subScreens.nome }}</p>
               </a>
             </li>
-
           </ul>
         </li>
-
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

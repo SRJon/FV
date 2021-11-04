@@ -15,6 +15,8 @@ export class AuthenticationService {
       .then((result) => {
         let token = result.data.token;
         this.setTokenToHeader(token);
+
+        localStorage.setItem('token', token);
       })
       .catch((e) => {
         throw e;
@@ -31,7 +33,16 @@ export class AuthenticationService {
     };
   }
 
-  teste() {
-    axios.get('/logout').then(console.log).catch(console.log);
+  checkToken() {
+    let token = this.getToken();
+    if (token) {
+      this.setTokenToHeader(token);
+      return true;
+    }
+    return false;
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
   }
 }

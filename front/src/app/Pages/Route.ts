@@ -14,7 +14,7 @@ export class Route implements IRoutes {
         import('../Modules/login/login.module').then((m) => m.LoginModule),
     },
     {
-      path: 'home',
+      path: 'wpinicio',
       loadChildren: () =>
         import('../Modules/home/home.module').then((m) => m.HomeModule),
     },

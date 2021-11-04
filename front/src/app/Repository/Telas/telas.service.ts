@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { ITela } from '../../Domain/Models/ITela';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,9 @@ import axios from 'axios';
 export class TelasService {
   constructor() {}
 
-  getAll() {
-    return axios.get('http://localhost:4200/assets/mocks/telas.json');
+  async getAll(): Promise<ITela[]> {
+    return await axios
+      .get('api/Tela?page=0&limit=0')
+      .then((response) => response.data.data);
   }
 }
