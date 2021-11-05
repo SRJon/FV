@@ -14,14 +14,21 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private ServiceLogin: AuthenticationService,
     private router: Router
-  ) {}
+  ) {
+    let isValidToken = ServiceLogin.checkToken();
+    let token = this.ServiceLogin.getToken();
+    if (isValidToken && token) {
+      ServiceLogin.setTokenToHeader(token);
+      this.router.navigate(['/wpinicio']);
+    }
+  }
 
   ngOnInit(): void {}
 
   async login() {
     const { user, password } = this;
     await this.ServiceLogin.login(user, password).then(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/wpinicio']);
     });
   }
 }

@@ -17,29 +17,15 @@ export class MainSidebarContainerComponent implements OnInit {
   ngOnInit() {}
 
   async getAll() {
-    let screens: Tela[] = await (await this.telasservice.getAll()).data;
-    screens = screens.map((screen) =>
-      Tela.getInstance(
-        screen.SgTelaId,
-        screen.TelaNome,
-        screen.TelaUrl,
-        screen.TelaAddUrl,
-        screen.TelaTarget,
-        screen.TelaNivel,
-        screen.TelaOrdem,
-        screen.TelaModulo,
-        screen.TelaSD,
-        screen.TelaImagemSD,
-        screen.TelaIconClass,
-        screen.SgTelaId
-      )
-    );
+    let screens: Tela[] = await this.telasservice.getAll();
 
-    let granScreens = screens.filter((e) => e.TelaNivel);
-    let subScreens = screens.filter((e) => !e.TelaNivel);
+    this.screens = screens.map((screen) => Tela.fromJson(screen));
+
+    let granScreens = screens.filter((e) => e.nivel);
+    let subScreens = screens.filter((e) => !e.nivel);
 
     granScreens.forEach((e, i) => {
-      let related = subScreens.filter((sub) => sub.SgTelaId == e.TelaId);
+      let related = subScreens.filter((sub) => sub.telaId == e.id);
 
       granScreens[i].relateds = related;
     });
