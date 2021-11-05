@@ -30,6 +30,14 @@ export class MainSidebarContainerComponent implements OnInit {
       granScreens[i].relateds = related;
     });
     this.screens = granScreens;
-    console.log(this.screens);
+  }
+
+  checkRouteModule(route: string): boolean {
+    if (!!route) {
+      var result = location.pathname.includes(route);
+
+      return result;
+    }
+    return false;
   }
 }
