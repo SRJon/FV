@@ -18,6 +18,13 @@ export class Route implements IRoutes {
       loadChildren: () =>
         import('../Modules/home/home.module').then((m) => m.HomeModule),
     },
+    {
+      path: 'seguranca',
+      loadChildren: () =>
+        import('../Modules/seguranca/seguranca.module').then(
+          (m) => m.SegurancaModule
+        ),
+    },
   ];
 
   getRoutes(): Routes {
