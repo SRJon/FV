@@ -1,3 +1,4 @@
+using back.data.entities.Enterprise;
 using back.data.entities.Screen;
 using back.data.entities.User;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ namespace back.ioc
         {
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new TelaConfig());
+            modelBuilder.ApplyConfiguration(new EmpresaConfig());
             return modelBuilder;
         }
     }

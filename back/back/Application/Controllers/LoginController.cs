@@ -5,6 +5,7 @@ using back.data.entities.User;
 using back.domain.Repositories;
 using back.DTO.Authentication;
 using back.infra.Services.Authentication;
+using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,12 +21,8 @@ namespace back.Application.Controllers
         private readonly IUserRepository _userRepository;
         public LoginController(IUserRepository userRepository)
         {
-            var mapperConfig = new MapperConfiguration(mc =>
-      {
-          //    mc.AddProfile(new MappingProfile());
-      });
+            this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
 
-            _mapper = new Mapper(mapperConfig);
             _userRepository = userRepository;
         }
 
@@ -52,6 +49,15 @@ namespace back.Application.Controllers
         {
 
             return Ok();
+        }
+
+        [HttpPost("/mapping")]
+        public testeDTO testeMapping([FromBody] Teste teste)
+        {
+
+            var t = _mapper.Map<testeDTO>(teste);
+            var s = _mapper.Map<Teste>(t);
+            return _mapper.Map<testeDTO>(s);
         }
 
     }
