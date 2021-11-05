@@ -23,13 +23,13 @@ namespace back.infra.Services.Authentication
                 {
                     new Claim(ClaimTypes.PrimarySid, user.PerfilId.ToString()),
                 }),
-                Expires = expires.AddMinutes(1),
+                Expires = expires.AddHours(1),
                 NotBefore = expires,
                 SigningCredentials = signingCredentials,
 
+
             };
 
-            tokenHandler.CreateToken(tokenDescriptor);
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
@@ -45,7 +45,8 @@ namespace back.infra.Services.Authentication
                 IssuerSigningKey = new SymmetricSecurityKey(key),
                 ValidateIssuer = false,
                 ValidateAudience = false,
-                ClockSkew = TimeSpan.Zero,
+                // ClockSkew = TimeSpan.Zero,
+
             };
 
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
@@ -53,7 +54,7 @@ namespace back.infra.Services.Authentication
             if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
                 throw new SecurityTokenException("Invalid token");
 
-            var userId = principal.FindFirst(ClaimTypes.Name)?.Value;
+            var userId = principal.FindFirst(ClaimTypes.PrimarySid)?.Value;
             if (string.IsNullOrEmpty(userId))
                 throw new SecurityTokenException("Invalid token");
 
