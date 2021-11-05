@@ -16,6 +16,7 @@ namespace back.MappingConfig
 
             if (service == null) throw new ArgumentException(nameof(service));
 
+
             service.AddAutoMapper(typeof(UsuarioProfile));
             service.AddAutoMapper(typeof(DomainToViewModelMappingProfile),
                                   typeof(ViewModelToDomainMappingProfile));

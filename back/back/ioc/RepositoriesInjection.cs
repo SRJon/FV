@@ -11,6 +11,8 @@ namespace back.ioc
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITelaRepository, TelaRepository>();
+            services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+
 
             return services;
         }

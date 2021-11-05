@@ -27,10 +27,22 @@ namespace back.infra.Data.Repositories
             try
             {
                 return _ctxs.GetVFU().Create(tela);
-            } catch(Exception e)
-            {
-                return Task.FromResult(false);
             }
+            catch (Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao criar tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+        }
+
+        private Task<bool> BadRequest(Response<string> response)
+        {
+            throw new NotImplementedException();
         }
 
         public Task<bool> Delete(int id)
