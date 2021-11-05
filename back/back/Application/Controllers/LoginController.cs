@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using back.data.entities.Login;
 using back.data.entities.User;
+using back.domain.entities;
 using back.domain.Repositories;
 using back.DTO.Authentication;
 using back.infra.Services.Authentication;
@@ -46,12 +47,14 @@ namespace back.Application.Controllers
 
 
 
-        [HttpGet("/logout")]
-        [Authorize]
-        public ActionResult teste()
+        [HttpGet("/refreshToken")]
+        [AllowAnonymous]
+        public ActionResult<TokenResponse> RefreshToken([FromQuery] string token)
         {
+            var tokenString = TokenService.RefreshToken(token);
+            ;
 
-            return Ok();
+            return Ok(new TokenResponse { token = tokenString });
         }
 
     }

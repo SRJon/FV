@@ -54,11 +54,8 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item" *ngFor="let screen of screens">
-          <a
-            class="nav-link"
-            routerLinkActive="active"
-            routerLink="{{ screen.url != '' ? screen.url : '#' }}"
-          >
+          <a class="nav-link" routerLinkActive="active">
+            <!-- routerLink="{{ screen.url != '' ? screen.url : '#' }}" -->
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               {{ screen.nome }}

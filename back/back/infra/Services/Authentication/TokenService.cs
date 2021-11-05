@@ -15,26 +15,52 @@ namespace back.infra.Services.Authentication
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
 
             var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature);
+            var expires = DateTime.Now;
             var tokenDescriptor = new SecurityTokenDescriptor
             {
+
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.PerfilId.ToString()),
-                    new Claim(ClaimTypes.Name, user.Nome),
-                    new Claim(ClaimTypes.Name, user.Ativo.ToString()),
-                    new Claim(ClaimTypes.Name, user.DtUltAltSenha.ToString()),
-                    new Claim(ClaimTypes.Name, user.Email),
-                    new Claim(ClaimTypes.Name, user.Senha.ToString()),
+                    new Claim(ClaimTypes.PrimarySid, user.PerfilId.ToString()),
                 }),
-                Expires = DateTime.UtcNow.AddHours(2),
-                SigningCredentials = signingCredentials
-            };
+                Expires = expires.AddMinutes(1),
+                NotBefore = expires,
+                SigningCredentials = signingCredentials,
 
+            };
 
             tokenHandler.CreateToken(tokenDescriptor);
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
+        public static string RefreshToken(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ClockSkew = TimeSpan.Zero,
+            };
+
+            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
+            var jwtSecurityToken = securityToken as JwtSecurityToken;
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                throw new SecurityTokenException("Invalid token");
+
+            var userId = principal.FindFirst(ClaimTypes.Name)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                throw new SecurityTokenException("Invalid token");
+
+            var newToken = GenerateToken(new UserAuthenticateDto { PerfilId = int.Parse(userId) });
+            return newToken;
+        }
+
 
     }
 }
