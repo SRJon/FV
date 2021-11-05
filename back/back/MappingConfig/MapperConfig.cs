@@ -1,5 +1,9 @@
 using AutoMapper;
 using back.Application.Controllers;
+using back.data.entities.Enterprise;
+using back.data.entities.Screen;
+using back.domain.DTO.Empresa;
+using back.domain.DTO.Tela;
 
 namespace back.MappingConfig
 {
@@ -11,6 +15,10 @@ namespace back.MappingConfig
             {
                 cfg.CreateMap<Teste, testeDTO>();
                 cfg.CreateMap<testeDTO, Teste>();
+                cfg.CreateMap<Empresa, EmpresaDTO>();
+                cfg.CreateMap<EmpresaDTO, Empresa>();
+                cfg.CreateMap<Tela, TelaDTO>();
+                cfg.CreateMap<TelaDTO, Tela>();
             });
             return configuration;
         }

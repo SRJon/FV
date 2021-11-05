@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using back.data.entities.Enterprise;
 using back.data.http;
+using back.domain.DTO.Empresa;
 using back.domain.Repositories;
+using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,8 +17,10 @@ namespace back.Application.Controllers
     {
         private IEmpresaRepository _empresaRepository;
 
+
         public EmpresaController(IEmpresaRepository empresaRepository)
         {
+
             _empresaRepository = empresaRepository;
         }
 
@@ -48,16 +53,43 @@ namespace back.Application.Controllers
         [Authorize]
         public async Task<ActionResult<Response<Empresa>>> getById(int id)
         {
-            Response<Empresa> response = null;
+            Response<EmpresaDTO> response = null;
 
             try
             {
-                Empresa result = await this._empresaRepository.GetById(id);
-
-
+                EmpresaDTO result = await this._empresaRepository.GetById(id);
+                if (result != null)
+                {
+                    response = new Response<EmpresaDTO>
+                    {
+                        Message = "Empresa encontrada com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<EmpresaDTO>
+                    {
+                        Message = "Empresa não encontrada",
+                        Data = null,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
             }
             catch (System.Exception e)
             {
+
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao buscar a empresa",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+
 
             }
 

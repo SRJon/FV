@@ -8,11 +8,14 @@ using back.domain.Repositories;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using back.infra.Services.TelaServices;
+using back.domain.DTO.Tela;
+using AutoMapper;
 
 namespace back.infra.Data.Repositories
 {
     public class TelaRepository : ValidPagination, ITelaRepository
     {
+        private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
 
 
@@ -76,9 +79,16 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<Tela> GetById(int id)
+        public async Task<TelaDTO> GetById(int id)
         {
-            return await this._ctxs.GetVFU().Tela.FirstOrDefaultAsync(x => x.Id == (decimal)id);
+
+            var result = await this._ctxs
+            .GetVFU()
+            .GetByIdService(id);
+
+            var mapper = _mapper.Map<TelaDTO>(result);
+
+            return mapper;
         }
 
 

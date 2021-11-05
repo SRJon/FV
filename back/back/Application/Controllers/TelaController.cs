@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.Screen;
 using back.data.http;
+using back.domain.DTO.Tela;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -49,14 +50,14 @@ namespace back.Application.Controllers
         [Authorize]
         public async Task<ActionResult<Response<Tela>>> getById(int id)
         {
-            Response<Tela> response = null;
+            Response<TelaDTO> response = null;
 
             try
             {
-                Tela result = await this._telaRepository.GetById(id);
+                TelaDTO result = await this._telaRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<Tela>
+                    response = new Response<TelaDTO>
                     {
                         Message = "Tela encontrada com sucesso",
                         Data = result,
@@ -66,7 +67,7 @@ namespace back.Application.Controllers
                 }
                 else
                 {
-                    response = new Response<Tela>
+                    response = new Response<TelaDTO>
                     {
                         Message = "Tela não encontrada",
                         Data = null,
