@@ -49,7 +49,7 @@ namespace back.Application.Controllers
         public ActionResult<TokenResponse> RefreshToken([FromQuery] string token)
         {
             var tokenString = TokenService.RefreshToken(token);
-            ;
+
 
             return Ok(new TokenResponse { token = tokenString });
         }
