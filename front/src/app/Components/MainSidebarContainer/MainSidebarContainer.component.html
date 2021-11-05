@@ -7,7 +7,7 @@
       class="brand-image img-circle elevation-3"
       style="opacity: 0.8"
     />
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <span class="brand-text font-weight-light">Força de Vendas</span>
   </a>
 
   <!-- Sidebar -->
@@ -56,7 +56,7 @@
         <li class="nav-item" *ngFor="let screen of screens">
           <a class="nav-link" routerLinkActive="active">
             <!-- routerLink="{{ screen.url != '' ? screen.url : '#' }}" -->
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="{{ screen.iconClass }}"></i>
             <p>
               {{ screen.nome }}
               <i class="right fas fa-angle-left"></i>
@@ -69,7 +69,10 @@
                 class="nav-link"
                 routerLinkActive="active"
               >
-                <i class="far fa-circle nav-icon"></i>
+                <i
+                  class="{{ subScreens.iconClass }}"
+                  style="margin-right: 12px"
+                ></i>
                 <p>{{ subScreens.nome }}</p>
               </a>
             </li>
