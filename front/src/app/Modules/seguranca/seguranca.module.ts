@@ -10,10 +10,21 @@ import { ParametroComponent } from './Components/parametro/parametro.component';
 import { TitleComponent } from './Components/tela/Components/title/title.component';
 import { TelaContentComponent } from './Components/tela/Components/tela-content/tela-content.component';
 import { TelaGridComponent } from './Components/tela/Components/tela-grid/tela-grid.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, SegurancaRoutingModule],
-  declarations: [PerfilComponent, TelaComponent, EmpresaComponent, UsuarioComponent, DiretorioComponent, ParametroComponent, TitleComponent, TelaContentComponent, TelaGridComponent],
+  imports: [CommonModule, SegurancaRoutingModule, FormsModule],
+  declarations: [
+    PerfilComponent,
+    TelaComponent,
+    EmpresaComponent,
+    UsuarioComponent,
+    DiretorioComponent,
+    ParametroComponent,
+    TitleComponent,
+    TelaContentComponent,
+    TelaGridComponent,
+  ],
   bootstrap: [PerfilComponent],
 })
 export class SegurancaModule {}

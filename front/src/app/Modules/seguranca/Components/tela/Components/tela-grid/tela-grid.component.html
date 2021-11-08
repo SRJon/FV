@@ -24,18 +24,63 @@
             >
               {{ title }}
             </th>
+            <th
+              class="sorting"
+              tabindex="0"
+              aria-controls="example2"
+              rowspan="1"
+              colspan="1"
+              aria-label="Rendering engine: activate to sort column ascending"
+            >
+              Ações
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr class="odd" *ngFor="let item of listGrid">
-            <td class="dtr-control" tabindex="0">Misc</td>
-            <td class="">Dillo 0.8</td>
+            <td
+              class="dtr-control"
+              tabindex="0"
+              *ngFor="let th of objToTh(item); let i = index"
+            >
+              <div
+                [innerHTML]="th.outerHTML"
+                *ngIf="i != 5 && i != 8; else templateName"
+              ></div>
+
+              <ng-template #templateName>
+                <div class="icheck-success d-inline">
+                  <input
+                    type="checkbox"
+                    checked=""
+                    id="checkboxSuccess1"
+                    [checked]="th.innerHTML == 'true'"
+                    disabled
+                  />
+                  <label for="checkboxSuccess1"> </label>
+                </div>
+              </ng-template>
+            </td>
+            <!-- <td class="">Dillo 0.8</td>
             <td>Embedded devices</td>
             <td>-</td>
-            <td class="sorting_1">X</td>
+            <td class="sorting_1">X</td> -->
+
+            <ul class="listActions">
+              <li>
+                <button class="btn btn-primary">
+                  <i class="fa fa-pencil-alt"></i>
+                </button>
+              </li>
+              <li>
+                <button class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </li>
+            </ul>
           </tr>
         </tbody>
-        <tfoot>
+        <!-- <tfoot>
           <tr>
             <th rowspan="1" colspan="1">Rendering engine</th>
             <th rowspan="1" colspan="1">Browser</th>
@@ -43,13 +88,13 @@
             <th rowspan="1" colspan="1">Engine version</th>
             <th rowspan="1" colspan="1">CSS grade</th>
           </tr>
-        </tfoot>
+        </tfoot> -->
       </table>
     </div>
   </div>
 
   <!-- listPagination -->
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-sm-12 col-md-5">
       <div
         class="dataTables_info"
@@ -57,7 +102,7 @@
         role="status"
         aria-live="polite"
       >
-        Showing 1 to 10 of 57 entries
+        Total de registros: {{ totalItems }}
       </div>
     </div>
     <div class="col-sm-12 col-md-7">
@@ -66,13 +111,12 @@
         id="example2_paginate"
         style="float: right"
       >
-        <ul class="pagination">
+        <ul class="pagination" id="pagination">
           <li
             class="paginate_button page-item previous disabled"
             id="example2_previous"
           >
             <a
-              href="#"
               aria-controls="example2"
               data-dt-idx="0"
               tabindex="0"
@@ -80,69 +124,27 @@
               >Previous</a
             >
           </li>
-          <li class="paginate_button page-item active">
+          <li
+            class="paginate_button page-item {{
+              page == paginate.currentPage ? 'active' : ''
+            }}"
+            *ngFor="let page of paginate.listPage; index as i"
+          >
             <a
-              href="#"
               aria-controls="example2"
               data-dt-idx="1"
               tabindex="0"
               class="page-link"
-              >1</a
-            >
-          </li>
-          <li class="paginate_button page-item">
-            <a
-              href="#"
-              aria-controls="example2"
-              data-dt-idx="2"
-              tabindex="0"
-              class="page-link"
-              >2</a
-            >
-          </li>
-          <li class="paginate_button page-item">
-            <a
-              href="#"
-              aria-controls="example2"
-              data-dt-idx="3"
-              tabindex="0"
-              class="page-link"
-              >3</a
-            >
-          </li>
-          <li class="paginate_button page-item">
-            <a
-              href="#"
-              aria-controls="example2"
-              data-dt-idx="4"
-              tabindex="0"
-              class="page-link"
-              >4</a
-            >
-          </li>
-          <li class="paginate_button page-item">
-            <a
-              href="#"
-              aria-controls="example2"
-              data-dt-idx="5"
-              tabindex="0"
-              class="page-link"
-              >5</a
-            >
-          </li>
-          <li class="paginate_button page-item">
-            <a
-              href="#"
-              aria-controls="example2"
-              data-dt-idx="6"
-              tabindex="0"
-              class="page-link"
-              >6</a
+              *ngIf="
+                page <= paginate.currentPage + 5 &&
+                page >= paginate.currentPage - 5
+              "
+              (click)="clickOnPagination(page)"
+              >{{ page }}</a
             >
           </li>
           <li class="paginate_button page-item next" id="example2_next">
             <a
-              href="#"
               aria-controls="example2"
               data-dt-idx="7"
               tabindex="0"

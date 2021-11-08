@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class TelaComponent implements OnInit {
   title: string = 'Tela';
   description: string = '';
+
   constructor() {}
   getHeigth(): number {
     let doc = document.querySelector('#middleWrapper');
     return doc ? doc.clientHeight : 0;
   }
+
   ngOnInit(): void {}
 }
