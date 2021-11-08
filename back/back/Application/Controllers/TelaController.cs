@@ -23,9 +23,8 @@ namespace back.Application.Controllers
         [HttpGet]
         [Authorize]
         public async Task<ActionResult<Response<List<Tela>>>> GetAllAsync([FromQuery] ScreenGetAllEntity payload)
-
         {
-            Response<List<Tela>> result = null;
+            Response<List<TelaDTO>> result = null;
             try
             {
                 result = await _telaRepository.GetAllPaginateAsync(payload.page, payload.limit);
@@ -141,5 +140,103 @@ namespace back.Application.Controllers
 
             return Ok(response);
         }
+
+
+        [HttpPost]
+        [Route("Update")]
+        [Authorize]
+        public async Task<ActionResult<Response<bool>>> update(Tela tela)
+        {
+
+            Response<bool> response = null;
+            try
+            {
+                var result = await this._telaRepository.Update(tela);
+
+                if (result)
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Tela atualizada com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Tela não atualizada",
+                        Data = result,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
+
+                return response;
+            }
+            catch (System.Exception e)
+            {
+
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao atualizar a tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+        }
+
+        [HttpPost()]
+        [Route("Delete")]
+        [Authorize]
+        public async Task<ActionResult<Response<bool>>> delete(int id)
+        {
+
+            Response<bool> response = null;
+            try
+            {
+                var result = await this._telaRepository.Delete(id);
+
+                if (result)
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Tela excluida com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Tela não excluida",
+                        Data = result,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
+
+                return response;
+            }
+            catch (System.Exception e)
+            {
+
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao excluir a tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+        }
+
+
+
     }
 }

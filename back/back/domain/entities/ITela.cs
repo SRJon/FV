@@ -4,7 +4,6 @@ namespace back.domain.entities
 {
     public interface ITela
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Url { get; set; }
         public string AddUrl { get; set; }
@@ -15,6 +14,6 @@ namespace back.domain.entities
         public bool Sd { get; set; }
         public string ImagemSd { get; set; }
         public string IconClass { get; set; }
-        public Nullable<int> TelaId{get;set;}
+        public Nullable<int> TelaId { get; set; }
     }
 }
