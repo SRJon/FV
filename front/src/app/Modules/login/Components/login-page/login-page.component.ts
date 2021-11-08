@@ -10,11 +10,13 @@ import { AuthenticationService } from './../../Services/Authentication.service';
 export class LoginPageComponent implements OnInit {
   user: string = '';
   password: string = '';
+  isLoading: boolean;
 
   constructor(
     private ServiceLogin: AuthenticationService,
     private router: Router
   ) {
+    this.isLoading = false;
     let isValidToken = ServiceLogin.checkToken();
     let token = this.ServiceLogin.getToken();
     if (isValidToken && token) {
@@ -26,9 +28,17 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {}
 
   async login() {
+    this.isLoading = true;
     const { user, password } = this;
-    await this.ServiceLogin.login(user, password).then(() => {
-      this.router.navigate(['/wpinicio']);
-    });
+    try {
+      await this.ServiceLogin.login(user, password).then(() => {
+        // this.router.navigate(['/wpinicio']);
+      });
+    } catch (error) {
+    } finally {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
+    }
   }
 }
