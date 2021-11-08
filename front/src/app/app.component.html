@@ -6,7 +6,11 @@
   <!-- Main Sidebar Container -->
   <app-MainSidebarContainer *ngIf="!isLogin"></app-MainSidebarContainer>
   <!-- Content Wrapper. Contains page content -->
-  <div class="{{ isLogin ? '' : 'content-wrapper' }}">
+  <div
+    class="{{ isLogin ? '' : 'content-wrapper' }}"
+    style="height: 100%"
+    id="middleWrapper"
+  >
     <router-outlet></router-outlet>
   </div>
   <!-- /.content-wrapper -->
