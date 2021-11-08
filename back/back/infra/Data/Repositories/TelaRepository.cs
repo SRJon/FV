@@ -8,16 +8,21 @@ using back.domain.Repositories;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using back.infra.Services.TelaServices;
+using back.domain.DTO.Tela;
+using AutoMapper;
+using back.MappingConfig;
 
 namespace back.infra.Data.Repositories
 {
     public class TelaRepository : ValidPagination, ITelaRepository
     {
+        private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
 
 
         public TelaRepository(DbContexts ctxs) : base()
         {
+            this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
 
         }
@@ -47,22 +52,38 @@ namespace back.infra.Data.Repositories
 
         public Task<bool> Delete(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return _ctxs.GetVFU().Delete(id);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao deletar tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
         }
 
-        public async Task<Response<List<Tela>>> GetAllPaginateAsync(int page, int limit)
+        public async Task<Response<List<TelaDTO>>> GetAllPaginateAsync(int page, int limit)
         {
-            var response = new Response<List<Tela>>();
-            var GRUPOLITORAL = _ctxs.GetVFU();
+            var response = new Response<List<TelaDTO>>();
+            var contexto = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = GRUPOLITORAL.Tela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.Tela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
 
+                List<TelaDTO> dTOs = new List<TelaDTO>();
 
+                var telas = await savedSearches.ToListAsync();
+                telas.ForEach(e => dTOs.Add(_mapper.Map<TelaDTO>(e)));
 
-                response.Data = await savedSearches.ToListAsync();
-                response.TotalPages = await GRUPOLITORAL.Tela.CountAsync();
+                response.Data = dTOs;
+                response.TotalPages = await contexto.Tela.CountAsync();
                 response.Page = page;
                 response.TotalPages = (response.TotalPages / base.limit) + 1;
                 response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
@@ -76,34 +97,44 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<Tela> GetById(int id)
+        public async Task<TelaDTO> GetById(int id)
         {
-            return await this._ctxs.GetVFU().Tela.FirstOrDefaultAsync(x => x.Id == (decimal)id);
+
+            return _mapper.Map<TelaDTO>(await this._ctxs
+            .GetVFU()
+            .GetByIdService(id));
         }
 
 
 
         public Task<bool> Update(Tela tela)
         {
-            throw new System.NotImplementedException();
+            if (tela.Id == 0)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Id não informado",
+                    Data = "",
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+            return _ctxs.GetVFU().UpdateScreenServices(_mapper.Map<TelaDTOUpdateDTO>(tela), tela.Id);
         }
         public bool ProductExists(int id) => _ctxs.GetVFU().Tela.Any(e => e.Id == id);
 
-        public Tela GetByIdAsync(int id)
+        public TelaDTO GetByIdAsync(int id)
         {
             var response = new Response<Tela>();
             try
             {
-                var savedSearches = _ctxs.GetVFU().Tela.FirstOrDefaultAsync(x => x.Id == id);
-
-
-
-                return savedSearches.Result;
+                return _mapper.Map<TelaDTO>(this._ctxs
+            .GetVFU()
+            .GetByIdAsyncService(id));
             }
             catch (Exception e)
             {
                 System.Console.WriteLine(e);
-
                 return null;
             }
 
@@ -111,6 +142,7 @@ namespace back.infra.Data.Repositories
 
         public Task<List<Tela>> GetAll(int page, int limit)
         {
+            //TODO Get all
             throw new NotImplementedException();
         }
     }

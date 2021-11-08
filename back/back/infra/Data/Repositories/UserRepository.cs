@@ -2,22 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
+using back.domain.DTO.Usuario;
 using back.domain.Repositories;
 using back.infra.Data.Context;
+using back.infra.Services.UsuarioServices;
+using back.MappingConfig;
 using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories
 {
     public class UserRepository : ValidPagination, IUserRepository
     {
+        private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
 
 
         public UserRepository(DbContexts ctxs) : base()
         {
+            this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
 
         }
@@ -60,9 +66,11 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public Task<Usuario> GetById(int id)
+        public async Task<UsuarioDTO> GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map<UsuarioDTO>(await this._ctxs
+            .GetVFU()
+            .GetByIdService(id));
         }
 
 
@@ -79,18 +87,13 @@ namespace back.infra.Data.Repositories
             try
             {
                 var savedSearches = _ctxs.GetVFU().Usuario.FirstOrDefaultAsync(x => x.Id == id);
-
-
-
                 return savedSearches.Result;
             }
             catch (Exception e)
             {
                 System.Console.WriteLine(e);
-
                 return null;
             }
-
         }
 
         public decimal UserValidation(LoginEntity user)

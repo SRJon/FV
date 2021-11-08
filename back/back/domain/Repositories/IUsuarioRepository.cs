@@ -3,13 +3,14 @@ using System.Threading.Tasks;
 using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
+using back.domain.DTO.Usuario;
 
 namespace back.domain.Repositories
 {
     public interface IUserRepository
     {
         public Task<Response<List<Usuario>>> GetAllPaginateAsync(int page, int limit);
-        public Task<Usuario> GetById(int id);
+        public Task<UsuarioDTO> GetById(int id);
         public Task<bool> Create(Usuario usuario);
         public Task<bool> Update(Usuario usuario);
         public Task<bool> Delete(int id);

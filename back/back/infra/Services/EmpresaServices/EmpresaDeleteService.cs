@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using back.infra.Data.Context;
 
-namespace back.infra.Services.TelaServices
+namespace back.infra.Services.EmpresaServices
 {
-    public static class ScreenDeleteService
+    public static class EmpresaDeleteService
     {
         public static async Task<bool> Delete(this DbAppContextFVUDB_TESTE ctx, int id)
         {
@@ -18,5 +18,6 @@ namespace back.infra.Services.TelaServices
 
             return result > 0;
         }
+
     }
 }
