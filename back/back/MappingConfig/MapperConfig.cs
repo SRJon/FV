@@ -19,6 +19,10 @@ namespace back.MappingConfig
                 cfg.CreateMap<EmpresaDTO, Empresa>();
                 cfg.CreateMap<Tela, TelaDTO>();
                 cfg.CreateMap<TelaDTO, Tela>();
+                cfg.CreateMap<Tela, TelaDTOUpdateDTO>();
+                cfg.CreateMap<TelaDTOUpdateDTO, Tela>();
+                cfg.CreateMap<Empresa, EmpresaDTOUpdateDTO>();
+                cfg.CreateMap<EmpresaDTOUpdateDTO, Empresa>();
             });
             return configuration;
         }
