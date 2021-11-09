@@ -16,7 +16,6 @@ export class TelaGridComponent implements OnInit {
   selectedRecord: ITela | undefined;
 
   clickOnPagination(page: number): void {
-    console.log(page);
     this.nextSelection.emit(page);
     // paginate.currentPage = page
   }
@@ -52,7 +51,6 @@ export class TelaGridComponent implements OnInit {
     }
   }
   openModal(obj: ITela): void {
-    console.log(obj);
     this.selectedRecord = obj;
   }
 
@@ -67,15 +65,29 @@ export class TelaGridComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  nextPage(): void {
+    if (this.paginate.currentPage !== this.paginate.pageSize) {
+      this.paginate.currentPage++;
+      this.clickOnPagination(this.paginate.currentPage);
+    }
+  }
+  previousPage(): void {
+    if (this.paginate.currentPage > 1) {
+      this.paginate.currentPage--;
+      this.clickOnPagination(this.paginate.currentPage);
+    }
+  }
   ngOnChanges(): void {
     let firstScren;
-    if ((firstScren = this.listGrid[0])) {
-      for (let k in firstScren) {
-        if (!this.titleList.includes(k)) {
-          this.titleList.push(k);
+    try {
+      if ((firstScren = this.listGrid[0])) {
+        for (let k in firstScren) {
+          if (!this.titleList.includes(k)) {
+            this.titleList.push(k);
+          }
         }
       }
-    }
-    console.log(this.titleList);
+    } catch (error) {}
   }
 }

@@ -15,7 +15,6 @@ export class EditTelaComponentComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.setLoading(false);
-      console.log(this.tela);
     }, 3000);
   }
 
