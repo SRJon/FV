@@ -18,6 +18,7 @@ namespace back.domain.DTO.Usuario
         public DateTime? DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
         public int? SGTSIUSU_USU_COD { get; set; }
+        public string SenhaFV { get; set; }
 
         public UserAuthenticateDto ToDto()
         {

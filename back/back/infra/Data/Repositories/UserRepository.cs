@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Login;
@@ -48,8 +49,20 @@ namespace back.infra.Data.Repositories
 
         public Task<bool> Delete(int id)
         {
-            //TODO Delete
-            throw new System.NotImplementedException();
+            try
+            {
+                return _ctxs.GetVFU().Delete(id);
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao deletar usuário",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
         }
 
         public async Task<Response<List<Usuario>>> GetAllPaginateAsync(int page, int limit)
@@ -123,7 +136,10 @@ namespace back.infra.Data.Repositories
         public decimal UserValidation(LoginEntity user)
         {
 
-            var exist = _ctxs.GetVFU().Usuario.FirstOrDefault(x => x.Login == user.name);
+            var exist = _ctxs.GetVFU().Usuario.FirstOrDefault(x => x.Login.ToLower() == user.name.ToLower());
+            byte[] data = Convert.FromBase64String(user.password);
+            string decodedString = Encoding.UTF8.GetString(data);
+
             if (exist != null)
             {
                 return exist.Id;

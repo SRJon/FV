@@ -19,6 +19,7 @@ namespace back.domain.entities
         public Nullable<DateTime> DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
         public Nullable<int> SGTSIUSU_USU_COD { get; set; }
+        public string SenhaFV { get; set; }
 
         public UserAuthenticateDto ToDto();
         public Usuario ToModel();
