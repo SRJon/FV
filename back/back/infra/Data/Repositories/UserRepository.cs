@@ -137,9 +137,6 @@ namespace back.infra.Data.Repositories
         {
 
             var exist = _ctxs.GetVFU().Usuario.FirstOrDefault(x => x.Login.ToLower() == user.name.ToLower());
-            byte[] data = Convert.FromBase64String(user.password);
-            string decodedString = Encoding.UTF8.GetString(data);
-
             if (exist != null)
             {
                 return exist.Id;
