@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.User;
 using back.data.http;
+using back.domain.DTO.Usuario;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,14 +38,45 @@ namespace back.Application.Controllers
         [HttpGet]
         [Authorize]
         [Route("/{id}")]
-        public ActionResult<Usuario> GetById(int id)
+        public async Task<ActionResult<Response<Usuario>>> GetById(int id)
         {
-            var response = _usuarioRepository.GetByIdAsync(id);
 
-            // var result = new HttpAdapter<Response<Usuario>>(response.StatusCode, response);
-
-            // return result.GetResponse();
-            return response;
+            Response<UsuarioDTO> response = null;
+            try
+            {
+                UsuarioDTO result = await this._usuarioRepository.GetById(id);
+                if (result != null)
+                {
+                    response = new Response<UsuarioDTO>
+                    {
+                        Message = "Usuário encontrado com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<UsuarioDTO>
+                    {
+                        Message = "Usuário não encontrado",
+                        Data = null,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao buscar a tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+            return Ok(response);
         }
 
         [HttpPost]
@@ -132,8 +164,51 @@ namespace back.Application.Controllers
                     StatusCode = 400
                 });
             }
+        }
 
+        [HttpPost]
+        [Route("Delete")]
+        [Authorize]
+        public async Task<ActionResult<Response<bool>>> delete(int id)
+        {
+            Response<bool> response = null;
+            try
+            {
+                var result = await this._usuarioRepository.Delete(id);
+                if (result)
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Usuário excluído com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Usuário não excluído",
+                        Data = result,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
 
+                return response;
+            }
+            catch (System.Exception e)
+            {
+
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao excluir o usuário",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
         }
     }
 }
