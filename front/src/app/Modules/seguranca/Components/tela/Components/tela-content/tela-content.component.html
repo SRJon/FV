@@ -1,0 +1,19 @@
+<div class="h-100">
+  <div class="body-content">
+    <div class="row">
+      <div class="head">
+        <button class="btn btn-primary">Criar nova Tela</button>
+      </div>
+    </div>
+    <div class="row pb-5">
+      <div class="pt-4">
+        <app-tela-grid
+          [listGrid]="telas.data"
+          [paginate]="paginate"
+          [totalItems]="paginate.totalItems"
+          (nextSelection)="onNextSelection($event)"
+        ></app-tela-grid>
+      </div>
+    </div>
+  </div>
+</div>
