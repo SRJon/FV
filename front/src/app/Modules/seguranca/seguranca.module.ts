@@ -11,6 +11,7 @@ import { TitleComponent } from './Components/tela/Components/title/title.compone
 import { TelaContentComponent } from './Components/tela/Components/tela-content/tela-content.component';
 import { TelaGridComponent } from './Components/tela/Components/tela-grid/tela-grid.component';
 import { FormsModule } from '@angular/forms';
+import { EditTelaComponentComponent } from './Components/tela/Components/tela-content/edit-tela-component/edit-tela-component.component';
 
 @NgModule({
   imports: [CommonModule, SegurancaRoutingModule, FormsModule],
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     TitleComponent,
     TelaContentComponent,
     TelaGridComponent,
+    EditTelaComponentComponent,
   ],
   bootstrap: [PerfilComponent],
 })

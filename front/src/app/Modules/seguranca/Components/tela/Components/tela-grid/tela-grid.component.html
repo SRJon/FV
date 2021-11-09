@@ -23,6 +23,7 @@
               *ngFor="let title of titleList"
             >
               {{ title }}
+              <!-- {{ titleList }} -->
             </th>
             <th
               class="sorting"
@@ -68,7 +69,12 @@
 
             <ul class="listActions">
               <li>
-                <button class="btn btn-primary">
+                <button
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#modal-default"
+                  (click)="openModal(item)"
+                >
                   <i class="fa fa-pencil-alt"></i>
                 </button>
               </li>
@@ -92,6 +98,16 @@
       </table>
     </div>
   </div>
+
+  <!-- container fluid -->
+  <!-- TODO Modal -->
+  <app-edit-tela-component
+    [tela]="selectedRecord"
+    *ngIf="selectedRecord"
+    (onCloseModal)="stateModal($event)"
+  ></app-edit-tela-component>
+
+  <!-- Modal -->
 
   <!-- listPagination -->
   <div class="row mt-5">
