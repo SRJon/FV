@@ -1,5 +1,4 @@
-using back.data.entities.Screen;
-using back.domain.DTO.Tela;
+using back.domain.DTO.ScreenDTO;
 using back.infra.Data.Context;
 using System.Threading.Tasks;
 

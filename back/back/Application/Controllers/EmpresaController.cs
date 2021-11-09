@@ -99,6 +99,7 @@ namespace back.Application.Controllers
 
         [HttpPost]
         [Authorize]
+        [Route("Create")]
         public async Task<ActionResult<Response<bool>>> create(Empresa empresa)
         {
             Response<bool> response = null;

@@ -3,7 +3,7 @@ using back.Application.Controllers;
 using back.data.entities.Enterprise;
 using back.data.entities.Screen;
 using back.domain.DTO.Empresa;
-using back.domain.DTO.Tela;
+using back.domain.DTO.ScreenDTO;
 
 namespace back.MappingConfig
 {

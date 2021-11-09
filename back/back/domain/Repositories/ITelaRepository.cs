@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.Screen;
 using back.data.http;
-using back.domain.DTO.Tela;
+using back.domain.DTO.ScreenDTO;
 
 namespace back.domain.Repositories
 {
