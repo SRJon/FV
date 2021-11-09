@@ -4,6 +4,7 @@ namespace back.domain.DTO.ScreenDTO
 {
     public class TelaDTOChild : ITela
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Url { get; set; }
         public string AddUrl { get; set; }
