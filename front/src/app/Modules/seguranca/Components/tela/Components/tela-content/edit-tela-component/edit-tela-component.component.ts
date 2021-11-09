@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITela } from 'src/app/Domain/Models/ITela';
+import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.service';
 
 @Component({
   selector: 'app-edit-tela-component',
@@ -10,18 +11,26 @@ export class EditTelaComponentComponent implements OnInit {
   isLoading: boolean = true;
   @Input() tela: ITela | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
-  constructor() {}
+  subTelas: ITela[] = [];
+
+  constructor(private screensService: ScreensService) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.setLoading(false);
-    }, 3000);
+    this.getAllScreens();
   }
 
   onClose() {
     setTimeout(() => {
       this.onCloseModal.emit(true);
     }, 500);
+  }
+  async getAllScreens() {
+    let result = await this.screensService.getScreens(0, 0);
+    this.setLoading(false);
+    this.subTelas = result.data; // @ts-ignore: Unreachable code error
+
+    $('.select2-danger').select2();
+    console.log(this.tela);
   }
   setLoading(value: boolean) {
     this.isLoading = value;
