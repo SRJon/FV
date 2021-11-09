@@ -49,8 +49,9 @@
               "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.js",
               "node_modules/admin-lte/plugins/chart.js/Chart.js",
               "node_modules/admin-lte/dist/js/pages/dashboard2.js",
-              "src/assets/js/pagination.js",
-              "src/assets/js/pagination.min.js"
+              "src/assets/js/select2.full.min.js",
+              "src/assets/js/jquery.bootstrap-duallistbox.min.js",
+              "src/assets/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {

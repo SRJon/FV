@@ -14,6 +14,7 @@ export class Tela implements ITela {
   iconClass: string;
   telaId: number;
   relateds: ITela[] = [];
+  tela: ITela | null;
 
   constructor(
     id: number | undefined,
@@ -28,7 +29,8 @@ export class Tela implements ITela {
     imagemSd: string,
     iconClass: string,
     telaId: number,
-    relateds: ITela[] = []
+    relateds: ITela[] = [],
+    tela: ITela | null = null
   ) {
     this.id = id;
     this.nome = nome;
@@ -43,6 +45,7 @@ export class Tela implements ITela {
     this.iconClass = iconClass;
     this.telaId = telaId;
     this.relateds = relateds;
+    this.tela = tela;
   }
 
   static fromJson(jsonData: ITela): Tela {
@@ -59,7 +62,8 @@ export class Tela implements ITela {
       jsonData.imagemSd,
       jsonData.iconClass,
       jsonData.telaId,
-      []
+      [],
+      jsonData.tela
     );
   }
 
@@ -78,6 +82,7 @@ export class Tela implements ITela {
       iconClass: tela.iconClass,
       telaId: tela.telaId,
       relateds: tela.relateds,
+      tela: tela.tela,
     };
   }
 }

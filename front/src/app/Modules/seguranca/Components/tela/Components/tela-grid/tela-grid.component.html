@@ -23,6 +23,7 @@
               *ngFor="let title of titleList"
             >
               {{ title }}
+              <!-- {{ titleList }} -->
             </th>
             <th
               class="sorting"
@@ -68,7 +69,12 @@
 
             <ul class="listActions">
               <li>
-                <button class="btn btn-primary">
+                <button
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#modal-default"
+                  (click)="openModal(item)"
+                >
                   <i class="fa fa-pencil-alt"></i>
                 </button>
               </li>
@@ -93,6 +99,16 @@
     </div>
   </div>
 
+  <!-- container fluid -->
+  <!-- TODO Modal -->
+  <app-edit-tela-component
+    [tela]="selectedRecord"
+    *ngIf="selectedRecord"
+    (onCloseModal)="stateModal($event)"
+  ></app-edit-tela-component>
+
+  <!-- Modal -->
+
   <!-- listPagination -->
   <div class="row mt-5">
     <div class="col-sm-12 col-md-5">
@@ -102,7 +118,8 @@
         role="status"
         aria-live="polite"
       >
-        Total de registros: {{ totalItems }}
+        Pagina {{ paginate.currentPage }} do total de paginas:
+        {{ paginate.pageSize }}, total de registros: {{ paginate.totalItems }}
       </div>
     </div>
     <div class="col-sm-12 col-md-7">
@@ -113,8 +130,11 @@
       >
         <ul class="pagination" id="pagination">
           <li
-            class="paginate_button page-item previous disabled"
+            class="paginate_button page-item previous {{
+              paginate.currentPage < 2 ? 'disabled' : ''
+            }}"
             id="example2_previous"
+            (click)="previousPage()"
           >
             <a
               aria-controls="example2"
@@ -143,7 +163,13 @@
               >{{ page }}</a
             >
           </li>
-          <li class="paginate_button page-item next" id="example2_next">
+          <li
+            class="paginate_button page-item next {{
+              paginate.currentPage === paginate.pageSize ? 'disabled' : 'teste'
+            }}"
+            id="example2_next"
+            (click)="nextPage()"
+          >
             <a
               aria-controls="example2"
               data-dt-idx="7"

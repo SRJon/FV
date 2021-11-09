@@ -16,30 +16,14 @@ export class TelaContentComponent implements OnInit {
   constructor(private screensService: ScreensService) {
     this.telas = {} as IResponse<ITela[]>;
     this.paginate = new Paginate(1, 1);
-    // for (let i = 0; i < 1; i++) {
-    //   let tela = {
-    //     id: () => i,
-    //     nome: 'teste ' + i,
-    //     url: () => 'url ' + i,
-    //     actions: (t: any) => [
-    //       {
-    //         icon: 'fab fa-500px',
-    //         action: () => {
-    //           console.log('action ' + t.id());
-    //         },
-    //       },
-    //     ],
-    //   };
-    //   this.telas.push(tela);
-    // }
   }
-  getAll(page: number) {
-    this.screensService.getScreens(page, 10).then((response) => {
+  getAll(page: number, limit: number = 7) {
+    this.screensService.getScreens(page, limit).then((response) => {
       // this.telas = telas;
       // this.cdRef.detectChanges();
       this.telas = response;
       this.paginate.pageSize = response.totalPages;
-      this.paginate.totalItems = response.totalPages * 10;
+      this.paginate.totalItems = response.totalPages * limit;
       this.paginate.setPage();
     });
   }
@@ -47,7 +31,7 @@ export class TelaContentComponent implements OnInit {
     this.getAll(1);
   }
 
-  onNextSelection(page: any) {
+  onNextSelection(page: number) {
     this.paginate.currentPage = page;
     this.getAll(page);
   }

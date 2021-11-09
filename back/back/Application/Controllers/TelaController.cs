@@ -237,7 +237,5 @@ namespace back.Application.Controllers
             }
         }
 
-
-
     }
 }

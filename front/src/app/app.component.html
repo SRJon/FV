@@ -11,6 +11,20 @@
     style="height: 100%"
     id="middleWrapper"
   >
+    <!-- TODO SplashScreen -->
+    <div
+      class="preloader flex-column justify-content-center align-items-center"
+      [style.height.%]="isLoading ? '100' : '0'"
+    >
+      <img
+        class="animation__wobble"
+        src="assets/image/litoral.png"
+        alt="AdminLTELogo"
+        width="150px;"
+        [style.display]="isLoading ? '' : 'none'"
+      />
+    </div>
+
     <router-outlet></router-outlet>
   </div>
   <!-- /.content-wrapper -->
@@ -26,7 +40,7 @@
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
+  <footer class="main-footer" [style.display]="isLogin ? 'none' : ''">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">Anything you want</div>
     <!-- Default to the left -->
