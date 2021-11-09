@@ -4,7 +4,7 @@ using back.DTO.Authentication;
 
 namespace back.domain.DTO.Usuario
 {
-    public class UsuarioDTO : IUsuario
+    public class UsuarioDTOUpdateDTO : IUsuario
     {
         public int Id { get; set; }
         public string Login { get; set; }
@@ -35,7 +35,7 @@ namespace back.domain.DTO.Usuario
             };
         }
 
-        data.entities.User.Usuario IUsuario.ToModel()
+        public data.entities.User.Usuario ToModel()
         {
             throw new NotImplementedException();
         }

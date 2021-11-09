@@ -8,7 +8,7 @@ using back.domain.Repositories;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using back.infra.Services.TelaServices;
-using back.domain.DTO.Tela;
+using back.domain.DTO.ScreenDTO;
 using AutoMapper;
 using back.MappingConfig;
 

@@ -30,11 +30,25 @@ namespace back.infra.Data.Repositories
 
         public Task<bool> Create(Usuario usuario)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return _ctxs.GetVFU().Create(usuario);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao criar usuário",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
         }
 
         public Task<bool> Delete(int id)
         {
+            //TODO Delete
             throw new System.NotImplementedException();
         }
 
@@ -77,7 +91,17 @@ namespace back.infra.Data.Repositories
 
         public Task<bool> Update(Usuario usuario)
         {
-            throw new System.NotImplementedException();
+            if (usuario.Id == 0)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Id não informado",
+                    Data = "",
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+            return _ctxs.GetVFU().UpdateUsuarioService(_mapper.Map<UsuarioDTOUpdateDTO>(usuario), usuario.Id);
         }
         public bool ProductExists(int id) => _ctxs.GetVFU().Usuario.Any(e => e.Id == id);
 
@@ -108,6 +132,10 @@ namespace back.infra.Data.Repositories
             {
                 return 0;
             }
+        }
+        private Task<bool> BadRequest(Response<string> response)
+        {
+            throw new NotImplementedException();
         }
     }
 }
