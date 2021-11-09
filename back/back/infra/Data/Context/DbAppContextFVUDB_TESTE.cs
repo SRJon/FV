@@ -23,6 +23,7 @@ namespace back.infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.EntitiesConfigurationInjection();
+            modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
         }
     }
 }

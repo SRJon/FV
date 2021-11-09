@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.Screen;
 using back.data.http;
-using back.domain.DTO.Tela;
+using back.domain.DTO.ScreenDTO;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -96,6 +96,7 @@ namespace back.Application.Controllers
 
         [HttpPost]
         [Authorize]
+        [Route("Create")]
         public async Task<ActionResult<Response<bool>>> create(Tela tela)
         {
 

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using back.domain.entities;
 
 namespace back.data.entities.Screen
@@ -17,6 +18,9 @@ namespace back.data.entities.Screen
         public bool Sd { get; set; }
         public string ImagemSd { get; set; }
         public string IconClass { get; set; }
-        public int? TelaId { get ; set ; }
+        public int? TelaId { get; set; }
+
+        public virtual Tela tela { get; set; }
+
     }
 }

@@ -1,9 +1,9 @@
 using System;
 using back.domain.entities;
 
-namespace back.domain.DTO.Tela
+namespace back.domain.DTO.ScreenDTO
 {
-    public class TelaDTO : ITela
+    public class TelaGetAllDTO : ITela
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -17,5 +17,7 @@ namespace back.domain.DTO.Tela
         public string ImagemSd { get; set; }
         public string IconClass { get; set; }
         public int? TelaId { get; set; }
+
+        public virtual ITela tela { get; set; }
     }
 }
