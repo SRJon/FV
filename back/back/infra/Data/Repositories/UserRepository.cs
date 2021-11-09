@@ -10,6 +10,7 @@ using back.data.http;
 using back.domain.DTO.Usuario;
 using back.domain.Repositories;
 using back.infra.Data.Context;
+using back.infra.Services.Authentication;
 using back.infra.Services.UsuarioServices;
 using back.MappingConfig;
 using Microsoft.EntityFrameworkCore;
