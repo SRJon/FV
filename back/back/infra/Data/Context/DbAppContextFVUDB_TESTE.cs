@@ -1,4 +1,5 @@
 using back.data.entities.Enterprise;
+using back.data.entities.Profile;
 using back.data.entities.Screen;
 using back.data.entities.User;
 using back.ioc;
@@ -19,6 +20,7 @@ namespace back.infra.Data.Context
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Tela> Tela { get; set; }
         public DbSet<Empresa> Empresa { get; set; }
+        public DbSet<Perfil> Perfil { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
