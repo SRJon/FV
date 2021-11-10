@@ -114,7 +114,7 @@ namespace back.Application.Controllers
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao criar a tela",
+                    Message = "Erro ao criar a usuário",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400

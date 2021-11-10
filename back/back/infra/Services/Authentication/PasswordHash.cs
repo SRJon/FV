@@ -6,8 +6,8 @@ namespace back.infra.Services.Authentication
     public class PasswordHash
     {
         // The code above is pretty self explanatory.You call PasswordHash.HashPassword(plaintext) to get the hash back and then you call PasswordHash.ValidatePassword(plainText, storedHash) to check if the supplied password matches the originally supplied one by the user.
-        public const int SaltByteSize = 24;
-        public const int HashByteSize = 20; // to match the size of the PBKDF2-HMAC-SHA-1 hash 
+        public const int SaltByteSize = 12;
+        public const int HashByteSize = 10; // to match the size of the PBKDF2-HMAC-SHA-1 hash 
         public const int Pbkdf2Iterations = 1000;
         public const int IterationIndex = 0;
         public const int SaltIndex = 1;
