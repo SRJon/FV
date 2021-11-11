@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using back.data.entities.User;
+using back.data.entities.Profile;
 using back.data.http;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.ProfileDTO;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,44 +11,29 @@ namespace back.Application.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsuarioController : ControllerBase
+    public class PerfilController : ControllerBase
     {
-        protected readonly IUserRepository _usuarioRepository;
+        private IPerfilRepository _perfilRepository;
 
-
-        public UsuarioController(IUserRepository usuarioRepository)
+        public PerfilController(IPerfilRepository perfilRepository)
         {
-            _usuarioRepository = usuarioRepository;
+            _perfilRepository = perfilRepository;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize]
-        [Route("/")]
-        public async Task<ActionResult<Response<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
+        [Route("Create")]
+        public async Task<ActionResult<Response<bool>>> create(Perfil perfil)
         {
-
-
-            var response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
-
-            var result = new HttpAdapter<Response<List<Usuario>>>(response.StatusCode, response);
-            return result.GetResponse();
-        }
-
-        [HttpGet]
-        [Authorize]
-        [Route("/{id}")]
-        public async Task<ActionResult<Response<Usuario>>> GetById(int id)
-        {
-
-            Response<UsuarioDTO> response = null;
+            Response<bool> response = null;
             try
             {
-                UsuarioDTO result = await this._usuarioRepository.GetById(id);
-                if (result != null)
+                var result = await this._perfilRepository.Create(perfil);
+                if (result)
                 {
-                    response = new Response<UsuarioDTO>
+                    response = new Response<bool>
                     {
-                        Message = "Usuário encontrado com sucesso",
+                        Message = "Perfil criado com sucesso",
                         Data = result,
                         Success = true,
                         StatusCode = 200
@@ -57,9 +41,52 @@ namespace back.Application.Controllers
                 }
                 else
                 {
-                    response = new Response<UsuarioDTO>
+                    response = new Response<bool>
                     {
-                        Message = "Usuário não encontrado",
+                        Message = "Pefil não criado",
+                        Data = result,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao criar a perfil",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+            return Ok(response);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<ActionResult<Response<Perfil>>> getById(int id)
+        {
+            Response<PerfilDTO> response = null;
+
+            try
+            {
+                PerfilDTO result = await this._perfilRepository.GetById(id);
+                if (result != null)
+                {
+                    response = new Response<PerfilDTO>
+                    {
+                        Message = "Perfil encontrado com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<PerfilDTO>
+                    {
+                        Message = "Perfil não encontrado",
                         Data = null,
                         Success = false,
                         StatusCode = 404
@@ -70,7 +97,7 @@ namespace back.Application.Controllers
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao buscar a tela",
+                    Message = "Erro ao buscar a perfil",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -79,91 +106,27 @@ namespace back.Application.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Authorize]
-        [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Usuario usuario)
+        public async Task<ActionResult<Response<List<Perfil>>>> GetAllAsync([FromQuery] ProfileGetAllEntity payload)
         {
-            Response<bool> response = null;
+            Response<List<PerfilDTO>> result = null;
             try
             {
-                var result = await this._usuarioRepository.Create(usuario);
-                if (result)
-                {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuario criado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
-                }
-                else
-                {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuário não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
-                }
-                return response;
+                result = await _perfilRepository.GetAllPaginateAsync(payload.page, payload.limit);
             }
             catch (System.Exception e)
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao criar a usuário",
+                    Message = "Erro ao buscar as perfis",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
+
                 });
             }
-        }
-
-        [HttpPost]
-        [Route("Update")]
-        [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Usuario usuario)
-        {
-            Response<bool> response = null;
-            try
-            {
-                var result = await this._usuarioRepository.Update(usuario);
-                if (result)
-                {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuário atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
-                }
-                else
-                {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuário não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
-                }
-
-                return response;
-            }
-            catch (System.Exception e)
-            {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o usuário",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-            }
+            return Ok(result);
         }
 
         [HttpPost]
@@ -174,12 +137,12 @@ namespace back.Application.Controllers
             Response<bool> response = null;
             try
             {
-                var result = await this._usuarioRepository.Delete(id);
+                var result = await this._perfilRepository.Delete(id);
                 if (result)
                 {
                     response = new Response<bool>
                     {
-                        Message = "Usuário excluído com sucesso",
+                        Message = "Perfil excluido com sucesso",
                         Data = result,
                         Success = true,
                         StatusCode = 200
@@ -189,21 +152,62 @@ namespace back.Application.Controllers
                 {
                     response = new Response<bool>
                     {
-                        Message = "Usuário não excluído",
+                        Message = "Perfil não excluido",
                         Data = result,
                         Success = false,
                         StatusCode = 404
                     };
                 }
-
                 return response;
             }
             catch (System.Exception e)
             {
-
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao excluir o usuário",
+                    Message = "Erro ao excluir a perfil",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+        }
+
+        [HttpPost]
+        [Route("Update")]
+        [Authorize]
+        public async Task<ActionResult<Response<bool>>> update(Perfil perfil)
+        {
+            Response<bool> response = null;
+            try
+            {
+                var result = await this._perfilRepository.Update(perfil);
+                if (result)
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Perfil atualizado com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Perfil não atualizado",
+                        Data = result,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
+                return response;
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao atualizar o perfil",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400

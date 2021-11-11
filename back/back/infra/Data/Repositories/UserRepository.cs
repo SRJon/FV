@@ -136,10 +136,14 @@ namespace back.infra.Data.Repositories
 
         public decimal UserValidation(LoginEntity user)
         {
-
             var exist = _ctxs.GetVFU().Usuario.FirstOrDefault(x => x.Login.ToLower() == user.name.ToLower());
             if (exist != null)
             {
+                //Exemplo
+                // if (PasswordHash.ValidatePassword(user.password, exist.SenhaFV))
+                // {
+                //     return exist.Id;
+                // }
                 return exist.Id;
             }
             else

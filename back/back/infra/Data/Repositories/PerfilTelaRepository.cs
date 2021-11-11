@@ -2,43 +2,39 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using back.data.entities.Screen;
+using AutoMapper;
+using back.data.entities.ProfileScreen;
 using back.data.http;
+using back.domain.DTO.ProfileScreenDTO;
 using back.domain.Repositories;
 using back.infra.Data.Context;
-using Microsoft.EntityFrameworkCore;
-using back.infra.Services.TelaServices;
-using back.domain.DTO.ScreenDTO;
-using AutoMapper;
+using back.infra.Services.PerfilTelaServices;
 using back.MappingConfig;
+using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories
 {
-    public class TelaRepository : ValidPagination, ITelaRepository
+    public class PerfilTelaRepository : ValidPagination, IPerfilTelaRepository
     {
         private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
 
-
-        public TelaRepository(DbContexts ctxs) : base()
+        public PerfilTelaRepository(DbContexts ctxs) : base()
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
-
-
         }
-
-        public Task<bool> Create(Tela tela)
+        public Task<bool> Create(PerfilTela perfilTela)
         {
             try
             {
-                return _ctxs.GetVFU().Create(tela);
+                return _ctxs.GetVFU().Create(perfilTela);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao criar tela",
+                    Message = "Erro ao criar perfil tela",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -57,11 +53,11 @@ namespace back.infra.Data.Repositories
             {
                 return _ctxs.GetVFU().Delete(id);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao deletar tela",
+                    Message = "Erro ao deletar perfil tela",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -69,22 +65,22 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<Response<List<TelaDTO>>> GetAllPaginateAsync(int page, int limit)
+        public async Task<Response<List<PerfilTelaDTO>>> GetAllPaginateAsync(int page, int limit)
         {
-            var response = new Response<List<TelaDTO>>();
+            var response = new Response<List<PerfilTelaDTO>>();
             var contexto = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Tela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.PerfilTela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
-                List<TelaDTO> dTOs = new List<TelaDTO>();
+                List<PerfilTelaDTO> dTOs = new List<PerfilTelaDTO>();
 
-                var telas = await savedSearches.ToListAsync();
-                telas.ForEach(e => dTOs.Add(_mapper.Map<TelaDTO>(e)));
+                var perfiltelas = await savedSearches.ToListAsync();
+                perfiltelas.ForEach(e => dTOs.Add(_mapper.Map<PerfilTelaDTO>(e)));
 
                 response.Data = dTOs;
-                response.TotalPages = await contexto.Tela.CountAsync();
+                response.TotalPages = await contexto.PerfilTela.CountAsync();
                 response.Page = page;
                 response.TotalPages = (response.TotalPages / base.limit) + 1;
                 response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
@@ -98,19 +94,19 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<TelaDTO> GetById(int id)
+        public async Task<PerfilTelaDTO> GetById(int id)
         {
-
-            return _mapper.Map<TelaDTO>(await this._ctxs
-            .GetVFU()
-            .GetByIdService(id));
+            return _mapper.Map<PerfilTelaDTO>(await this._ctxs.GetVFU().GetByIdService(id));
         }
 
-
-
-        public Task<bool> Update(Tela tela)
+        public PerfilTelaDTO GetByIdAsync(int id)
         {
-            if (tela.Id == 0)
+            throw new System.NotImplementedException();
+        }
+
+        public Task<bool> Update(PerfilTela perfilTela)
+        {
+            if (perfilTela.Id == 0)
             {
                 return BadRequest(new Response<string>
                 {
@@ -120,30 +116,7 @@ namespace back.infra.Data.Repositories
                     StatusCode = 400
                 });
             }
-            return _ctxs.GetVFU().UpdateScreenServices(_mapper.Map<TelaDTOUpdateDTO>(tela), tela.Id);
-        }
-        public bool ProductExists(int id) => _ctxs.GetVFU().Tela.Any(e => e.Id == id);
-
-        public TelaDTO GetByIdAsync(int id)
-        {
-            var response = new Response<Tela>();
-            try
-            {
-                return _mapper.Map<TelaDTO>(this._ctxs
-            .GetVFU()
-            .GetByIdAsyncService(id));
-            }
-            catch (Exception e)
-            {
-                System.Console.WriteLine(e);
-                return null;
-            }
-
-        }
-
-        public Task<List<Tela>> GetAll(int page, int limit)
-        {
-            throw new NotImplementedException();
+            return _ctxs.GetVFU().UpdatePerfilTelaServices(_mapper.Map<PerfilTelaDTOUpdateDTO>(perfilTela), perfilTela.Id);
         }
     }
 }

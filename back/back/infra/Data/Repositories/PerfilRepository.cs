@@ -2,43 +2,40 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using back.data.entities.Screen;
+using AutoMapper;
+using back.data.entities.Profile;
 using back.data.http;
+using back.domain.DTO.ProfileDTO;
 using back.domain.Repositories;
 using back.infra.Data.Context;
-using Microsoft.EntityFrameworkCore;
-using back.infra.Services.TelaServices;
-using back.domain.DTO.ScreenDTO;
-using AutoMapper;
+using back.infra.Services.PerfilServices;
 using back.MappingConfig;
+using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories
 {
-    public class TelaRepository : ValidPagination, ITelaRepository
+    public class PerfilRepository : ValidPagination, IPerfilRepository
     {
         private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
 
-
-        public TelaRepository(DbContexts ctxs) : base()
+        public PerfilRepository(DbContexts ctxs) : base()
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
-
-
         }
-
-        public Task<bool> Create(Tela tela)
+        public Task<bool> Create(Perfil perfil)
         {
             try
             {
-                return _ctxs.GetVFU().Create(tela);
+                return _ctxs.GetVFU().Create(perfil);
             }
             catch (Exception e)
             {
+
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao criar tela",
+                    Message = "Erro ao criar perfil",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -46,10 +43,7 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        private Task<bool> BadRequest(Response<string> response)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Task<bool> Delete(int id)
         {
@@ -57,11 +51,11 @@ namespace back.infra.Data.Repositories
             {
                 return _ctxs.GetVFU().Delete(id);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao deletar tela",
+                    Message = "Erro ao deletar perfil",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -69,22 +63,22 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<Response<List<TelaDTO>>> GetAllPaginateAsync(int page, int limit)
+        public async Task<Response<List<PerfilDTO>>> GetAllPaginateAsync(int page, int limit)
         {
-            var response = new Response<List<TelaDTO>>();
+            var response = new Response<List<PerfilDTO>>();
             var contexto = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Tela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.Perfil.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
 
-                List<TelaDTO> dTOs = new List<TelaDTO>();
+                List<PerfilDTO> dTOs = new List<PerfilDTO>();
 
-                var telas = await savedSearches.ToListAsync();
-                telas.ForEach(e => dTOs.Add(_mapper.Map<TelaDTO>(e)));
+                var perfis = await savedSearches.ToListAsync();
+                perfis.ForEach(e => dTOs.Add(_mapper.Map<PerfilDTO>(e)));
 
                 response.Data = dTOs;
-                response.TotalPages = await contexto.Tela.CountAsync();
+                response.TotalPages = await contexto.Perfil.CountAsync();
                 response.Page = page;
                 response.TotalPages = (response.TotalPages / base.limit) + 1;
                 response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
@@ -98,19 +92,32 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<TelaDTO> GetById(int id)
+        public async Task<PerfilDTO> GetById(int id)
         {
-
-            return _mapper.Map<TelaDTO>(await this._ctxs
+            return _mapper.Map<PerfilDTO>(await this._ctxs
             .GetVFU()
             .GetByIdService(id));
         }
 
-
-
-        public Task<bool> Update(Tela tela)
+        public PerfilDTO GetByIdAsync(int id)
         {
-            if (tela.Id == 0)
+            var response = new Response<Perfil>();
+            try
+            {
+                return _mapper.Map<PerfilDTO>(this._ctxs
+            .GetVFU()
+            .GetByIdAsyncService(id));
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public Task<bool> Update(Perfil perfil)
+        {
+            if (perfil.Id == 0)
             {
                 return BadRequest(new Response<string>
                 {
@@ -120,30 +127,13 @@ namespace back.infra.Data.Repositories
                     StatusCode = 400
                 });
             }
-            return _ctxs.GetVFU().UpdateScreenServices(_mapper.Map<TelaDTOUpdateDTO>(tela), tela.Id);
-        }
-        public bool ProductExists(int id) => _ctxs.GetVFU().Tela.Any(e => e.Id == id);
-
-        public TelaDTO GetByIdAsync(int id)
-        {
-            var response = new Response<Tela>();
-            try
-            {
-                return _mapper.Map<TelaDTO>(this._ctxs
-            .GetVFU()
-            .GetByIdAsyncService(id));
-            }
-            catch (Exception e)
-            {
-                System.Console.WriteLine(e);
-                return null;
-            }
-
+            return _ctxs.GetVFU().UpdatePerfilServices(_mapper.Map<PerfilDTOUpdateDTO>(perfil), perfil.Id);
         }
 
-        public Task<List<Tela>> GetAll(int page, int limit)
+        private Task<bool> BadRequest(Response<string> response)
         {
             throw new NotImplementedException();
         }
+
     }
 }
