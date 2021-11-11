@@ -1,6 +1,9 @@
 using AutoMapper;
 using back.Application.Controllers;
 using back.data.entities.Enterprise;
+using back.data.entities.Pedido;
+using back.data.entities.Perfil;
+using back.data.entities.PerfilTela;
 using back.data.entities.Profile;
 using back.data.entities.ProfileScreen;
 using back.data.entities.Screen;
@@ -19,28 +22,31 @@ namespace back.MappingConfig
         {
             var configuration = new MapperConfiguration(cfg =>
             {
+                //cfg.CreateAnexoContMapper();
+                //cfg.CreateAnexoDevMapper();
+                //cfg.CreateAnexoRepMapper();
+                //cfg.CreateBookMapper();
+                //cfg.CreateBookAnexoMapper();
+                //cfg.CreateBProdutoMapper();
+                //cfg.CreateBProdutoImgMapper();
+                //cfg.CreateDiretorioMapper();
+                cfg.CreateEmpresaMapper();
+                //cfg.CreateInformativoMapper();
+                //cfg.CreateParametroMapper();
+                cfg.CreatePedidoMapper();
+                //cfg.CreatePedidoItemMapper();
+                cfg.CreatePerfilMapper();
+                cfg.CreatePerfilTelaMapper();
+                //cfg.CreateProjetosMapper();
+                //cfg.CreateProjetosMapper();
+                //cfg.CreatesysdiagramsMapper();
+                //cfg.CreateTelaMapper();
+                //cfg.CreateUserCustomizationsMapper();
+                //cfg.CreateUserMapper();
+                //cfg.CreateUsuarioEmpMapper();
+                //cfg.CreateVersaoProjetosMapper();
+                //cfg.CreateVersionDetailsMapper();
                 cfg.CreateMap<Teste, testeDTO>();
-                cfg.CreateMap<testeDTO, Teste>();
-                cfg.CreateMap<Empresa, EmpresaDTO>();
-                cfg.CreateMap<EmpresaDTO, Empresa>();
-                cfg.CreateMap<Tela, TelaDTO>();
-                cfg.CreateMap<TelaDTO, Tela>();
-                cfg.CreateMap<Tela, TelaDTOUpdateDTO>();
-                cfg.CreateMap<TelaDTOUpdateDTO, Tela>();
-                cfg.CreateMap<Tela, TelaDTOChild>();
-                cfg.CreateMap<TelaDTOChild, Tela>();
-                cfg.CreateMap<Empresa, EmpresaDTOUpdateDTO>();
-                cfg.CreateMap<EmpresaDTOUpdateDTO, Empresa>();
-                cfg.CreateMap<Usuario, UsuarioDTO>();
-                cfg.CreateMap<UsuarioDTO, Usuario>();
-                cfg.CreateMap<Usuario, UsuarioDTOUpdateDTO>();
-                cfg.CreateMap<UsuarioDTOUpdateDTO, Usuario>();
-                cfg.CreateMap<Perfil, PerfilDTO>();
-                cfg.CreateMap<PerfilDTO, Perfil>();
-                cfg.CreateMap<PerfilTela, PerfilTelaDTO>();
-                cfg.CreateMap<PerfilTelaDTO, PerfilTela>();
-                cfg.CreateMap<PerfilTela, PerfilTelaDTOUpdateDTO>();
-                cfg.CreateMap<PerfilTelaDTOUpdateDTO, PerfilTela>();
             });
             return configuration;
         }
