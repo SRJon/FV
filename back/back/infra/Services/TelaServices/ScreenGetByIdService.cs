@@ -8,6 +8,10 @@ namespace back.infra.Services.TelaServices
     public static class ScreenGetByIdService
     {
         public static Task<Tela> GetByIdService(
-            this DbAppContextFVUDB_TESTE ctx, int id) => ctx.Tela.FirstOrDefaultAsync(x => x.Id == id);
+            this DbAppContextFVUDB_TESTE ctx, int id)
+        {
+            var b = ctx.Tela.FirstOrDefaultAsync(x => x.Id == id);
+            return b;
+        }
     }
 }

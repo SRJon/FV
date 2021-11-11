@@ -100,10 +100,14 @@ namespace back.infra.Data.Repositories
 
         public async Task<TelaDTO> GetById(int id)
         {
-
-            return _mapper.Map<TelaDTO>(await this._ctxs
+            var b = _mapper.Map<TelaDTO>(await this._ctxs
             .GetVFU()
             .GetByIdService(id));
+            if (b.TelaId != null)
+            {
+                b.tela = _mapper.Map<TelaDTOChild>(await this._ctxs.GetVFU().GetByIdService(b.TelaId.Value));
+            }
+            return b;
         }
 
 

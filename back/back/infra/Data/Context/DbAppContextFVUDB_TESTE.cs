@@ -3,6 +3,7 @@ using back.data.entities.Profile;
 using back.data.entities.ProfileScreen;
 using back.data.entities.Screen;
 using back.data.entities.User;
+using back.domain.DTO.ScreenDTO;
 using back.ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -33,7 +34,8 @@ namespace back.infra.Data.Context
         {
 
             modelBuilder.EntitiesConfigurationInjection();
-            modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
+            // modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
+            modelBuilder.Entity<TelaDTO>().HasOne(a => a.tela).WithOne().HasForeignKey<TelaDTOChild>(a => a.TelaId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
