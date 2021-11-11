@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginPageComponent } from './Components/login-page/login-page.component';
 import { FormsModule } from '@angular/forms';
+import { LoginMenuComponent } from './Components/login-menu/login-menu.component';
 
 
 @NgModule({
   declarations: [
-    LoginPageComponent
+    LoginPageComponent,
+    LoginMenuComponent
   ],
   imports: [
     CommonModule,
