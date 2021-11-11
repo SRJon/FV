@@ -11,6 +11,7 @@ namespace back.domain.Repositories
     {
         public Task<Response<List<Usuario>>> GetAllPaginateAsync(int page, int limit);
         public Task<UsuarioDTO> GetById(int id);
+        public Task<UsuarioDTO> GetByLogin(string login);
         public Task<bool> Create(Usuario usuario);
         public Task<bool> Update(Usuario usuario);
         public Task<bool> Delete(int id);

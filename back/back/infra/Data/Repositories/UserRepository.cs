@@ -155,5 +155,12 @@ namespace back.infra.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public async Task<UsuarioDTO> GetByLogin(string login)
+        {
+            return _mapper.Map<UsuarioDTO>(await this._ctxs
+            .GetVFU()
+            .GetByLoginService(login));
+        }
     }
 }
