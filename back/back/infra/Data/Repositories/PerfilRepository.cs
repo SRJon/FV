@@ -88,7 +88,6 @@ namespace back.infra.Data.Repositories
             }
             catch (System.Exception e)
             {
-                //TODO
                 throw e;
             }
         }
@@ -118,8 +117,17 @@ namespace back.infra.Data.Repositories
 
         public Task<bool> Update(Perfil perfil)
         {
-            //TODO Update
-            throw new System.NotImplementedException();
+            if (perfil.Id == 0)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Id não informado",
+                    Data = "",
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+            return _ctxs.GetVFU().UpdatePerfilServices(_mapper.Map<PerfilDTOUpdateDTO>(perfil), perfil.Id);
         }
 
         private Task<bool> BadRequest(Response<string> response)

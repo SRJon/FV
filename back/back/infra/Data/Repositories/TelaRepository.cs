@@ -142,7 +142,6 @@ namespace back.infra.Data.Repositories
 
         public Task<List<Tela>> GetAll(int page, int limit)
         {
-            //TODO Get all
             throw new NotImplementedException();
         }
     }

@@ -129,7 +129,7 @@ namespace back.Application.Controllers
             return Ok(result);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete")]
         [Authorize]
         public async Task<ActionResult<Response<bool>>> delete(int id)
