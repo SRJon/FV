@@ -42,53 +42,20 @@
     </div>
 
     <div class="content">
-      <div class="col-3 title"></div>
-      <div class="col-3 title">
-        <div
-          class="
-            mb-3
-            form-container
-            field-group
-            form-control form-control-lg
-            input-transparent
-          "
+      <!-- <app-login-menu></app-login-menu> -->
+      <app-refactor-password></app-refactor-password>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckChecked"
+          checked
+        />
+        <label class="form-check-label" for="flexSwitchCheckChecked"
+          >Manter logado</label
         >
-          <span class="fa fa-user" aria-hidden="true"></span>
-          <input type="text" placeholder="Usuário"  [(ngModel)]="user" />
-
-        </div>
-      </div>
-      <div class="col-3 title">
-        <div
-          class="
-            mb-3
-            form-container
-            field-group
-            form-control form-control-lg
-            input-transparent
-          "
-        >
-          <span class="fas fa-lock"></span>
-          <input type="text" [(ngModel)]="password" placeholder="Senha" />
-        </div>
-      </div>
-      <div class="col-3 title">
-        <button class="btn btn-danger"     [disabled]="isLoading" (click)="login()"  >Logar</button>
-
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            role="switch"
-            id="flexSwitchCheckChecked"
-            checked
-          />
-          <div class="mb-3"></div>
-          <label class="form-check-label" for="flexSwitchCheckChecked"
-            >Manter logado</label
-          >
-          <a class="text-right" href="#">Esqueceu a senha?</a>
-        </div>
+        <a class="text-right" href="#">Esqueceu a senha?</a>
       </div>
       <div class="container fixed-bottom">
         <div class="bottom-grid1">
