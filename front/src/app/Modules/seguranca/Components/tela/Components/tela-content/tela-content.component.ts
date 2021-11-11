@@ -12,10 +12,36 @@ import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.servi
 export class TelaContentComponent implements OnInit {
   telas: IResponse<ITela[]>;
   paginate: Paginate;
+  isOpen: boolean = false;
+  initialParam: ITela = {} as ITela;
 
   constructor(private screensService: ScreensService) {
     this.telas = {} as IResponse<ITela[]>;
     this.paginate = new Paginate(1, 1);
+
+    this.initialParam = {
+      id: 0,
+      nome: '',
+      addUrl: '',
+      iconClass: '',
+      imagemSd: '',
+      modulo: '',
+      ordem: 0,
+      nivel: false,
+      relateds: [],
+      sd: false,
+      target: '',
+      tela: null,
+      telaId: undefined,
+      url: '',
+    };
+  }
+  ngOnInit(): void {
+    this.getAll(1);
+  }
+
+  openModal() {
+    this.isOpen = true;
   }
   getAll(page: number, limit: number = 7) {
     this.screensService.getScreens(page, limit).then((response) => {
@@ -26,9 +52,6 @@ export class TelaContentComponent implements OnInit {
       this.paginate.totalItems = response.totalPages * limit;
       this.paginate.setPage();
     });
-  }
-  ngOnInit(): void {
-    this.getAll(1);
   }
 
   onNextSelection(page: number) {

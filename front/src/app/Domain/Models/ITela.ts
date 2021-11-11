@@ -10,7 +10,7 @@ export interface ITela {
   sd: boolean;
   imagemSd: string;
   iconClass: string;
-  telaId: number;
+  telaId: number | undefined;
   relateds: ITela[];
   tela: ITela | null;
 }
