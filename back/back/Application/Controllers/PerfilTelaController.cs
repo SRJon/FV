@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.ProfileScreen;
@@ -109,5 +110,114 @@ namespace back.Application.Controllers
             return Ok(response);
         }
 
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult<Response<List<PerfilTela>>>> GetAllAsync([FromQuery] ProfileScreenGetAllEntity payload)
+        {
+            Response<List<PerfilTelaDTO>> result = null;
+            try
+            {
+                result = await _perfilTelaRepository.GetAllPaginateAsync(payload.page, payload.limit);
+            }
+            catch (System.Exception e)
+            {
+
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao buscar as perfis tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+
+                });
+            }
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("Update")]
+        [Authorize]
+        public async Task<ActionResult<Response<bool>>> update(PerfilTela perfilTela)
+        {
+            Response<bool> response = null;
+            try
+            {
+                var result = await this._perfilTelaRepository.Update(perfilTela);
+                if (result)
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Perfil tela atualizado com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Perfil tela não atualizado",
+                        Data = result,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
+                return response;
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao atualizar o perfil tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+        }
+
+        [HttpPost]
+        [Route("Delete")]
+        [Authorize]
+        public async Task<ActionResult<Response<bool>>> delete(int id)
+        {
+            Response<bool> response = null;
+            try
+            {
+                var result = await this._perfilTelaRepository.Delete(id);
+                if (result)
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Perfil tela excluido com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<bool>
+                    {
+                        Message = "Perfil tela não excluido",
+                        Data = result,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
+                return response;
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao excluir a perfil tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+        }
     }
 }

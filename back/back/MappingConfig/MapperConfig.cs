@@ -39,6 +39,8 @@ namespace back.MappingConfig
                 cfg.CreateMap<PerfilDTO, Perfil>();
                 cfg.CreateMap<PerfilTela, PerfilTelaDTO>();
                 cfg.CreateMap<PerfilTelaDTO, PerfilTela>();
+                cfg.CreateMap<PerfilTela, PerfilTelaDTOUpdateDTO>();
+                cfg.CreateMap<PerfilTelaDTOUpdateDTO, PerfilTela>();
             });
             return configuration;
         }

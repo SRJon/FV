@@ -49,7 +49,20 @@ namespace back.infra.Data.Repositories
 
         public Task<bool> Delete(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return _ctxs.GetVFU().Delete(id);
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao deletar perfil tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
         }
 
         public async Task<Response<List<PerfilTelaDTO>>> GetAllPaginateAsync(int page, int limit)
@@ -59,7 +72,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Tela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+                var savedSearches = contexto.PerfilTela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
                 List<PerfilTelaDTO> dTOs = new List<PerfilTelaDTO>();
 
@@ -93,7 +106,17 @@ namespace back.infra.Data.Repositories
 
         public Task<bool> Update(PerfilTela perfilTela)
         {
-            throw new System.NotImplementedException();
+            if (perfilTela.Id == 0)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Id não informado",
+                    Data = "",
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+            return _ctxs.GetVFU().UpdatePerfilTelaServices(_mapper.Map<PerfilTelaDTOUpdateDTO>(perfilTela), perfilTela.Id);
         }
     }
 }
