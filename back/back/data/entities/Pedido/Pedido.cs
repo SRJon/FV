@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using back.domain.entities;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace back.data.entities.Pedido
 {
-    public class Pedido
+    public class Pedido : IPedido
     {
         public int Id { get; set; }
         [MaxLength(2)]

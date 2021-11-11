@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using back.domain.entities;
+using System;
 
 namespace back.data.entities.PedidoItem
 {
-    public class PedidoItem
+    public class PedidoItem : IPedidoItem
     {
         public int Id { get; set; }
         public int PedidoId { get; set; }
