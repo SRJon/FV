@@ -12,6 +12,13 @@ export class LoginPageComponent implements OnInit {
   password: string = '';
   isLoading: boolean;
 
+  stateEnum = {
+    isLogin: 'l',
+    isNewPassword: 'p',
+    isCheckEmal: 'e',
+  };
+  state: string = this.stateEnum.isNewPassword;
+
   constructor(
     private ServiceLogin: AuthenticationService,
     private router: Router
@@ -22,6 +29,23 @@ export class LoginPageComponent implements OnInit {
     if (isValidToken && token) {
       ServiceLogin.setTokenToHeader(token);
       this.router.navigate(['/wpinicio']);
+    }
+  }
+
+  teste(n: number) {
+    switch (n) {
+      case 1:
+        this.state = this.stateEnum.isCheckEmal;
+        break;
+      case 2:
+        this.state = this.stateEnum.isLogin;
+        break;
+      case 3:
+        this.state = this.stateEnum.isNewPassword;
+        break;
+
+      default:
+        break;
     }
   }
 
