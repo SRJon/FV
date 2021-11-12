@@ -14,5 +14,6 @@ namespace back.domain.Repositories
         public Task<bool> Delete(int id);
         public Task<bool> Update(PerfilTela perfilTela);
         public Task<Response<List<PerfilTelaDTO>>> GetAllPaginateAsync(int page, int limit);
+        public Task<Response<List<PerfilTelaDTO>>> GetByUsuarioId(int userId);
     }
 }
