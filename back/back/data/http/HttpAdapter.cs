@@ -8,10 +8,14 @@ namespace back.data.http
         public int StatusCode { get; set; }
         public T Response { get; set; }
         public ActionResult result { get; set; }
-        public HttpAdapter(int statusCode, T response)
+        public HttpAdapter(int statusCode)
         {
             StatusCode = statusCode;
-            Response = response;
+        }
+        public HttpAdapter(int statusCode, T r)
+        {
+            StatusCode = statusCode;
+            Response = r;
         }
 
 
@@ -50,6 +54,12 @@ namespace back.data.http
 
 
             return res;
+        }
+
+        public static HttpAdapter<T> getInstance()
+        {
+
+            return new HttpAdapter<T>(0);
         }
     }
 }

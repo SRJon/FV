@@ -21,7 +21,7 @@ namespace back.Application.Controllers
             _telaRepository = telaRepository;
         }
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<Response<List<Tela>>>> GetAllAsync([FromQuery] ScreenGetAllEntity payload)
         {
             Response<List<TelaDTO>> result = null;
@@ -46,7 +46,7 @@ namespace back.Application.Controllers
 
 
         [HttpGet("{id}")]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<Response<Tela>>> getById(int id)
         {
             Response<TelaDTO> response = null;

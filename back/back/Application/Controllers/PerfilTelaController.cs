@@ -111,25 +111,26 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        public async Task<ActionResult<Response<List<PerfilTela>>>> GetAllAsync([FromQuery] ProfileScreenGetAllEntity payload)
+        [AllowAnonymous]
+        public async Task<ActionResult<HttpAdapter<Response<List<PerfilTela>>>>> GetAllAsync([FromQuery] ProfileScreenGetAllEntity payload)
         {
-            Response<List<PerfilTelaDTO>> result = null;
+            var result = HttpAdapter<Response<List<PerfilTelaDTO>>>.getInstance();
             try
             {
-                result = await _perfilTelaRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                result.Response = await _perfilTelaRepository.GetAllPaginateAsync(payload.page, payload.limit);
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
+                var res = new Response<string>
                 {
                     Message = "Erro ao buscar as perfis tela",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
 
-                });
+                };
+                var resultError = new HttpAdapter<Response<string>>(res.StatusCode, res);
+                return BadRequest(resultError);
             }
             return Ok(result);
         }

@@ -1,11 +1,10 @@
-﻿using back.data.entities.Screen;
-using back.data.entities.Perfil;
-using System;
+using System.Collections.Generic;
+using back.domain.DTO.ScreenDTO;
 using back.domain.entities;
 
-namespace back.data.entities.PerfilTela
+namespace back.domain.DTO.ProfileScreenDTO
 {
-    public class PerfilTela : IPerfilTela
+    public class PerfilTelaDTOProfiless : IPerfilTela
     {
         public int Id { get; set; }
         public int? PerfilId { get; set; }
@@ -14,5 +13,7 @@ namespace back.data.entities.PerfilTela
         public bool DSP { get; set; }
         public bool UPD { get; set; }
         public bool DLT { get; set; }
+
+        public virtual ICollection<TelaDTOChild> Telas { get; set; }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using back.domain.DTO.PerfilTela;
+using back.domain.DTO.ProfileScreenDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace back.data.entities.PerfilTela
+namespace back.data.entities.ProfileScreen
 {
     public static class PerfilTelaMapper
     {
@@ -13,6 +13,10 @@ namespace back.data.entities.PerfilTela
         {
             cfg.CreateMap<PerfilTela, PerfilTelaDTOUpdateDTO>();
             cfg.CreateMap<PerfilTelaDTOUpdateDTO, PerfilTela>();
+            cfg.CreateMap<PerfilTela, PerfilTelaDTO>();
+            cfg.CreateMap<PerfilTelaDTO, PerfilTela>();
+            cfg.CreateMap<PerfilTela, PerfilTelaDTOProfiless>();
+            cfg.CreateMap<PerfilTelaDTOProfiless, PerfilTela>();
 
             return cfg;
         }

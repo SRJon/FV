@@ -1,10 +1,12 @@
 using System;
+using back.data.entities.Profile;
+using back.domain.DTO.ProfileDTO;
 using back.domain.entities;
 using back.DTO.Authentication;
 
-namespace back.domain.DTO.Usuario
+namespace back.domain.DTO.User
 {
-    public class UsuarioDTOUpdateDTO : IUsuario
+    public class UsuarioDTO : IUsuario
     {
         public int Id { get; set; }
         public string Login { get; set; }
@@ -19,6 +21,7 @@ namespace back.domain.DTO.Usuario
         public string LoginSnk { get; set; }
         public int? SGTSIUSU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
+        public virtual PerfilDTOUserless Perfil { get; set; }
 
         public UserAuthenticateDto ToDto()
         {
@@ -36,7 +39,7 @@ namespace back.domain.DTO.Usuario
             };
         }
 
-        public data.entities.User.Usuario ToModel()
+        data.entities.User.Usuario IUsuario.ToModel()
         {
             throw new NotImplementedException();
         }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.User;
 
 namespace back.domain.Repositories
 {

@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using back.data.entities.Profile;
 using back.domain.entities;
 using back.DTO.Authentication;
 
@@ -19,6 +21,8 @@ namespace back.data.entities.User
         public string LoginSnk { get; set; }
         public int? SGTSIUSU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
+
+        public virtual Perfil Perfil { get; set; }
 
         public UserAuthenticateDto ToDto()
         {
