@@ -1,15 +1,24 @@
 using AutoMapper;
 using back.Application.Controllers;
+using back.data.entities.AnexoCont;
+using back.data.entities.AnexoDev;
+using back.data.entities.AnexoRep;
+using back.data.entities.Book;
+using back.data.entities.BookAnexo;
+using back.data.entities.BProduto;
+using back.data.entities.BProdutoImg;
+using back.data.entities.Diretorio;
 using back.data.entities.Enterprise;
-using back.data.entities.Profile;
-using back.data.entities.ProfileScreen;
-using back.data.entities.Screen;
-using back.data.entities.User;
-using back.domain.DTO.Empresa;
-using back.domain.DTO.ProfileDTO;
-using back.domain.DTO.ProfileScreenDTO;
-using back.domain.DTO.ScreenDTO;
-using back.domain.DTO.Usuario;
+using back.data.entities.Informativo;
+using back.data.entities.Parametro;
+using back.data.entities.Pedido;
+using back.data.entities.PedidoItem;
+using back.data.entities.Perfil;
+using back.data.entities.PerfilTela;
+using back.data.entities.Projetos;
+using back.data.entities.UserCustomizations;
+using back.data.entities.VersaoProjetos;
+using back.data.entities.VersionDetails;
 
 namespace back.MappingConfig
 {
@@ -19,28 +28,28 @@ namespace back.MappingConfig
         {
             var configuration = new MapperConfiguration(cfg =>
             {
+                cfg.CreateAnexoContMapper();
+                cfg.CreateAnexoDevMapper();
+                cfg.CreateAnexoRepMapper();
+                cfg.CreateBookMapper();
+                cfg.CreateBookAnexoMapper();
+                cfg.CreateBProdutoMapper();
+                cfg.CreateBProdutoImgMapper();
+                cfg.CreateDiretorioMapper();
+                cfg.CreateEmpresaMapper();
+                cfg.CreateInformativoMapper();
+                cfg.CreateParametroMapper();
+                cfg.CreatePedidoMapper();
+                cfg.CreatePedidoItemMapper();
+                cfg.CreatePerfilMapper();
+                cfg.CreatePerfilTelaMapper();
+                cfg.CreateProjetosMapper();                                
+                cfg.CreateTelaMapper();
+                cfg.CreateUserCustomizationsMapper();
+                cfg.CreateUserMapper();                
+                cfg.CreateVersaoProjetosMapper();
+                cfg.CreateVersionDetailsMapper();
                 cfg.CreateMap<Teste, testeDTO>();
-                cfg.CreateMap<testeDTO, Teste>();
-                cfg.CreateMap<Empresa, EmpresaDTO>();
-                cfg.CreateMap<EmpresaDTO, Empresa>();
-                cfg.CreateMap<Tela, TelaDTO>();
-                cfg.CreateMap<TelaDTO, Tela>();
-                cfg.CreateMap<Tela, TelaDTOUpdateDTO>();
-                cfg.CreateMap<TelaDTOUpdateDTO, Tela>();
-                cfg.CreateMap<Tela, TelaDTOChild>();
-                cfg.CreateMap<TelaDTOChild, Tela>();
-                cfg.CreateMap<Empresa, EmpresaDTOUpdateDTO>();
-                cfg.CreateMap<EmpresaDTOUpdateDTO, Empresa>();
-                cfg.CreateMap<Usuario, UsuarioDTO>();
-                cfg.CreateMap<UsuarioDTO, Usuario>();
-                cfg.CreateMap<Usuario, UsuarioDTOUpdateDTO>();
-                cfg.CreateMap<UsuarioDTOUpdateDTO, Usuario>();
-                cfg.CreateMap<Perfil, PerfilDTO>();
-                cfg.CreateMap<PerfilDTO, Perfil>();
-                cfg.CreateMap<PerfilTela, PerfilTelaDTO>();
-                cfg.CreateMap<PerfilTelaDTO, PerfilTela>();
-                cfg.CreateMap<PerfilTela, PerfilTelaDTOUpdateDTO>();
-                cfg.CreateMap<PerfilTelaDTOUpdateDTO, PerfilTela>();
             });
             return configuration;
         }

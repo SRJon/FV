@@ -118,5 +118,11 @@ namespace back.infra.Data.Repositories
             }
             return _ctxs.GetVFU().UpdatePerfilTelaServices(_mapper.Map<PerfilTelaDTOUpdateDTO>(perfilTela), perfilTela.Id);
         }
+
+        public Task<Response<List<PerfilTelaDTO>>> GetByUsuarioId(int userId)
+        {
+            //TODO get by usuario id
+            throw new NotImplementedException();
+        }
     }
 }
