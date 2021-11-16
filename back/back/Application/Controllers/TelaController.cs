@@ -97,7 +97,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Tela tela)
+        public async Task<ActionResult<Response<bool>>> create(TelaDTOCreate tela)
         {
 
             Response<bool> response = null;

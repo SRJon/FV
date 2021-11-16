@@ -28,7 +28,7 @@ namespace back.infra.Data.Repositories
 
         }
 
-        public Task<bool> Create(Tela tela)
+        public Task<bool> Create(TelaDTOCreate tela)
         {
             try
             {

@@ -11,7 +11,7 @@ namespace back.domain.Repositories
         public Task<Response<List<TelaDTO>>> GetAllPaginateAsync(int page, int limit);
         public Task<List<Tela>> GetAll(int page, int limit);
         public Task<TelaDTO> GetById(int id);
-        public Task<bool> Create(Tela tela);
+        public Task<bool> Create(TelaDTOCreate tela);
         public Task<bool> Update(Tela tela);
         public Task<bool> Delete(int id);
 

@@ -23,7 +23,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Perfil perfil)
+        public async Task<ActionResult<Response<bool>>> create(PerfilDTOCreate perfil)
         {
             Response<bool> response = null;
             try

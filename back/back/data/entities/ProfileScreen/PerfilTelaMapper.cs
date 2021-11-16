@@ -11,6 +11,10 @@ namespace back.data.entities.ProfileScreen
     {
         public static IMapperConfigurationExpression CreatePerfilTelaMapper(this IMapperConfigurationExpression cfg)
         {
+            cfg.CreateMap<PerfilTela, PerfilTelaDTO>();
+            cfg.CreateMap<PerfilTelaDTO, PerfilTela>();
+            cfg.CreateMap<PerfilTela, PerfilTelaDTOCreate>();
+            cfg.CreateMap<PerfilTelaDTOCreate, PerfilTela>();
             cfg.CreateMap<PerfilTela, PerfilTelaDTOUpdateDTO>();
             cfg.CreateMap<PerfilTelaDTOUpdateDTO, PerfilTela>();
             cfg.CreateMap<PerfilTela, PerfilTelaDTO>();
