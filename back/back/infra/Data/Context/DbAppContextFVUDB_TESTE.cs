@@ -39,35 +39,42 @@ namespace back.infra.Data.Context
 
             modelBuilder.EntitiesConfigurationInjection();
             // modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
-            modelBuilder.Entity<TelaDTO>().HasOne(a => a.tela).WithOne().HasForeignKey<TelaDTOChild>(a => a.TelaId);
+            modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
 
 
-            //funciona +/-
-            // modelBuilder.Entity<UsuarioDTO>()
-            // .HasOne(a => a.Perfil)
-            // .WithOne(p => p.Usuario)
-            // .HasForeignKey<PerfilDTO>(a => a.PerfilId);
 
 
-            modelBuilder.Entity<UsuarioDTO>()
+
+            modelBuilder.Entity<Usuario>()
                         .HasOne(a => a.Perfil)
                         .WithOne()
-                        .HasForeignKey<PerfilDTOUserless>(a => a.PerfilId);
+                        .HasForeignKey<Perfil>(a => a.Id);
+
+            modelBuilder.Entity<Perfil>()
+                        .HasMany(a => a.Usuario)
+                        .WithOne()
+                        .HasForeignKey(a => a.PerfilId);
 
             modelBuilder.Entity<Perfil>()
                         .HasMany(a => a.PerfilTela)
                         .WithOne(a => a.Perfil)
                         .HasForeignKey(a => a.PerfilId);
 
-            modelBuilder.Entity<PerfilDTOUserless>()
-            .HasMany(a => a.PerfilTela)
-            .WithOne()
-            .HasForeignKey(a => a.PerfilId);
+            modelBuilder.Entity<Perfil>()
+                        .HasMany(a => a.PerfilTela)
+                        .WithOne()
+                        .HasForeignKey(a => a.PerfilId);
 
-            modelBuilder.Entity<PerfilTelaDTOProfiless>()
-            .HasMany(a => a.Telas)
-            .WithOne()
-            .HasForeignKey(a => a.TelaId);
+            modelBuilder.Entity<PerfilTela>()
+                        .HasMany(a => a.Telas)
+                        .WithOne()
+                        .HasForeignKey(a => a.Id);
+
+            modelBuilder.Entity<PerfilTela>()
+                        .HasOne(a => a.Perfil)
+                        .WithMany(b => b.PerfilTela)
+                        .HasForeignKey(c => c.PerfilId);
+
 
 
 

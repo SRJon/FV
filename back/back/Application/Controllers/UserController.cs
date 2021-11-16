@@ -31,8 +31,7 @@ namespace back.Application.Controllers
 
             var response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
 
-            var result = new HttpAdapter<Response<List<Usuario>>>(response.StatusCode, response);
-            return result.GetResponse();
+            return response.GetResponse();
         }
 
         [HttpGet]

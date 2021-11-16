@@ -20,6 +20,7 @@ namespace back.data.entities.Screen
         public string IconClass { get; set; }
         public int? TelaId { get; set; }
 
+        [ForeignKey("TelaId")]
         public virtual Tela tela { get; set; }
 
     }

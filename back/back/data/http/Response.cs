@@ -1,4 +1,6 @@
 using back.domain.entities;
+using Microsoft.AspNetCore.Mvc;
+
 namespace back.data.http
 {
     public class Response<O> : IResponse<O>
@@ -9,5 +11,46 @@ namespace back.data.http
         public int TotalPages { get; set; }
         public int Page { get; set; }
         public O Data { get; set; }
+
+
+
+
+
+        public ActionResult<Response<O>> GetResponse()
+        {
+
+            ActionResult res = null;
+            var StatusCode = this.StatusCode;
+
+
+            switch (StatusCode)
+            {
+                case 200:
+                case 201:
+                    res = new OkObjectResult(this);
+                    break;
+
+                case 400:
+                    res = new BadRequestObjectResult(this);
+                    break;
+                case 401:
+                    res = new UnauthorizedResult();
+                    break;
+                case 403:
+                    res = new ForbidResult();
+                    break;
+                case 404:
+                    res = new NotFoundResult();
+                    break;
+
+                default:
+                    res = new BadRequestObjectResult(this);
+                    break;
+            }
+
+
+            return res;
+        }
+
     }
 }

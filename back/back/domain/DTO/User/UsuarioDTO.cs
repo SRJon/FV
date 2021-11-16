@@ -39,9 +39,5 @@ namespace back.domain.DTO.User
             };
         }
 
-        data.entities.User.Usuario IUsuario.ToModel()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using back.data.entities.Profile;
 using back.data.entities.Screen;
 using back.domain.entities;
@@ -15,8 +16,9 @@ namespace back.data.entities.ProfileScreen
         public bool UPD { get; set; }
         public bool DLT { get; set; }
 
-
+        [ForeignKey("PerfilId")]
         public virtual Perfil Perfil { get; set; }
-        public virtual ICollection<Tela> Tela { get; set; }
+        [ForeignKey("TelaId")]
+        public virtual ICollection<Tela> Telas { get; set; }
     }
 }
