@@ -53,12 +53,21 @@
   *ngIf="selectedRecord"
   (onCloseModal)="stateModal($event)"
 ></app-edit-tela-component>
-
+<button type="button" class="btn btn-success toastsDefaultSuccess">
+  Launch Success Toast
+</button>
 <!--  TODO modal delete -->
 <div
   class="modal fade show"
   id="modal-sm"
-  style="display: block; padding-right: 15px"
+  style="
+    display: block;
+    padding-right: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
   aria-hidden="true"
   role="dialog"
   *ngIf="isDelete"
@@ -72,6 +81,7 @@
           class="close"
           data-dismiss="modal"
           aria-label="Close"
+          (click)="onModalClose(true)"
         >
           <span aria-hidden="true">×</span>
         </button>
@@ -85,10 +95,21 @@
         </p>
       </div>
       <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-default"
+          data-dismiss="modal"
+          (click)="onModalClose(true)"
+        >
           Fechar
         </button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="onModalClose(false)"
+        >
+          Salvar mudanças
+        </button>
       </div>
     </div>
     <!-- /.modal-content -->
