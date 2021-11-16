@@ -1,4 +1,5 @@
-﻿using back.domain.entities;
+﻿using back.domain.DTO.BProduto;
+using back.domain.entities;
 using System;
 
 namespace back.domain.DTO.BProdutoImg
@@ -7,7 +8,7 @@ namespace back.domain.DTO.BProdutoImg
     {
         public int Id { get; set; }
         public int FCodProd { get; set; }
-        public int CodProd { get; set; }
+        public IBProduto IBProdutoId { get; set; }
         public DateTime Data { get; set; }
         public bool Ativo { get; set; }
         public string NomeArq { get; set; }
