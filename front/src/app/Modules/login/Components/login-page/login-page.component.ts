@@ -32,6 +32,7 @@ export class LoginPageComponent implements OnInit {
     const { user, password } = this;
     try {
       await this.ServiceLogin.login(user, password).then(() => {
+        location.reload();
         this.router.navigate(['/wpinicio']);
       });
     } catch (error) {

@@ -6,6 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.service';
 import { ITela } from '../../../../../../Domain/Models/ITela';
 import { Paginate } from '../../../../../../Domain/Models/Paginate';
 
@@ -21,6 +22,7 @@ export class TelaGridComponent implements OnInit, OnChanges {
   @Input() totalItems: number = 0;
   @Output() nextSelection = new EventEmitter<number>();
   selectedRecord: ITela | undefined;
+  isDelete: boolean = false;
 
   clickOnPagination(page: number): void {
     this.nextSelection.emit(page);
@@ -39,8 +41,20 @@ export class TelaGridComponent implements OnInit, OnChanges {
       this.selectedRecord = this.listGrid.find((e) => e.id === obj.id);
     }
   }
+  async onDelete(obj: ITela | undefined = undefined): Promise<void> {
+    if (obj) {
+      this.screensService
+        .deleteScreen(obj.id || 0)
+        .then((res) => {
+          console.log(res, 'res');
+        })
+        .catch((err) => {
+          console.log(err, 'ress');
+        });
+    }
+  }
 
-  constructor() {
+  constructor(private screensService: ScreensService) {
     this.paginate = new Paginate(2000, 50);
 
     this.titleList = [

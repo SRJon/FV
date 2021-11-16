@@ -28,7 +28,7 @@
               </button>
             </li>
             <li>
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" (click)="onDelete(item)">
                 <i class="fa fa-trash"></i>
               </button>
             </li>
@@ -53,3 +53,45 @@
   *ngIf="selectedRecord"
   (onCloseModal)="stateModal($event)"
 ></app-edit-tela-component>
+
+<!--  TODO modal delete -->
+<div
+  class="modal fade show"
+  id="modal-sm"
+  style="display: block; padding-right: 15px"
+  aria-hidden="true"
+  role="dialog"
+  *ngIf="isDelete"
+>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Deseja Excluir a Tela</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Id: <strong>{{ selectedRecord?.id }}</strong>
+        </p>
+        <p>
+          Nome: <strong>{{ selectedRecord?.nome }}</strong>
+        </p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Fechar
+        </button>
+        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
