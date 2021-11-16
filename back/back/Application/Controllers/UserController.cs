@@ -82,7 +82,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Usuario usuario)
+        public async Task<ActionResult<Response<bool>>> create(UsuarioDTOCreate usuario)
         {
             Response<bool> response = null;
             try

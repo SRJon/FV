@@ -13,6 +13,8 @@ namespace back.data.entities.Enterprise
             cfg.CreateMap<UsuarioDTO, Usuario>();
             cfg.CreateMap<Usuario, UsuarioDTOUpdateDTO>();
             cfg.CreateMap<UsuarioDTOUpdateDTO, Usuario>();
+            cfg.CreateMap<Usuario, UsuarioDTOCreate>();
+            cfg.CreateMap<UsuarioDTOCreate, Usuario>();
 
             return cfg;
         }

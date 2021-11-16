@@ -30,7 +30,7 @@ namespace back.infra.Data.Repositories
 
         }
 
-        public Task<bool> Create(Usuario usuario)
+        public Task<bool> Create(UsuarioDTOCreate usuario)
         {
             try
             {
