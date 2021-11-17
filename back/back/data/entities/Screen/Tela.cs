@@ -20,7 +20,7 @@ namespace back.data.entities.Screen
         public string IconClass { get; set; }
         public int? TelaId { get; set; }
 
-        public virtual Tela tela { get; set; }
+        public virtual Tela? tela { get; set; } = null;
 
     }
 }

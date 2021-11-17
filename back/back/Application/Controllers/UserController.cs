@@ -82,7 +82,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Usuario usuario)
+        public async Task<ActionResult<Response<bool>>> create(UsuarioDTOCreate usuario)
         {
             Response<bool> response = null;
             try
@@ -209,6 +209,48 @@ namespace back.Application.Controllers
                     StatusCode = 400
                 });
             }
+        }
+        [HttpGet]
+        [Route("GetbyLogin")]
+        public async Task<ActionResult<Response<Usuario>>> getByLogin(string login)
+        {
+            Response<UsuarioDTO> response = null;
+            try
+            {
+                UsuarioDTO result = await this._usuarioRepository.GetByLogin(login);
+                if (result != null)
+                {
+                    response = new Response<UsuarioDTO>
+                    {
+                        Message = "Usuário encontrado com sucesso",
+                        Data = result,
+                        Success = true,
+                        StatusCode = 200
+                    };
+                }
+                else
+                {
+                    response = new Response<UsuarioDTO>
+                    {
+                        Message = "Usuário não encontrado",
+                        Data = null,
+                        Success = false,
+                        StatusCode = 404
+                    };
+                }
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao buscar a tela",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
+                });
+            }
+            return Ok(response);
+
         }
     }
 }

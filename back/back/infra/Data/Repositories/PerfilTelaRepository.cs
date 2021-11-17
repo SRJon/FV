@@ -24,7 +24,7 @@ namespace back.infra.Data.Repositories
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
         }
-        public Task<bool> Create(PerfilTela perfilTela)
+        public Task<bool> Create(PerfilTelaDTOCreate perfilTela)
         {
             try
             {
@@ -117,6 +117,12 @@ namespace back.infra.Data.Repositories
                 });
             }
             return _ctxs.GetVFU().UpdatePerfilTelaServices(_mapper.Map<PerfilTelaDTOUpdateDTO>(perfilTela), perfilTela.Id);
+        }
+
+        public Task<Response<List<PerfilTelaDTO>>> GetByUsuarioId(int userId)
+        {
+            //TODO get by usuario id
+            throw new NotImplementedException();
         }
     }
 }

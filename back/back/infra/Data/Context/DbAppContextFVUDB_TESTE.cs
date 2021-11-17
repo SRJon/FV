@@ -35,7 +35,7 @@ namespace back.infra.Data.Context
 
             modelBuilder.EntitiesConfigurationInjection();
             // modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
-            modelBuilder.Entity<TelaDTO>().HasOne(a => a.tela).WithOne().HasForeignKey<TelaDTOChild>(a => a.TelaId);
+            modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
