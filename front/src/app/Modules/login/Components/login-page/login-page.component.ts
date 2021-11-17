@@ -56,7 +56,9 @@ export class LoginPageComponent implements OnInit {
     this.isLoading = true;
     const { user, password } = this;
     try {
-      await this.ServiceLogin.login(toLogin.user, toLogin.password).then(() => {
+      await this.ServiceLogin.login(user, password).then(() => {
+        location.reload();
+
         this.router.navigate(['/wpinicio']);
       });
     } catch (error) {
