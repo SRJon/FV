@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace back.domain.DTO.PedidoItem
 {
-    public class PedidoItem
+    public class PedidoItemDTO
     {
         public int Id { get; set; }
         public int PedidoId { get; set; }
