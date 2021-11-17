@@ -1,3 +1,5 @@
+using back.data.entities.Book;
+using back.data.entities.BookAnexo;
 using back.data.entities.Enterprise;
 using back.data.entities.Pedido;
 using back.data.entities.Profile;
@@ -24,7 +26,8 @@ namespace back.infra.Data.Context
 
         }
 
-
+        public DbSet<Book> Book { get; set; }
+        public DbSet<BookAnexo> BookAnexo { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Tela> Tela { get; set; }
         public DbSet<Empresa> Empresa { get; set; }

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using back.data.entities.Book;
 using back.data.entities.Enterprise;
-using back.data.entities.Pedido;
 using back.data.http;
-using back.domain.DTO.Pedido;
+using back.domain.DTO.Book;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,32 +12,32 @@ namespace back.Application.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PedidoController : ControllerBase
+    public class BookController : ControllerBase
     {
-        private IPedidoRepository _PedidoRepository;
+        private IBookRepository _BookRepository;
 
 
-        public PedidoController(IPedidoRepository PedidoRepository)
+        public BookController(IBookRepository BookRepository)
         {
 
-            _PedidoRepository = PedidoRepository;
+            _BookRepository = BookRepository;
         }
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<Pedido>>>> GetAllAsync([FromQuery] PedidoGetAllEntity payload)
+        public async Task<ActionResult<Response<List<Book>>>> GetAllAsync([FromQuery] BookAnexoGetAllEntity payload)
 
         {
-            Response<List<PedidoDTO>> result = null;
+            Response<List<BookDTO>> result = null;
             try
             {
-                result = await _PedidoRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                result = await _BookRepository.GetAllPaginateAsync(payload.page, payload.limit);
             }
             catch (System.Exception e)
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao buscar os Pedidos",
+                    Message = "Erro ao buscar os Books",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -50,18 +50,18 @@ namespace back.Application.Controllers
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<Pedido>>> getById(int id)
+        public async Task<ActionResult<Response<Book>>> getById(int id)
         {
-            Response<PedidoDTO> response = null;
+            Response<BookDTO> response = null;
 
             try
             {
-                PedidoDTO result = await this._PedidoRepository.GetById(id);
+                BookDTO result = await this._BookRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<PedidoDTO>
+                    response = new Response<BookDTO>
                     {
-                        Message = "Pedido encontrado com sucesso",
+                        Message = "Book encontrado com sucesso",
                         Data = result,
                         Success = true,
                         StatusCode = 200
@@ -69,9 +69,9 @@ namespace back.Application.Controllers
                 }
                 else
                 {
-                    response = new Response<PedidoDTO>
+                    response = new Response<BookDTO>
                     {
-                        Message = "Pedido não encontrado",
+                        Message = "Book não encontrado",
                         Data = null,
                         Success = false,
                         StatusCode = 404
@@ -83,7 +83,7 @@ namespace back.Application.Controllers
 
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao buscar o Pedido",
+                    Message = "Erro ao buscar o Book",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -99,18 +99,18 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Pedido Pedido)
+        public async Task<ActionResult<Response<bool>>> create(Book Book)
         {
             Response<bool> response = null;
 
             try
             {
-                var result = await this._PedidoRepository.Create(Pedido);
+                var result = await this._BookRepository.Create(Book);
                 if (result)
                 {
                     response = new Response<bool>
                     {
-                        Message = "Pedido criado com sucesso",
+                        Message = "Book criada com sucesso",
                         Data = result,
                         Success = true,
                         StatusCode = 200
@@ -120,7 +120,7 @@ namespace back.Application.Controllers
                 {
                     response = new Response<bool>
                     {
-                        Message = "Pedido não criado",
+                        Message = "Book não criado",
                         Data = result,
                         Success = false,
                         StatusCode = 404
@@ -132,7 +132,7 @@ namespace back.Application.Controllers
 
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao criar o Pedido",
+                    Message = "Erro ao criar o Book",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -147,17 +147,17 @@ namespace back.Application.Controllers
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Pedido Pedido)
+        public async Task<ActionResult<Response<bool>>> update(Book Book)
         {
             Response<bool> response = null;
             try
             {
-                var result = await this._PedidoRepository.Update(Pedido);
+                var result = await this._BookRepository.Update(Book);
                 if (result)
                 {
                     response = new Response<bool>
                     {
-                        Message = "Pedido atualizado com sucesso",
+                        Message = "Book atualizado com sucesso",
                         Data = result,
                         Success = true,
                         StatusCode = 200
@@ -167,7 +167,7 @@ namespace back.Application.Controllers
                 {
                     response = new Response<bool>
                     {
-                        Message = "Pedido não atualizado",
+                        Message = "Book não atualizado",
                         Data = result,
                         Success = false,
                         StatusCode = 404
@@ -179,7 +179,7 @@ namespace back.Application.Controllers
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao atualizar o Pedido",
+                    Message = "Erro ao atualizar o Book",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -194,12 +194,12 @@ namespace back.Application.Controllers
             Response<bool> response = null;
             try
             {
-                var result = await this._PedidoRepository.Delete(id);
+                var result = await this._BookRepository.Delete(id);
                 if (result)
                 {
                     response = new Response<bool>
                     {
-                        Message = "Pedido excluido com sucesso",
+                        Message = "Book excluido com sucesso",
                         Data = result,
                         Success = true,
                         StatusCode = 200
@@ -209,7 +209,7 @@ namespace back.Application.Controllers
                 {
                     response = new Response<bool>
                     {
-                        Message = "Pedido não excluido",
+                        Message = "Book não excluido",
                         Data = result,
                         Success = false,
                         StatusCode = 404
@@ -221,7 +221,7 @@ namespace back.Application.Controllers
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao excluir o Pedido",
+                    Message = "Erro ao excluir o Book",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
