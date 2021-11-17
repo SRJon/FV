@@ -1,3 +1,4 @@
+import { AlertsService } from './../../../../Repository/Alerts/alerts.service';
 import * as loginEntity from './../../Entities/ILogin';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +23,8 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private ServiceLogin: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private alertsService: AlertsService
   ) {
     this.isLoading = false;
     let isValidToken = ServiceLogin.checkToken();
@@ -61,8 +63,15 @@ export class LoginPageComponent implements OnInit {
 
         this.router.navigate(['/wpinicio']);
       });
-    } catch (error) {
-      // console.log(error.response);
+    } catch (error: any) {
+      // console.log(error.response);alertsService
+      let status = error.response.status || 500;
+
+      if (status === 500) {
+        this.alertsService.showAlert('Ocorreu um error tente novamente!', 'error');
+      } else {
+        this.alertsService.showAlert(error.response.data, 'warning');
+      }
     } finally {
       setTimeout(() => {
         this.isLoading = false;
