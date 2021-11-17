@@ -1,4 +1,5 @@
 using back.data.entities.Enterprise;
+using back.data.entities.Pedido;
 using back.data.entities.Profile;
 using back.data.entities.ProfileScreen;
 using back.data.entities.Screen;
@@ -27,6 +28,7 @@ namespace back.infra.Data.Context
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Tela> Tela { get; set; }
         public DbSet<Empresa> Empresa { get; set; }
+        public DbSet<Pedido> Pedido { get; set; }
         public DbSet<Perfil> Perfil { get; set; }
         public DbSet<PerfilTela> PerfilTela { get; set; }
 
