@@ -10,7 +10,7 @@ namespace back.domain.Repositories
     {
         public Task<PerfilTelaDTO> GetById(int id);
         public PerfilTelaDTO GetByIdAsync(int id);
-        public Task<bool> Create(PerfilTela perfilTela);
+        public Task<bool> Create(PerfilTelaDTOCreate perfilTela);
         public Task<bool> Delete(int id);
         public Task<bool> Update(PerfilTela perfilTela);
         public Task<Response<List<PerfilTelaDTO>>> GetAllPaginateAsync(int page, int limit);

@@ -24,7 +24,7 @@ namespace back.infra.Data.Repositories
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
         }
-        public Task<bool> Create(Perfil perfil)
+        public Task<bool> Create(PerfilDTOCreate perfil)
         {
             try
             {
