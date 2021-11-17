@@ -2,7 +2,7 @@ import axios from 'axios';
 import { AuthenticationService } from './app/Modules/login/Services/Authentication.service';
 
 export const AxiosConfig = (l = (isLoading: boolean) => {}, ctx: any) => {
-  axios.defaults.baseURL = 'https://localhost:5001';
+  axios.defaults.baseURL = 'http://localhost:5000';
   let load = l.bind(ctx);
   axios.defaults.headers.common['Authorization'] =
     'Bearer ' + localStorage.getItem('token');
