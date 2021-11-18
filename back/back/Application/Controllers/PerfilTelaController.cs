@@ -68,22 +68,25 @@ namespace back.Application.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<Response<PerfilTela>>> getById(int id)
         {
+            var result = HttpAdapter<PerfilTelaDTO>.getInstance();
             Response<PerfilTelaDTO> response = null;
             try
             {
-                PerfilTelaDTO result = await this._perfilTelaRepository.GetById(id);
-                if (result != null)
+                var res = await this._perfilTelaRepository.GetById(id);
+                result.Response = new Response<PerfilTelaDTO>
                 {
-                    response = new Response<PerfilTelaDTO>
-                    {
-                        Message = "Perfil Tela encontrada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    Data = res,
+                    Message = "",
+                    StatusCode = 201,
+                    Success = true
+                };
+                if (res != null)
+                {
+                    response.Data = null;
+                    response.StatusCode = 404;
                 }
                 else
                 {
@@ -111,27 +114,28 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        public async Task<ActionResult<Response<List<PerfilTela>>>> GetAllAsync([FromQuery] ProfileScreenGetAllEntity payload)
+        [AllowAnonymous]
+        public async Task<ActionResult<Response<List<PerfilTelaDTO>>>> GetAllAsync([FromQuery] ProfileScreenGetAllEntity payload)
         {
-            Response<List<PerfilTelaDTO>> result = null;
+            var result = HttpAdapter<List<PerfilTelaDTO>>.getInstance();
             try
             {
-                result = await _perfilTelaRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                result.Response = await _perfilTelaRepository.GetAllPaginateAsync(payload.page, payload.limit);
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
+                var r = new Response<List<PerfilTelaDTO>>
                 {
                     Message = "Erro ao buscar as perfis tela",
-                    Data = e.Message,
+                    Data = new List<PerfilTelaDTO>(),
                     Success = false,
                     StatusCode = 400
 
-                });
+                };
+                result = new HttpAdapter<List<PerfilTelaDTO>>(r);
+                return result.GetResponse();
             }
-            return Ok(result);
+            return result.GetResponse();
         }
 
         [HttpPost]

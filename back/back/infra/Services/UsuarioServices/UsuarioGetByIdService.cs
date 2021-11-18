@@ -7,7 +7,24 @@ namespace back.infra.Services.UsuarioServices
 {
     public static class UsuarioGetByIdService
     {
-        public static Task<Usuario> GetByIdUserService(
-            this DbAppContextFVUDB_TESTE ctx, int id) => ctx.Usuario.FirstOrDefaultAsync(x => x.Id == id);
+        public static async Task<Usuario> GetByIdUserService(
+            this DbAppContextFVUDB_TESTE ctx, int id)
+        {
+
+            // foreach (relation_member rm in rel.relation_members)
+            // {
+            //     ctx.Entry(rm).Reference(r => r.way).Query()
+            //         .Include(w => w.way_nodes.Select(wn => wn.node))
+            //         .Load();
+            // }
+            var user = await ctx.Usuario
+            .Include(e => e.Perfil)
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+
+            // user.Perfil= ctx.
+            return user;
+        }
+
     }
 }

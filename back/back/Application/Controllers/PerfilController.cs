@@ -64,7 +64,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<Response<Perfil>>> getById(int id)
         {
             Response<PerfilDTO> response = null;
@@ -107,7 +107,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<Response<List<Perfil>>>> GetAllAsync([FromQuery] ProfileGetAllEntity payload)
         {
             Response<List<PerfilDTO>> result = null;

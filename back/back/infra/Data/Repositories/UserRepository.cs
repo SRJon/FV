@@ -7,7 +7,7 @@ using AutoMapper;
 using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.User;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.Authentication;
@@ -96,9 +96,13 @@ namespace back.infra.Data.Repositories
 
         public async Task<UsuarioDTO> GetById(int id)
         {
-            return _mapper.Map<UsuarioDTO>(await this._ctxs
+            var response = await this._ctxs
             .GetVFU()
-            .GetByIdUserService(id));
+            .GetByIdUserService(id);
+            var result = _mapper.Map<UsuarioDTO>(response);
+
+
+            return result;
         }
 
 

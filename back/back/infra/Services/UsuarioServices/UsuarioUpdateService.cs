@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using back.infra.Data.Context;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.User;
 
 
 namespace back.infra.Services.UsuarioServices

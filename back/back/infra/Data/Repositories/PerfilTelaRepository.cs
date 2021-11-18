@@ -72,7 +72,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.PerfilTela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+                var savedSearches = contexto.PerfilTela.Include(e => e.Telas).Include(p => p.Perfil).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
                 List<PerfilTelaDTO> dTOs = new List<PerfilTelaDTO>();
 

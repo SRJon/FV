@@ -17,6 +17,10 @@ namespace back.data.entities.ProfileScreen
             cfg.CreateMap<PerfilTelaDTOCreate, PerfilTela>();
             cfg.CreateMap<PerfilTela, PerfilTelaDTOUpdateDTO>();
             cfg.CreateMap<PerfilTelaDTOUpdateDTO, PerfilTela>();
+            cfg.CreateMap<PerfilTela, PerfilTelaDTO>();
+            cfg.CreateMap<PerfilTelaDTO, PerfilTela>();
+            cfg.CreateMap<PerfilTela, PerfilTelaDTOProfiless>();
+            cfg.CreateMap<PerfilTelaDTOProfiless, PerfilTela>();
 
             return cfg;
         }

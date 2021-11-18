@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.User;
 using back.data.http;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.User;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +23,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         [Route("/")]
         public async Task<ActionResult<Response<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
         {
@@ -31,12 +31,11 @@ namespace back.Application.Controllers
 
             var response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
 
-            var result = new HttpAdapter<Response<List<Usuario>>>(response.StatusCode, response);
-            return result.GetResponse();
+            return response.GetResponse();
         }
 
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         [Route("/{id}")]
         public async Task<ActionResult<Response<Usuario>>> GetById(int id)
         {
@@ -70,7 +69,7 @@ namespace back.Application.Controllers
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao buscar a tela",
+                    Message = "Erro ao buscar a usuário",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
