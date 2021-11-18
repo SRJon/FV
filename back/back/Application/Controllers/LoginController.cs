@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Login;
@@ -66,6 +65,8 @@ namespace back.Application.Controllers
         }
 
 
+        [HttpPost("/getUserByToken")]
+        [Authorize]
         public async Task<ActionResult<IResponse<UserAuthenticateDto>>> getUserByTokenAsync(string token)
         {
             var response = new Response<UserAuthenticateDto>();
@@ -73,12 +74,25 @@ namespace back.Application.Controllers
             {
                 var id = TokenService.getIdByToken(token);
                 var user = await _userRepository.GetById(id);
+                var UserMapped = _mapper.Map<UserAuthenticateDto>(user);
+                if (user != null)
+                {
+                    // response.Data = user.ToDto();
+                    UserMapped.token = token;
+                    response.SetConfig(200);
+                    response.Data = UserMapped;
+                }
+                else
+                {
+                    response.SetConfig(404, "Usuário Não encontrado com sucesso", false);
+                }
+
 
             }
             catch (System.Exception)
             {
 
-                throw;
+                response.SetConfig(404, "Usuário Não encontrado com sucesso", false);
             }
             return response.GetResponse();
         }

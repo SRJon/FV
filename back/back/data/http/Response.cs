@@ -51,7 +51,7 @@ namespace back.data.http
             return res;
         }
 
-        public void SetConfig(int statusCode, string message, bool success, int totalPages, int page)
+        public void SetConfig(int statusCode = 200, string message = "", bool success = true, int totalPages = 1, int page = 1)
         {
 
             this.StatusCode = statusCode;
