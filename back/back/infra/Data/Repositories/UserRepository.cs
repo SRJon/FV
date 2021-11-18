@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Login;
@@ -10,7 +9,6 @@ using back.data.http;
 using back.domain.DTO.User;
 using back.domain.Repositories;
 using back.infra.Data.Context;
-using back.infra.Services.Authentication;
 using back.infra.Services.UsuarioServices;
 using back.MappingConfig;
 using Microsoft.EntityFrameworkCore;
@@ -166,5 +164,7 @@ namespace back.infra.Data.Repositories
             .GetVFU()
             .GetByLoginService(login));
         }
+
+
     }
 }

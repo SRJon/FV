@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using back.data.entities.User;
 using back.data.http;
 using back.domain.DTO.User;
-using back.domain.DTO.Usuario;
 using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
