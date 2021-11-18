@@ -5,7 +5,7 @@ using back.DTO.Authentication;
 
 namespace back.domain.DTO.User
 {
-    public class UsuarioDTO : IUsuario
+    public class UsuarioDTOProfiless
     {
         public int Id { get; set; }
         public string Login { get; set; }
@@ -20,7 +20,7 @@ namespace back.domain.DTO.User
         public string LoginSnk { get; set; }
         public int? SGTSIUSU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
-        public virtual PerfilDTOUserless Perfil { get; set; }
+        // public virtual PerfilDTOUserless Perfil { get; set; }
 
         public UserAuthenticateDto ToDto()
         {
