@@ -28,11 +28,25 @@ namespace back.Application.Controllers
         [Route("/")]
         public async Task<ActionResult<IResponse<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
         {
+            Response<List<UsuarioDTO>> response = null;
 
+            try
+            {
+                response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao buscar as telas",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
 
-            var response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
+                });
+            }
 
-            return response.GetResponse();
+            return Ok(response);
         }
 
         [HttpGet]
@@ -125,7 +139,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Usuario usuario)
+        public async Task<ActionResult<Response<bool>>> update(UsuarioDTOUpdateDTO usuario)
         {
             Response<bool> response = null;
             try

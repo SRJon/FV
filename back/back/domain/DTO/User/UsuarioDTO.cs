@@ -1,5 +1,4 @@
 using System;
-using back.data.entities.Profile;
 using back.domain.DTO.ProfileDTO;
 using back.domain.entities;
 using back.DTO.Authentication;

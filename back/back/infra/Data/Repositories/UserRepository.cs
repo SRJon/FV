@@ -64,19 +64,23 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<Response<List<Usuario>>> GetAllPaginateAsync(int page, int limit)
+        public async Task<Response<List<UsuarioDTO>>> GetAllPaginateAsync(int page, int limit)
         {
-            var response = new Response<List<Usuario>>();
-            var GRUPOLITORAL = _ctxs.GetVFU();
+            var response = new Response<List<UsuarioDTO>>();
+            var contexto = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = GRUPOLITORAL.Usuario.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.Usuario.Include(p => p.Perfil).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+
+                List<UsuarioDTO> dTOs = new List<UsuarioDTO>();
+
+                var usuarios = await savedSearches.ToListAsync();
+                usuarios.ForEach(e => dTOs.Add(_mapper.Map<UsuarioDTO>(e)));
 
 
-
-                response.Data = await savedSearches.ToListAsync();
-                response.TotalPages = await GRUPOLITORAL.Usuario.CountAsync();
+                response.Data = dTOs;
+                response.TotalPages = await contexto.Usuario.CountAsync();
                 response.Page = page;
                 response.TotalPages = (response.TotalPages / base.limit) + 1;
                 response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
@@ -105,7 +109,7 @@ namespace back.infra.Data.Repositories
 
 
 
-        public Task<bool> Update(Usuario usuario)
+        public Task<bool> Update(UsuarioDTOUpdateDTO usuario)
         {
             if (usuario.Id == 0)
             {

@@ -12,7 +12,7 @@ namespace back.domain.Repositories
         public PerfilTelaDTO GetByIdAsync(int id);
         public Task<bool> Create(PerfilTelaDTOCreate perfilTela);
         public Task<bool> Delete(int id);
-        public Task<bool> Update(PerfilTela perfilTela);
+        public Task<bool> Update(PerfilTelaDTOUpdateDTO perfilTela);
         public Task<Response<List<PerfilTelaDTO>>> GetAllPaginateAsync(int page, int limit);
         public Task<Response<List<PerfilTelaDTO>>> GetByUsuarioId(int userId);
     }

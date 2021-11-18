@@ -14,8 +14,8 @@ namespace back.domain.DTO.ProfileScreenDTO
         public bool DSP { get; set; }
         public bool UPD { get; set; }
         public bool DLT { get; set; }
-        public virtual PerfilDTO Perfil { get; set; }
+        public virtual PerfilDTOUserProfilessDTO Perfil { get; set; }
 
-        public virtual ICollection<TelaDTO> Telas { get; set; }
+        public virtual TelaDTO Telas { get; set; }
     }
 }
