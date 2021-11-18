@@ -31,7 +31,28 @@ export class EditTelaComponentComponent implements OnInit, OnChanges {
     console.log(changes);
   }
   async onConfirm() {
-    this.Doupdate();
+    if (this.tela) {
+      let id = this.tela.id || 0;
+      id > 0 ? this.Doupdate() : this.DoCreate();
+    }
+    console.log(this.tela, 'testes');
+  }
+  async DoCreate() {
+    try {
+      if (this.tela) {
+        var response = await this.screensService.createScreen(this.tela);
+        if (response.success && response.data) {
+          this.alertsService.showAlert(response.message);
+          this.onCloseModal.emit(true);
+        }
+      } else {
+        this.alertsService.showAlert('Não foi possível criar a tela!', 'error');
+      }
+    } catch (error: any) {
+      this.alertsService.showAlert(error.response.data.message, 'error');
+    } finally {
+      this.onClose();
+    }
   }
   async Doupdate() {
     try {
@@ -45,7 +66,6 @@ export class EditTelaComponentComponent implements OnInit, OnChanges {
       this.alertsService.showAlert(error.responseresult.message, 'error');
     } finally {
       this.onClose();
-      $('.modal-backdrop').remove();
     }
   }
   onchange() {
@@ -59,6 +79,7 @@ export class EditTelaComponentComponent implements OnInit, OnChanges {
   onClose() {
     setTimeout(() => {
       this.onCloseModal.emit(true);
+      $('.modal-backdrop').remove();
     }, 500);
   }
   async getAllScreens() {
