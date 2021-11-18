@@ -15,7 +15,6 @@ namespace back.data.http
 
 
 
-
         public ActionResult<IResponse<O>> GetResponse()
         {
 
@@ -52,5 +51,14 @@ namespace back.data.http
             return res;
         }
 
+        public void SetConfig(int statusCode, string message, bool success, int totalPages, int page)
+        {
+
+            this.StatusCode = statusCode;
+            this.Message = message;
+            this.Success = success;
+            this.TotalPages = totalPages;
+            this.Page = page;
+        }
     }
 }

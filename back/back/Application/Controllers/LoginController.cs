@@ -66,7 +66,7 @@ namespace back.Application.Controllers
         }
 
 
-        public async Task<IResponse<UserAuthenticateDto>> getUserByTokenAsync(string token)
+        public async Task<ActionResult<IResponse<UserAuthenticateDto>>> getUserByTokenAsync(string token)
         {
             var response = new Response<UserAuthenticateDto>();
             try
@@ -80,7 +80,7 @@ namespace back.Application.Controllers
 
                 throw;
             }
-            return response;
+            return response.GetResponse();
         }
 
     }
