@@ -116,7 +116,7 @@ namespace back.infra.Data.Context
             //}
             //    );
             // optionsBuilder.UseLoggerFactory(loggerFactory);
-            optionsBuilder.LogTo(Console.WriteLine);
+            // optionsBuilder.LogTo(Console.WriteLine);
             base.OnConfiguring(optionsBuilder);
 
 

@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using back.data.entities.AnexoCont;
 using back.data.http;
 using back.domain.DTO.AnexoCont;
+using back.domain.entities;
 using back.domain.Repositories;
+using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,219 +16,145 @@ namespace back.Application.Controllers
     [Route("api/[controller]")]
     public class AnexoContController : ControllerBase
     {
+        private readonly IMapper _mapper;
         private IAnexoContRepository _AnexoContRepository;
 
 
         public AnexoContController(IAnexoContRepository AnexoContRepository)
         {
-
+            _mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _AnexoContRepository = AnexoContRepository;
         }
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<AnexoCont>>>> GetAllAsync([FromQuery] AnexoContGetAllEntity payload)
-
+        public async Task<ActionResult<IResponse<List<AnexoCont>>>> GetAllAsync([FromQuery] AnexoContGetAllEntity payload)
         {
-            Response<List<AnexoContDTO>> result = null;
+            var response = new Response<List<AnexoCont>>();
             try
             {
-                result = await _AnexoContRepository.GetAllPaginateAsync(payload.page, payload.limit);
-            }
-            catch (System.Exception e)
-            {
-                return BadRequest(new Response<string>
+                //TODO vericar forma sucinta de fazer isso.
+                var result = await _AnexoContRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                List<AnexoCont> resultado = new List<AnexoCont>();
+                foreach (AnexoContDTO item in result.Data)
                 {
-                    Message = "Erro ao buscar os AnexoConts",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                    resultado.Add(_mapper.Map<AnexoCont>(item));
+                }
+                response.Data = resultado;
             }
-            return Ok(result);
+            catch (System.Exception)
+            {
+                response.SetConfig(404, "Erro ao buscar as AnexoConts", false);
+            }
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<AnexoCont>>> getById(int id)
+        public async Task<ActionResult<IResponse<AnexoCont>>> getById(int id)
         {
-            Response<AnexoContDTO> response = null;
+            var response = new Response<AnexoCont>();
 
             try
             {
-                AnexoContDTO result = await this._AnexoContRepository.GetById(id);
+                var result = await this._AnexoContRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<AnexoContDTO>
-                    {
-                        Message = "AnexoCont encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = _mapper.Map<AnexoCont>(result);
                 }
                 else
                 {
-                    response = new Response<AnexoContDTO>
-                    {
-                        Message = "AnexoCont não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "AnexoCont não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o AnexoCont",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar a AnexoCont", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(AnexoCont AnexoCont)
+        public async Task<ActionResult<IResponse<bool>>> create(AnexoCont AnexoCont)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
 
             try
             {
                 var result = await this._AnexoContRepository.Create(AnexoCont);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoCont criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoCont não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "AnexoCont não criado", false);
+                    response.Data = result;
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
 
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o AnexoCont",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar a AnexoCont", false);
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(AnexoCont AnexoCont)
+        public async Task<ActionResult<IResponse<bool>>> update(AnexoCont AnexoCont)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._AnexoContRepository.Update(AnexoCont);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoCont atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoCont não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "AnexoCont não atualizado", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o AnexoCont",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o AnexoCont", false);
             }
+            return response.GetResponse();
         }
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._AnexoContRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoCont excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoCont não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "AnexoCont não excluido", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o AnexoCont",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o AnexoCont", false);
+
             }
+            return response.GetResponse();
         }
 
 
