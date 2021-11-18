@@ -41,39 +41,29 @@ namespace back.infra.Data.Context
             // modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
             modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
 
-
-
-
-
             modelBuilder.Entity<Usuario>()
                         .HasOne(a => a.Perfil)
-                        .WithOne()
-                        .HasForeignKey<Perfil>(a => a.Id);
+                        .WithMany(a => a.Usuario);
 
             modelBuilder.Entity<Perfil>()
                         .HasMany(a => a.Usuario)
-                        .WithOne()
-                        .HasForeignKey(a => a.PerfilId);
+                        .WithOne(a => a.Perfil);
 
             modelBuilder.Entity<Perfil>()
                         .HasMany(a => a.PerfilTela)
-                        .WithOne(a => a.Perfil)
-                        .HasForeignKey(a => a.PerfilId);
+                        .WithOne(a => a.Perfil);
 
             modelBuilder.Entity<Perfil>()
                         .HasMany(a => a.PerfilTela)
-                        .WithOne()
-                        .HasForeignKey(a => a.PerfilId);
+                        .WithOne(p => p.Perfil);
 
             modelBuilder.Entity<PerfilTela>()
-                        .HasMany(a => a.Telas)
-                        .WithOne()
-                        .HasForeignKey(a => a.Id);
+                        .HasOne(a => a.Telas)
+                        .WithOne();
 
             modelBuilder.Entity<PerfilTela>()
                         .HasOne(a => a.Perfil)
-                        .WithMany(b => b.PerfilTela)
-                        .HasForeignKey(c => c.PerfilId);
+                        .WithMany(b => b.PerfilTela);
 
 
 
