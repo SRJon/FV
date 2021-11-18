@@ -83,20 +83,10 @@ namespace back.Application.Controllers
                     StatusCode = 201,
                     Success = true
                 };
-                if (res != null)
+                if (res == null)
                 {
                     response.Data = null;
                     response.StatusCode = 404;
-                }
-                else
-                {
-                    response = new Response<PerfilTelaDTO>
-                    {
-                        Message = "Perfil tela não encontrada",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
                 }
             }
             catch (System.Exception e)
@@ -110,7 +100,7 @@ namespace back.Application.Controllers
                 });
             }
 
-            return Ok(response);
+            return Ok(result);
         }
 
         [HttpGet]
@@ -141,7 +131,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(PerfilTela perfilTela)
+        public async Task<ActionResult<Response<bool>>> update(PerfilTelaDTOUpdateDTO perfilTela)
         {
             Response<bool> response = null;
             try

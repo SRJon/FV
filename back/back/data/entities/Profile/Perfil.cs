@@ -13,7 +13,6 @@ namespace back.data.entities.Profile
         public int? PER_COD { get; set; }
 
 
-        public int? PerfilId { get; set; }
         public virtual ICollection<Usuario> Usuario { get; set; }
 
         public virtual ICollection<PerfilTela> PerfilTela { get; set; }
