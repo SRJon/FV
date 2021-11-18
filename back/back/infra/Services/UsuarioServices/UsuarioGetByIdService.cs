@@ -7,7 +7,7 @@ namespace back.infra.Services.UsuarioServices
 {
     public static class UsuarioGetByIdService
     {
-        public static async Task<Usuario> GetByIdService(
+        public static async Task<Usuario> GetByIdUserService(
             this DbAppContextFVUDB_TESTE ctx, int id)
         {
 
@@ -25,5 +25,6 @@ namespace back.infra.Services.UsuarioServices
             // user.Perfil= ctx.
             return user;
         }
+
     }
 }

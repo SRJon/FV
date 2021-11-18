@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ITela } from '../../../Domain/Models/ITela';
 import { IResponse } from '../../../Domain/Models/IResponse';
-import { GetAll } from './Actions/ScreenGetAll';
+import { Delete, GetAll } from './Actions';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +14,9 @@ export class ScreensService {
     pageSize: number
   ): Promise<IResponse<ITela[]>> {
     return await GetAll(page, pageSize);
+  }
+
+  public async deleteScreen(id: number): Promise<IResponse<boolean>> {
+    return await Delete(id);
   }
 }

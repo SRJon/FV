@@ -17,6 +17,7 @@ export class AppComponent {
     public router: Router,
     private loadingObservable: GlobalWatcher<boolean>
   ) {
+    this.isLogin = location.pathname.split('/')[1] === 'login';
     router.events.pipe().subscribe(() => {
       this.isLogin = location.pathname.split('/')[1] === 'login';
     });

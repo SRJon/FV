@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Login;
 using back.data.entities.User;
+using back.data.http;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.DTO.Authentication;
@@ -61,6 +63,24 @@ namespace back.Application.Controllers
             var t = _mapper.Map<testeDTO>(teste);
             var s = _mapper.Map<Teste>(t);
             return _mapper.Map<testeDTO>(s);
+        }
+
+
+        public async Task<IResponse<UserAuthenticateDto>> getUserByTokenAsync(string token)
+        {
+            var response = new Response<UserAuthenticateDto>();
+            try
+            {
+                var id = TokenService.getIdByToken(token);
+                var user = await _userRepository.GetById(id);
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            return response;
         }
 
     }
