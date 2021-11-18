@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using back.data.entities.ProfileScreen;
+using back.domain.DTO.ProfileScreenDTO;
 using back.domain.entities;
 
 namespace back.domain.DTO.ProfileDTO
 {
-    public class PerfilDTOUpdateDTO : IPerfil
+    public class PerfilDTOUserless : IPerfil
     {
         public int Id { get; set; }
         public string Nome { get; set; }

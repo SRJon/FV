@@ -1,7 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Login;
 using back.data.entities.User;
+using back.data.http;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.DTO.Authentication;
@@ -61,6 +62,39 @@ namespace back.Application.Controllers
             var t = _mapper.Map<testeDTO>(teste);
             var s = _mapper.Map<Teste>(t);
             return _mapper.Map<testeDTO>(s);
+        }
+
+
+        [HttpPost("/getUserByToken")]
+        [Authorize]
+        public async Task<ActionResult<IResponse<UserAuthenticateDto>>> getUserByTokenAsync(string token)
+        {
+            var response = new Response<UserAuthenticateDto>();
+            try
+            {
+                var id = TokenService.getIdByToken(token);
+                var user = await _userRepository.GetById(id);
+                var UserMapped = _mapper.Map<UserAuthenticateDto>(user);
+                if (user != null)
+                {
+                    // response.Data = user.ToDto();
+                    UserMapped.token = token;
+                    response.SetConfig(200);
+                    response.Data = UserMapped;
+                }
+                else
+                {
+                    response.SetConfig(404, "Usuário Não encontrado com sucesso", false);
+                }
+
+
+            }
+            catch (System.Exception)
+            {
+
+                response.SetConfig(404, "Usuário Não encontrado com sucesso", false);
+            }
+            return response.GetResponse();
         }
 
     }

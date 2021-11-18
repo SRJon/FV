@@ -76,7 +76,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Tela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.Tela.Skip(base.skip).Include(t => t.tela).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
 
                 List<TelaDTO> dTOs = new List<TelaDTO>();
 
@@ -100,14 +100,12 @@ namespace back.infra.Data.Repositories
 
         public async Task<TelaDTO> GetById(int id)
         {
-            var b = _mapper.Map<TelaDTO>(await this._ctxs
+            var res = await this._ctxs
             .GetVFU()
-            .GetByIdService(id));
-            if (b.TelaId != null)
-            {
-                b.tela = _mapper.Map<TelaDTOChild>(await this._ctxs.GetVFU().GetByIdService(b.TelaId.Value));
-            }
-            return b;
+            .GetByIdService(id);
+            var rmapper = _mapper.Map<TelaDTO>(res);
+
+            return rmapper;
         }
 
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.User;
 using back.data.http;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.User;
+using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,20 +24,33 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         [Route("/")]
-        public async Task<ActionResult<Response<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
+        public async Task<ActionResult<IResponse<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
         {
+            Response<List<UsuarioDTO>> response = null;
 
+            try
+            {
+                response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(new Response<string>
+                {
+                    Message = "Erro ao buscar as telas",
+                    Data = e.Message,
+                    Success = false,
+                    StatusCode = 400
 
-            var response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
+                });
+            }
 
-            var result = new HttpAdapter<Response<List<Usuario>>>(response.StatusCode, response);
-            return result.GetResponse();
+            return Ok(response);
         }
 
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         [Route("/{id}")]
         public async Task<ActionResult<Response<Usuario>>> GetById(int id)
         {
@@ -70,7 +84,7 @@ namespace back.Application.Controllers
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao buscar a tela",
+                    Message = "Erro ao buscar a usuário",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -82,7 +96,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(UsuarioDTOCreate usuario)
+        public async Task<ActionResult<IResponse<bool>>> create(UsuarioDTOCreate usuario)
         {
             Response<bool> response = null;
             try
@@ -125,7 +139,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Usuario usuario)
+        public async Task<ActionResult<Response<bool>>> update(UsuarioDTOUpdateDTO usuario)
         {
             Response<bool> response = null;
             try

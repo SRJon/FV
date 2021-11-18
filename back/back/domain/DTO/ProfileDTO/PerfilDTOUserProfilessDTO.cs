@@ -6,7 +6,7 @@ using back.domain.DTO.ProfileScreenDTO;
 
 namespace back.domain.DTO.ProfileDTO
 {
-    public class PerfilDTO : IPerfil
+    public class PerfilDTOUserProfilessDTO : IPerfil
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -14,7 +14,7 @@ namespace back.domain.DTO.ProfileDTO
 
 
         public virtual ICollection<PerfilTelaDTOProfiless> PerfilTela { get; set; }
-        public virtual ICollection<UsuarioDTO> Usuario { get; set; }
+        public virtual ICollection<UsuarioDTOProfiless> Usuario { get; set; }
 
     }
 }

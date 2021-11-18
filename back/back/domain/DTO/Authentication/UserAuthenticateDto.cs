@@ -19,6 +19,7 @@ namespace back.DTO.Authentication
         public string LoginSnk { get; set; }
         public int? SGTSIUSU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
+        public string token { get; set; }
 
         public Usuario ToModel()
         {

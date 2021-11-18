@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using back.data.entities.Profile;
+using back.data.entities.Screen;
 using back.domain.entities;
 
 namespace back.data.entities.ProfileScreen
@@ -11,5 +15,10 @@ namespace back.data.entities.ProfileScreen
         public bool DSP { get; set; }
         public bool UPD { get; set; }
         public bool DLT { get; set; }
+
+        [ForeignKey("PerfilId")]
+        public virtual Perfil Perfil { get; set; }
+        [ForeignKey("TelaId")]
+        public virtual Tela Telas { get; set; }
     }
 }

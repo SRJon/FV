@@ -16,5 +16,6 @@ namespace back.domain.DTO.ScreenDTO
         public string ImagemSd { get; set; }
         public string IconClass { get; set; }
         public int? TelaId { get; set; }
+
     }
 }

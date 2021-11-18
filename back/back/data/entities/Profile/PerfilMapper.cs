@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using back.domain.DTO.ProfileDTO;
 
 namespace back.data.entities.Profile
@@ -12,8 +12,14 @@ namespace back.data.entities.Profile
             cfg.CreateMap<PerfilDTO, Perfil>();
             cfg.CreateMap<Perfil, PerfilDTOUpdateDTO>();
             cfg.CreateMap<PerfilDTOUpdateDTO, Perfil>();
+            cfg.CreateMap<Perfil, PerfilDTO>();
+            cfg.CreateMap<PerfilDTO, Perfil>();
+            cfg.CreateMap<Perfil, PerfilDTOUserless>();
+            cfg.CreateMap<PerfilDTOUserless, Perfil>();
             cfg.CreateMap<Perfil, PerfilDTOCreate>();
             cfg.CreateMap<PerfilDTOCreate, Perfil>();
+            cfg.CreateMap<Perfil, PerfilDTOUserProfilessDTO>();
+            cfg.CreateMap<PerfilDTOUserProfilessDTO, Perfil>();
 
             return cfg;
         }

@@ -22,7 +22,7 @@ namespace back.domain.entities
         public string SenhaFV { get; set; }
 
         public UserAuthenticateDto ToDto();
-        public Usuario ToModel();
+
 
     }
 }
