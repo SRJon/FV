@@ -40,7 +40,7 @@ export class TelaContentComponent implements OnInit {
     this.getAll(1);
   }
 
-  openModal() {
+  openModal(value: boolean) {
     this.isOpen = true;
     alert('teste');
   }
