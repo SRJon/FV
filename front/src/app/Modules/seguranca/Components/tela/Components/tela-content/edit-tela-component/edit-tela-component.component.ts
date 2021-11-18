@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { ITela } from 'src/app/Domain/Models/ITela';
 import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.service';
+import { AlertsService } from '../../../../../../../Repository/Alerts/alerts.service';
 
 @Component({
   selector: 'app-edit-tela-component',
@@ -21,12 +22,31 @@ export class EditTelaComponentComponent implements OnInit, OnChanges {
   @Output() onCloseModal = new EventEmitter<boolean>();
   subTelas: ITela[] = [];
 
-  constructor(private screensService: ScreensService) {}
+  constructor(
+    private screensService: ScreensService,
+    private alertsService: AlertsService
+  ) {}
+
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
   }
-  onConfirm() {
-    console.log(this.tela);
+  async onConfirm() {
+    this.Doupdate();
+  }
+  async Doupdate() {
+    try {
+      if (this.tela) {
+        let result = await this.screensService.updateScreen(this.tela);
+        if (result.success && result.data) {
+          this.alertsService.showAlert(result.message);
+        }
+      }
+    } catch (error: any) {
+      this.alertsService.showAlert(error.responseresult.message, 'error');
+    } finally {
+      this.onClose();
+      $('.modal-backdrop').remove();
+    }
   }
   onchange() {
     console.log(this.tela);

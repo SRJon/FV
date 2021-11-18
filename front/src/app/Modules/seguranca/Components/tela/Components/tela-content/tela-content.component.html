@@ -15,13 +15,11 @@
           [totalItems]="paginate.totalItems"
           (nextSelection)="onNextSelection($event)"
         ></app-tela-grid>
-        <div id="casada">
-          <app-edit-tela-component
-            [tela]="initialParam"
-            *ngIf="isOpen"
-            (onCloseModal)="openModal($event)"
-          ></app-edit-tela-component>
-        </div>
+        <app-edit-tela-component
+          [tela]="initialParam"
+          *ngIf="isOpen"
+          (onCloseModal)="openModal($event)"
+        ></app-edit-tela-component>
       </div>
     </div>
   </div>
