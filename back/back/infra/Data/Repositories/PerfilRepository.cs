@@ -24,7 +24,7 @@ namespace back.infra.Data.Repositories
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
         }
-        public Task<bool> Create(Perfil perfil)
+        public Task<bool> Create(PerfilDTOCreate perfil)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Perfil.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.Perfil.Include(u => u.Usuario).Include(p => p.PerfilTela).ThenInclude(t => t.Telas).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
 
                 List<PerfilDTO> dTOs = new List<PerfilDTO>();
 
@@ -115,7 +115,7 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public Task<bool> Update(Perfil perfil)
+        public Task<bool> Update(PerfilDTOUpdateDTO perfil)
         {
             if (perfil.Id == 0)
             {

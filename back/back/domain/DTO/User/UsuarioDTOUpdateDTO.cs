@@ -2,7 +2,7 @@ using System;
 using back.domain.entities;
 using back.DTO.Authentication;
 
-namespace back.domain.DTO.Usuario
+namespace back.domain.DTO.User
 {
     public class UsuarioDTOUpdateDTO : IUsuario
     {

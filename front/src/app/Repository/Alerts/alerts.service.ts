@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Swal, { SweetAlertIcon } from 'sweetalert2';
+import Swal, { SweetAlertIcon, SweetAlertOptions } from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,8 @@ export class AlertsService {
   public showAlert(
     title: string,
     icon: SweetAlertIcon = 'success',
-    timer: number = 3000
+    timer: number = 3000,
+    options: SweetAlertOptions = {}
   ) {
     const Toast = Swal.mixin({
       toast: true,
@@ -18,10 +19,12 @@ export class AlertsService {
       showConfirmButton: false,
       timer,
       timerProgressBar: true,
+
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer);
         toast.addEventListener('mouseleave', Swal.resumeTimer);
       },
+      ...options,
     });
 
     Toast.fire({

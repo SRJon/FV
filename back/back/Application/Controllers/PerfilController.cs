@@ -23,7 +23,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Perfil perfil)
+        public async Task<ActionResult<Response<bool>>> create(PerfilDTOCreate perfil)
         {
             Response<bool> response = null;
             try
@@ -64,7 +64,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<Response<Perfil>>> getById(int id)
         {
             Response<PerfilDTO> response = null;
@@ -107,7 +107,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<Response<List<Perfil>>>> GetAllAsync([FromQuery] ProfileGetAllEntity payload)
         {
             Response<List<PerfilDTO>> result = null;
@@ -175,7 +175,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Perfil perfil)
+        public async Task<ActionResult<Response<bool>>> update(PerfilDTOUpdateDTO perfil)
         {
             Response<bool> response = null;
             try

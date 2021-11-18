@@ -10,7 +10,7 @@ namespace back.infra.Services.TelaServices
         public static Task<Tela> GetByIdService(
             this DbAppContextFVUDB_TESTE ctx, int id)
         {
-            var b = ctx.Tela.FirstOrDefaultAsync(x => x.Id == id);
+            var b = ctx.Tela.Include(e => e.tela).FirstOrDefaultAsync(x => x.Id == id);
             return b;
         }
     }
