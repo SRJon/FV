@@ -98,7 +98,7 @@ namespace back.infra.Data.Repositories
         {
             var response = await this._ctxs
             .GetVFU()
-            .GetByIdService(id);
+            .GetByIdUserService(id);
             var result = _mapper.Map<UsuarioDTO>(response);
 
 

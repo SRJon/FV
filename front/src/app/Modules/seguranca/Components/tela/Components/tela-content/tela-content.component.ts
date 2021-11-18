@@ -42,6 +42,7 @@ export class TelaContentComponent implements OnInit {
 
   openModal() {
     this.isOpen = true;
+    alert('teste');
   }
   getAll(page: number, limit: number = 7) {
     this.screensService.getScreens(page, limit).then((response) => {
