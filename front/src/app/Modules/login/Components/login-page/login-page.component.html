@@ -43,7 +43,7 @@
 
     <div class="content" [ngSwitch]="state">
       <div *ngSwitchCase="stateEnum.isLogin">
-        <app-login-menu></app-login-menu>
+        <app-login-menu (onSubmit)="login($event)"></app-login-menu>
       </div>
       <div *ngSwitchCase="stateEnum.isNewPassword">
         <app-refactor-password></app-refactor-password>
