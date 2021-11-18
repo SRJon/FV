@@ -175,7 +175,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Perfil perfil)
+        public async Task<ActionResult<Response<bool>>> update(PerfilDTOUpdateDTO perfil)
         {
             Response<bool> response = null;
             try

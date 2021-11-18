@@ -9,11 +9,11 @@ namespace back.domain.Repositories
 {
     public interface IUserRepository
     {
-        public Task<Response<List<Usuario>>> GetAllPaginateAsync(int page, int limit);
+        public Task<Response<List<UsuarioDTO>>> GetAllPaginateAsync(int page, int limit);
         public Task<UsuarioDTO> GetById(int id);
         public Task<UsuarioDTO> GetByLogin(string login);
         public Task<bool> Create(UsuarioDTOCreate usuario);
-        public Task<bool> Update(Usuario usuario);
+        public Task<bool> Update(UsuarioDTOUpdateDTO usuario);
         public Task<bool> Delete(int id);
 
         public Usuario GetByIdAsync(int id);
