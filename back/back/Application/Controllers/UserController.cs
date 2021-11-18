@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using back.data.entities.User;
 using back.data.http;
 using back.domain.DTO.User;
+using back.domain.DTO.Usuario;
+using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +27,7 @@ namespace back.Application.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("/")]
-        public async Task<ActionResult<Response<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
+        public async Task<ActionResult<IResponse<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
         {
 
 
@@ -81,7 +83,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(UsuarioDTOCreate usuario)
+        public async Task<ActionResult<IResponse<bool>>> create(UsuarioDTOCreate usuario)
         {
             Response<bool> response = null;
             try
