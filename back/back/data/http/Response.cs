@@ -16,7 +16,7 @@ namespace back.data.http
 
 
 
-        public ActionResult<Response<O>> GetResponse()
+        public ActionResult<IResponse<O>> GetResponse()
         {
 
             ActionResult res = null;
