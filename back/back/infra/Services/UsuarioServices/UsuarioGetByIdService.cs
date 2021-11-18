@@ -7,7 +7,7 @@ namespace back.infra.Services.UsuarioServices
 {
     public static class UsuarioGetByIdService
     {
-        public static Task<Usuario> GetByIdService(
+        public static Task<Usuario> GetByIdUserService(
             this DbAppContextFVUDB_TESTE ctx, int id) => ctx.Usuario.FirstOrDefaultAsync(x => x.Id == id);
     }
 }

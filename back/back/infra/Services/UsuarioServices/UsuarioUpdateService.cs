@@ -10,7 +10,7 @@ namespace back.infra.Services.UsuarioServices
     {
         public static async Task<bool> UpdateUsuarioService(this DbAppContextFVUDB_TESTE contexto, UsuarioDTOUpdateDTO usuario, int id)
         {
-            var toUpdate = await contexto.GetByIdService(id);
+            var toUpdate = await contexto.GetByIdUserService(id);
             contexto.Entry(toUpdate).CurrentValues.SetValues(usuario);
             var result = contexto.SaveChanges();
 

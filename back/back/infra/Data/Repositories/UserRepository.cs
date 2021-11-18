@@ -98,7 +98,7 @@ namespace back.infra.Data.Repositories
         {
             return _mapper.Map<UsuarioDTO>(await this._ctxs
             .GetVFU()
-            .GetByIdService(id));
+            .GetByIdUserService(id));
         }
 
 
