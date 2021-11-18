@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using back.data.entities.User;
 using back.domain.DTO.User;
+using back.domain.DTO.Usuario;
 
 namespace back.data.entities.Enterprise
 {

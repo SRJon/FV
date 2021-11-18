@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Mvc;
+
 namespace back.domain.entities
 {
     public interface IResponse<T>
@@ -9,5 +11,6 @@ namespace back.domain.entities
         public int TotalPages { get; set; }
         public int Page { get; set; }
         public T Data { get; set; }
+        public ActionResult<IResponse<T>> GetResponse();
     }
 }
