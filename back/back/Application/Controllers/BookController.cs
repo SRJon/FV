@@ -4,6 +4,7 @@ using back.data.entities.Book;
 using back.data.entities.Enterprise;
 using back.data.http;
 using back.domain.DTO.Book;
+using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,211 +26,126 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<Book>>>> GetAllAsync([FromQuery] BookAnexoGetAllEntity payload)
-
+        public async Task<ActionResult<IResponse<List<BookDTO>>>> GetAllAsync([FromQuery] BookAnexoGetAllEntity payload)
         {
-            Response<List<BookDTO>> result = null;
+            var response = new Response<List<BookDTO>>();
             try
             {
-                result = await _BookRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _BookRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os Books",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os books", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<Book>>> getById(int id)
+        public async Task<ActionResult<IResponse<BookDTO>>> getById(int id)
         {
-            Response<BookDTO> response = null;
+            var response = new Response<BookDTO>();
 
             try
             {
                 BookDTO result = await this._BookRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<BookDTO>
-                    {
-                        Message = "Book encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<BookDTO>
-                    {
-                        Message = "Book não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Book não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o Book",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o Book", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Book Book)
+        public async Task<ActionResult<IResponse<bool>>> create(Book Book)
         {
-            Response<bool> response = null;
-
+            var response = new Response<bool>();
             try
             {
                 var result = await this._BookRepository.Create(Book);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Book criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Book não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Book não criado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
+                response.SetConfig(400, "Erro ao criar o Book", false);
 
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o Book",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Book Book)
+        public async Task<ActionResult<IResponse<bool>>> update(Book Book)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._BookRepository.Update(Book);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Book atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Book não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Book não atualizado", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o Book",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o Book", false);
             }
+            return response.GetResponse();
         }
+
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._BookRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Book excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Book não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Book não excluido", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o Book",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o Book", false);
             }
+            return response.GetResponse();
         }
-
-
     }
 
 }

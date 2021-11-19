@@ -4,6 +4,7 @@ using back.data.entities.Enterprise;
 using back.data.entities.PedidoItem;
 using back.data.http;
 using back.domain.DTO.PedidoItem;
+using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,171 +26,106 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<PedidoItem>>>> GetAllAsync([FromQuery] PedidoItemGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<PedidoItemDTO>>>> GetAllAsync([FromQuery] PedidoItemGetAllEntity payload)
 
         {
-            Response<List<PedidoItemDTO>> result = null;
+            var response = new Response<List<PedidoItemDTO>>();
             try
             {
-                result = await _PedidoItemRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _PedidoItemRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os PedidoItems",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os PedidoItems", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<PedidoItem>>> getById(int id)
+        public async Task<ActionResult<IResponse<PedidoItemDTO>>> getById(int id)
         {
-            Response<PedidoItemDTO> response = null;
-
+            var response = new Response<PedidoItemDTO>();
             try
             {
                 PedidoItemDTO result = await this._PedidoItemRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<PedidoItemDTO>
-                    {
-                        Message = "PedidoItem encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<PedidoItemDTO>
-                    {
-                        Message = "PedidoItem não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "PedidoItem não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o PedidoItem",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o PedidoItem", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(PedidoItem PedidoItem)
+        public async Task<ActionResult<IResponse<bool>>> create(PedidoItem PedidoItem)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
 
             try
             {
                 var result = await this._PedidoItemRepository.Create(PedidoItem);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "PedidoItem criado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "PedidoItem não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "PedidoItem não criado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o PedidoItem",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o PedidoItem", false);
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(PedidoItem PedidoItem)
+        public async Task<ActionResult<IResponse<bool>>> update(PedidoItem PedidoItem)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._PedidoItemRepository.Update(PedidoItem);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "PedidoItem atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "PedidoItem não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "PedidoItem não atualizado", false);
                 }
                 return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o PedidoItem",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o PedidoItem", false);
             }
+            return response.GetResponse();
         }
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
             Response<bool> response = null;
             try
@@ -197,39 +133,20 @@ namespace back.Application.Controllers
                 var result = await this._PedidoItemRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "PedidoItem excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "PedidoItem não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "PedidoItem não excluido", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o PedidoItem",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o PedidoItem", false);
             }
+            return response.GetResponse();
         }
-
-
     }
 
 }

@@ -4,6 +4,7 @@ using back.data.entities.AnexoRep;
 using back.data.entities.Enterprise;
 using back.data.http;
 using back.domain.DTO.AnexoRep;
+using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,211 +26,126 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<AnexoRep>>>> GetAllAsync([FromQuery] AnexoRepGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<AnexoRepDTO>>>> GetAllAsync([FromQuery] AnexoRepGetAllEntity payload)
 
         {
-            Response<List<AnexoRepDTO>> result = null;
+            var response = new Response<List<AnexoRepDTO>>();
             try
             {
-                result = await _AnexoRepRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _AnexoRepRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os AnexoReps",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os AnexosReps", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<AnexoRep>>> getById(int id)
+        public async Task<ActionResult<IResponse<AnexoRepDTO>>> getById(int id)
         {
-            Response<AnexoRepDTO> response = null;
+            var response = new Response<AnexoRepDTO>();
 
             try
             {
                 AnexoRepDTO result = await this._AnexoRepRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<AnexoRepDTO>
-                    {
-                        Message = "AnexoRep encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<AnexoRepDTO>
-                    {
-                        Message = "AnexoRep não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "AnexoRep não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o AnexoRep",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o AnexoRep", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(AnexoRep AnexoRep)
+        public async Task<ActionResult<IResponse<bool>>> create(AnexoRep AnexoRep)
         {
-            Response<bool> response = null;
-
+            var response = new Response<bool>();
             try
             {
                 var result = await this._AnexoRepRepository.Create(AnexoRep);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoRep criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoRep não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "AnexoRep não criado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o AnexoRep",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o AnexoRep", false);
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(AnexoRep AnexoRep)
+        public async Task<ActionResult<IResponse<bool>>> update(AnexoRep AnexoRep)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._AnexoRepRepository.Update(AnexoRep);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoRep atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoRep não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "AnexoRep não atualizado", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o AnexoRep",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o AnexoRep", false);
             }
+            return response.GetResponse();
         }
+
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._AnexoRepRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoRep excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "AnexoRep não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "AnexoRep não excluido", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o AnexoRep",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o AnexoRep", false);
             }
+            return response.GetResponse();
         }
-
-
     }
 
 }

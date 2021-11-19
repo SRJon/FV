@@ -70,16 +70,16 @@ namespace back.Application.Controllers
 
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public async Task<ActionResult<IResponse<PerfilTela>>> getById(int id)
+        public async Task<ActionResult<IResponse<PerfilTelaDTO>>> getById(int id)
         {
-            var response = new Response<PerfilTela>();
+            var response = new Response<PerfilTelaDTO>();
             try
             {
                 var result = await this._perfilTelaRepository.GetById(id);
                 if (result != null)
                 {
                     response.SetConfig(200);
-                    response.Data = _mapper.Map<PerfilTela>(result);
+                    response.Data = result;
                 }
                 else
                 {
@@ -96,20 +96,14 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IResponse<List<PerfilTela>>>> GetAllAsync([FromQuery] ProfileScreenGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<PerfilTelaDTO>>>> GetAllAsync([FromQuery] ProfileScreenGetAllEntity payload)
         {
-            var response = new Response<List<PerfilTela>>();
+            var response = new Response<List<PerfilTelaDTO>>();
             try
             {
-                //TODO vericar forma sucinta de fazer isso
                 var result = await _perfilTelaRepository.GetAllPaginateAsync(payload.page, payload.limit);
                 response.SetConfig(200);
-                List<PerfilTela> resultado = new List<PerfilTela>();
-                foreach (PerfilTelaDTO item in result.Data)
-                {
-                    resultado.Add(_mapper.Map<PerfilTela>(item));
-                }
-                response.Data = resultado;
+                response.Data = result.Data;
             }
             catch (System.Exception)
             {
@@ -137,7 +131,7 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Perfil tela não atualizado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
                 response.SetConfig(400, "Erro ao atualizar o Perfil tela", false);
             }

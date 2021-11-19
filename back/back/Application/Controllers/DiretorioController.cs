@@ -4,6 +4,7 @@ using back.data.entities.Diretorio;
 using back.data.entities.Enterprise;
 using back.data.http;
 using back.domain.DTO.Diretorio;
+using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,32 +26,26 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<Diretorio>>>> GetAllAsync([FromQuery] DiretorioGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<DiretorioDTO>>>> GetAllAsync([FromQuery] DiretorioGetAllEntity payload)
 
         {
-            Response<List<DiretorioDTO>> result = null;
+            var response = new Response<List<DiretorioDTO>>();
             try
             {
-                result = await _DiretorioRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _DiretorioRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os Diretorios",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os Diretorios", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<Diretorio>>> getById(int id)
+        public async Task<ActionResult<IResponse<DiretorioDTO>>> getById(int id)
         {
             Response<DiretorioDTO> response = null;
 
@@ -59,47 +54,25 @@ namespace back.Application.Controllers
                 DiretorioDTO result = await this._DiretorioRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<DiretorioDTO>
-                    {
-                        Message = "Diretorio encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<DiretorioDTO>
-                    {
-                        Message = "Diretorio não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Diretorio não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o Diretorio",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o Diretório", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Diretorio Diretorio)
+        public async Task<ActionResult<IResponse<bool>>> create(Diretorio Diretorio)
         {
             Response<bool> response = null;
 
@@ -108,46 +81,25 @@ namespace back.Application.Controllers
                 var result = await this._DiretorioRepository.Create(Diretorio);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Diretorio criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Diretorio não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Diretorio não criado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o Diretorio",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o Diretorio", false);
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Diretorio Diretorio)
+        public async Task<ActionResult<IResponse<bool>>> update(Diretorio Diretorio)
         {
             Response<bool> response = null;
             try
@@ -155,41 +107,26 @@ namespace back.Application.Controllers
                 var result = await this._DiretorioRepository.Update(Diretorio);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Diretorio atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Diretorio não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Diretorio não atualizado", false);
                 }
                 return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o Diretorio",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o Diretorio", false);
             }
+            return response.GetResponse();
         }
+
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
             Response<bool> response = null;
             try
@@ -197,36 +134,20 @@ namespace back.Application.Controllers
                 var result = await this._DiretorioRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Diretorio excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Diretorio não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Diretorio não excluido", false);
                 }
-                return response;
+
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o Diretorio",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o Diretorio", false);
             }
+            return response.GetResponse();
         }
 
 

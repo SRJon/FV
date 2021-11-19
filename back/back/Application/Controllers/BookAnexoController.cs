@@ -4,6 +4,7 @@ using back.data.entities.BookAnexo;
 using back.data.entities.Enterprise;
 using back.data.http;
 using back.domain.DTO.BookAnexo;
+using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,210 +26,128 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<BookAnexo>>>> GetAllAsync([FromQuery] BookAnexoGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<BookAnexoDTO>>>> GetAllAsync([FromQuery] BookAnexoGetAllEntity payload)
 
         {
-            Response<List<BookAnexoDTO>> result = null;
+            var response = new Response<List<BookAnexoDTO>>();
             try
             {
-                result = await _BookAnexoRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _BookAnexoRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os BookAnexos",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os BookAnexos", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<BookAnexo>>> getById(int id)
+        public async Task<ActionResult<IResponse<BookAnexoDTO>>> getById(int id)
         {
-            Response<BookAnexoDTO> response = null;
+            var response = new Response<BookAnexoDTO>();
 
             try
             {
                 BookAnexoDTO result = await this._BookAnexoRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<BookAnexoDTO>
-                    {
-                        Message = "BookAnexo encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<BookAnexoDTO>
-                    {
-                        Message = "BookAnexo não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "BookAnexo não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o BookAnexo",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o BookAnexo", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(BookAnexo BookAnexo)
+        public async Task<ActionResult<IResponse<bool>>> create(BookAnexo BookAnexo)
         {
-            Response<bool> response = null;
-
+            var response = new Response<bool>();
             try
             {
                 var result = await this._BookAnexoRepository.Create(BookAnexo);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BookAnexo criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BookAnexo não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "BookAnexo não criado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o BookAnexo",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o BookAnexo", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
 
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(BookAnexo BookAnexo)
+        public async Task<ActionResult<IResponse<bool>>> update(BookAnexo BookAnexo)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._BookAnexoRepository.Update(BookAnexo);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BookAnexo atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BookAnexo não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "BookAnexo não atualizado", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o BookAnexo",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o BookAnexo", false);
             }
+            return response.GetResponse();
         }
+
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._BookAnexoRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BookAnexo excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BookAnexo não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "BookAnexo não excluido", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o BookAnexo",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o BookAnexo", false);
             }
+            return response.GetResponse();
         }
-
 
     }
 

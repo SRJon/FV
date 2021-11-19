@@ -28,20 +28,14 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IResponse<List<AnexoCont>>>> GetAllAsync([FromQuery] AnexoContGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<AnexoContDTO>>>> GetAllAsync([FromQuery] AnexoContGetAllEntity payload)
         {
-            var response = new Response<List<AnexoCont>>();
+            var response = new Response<List<AnexoContDTO>>();
             try
             {
-                //TODO vericar forma sucinta de fazer isso.
                 var result = await _AnexoContRepository.GetAllPaginateAsync(payload.page, payload.limit);
                 response.SetConfig(200);
-                List<AnexoCont> resultado = new List<AnexoCont>();
-                foreach (AnexoContDTO item in result.Data)
-                {
-                    resultado.Add(_mapper.Map<AnexoCont>(item));
-                }
-                response.Data = resultado;
+                response.Data = result.Data;
             }
             catch (System.Exception)
             {
@@ -52,9 +46,9 @@ namespace back.Application.Controllers
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<IResponse<AnexoCont>>> getById(int id)
+        public async Task<ActionResult<IResponse<AnexoContDTO>>> getById(int id)
         {
-            var response = new Response<AnexoCont>();
+            var response = new Response<AnexoContDTO>();
 
             try
             {
@@ -62,7 +56,7 @@ namespace back.Application.Controllers
                 if (result != null)
                 {
                     response.SetConfig(200);
-                    response.Data = _mapper.Map<AnexoCont>(result);
+                    response.Data = result;
                 }
                 else
                 {

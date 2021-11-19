@@ -7,6 +7,7 @@ using back.domain.DTO.Informativo;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using back.domain.entities;
 
 namespace back.Application.Controllers
 {
@@ -25,81 +26,53 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<Informativo>>>> GetAllAsync([FromQuery] InformativoGetAllEntity payload)
-
+        public async Task<ActionResult<IResponse<List<InformativoDTO>>>> GetAllAsync([FromQuery] InformativoGetAllEntity payload)
         {
-            Response<List<InformativoDTO>> result = null;
+            var response = new Response<List<InformativoDTO>>();
             try
             {
-                result = await _InformativoRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _InformativoRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os Informativos",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os Informativos", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<Informativo>>> getById(int id)
+        public async Task<ActionResult<IResponse<InformativoDTO>>> getById(int id)
         {
-            Response<InformativoDTO> response = null;
-
+            var response = new Response<InformativoDTO>();
             try
             {
                 InformativoDTO result = await this._InformativoRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<InformativoDTO>
-                    {
-                        Message = "Informativo encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<InformativoDTO>
-                    {
-                        Message = "Informativo não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Informativo não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o Informativo",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o Informativo", false);
             }
 
 
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Informativo Informativo)
+        public async Task<ActionResult<IResponse<bool>>> create(Informativo Informativo)
         {
             Response<bool> response = null;
 
@@ -108,46 +81,28 @@ namespace back.Application.Controllers
                 var result = await this._InformativoRepository.Create(Informativo);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Informativo criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Informativo não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Informativo não criado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o Informativo",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o Informativo", false);
             }
 
 
-            return Ok(response);
+            return response.GetResponse();
 
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Informativo Informativo)
+        public async Task<ActionResult<IResponse<bool>>> update(Informativo Informativo)
         {
             Response<bool> response = null;
             try
@@ -155,41 +110,25 @@ namespace back.Application.Controllers
                 var result = await this._InformativoRepository.Update(Informativo);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Informativo atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Informativo não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Informativo não atualizado", false);
                 }
                 return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o Informativo",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o Informativo", false);
             }
+            return response.GetResponse();
         }
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
             Response<bool> response = null;
             try
@@ -197,36 +136,20 @@ namespace back.Application.Controllers
                 var result = await this._InformativoRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Informativo excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Informativo não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Informativo não excluido", false);
                 }
                 return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o Informativo",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o Informativo", false);
             }
+            return response.GetResponse();
         }
 
 

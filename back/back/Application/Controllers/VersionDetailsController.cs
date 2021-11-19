@@ -7,6 +7,7 @@ using back.domain.DTO.VersionDetails;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using back.domain.entities;
 
 namespace back.Application.Controllers
 {
@@ -25,208 +26,123 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<VersionDetails>>>> GetAllAsync([FromQuery] VersionDetailsGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<VersionDetailsDTO>>>> GetAllAsync([FromQuery] VersionDetailsGetAllEntity payload)
 
         {
-            Response<List<VersionDetailsDTO>> result = null;
+            var response = new Response<List<VersionDetailsDTO>>();
             try
             {
-                result = await _VersionDetailsRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _VersionDetailsRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os VersionDetailss",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os VersionDetails", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<VersionDetails>>> getById(int id)
+        public async Task<ActionResult<IResponse<VersionDetailsDTO>>> getById(int id)
         {
-            Response<VersionDetailsDTO> response = null;
-
+            var response = new Response<VersionDetailsDTO>();
             try
             {
                 VersionDetailsDTO result = await this._VersionDetailsRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<VersionDetailsDTO>
-                    {
-                        Message = "VersionDetails encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<VersionDetailsDTO>
-                    {
-                        Message = "VersionDetails não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "VersionDetails não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o VersionDetails",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o VersionDetails", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(VersionDetails VersionDetails)
+        public async Task<ActionResult<IResponse<bool>>> create(VersionDetails VersionDetails)
         {
-            Response<bool> response = null;
-
+            var response = new Response<bool>();
             try
             {
                 var result = await this._VersionDetailsRepository.Create(VersionDetails);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersionDetails criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersionDetails não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "VersionDetails não criado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o VersionDetails",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o VersionDetails", false);
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(VersionDetails VersionDetails)
+        public async Task<ActionResult<IResponse<bool>>> update(VersionDetails VersionDetails)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._VersionDetailsRepository.Update(VersionDetails);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersionDetails atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersionDetails não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "VersionDetails não atualizado", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o VersionDetails",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o VersionDetails", false);
             }
+            return response.GetResponse();
         }
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._VersionDetailsRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersionDetails excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersionDetails não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "VersionDetails não excluido", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o VersionDetails",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o VersionDetails", false);
             }
+            return response.GetResponse();
         }
 
 

@@ -4,6 +4,7 @@ using back.data.entities.BProdutoImg;
 using back.data.entities.Enterprise;
 using back.data.http;
 using back.domain.DTO.BProdutoImg;
+using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,211 +26,128 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<BProdutoImg>>>> GetAllAsync([FromQuery] BProdutoImgGetAllEntity payload)
-
+        public async Task<ActionResult<IResponse<List<BProdutoImgDTO>>>> GetAllAsync([FromQuery] BProdutoImgGetAllEntity payload)
         {
-            Response<List<BProdutoImgDTO>> result = null;
+            var response = new Response<List<BProdutoImgDTO>>();
             try
             {
-                result = await _BProdutoImgRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _BProdutoImgRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os BProdutoImgs",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os BProdutoImgs", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<BProdutoImg>>> getById(int id)
+        public async Task<ActionResult<IResponse<BProdutoImgDTO>>> getById(int id)
         {
-            Response<BProdutoImgDTO> response = null;
-
+            var response = new Response<BProdutoImgDTO>();
             try
             {
                 BProdutoImgDTO result = await this._BProdutoImgRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<BProdutoImgDTO>
-                    {
-                        Message = "BProdutoImg encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<BProdutoImgDTO>
-                    {
-                        Message = "BProdutoImg não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "BProdutoImg não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o BProdutoImg",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o BProdutoImg", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(BProdutoImg BProdutoImg)
+        public async Task<ActionResult<IResponse<bool>>> create(BProdutoImg BProdutoImg)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
 
             try
             {
                 var result = await this._BProdutoImgRepository.Create(BProdutoImg);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BProdutoImg criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BProdutoImg não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "BProdutoImg não criado", false);
+
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o BProdutoImg",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o BProdutoImg", false);
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(BProdutoImg BProdutoImg)
+        public async Task<ActionResult<IResponse<bool>>> update(BProdutoImg BProdutoImg)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._BProdutoImgRepository.Update(BProdutoImg);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BProdutoImg atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BProdutoImg não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "BProdutoImg não atualizado", false);
+
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o BProdutoImg",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o BProdutoImg", false);
             }
+            return response.GetResponse();
         }
+
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._BProdutoImgRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BProdutoImg excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "BProdutoImg não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "BProdutoImg não excluido", false);
+
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o BProdutoImg",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o BProdutoImg", false);
             }
+            return response.GetResponse();
         }
-
-
     }
 
 }

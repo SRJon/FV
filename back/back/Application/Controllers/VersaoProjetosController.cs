@@ -7,6 +7,7 @@ using back.domain.DTO.VersaoProjetos;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using back.domain.entities;
 
 namespace back.Application.Controllers
 {
@@ -25,208 +26,125 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<VersaoProjetos>>>> GetAllAsync([FromQuery] VersaoProjetosGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<VersaoProjetosDTO>>>> GetAllAsync([FromQuery] VersaoProjetosGetAllEntity payload)
 
         {
-            Response<List<VersaoProjetosDTO>> result = null;
+            var response = new Response<List<VersaoProjetosDTO>>();
             try
             {
-                result = await _VersaoProjetosRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _VersaoProjetosRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = response.Data;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os VersaoProjetoss",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar os VersaoProjetos", false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<VersaoProjetos>>> getById(int id)
+        public async Task<ActionResult<IResponse<VersaoProjetosDTO>>> getById(int id)
         {
-            Response<VersaoProjetosDTO> response = null;
-
+            var response = new Response<VersaoProjetosDTO>();
             try
             {
                 VersaoProjetosDTO result = await this._VersaoProjetosRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<VersaoProjetosDTO>
-                    {
-                        Message = "VersaoProjetos encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<VersaoProjetosDTO>
-                    {
-                        Message = "VersaoProjetos não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "VersaoProjetos não encontrado", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o VersaoProjetos",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o VersaoProjetos", false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(VersaoProjetos VersaoProjetos)
+        public async Task<ActionResult<IResponse<bool>>> create(VersaoProjetos VersaoProjetos)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
 
             try
             {
                 var result = await this._VersaoProjetosRepository.Create(VersaoProjetos);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersaoProjetos criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersaoProjetos não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "VersaoProjetos não criado", false);
+
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o VersaoProjetos",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o VersaoProjetos", false);
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(VersaoProjetos VersaoProjetos)
+        public async Task<ActionResult<IResponse<bool>>> update(VersaoProjetos VersaoProjetos)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._VersaoProjetosRepository.Update(VersaoProjetos);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersaoProjetos atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersaoProjetos não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "VersaoProjetos não atualizado", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o VersaoProjetos",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o VersaoProjetos", false);
             }
+            return response.GetResponse();
         }
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._VersaoProjetosRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersaoProjetos excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "VersaoProjetos não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "VersaoProjetos não excluido", false);
                 }
-                return response;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o VersaoProjetos",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o VersaoProjetos", false);
             }
+            return response.GetResponse();
         }
 
 

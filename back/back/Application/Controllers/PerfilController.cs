@@ -43,7 +43,6 @@ namespace back.Application.Controllers
                 else
                 {
                     response.SetConfig(404, "Pefil não criado", false);
-                    response.Data = result;
                 }
             }
             catch (System.Exception)
@@ -55,17 +54,16 @@ namespace back.Application.Controllers
 
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public async Task<ActionResult<IResponse<Perfil>>> getById(int id)
+        public async Task<ActionResult<IResponse<PerfilDTO>>> getById(int id)
         {
-            var response = new Response<Perfil>();
-
+            var response = new Response<PerfilDTO>();
             try
             {
                 var result = await this._perfilRepository.GetById(id);
                 if (result != null)
                 {
                     response.SetConfig(200);
-                    response.Data = _mapper.Map<Perfil>(result);
+                    response.Data = result;
                 }
                 else
                 {
@@ -81,20 +79,15 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IResponse<List<Perfil>>>> GetAllAsync([FromQuery] ProfileGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<PerfilDTO>>>> GetAllAsync([FromQuery] ProfileGetAllEntity payload)
         {
-            var response = new Response<List<Perfil>>();
+            var response = new Response<List<PerfilDTO>>();
             try
             {
-                //TODO vericar forma sucinta de fazer isso.
                 var result = await _perfilRepository.GetAllPaginateAsync(payload.page, payload.limit);
                 response.SetConfig(200);
-                List<Perfil> resultado = new List<Perfil>();
-                foreach (PerfilDTO item in result.Data)
-                {
-                    resultado.Add(_mapper.Map<Perfil>(item));
-                }
-                response.Data = resultado;
+
+                response.Data = result.Data;
             }
             catch (System.Exception)
             {
