@@ -21,7 +21,7 @@ namespace back.data.entities.User
         public int? SGTSIUSU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
 
-        public int PerfilId { get; set; }
+        public int? PerfilId { get; set; }
         [ForeignKey("PerfilId")]
         public virtual Perfil Perfil { get; set; }
 
@@ -35,7 +35,7 @@ namespace back.data.entities.User
                 Nome = this.Nome,
                 Email = this.Email,
                 Ativo = this.Ativo,
-                PerfilId = this.PerfilId,
+                PerfilId = (int)this.PerfilId,
                 SGTSIUSU_USU_COD = this.SGTSIUSU_USU_COD,
                 DtUltAltSenha = this.DtUltAltSenha
             };

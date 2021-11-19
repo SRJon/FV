@@ -13,7 +13,7 @@ namespace back.domain.entities
         public string Nome { get; set; }
         public string Email { get; set; }
         public bool Ativo { get; set; }
-        public int PerfilId { get; set; }
+        public Nullable<int> PerfilId { get; set; }
         public Nullable<int> VendedorUCod { get; set; }
         public Nullable<bool> AltSenha { get; set; }
         public Nullable<DateTime> DtUltAltSenha { get; set; }
