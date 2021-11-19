@@ -22,7 +22,7 @@ namespace back.data.http
 
             if (limit == 0)
                 this.limit = int.MaxValue;
-            skip = (page - 1) * limit;
+            skip = (this.page-1)  * limit;
         }
     }
 }

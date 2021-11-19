@@ -9,11 +9,28 @@ namespace back.ioc
         public static IServiceCollection AddRepositoriesInject(this IServiceCollection services)
         {
 
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ITelaRepository, TelaRepository>();
+            services.AddScoped<IAnexoContRepository, AnexoContRepository>();
+            services.AddScoped<IAnexoDevRepository, AnexoDevRepository>();
+            services.AddScoped<IAnexoRepRepository, AnexoRepRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IBookAnexoRepository, BookAnexoRepository>();
+            services.AddScoped<IBProdutoRepository, BProdutoRepository>();
+            services.AddScoped<IBProdutoImgRepository, BProdutoImgRepository>();
+            services.AddScoped<IDiretorioRepository, DiretorioRepository>();
             services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+            services.AddScoped<IInformativoRepository, InformativoRepository>();
+            services.AddScoped<IParametroRepository, ParametroRepository>();
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
+            services.AddScoped<IPedidoItemRepository, PedidoItemRepository>();
             services.AddScoped<IPerfilRepository, PerfilRepository>();
             services.AddScoped<IPerfilTelaRepository, PerfilTelaRepository>();
+            services.AddScoped<IProjetosRepository, ProjetosRepository>();
+            services.AddScoped<ITelaRepository, TelaRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            //services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            //services.AddScoped<IUsuarioEmpRepository, UsuarioEmpRepository>();
+            services.AddScoped<IVersaoProjetosRepository, VersaoProjetosRepository>();
+            services.AddScoped<IVersionDetailsRepository, VersionDetailsRepository>();
 
             return services;
         }

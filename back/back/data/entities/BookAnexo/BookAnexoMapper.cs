@@ -10,6 +10,9 @@ namespace back.data.entities.BookAnexo
             cfg.CreateMap<BookAnexo, BookAnexoDTOUpdateDTO>();
             cfg.CreateMap<BookAnexoDTOUpdateDTO, BookAnexo>();
 
+            cfg.CreateMap<BookAnexo, BookAnexoDTO>();
+            cfg.CreateMap<BookAnexoDTO, BookAnexo>();
+
             return cfg;
         }
 

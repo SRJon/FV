@@ -11,10 +11,7 @@ namespace back.domain.DTO.Informativo
         public int Id { get; set; }
         public string Descricao { get; set; }
         public string Texto { get; set; }
-
-        public data.entities.Enterprise.Empresa ToModel()
-        {
-            throw new NotImplementedException();
-        }
+        public int EmpresaId { get; set; }
     }
 }
+

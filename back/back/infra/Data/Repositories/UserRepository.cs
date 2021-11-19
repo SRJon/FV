@@ -88,7 +88,7 @@ namespace back.infra.Data.Repositories
                 response.StatusCode = 200;
                 return response;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 response.Data = null;
                 response.StatusCode = 400;

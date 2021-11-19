@@ -32,7 +32,7 @@ namespace back
             CultureInfo culture = new CultureInfo("pt-BR");
             services.AddCors();
             services.tokenConfigution();
-            services.AddAutoMapperConfiguration();
+            //services.AddAutoMapperConfiguration(); -- descontinuado
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllers();
             services.AddInfraestruture(Configuration);

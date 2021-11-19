@@ -10,6 +10,9 @@ namespace back.data.entities.VersionDetails
             cfg.CreateMap<VersionDetails, VersionDetailsDTOUpdateDTO>();
             cfg.CreateMap<VersionDetailsDTOUpdateDTO, VersionDetails>();
 
+            cfg.CreateMap<VersionDetails, VersionDetailsDTO>();
+            cfg.CreateMap<VersionDetailsDTO, VersionDetails>();
+
             return cfg;
         }
 

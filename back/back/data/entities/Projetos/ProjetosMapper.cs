@@ -10,6 +10,9 @@ namespace back.data.entities.Projetos
             cfg.CreateMap<Projetos, ProjetosDTOUpdateDTO>();
             cfg.CreateMap<ProjetosDTOUpdateDTO, Projetos>();
 
+            cfg.CreateMap<Projetos, ProjetosDTO>();
+            cfg.CreateMap<ProjetosDTO, Projetos>();
+
             return cfg;
         }
 

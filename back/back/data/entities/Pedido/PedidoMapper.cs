@@ -10,6 +10,9 @@ namespace back.data.entities.Pedido
             cfg.CreateMap<Pedido, PedidoDTOUpdateDTO>();
             cfg.CreateMap<PedidoDTOUpdateDTO, Pedido>();
 
+            cfg.CreateMap<Pedido, PedidoDTO>();
+            cfg.CreateMap<PedidoDTO, Pedido>();
+
             return cfg;
         }
 

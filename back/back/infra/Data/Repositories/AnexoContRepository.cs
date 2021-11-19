@@ -3,45 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using back.data.entities.Pedido;
+using back.data.entities.AnexoCont;
 using back.data.http;
-using back.domain.DTO.Pedido;
+using back.domain.DTO.AnexoCont;
 using back.domain.Repositories;
 using back.infra.Data.Context;
-using back.infra.Services.PedidoServices;
+using back.infra.Services.AnexoContServices;
 using back.MappingConfig;
 using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories
 {
-    public class PedidoRepository : ValidPagination, IPedidoRepository
+    public class AnexoContRepository : ValidPagination, IAnexoContRepository
     {
         private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
 
-        public PedidoRepository(DbContexts ctxs) : base()
+        public AnexoContRepository(DbContexts ctxs) : base()
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
 
         }
 
-        public async Task<Response<List<PedidoDTO>>> GetAllPaginateAsync(int page, int limit)
+        public async Task<Response<List<AnexoContDTO>>> GetAllPaginateAsync(int page, int limit)
         {
-            var response = new Response<List<PedidoDTO>>();
+            var response = new Response<List<AnexoContDTO>>();
             var contexto = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Pedido.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+                var savedSearches = contexto.AnexoCont.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
-                List<PedidoDTO> dTOs = new List<PedidoDTO>();
+                List<AnexoContDTO> dTOs = new List<AnexoContDTO>();
 
-                var Pedidos = await savedSearches.ToListAsync();
-                Pedidos.ForEach(e => dTOs.Add(_mapper.Map<PedidoDTO>(e)));
+                var AnexoConts = await savedSearches.ToListAsync();
+                AnexoConts.ForEach(e => dTOs.Add(_mapper.Map<AnexoContDTO>(e)));
 
                 response.Data = dTOs;
-                response.TotalPages = await contexto.Pedido.CountAsync();
+                response.TotalPages = await contexto.AnexoCont.CountAsync();
                 response.Page = page;
                 response.TotalPages = (response.TotalPages / base.limit) + 1;
                 response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
@@ -57,24 +57,24 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<PedidoDTO> GetById(int id)
+        public async Task<AnexoContDTO> GetById(int id)
         {
-            return _mapper.Map<PedidoDTO>(await this._ctxs.
+            return _mapper.Map<AnexoContDTO>(await this._ctxs.
             GetVFU()
             .GetByIdService(id));
         }
 
-        public Task<bool> Create(Pedido Pedido)
+        public Task<bool> Create(AnexoCont AnexoCont)
         {
             try
             {
-                return _ctxs.GetVFU().Create(Pedido);
+                return _ctxs.GetVFU().Create(AnexoCont);
             }
             catch (Exception e)
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao criar Pedido",
+                    Message = "Erro ao criar AnexoCont",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -97,7 +97,7 @@ namespace back.infra.Data.Repositories
             {
                 return BadRequest(new Response<string>
                 {
-                    Message = "Erro ao deletar Pedido.",
+                    Message = "Erro ao deletar AnexoCont.",
                     Data = e.Message,
                     Success = false,
                     StatusCode = 400
@@ -105,9 +105,9 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public Task<bool> Update(Pedido Pedido)
+        public Task<bool> Update(AnexoCont AnexoCont)
         {
-            if (Pedido.Id == 0)
+            if (AnexoCont.Id == 0)
             {
                 return BadRequest(new Response<string>
                 {
@@ -117,7 +117,7 @@ namespace back.infra.Data.Repositories
                     StatusCode = 400
                 });
             }
-            return _ctxs.GetVFU().UpdatePedidoServices(_mapper.Map<PedidoDTOUpdateDTO>(Pedido), Pedido.Id);
+            return _ctxs.GetVFU().UpdateAnexoContServices(_mapper.Map<AnexoContDTOUpdateDTO>(AnexoCont), AnexoCont.Id);
         }
     }
 }

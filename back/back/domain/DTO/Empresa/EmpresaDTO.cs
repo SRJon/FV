@@ -1,6 +1,8 @@
+using back.domain.entities;
+
 namespace back.domain.DTO.Empresa
 {
-    public class EmpresaDTO
+    public class EmpresaDTO : IEmpresa
     {
         public int Id { get; set; }
         public string Nome { get; set; }

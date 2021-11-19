@@ -9,10 +9,6 @@ namespace back.data.entities.Informativo
         public int Id { get; set; }
         public string Descricao { get; set; }
         public string Texto { get; set; }
-
-        public Empresa ToModel()
-        {
-            throw new NotImplementedException();
-        }
+        public int EmpresaId { get; set; }
     }
 }
