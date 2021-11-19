@@ -1,41 +1,47 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ITela } from 'src/app/Domain/Models/ITela';
 import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.service';
 import { AlertsService } from '../../../../../../../Repository/Alerts/alerts.service';
+import { EditTelaWords } from './edit-tela-words';
 
 @Component({
   selector: 'app-edit-tela-component',
   templateUrl: './edit-tela-component.component.html',
   styleUrls: ['./edit-tela-component.component.scss'],
 })
-export class EditTelaComponentComponent implements OnInit, OnChanges {
+export class EditTelaComponentComponent implements OnInit {
   isLoading: boolean = true;
   @Input() tela: ITela | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
   subTelas: ITela[] = [];
+  words: EditTelaWords;
+  isValid: boolean = false;
+  serviceForm: FormGroup;
 
   constructor(
     private screensService: ScreensService,
-    private alertsService: AlertsService
-  ) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    private alertsService: AlertsService,
+    private fb: FormBuilder
+  ) {
+    this.words = EditTelaWords.getInstance();
+    this.serviceForm = this.fb.group({
+      nome: ['', Validators.required],
+      url: ['', Validators.required],
+    });
   }
+
   async onConfirm() {
+    if (this.serviceForm.invalid) return;
     if (this.tela) {
       let id = this.tela.id || 0;
       id > 0 ? this.Doupdate() : this.DoCreate();
     }
-    console.log(this.tela, 'testes');
   }
   async DoCreate() {
     try {
@@ -68,12 +74,10 @@ export class EditTelaComponentComponent implements OnInit, OnChanges {
       this.onClose();
     }
   }
-  onchange() {
-    console.log(this.tela);
-  }
 
   ngOnInit(): void {
     this.getAllScreens();
+    this.words.indexTitle = this.tela && this.tela.id ? 1 : 0;
   }
 
   onClose() {

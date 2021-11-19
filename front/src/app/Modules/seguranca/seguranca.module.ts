@@ -10,11 +10,16 @@ import { ParametroComponent } from './Components/parametro/parametro.component';
 import { TitleComponent } from './Components/tela/Components/title/title.component';
 import { TelaContentComponent } from './Components/tela/Components/tela-content/tela-content.component';
 import { TelaGridComponent } from './Components/tela/Components/tela-grid/tela-grid.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTelaComponentComponent } from './Components/tela/Components/tela-content/edit-tela-component/edit-tela-component.component';
 
 @NgModule({
-  imports: [CommonModule, SegurancaRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    SegurancaRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   declarations: [
     PerfilComponent,
     TelaComponent,

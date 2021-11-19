@@ -21,7 +21,7 @@ export class TelaContentComponent implements OnInit {
 
     this.initialParam = {
       id: 0,
-      nome: ' ',
+      nome: '',
       addUrl: ' ',
       iconClass: ' ',
       imagemSd: ' ',
@@ -40,8 +40,11 @@ export class TelaContentComponent implements OnInit {
     this.getAll(1);
   }
 
-  openModal(value: boolean) {
-    this.isOpen = !value;
+  openModal(isClose: boolean) {
+    this.isOpen = !isClose;
+    if (isClose) {
+      this.getAll(this.paginate.currentPage);
+    }
   }
   getAll(page: number, limit: number = 7) {
     this.screensService.getScreens(page, limit).then((response) => {
