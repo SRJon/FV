@@ -69,7 +69,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult<IResponse<PerfilTelaDTO>>> getById(int id)
         {
             var response = new Response<PerfilTelaDTO>();
@@ -95,7 +95,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult<IResponse<List<PerfilTelaDTO>>>> GetAllAsync([FromQuery] ProfileScreenGetAllEntity payload)
         {
             var response = new Response<List<PerfilTelaDTO>>();

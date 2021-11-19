@@ -24,7 +24,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/")]
         public async Task<ActionResult<IResponse<List<UsuarioDTO>>>> GetAll(int page = 1, int limit = 10)
         {
@@ -43,7 +43,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/{id}")]
         public async Task<ActionResult<Response<UsuarioDTO>>> GetById(int id)
         {
