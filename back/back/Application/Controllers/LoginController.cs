@@ -3,6 +3,7 @@ using AutoMapper;
 using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
+using back.domain.DTO.Login;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.DTO.Authentication;
@@ -67,18 +68,18 @@ namespace back.Application.Controllers
 
         [HttpPost("/getUserByToken")]
         [Authorize]
-        public async Task<ActionResult<IResponse<UserAuthenticateDto>>> getUserByTokenAsync(string token)
+        public async Task<ActionResult<IResponse<UserAuthenticateDto>>> getUserByTokenAsync([FromBody] TokenEntity token)
         {
             var response = new Response<UserAuthenticateDto>();
             try
             {
-                var id = TokenService.getIdByToken(token);
+                var id = TokenService.getIdByToken(token.token);
                 var user = await _userRepository.GetById(id);
                 var UserMapped = _mapper.Map<UserAuthenticateDto>(user);
                 if (user != null)
                 {
                     // response.Data = user.ToDto();
-                    UserMapped.token = token;
+                    UserMapped.token = token.token;
                     response.SetConfig(200);
                     response.Data = UserMapped;
                 }
@@ -89,10 +90,10 @@ namespace back.Application.Controllers
 
 
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
 
-                response.SetConfig(404, "Usuário Não encontrado com sucesso", false);
+                response.SetConfig(404, "Usuário Não encontrado com sucesso " + e.Message, false);
             }
             return response.GetResponse();
         }

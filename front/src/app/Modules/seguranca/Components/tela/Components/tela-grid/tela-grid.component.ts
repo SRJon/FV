@@ -58,7 +58,7 @@ export class TelaGridComponent implements OnInit, OnChanges {
       this.selectedRecord = this.listGrid.find((e) => e.id === obj.id);
     }
   }
-  async onDelete(obj: ITela | undefined = undefined): Promise<void> {
+  onDelete(obj: ITela | undefined = undefined) {
     this.selectedRecord = obj;
 
     this.isDelete = true;
@@ -68,7 +68,6 @@ export class TelaGridComponent implements OnInit, OnChanges {
       .deleteScreen(id || 0)
       .then((res) => {
         this.clickOnPagination(this.paginate.currentPage);
-        console.log(res, 'res');
 
         if (res.data) {
           this.alertsService.showAlert('Tela excluida com sucesso', 'success');
@@ -84,6 +83,7 @@ export class TelaGridComponent implements OnInit, OnChanges {
       })
       .finally(() => {
         this.isDelete = false;
+        this.selectedRecord = undefined;
       });
   }
   onModalClose(isClose: boolean) {
