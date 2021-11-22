@@ -28,8 +28,9 @@ namespace back.Application.Controllers
             try
             {
                 var result = await _telaRepository.GetAllPaginateAsync(payload.page, payload.limit);
-                response.SetConfig(200);
+                response.SetConfig(200, "");
                 response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception)
             {
@@ -51,6 +52,7 @@ namespace back.Application.Controllers
                 if (result != null)
                 {
                     response.SetConfig(200);
+                    response.setHttpAtr(response);
                     response.Data = result;
                 }
                 else
