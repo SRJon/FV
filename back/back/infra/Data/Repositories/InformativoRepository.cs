@@ -33,7 +33,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Informativo.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+                var savedSearches = contexto.Informativo.Include(e => e.Empresa).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
                 List<InformativoDTO> dTOs = new List<InformativoDTO>();
 
