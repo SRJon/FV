@@ -10,6 +10,10 @@ namespace back.data.entities.UserCustomizations
             cfg.CreateMap<UserCustomizations, UserCustomizationsDTOUpdateDTO>();
             cfg.CreateMap<UserCustomizationsDTOUpdateDTO, UserCustomizations>();
 
+
+            cfg.CreateMap<UserCustomizations, UserCustomizationsDTO>();
+            cfg.CreateMap<UserCustomizationsDTO, UserCustomizations>();
+
             return cfg;
         }
 

@@ -52,7 +52,6 @@ namespace back.Application.Controllers
                 if (result != null)
                 {
                     response.SetConfig(200);
-                    response.setHttpAtr(response);
                     response.Data = result;
                 }
                 else
