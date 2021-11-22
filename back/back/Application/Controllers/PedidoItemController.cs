@@ -35,6 +35,7 @@ namespace back.Application.Controllers
                 var result = await _PedidoItemRepository.GetAllPaginateAsync(payload.page, payload.limit);
                 response.SetConfig(200);
                 response.Data = result.Data;
+                response.setHttpAtr(result);
 
             }
             catch (System.Exception)

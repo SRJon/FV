@@ -25,8 +25,8 @@ namespace back.data.http
         }
         public void setHttpAtr(Response<O> data = null)
         {
-            this.TotalPages = data.TotalPages;
             this.Page = data.Page;
+            this.TotalPages = data.TotalPages;
         }
 
         public ActionResult<IResponse<O>> GetResponse()
