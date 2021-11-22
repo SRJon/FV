@@ -1,3 +1,5 @@
+using back.data.entities.UserCustomizations;
+using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +28,7 @@ namespace back.ioc
             services.AddScoped<IPerfilTelaRepository, PerfilTelaRepository>();
             services.AddScoped<IProjetosRepository, ProjetosRepository>();
             services.AddScoped<ITelaRepository, TelaRepository>();
+            services.AddScoped<IUserCustomizations, UserCustomizations>();
             services.AddScoped<IUserRepository, UserRepository>();
             //services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             //services.AddScoped<IUsuarioEmpRepository, UsuarioEmpRepository>();

@@ -12,15 +12,9 @@ namespace back.ioc
     {
         public static IServiceCollection AddInfraestruture(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DbAppContextFVUDB_TESTE>(options =>
-            options.UseSqlServer(new Settings()
-            .getConnectionString(((int)ConnectionNames.SANKHYA_FVU_TESTE)),
-            b => b.MigrationsAssembly(typeof(DbAppContextFVUDB_TESTE)
-            .Assembly.FullName
-            )));
 
+            services.InjectionConfig(configuration);
 
-            services.AddScoped<DbContexts>();
             // services.AddScoped<DbAppContextFVUDB_TESTE>();
 
             services.AddRepositoriesInject();
