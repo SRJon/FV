@@ -12,6 +12,6 @@ namespace back.domain.entities
         public int Page { get; set; }
         public T Data { get; set; }
         public ActionResult<IResponse<T>> GetResponse();
-        public void SetConfig(int statusCode, string message, bool success, int totalPages, int page);
+        public void SetConfig(int statusCode = 200, string message = "", bool success = true);
     }
 }

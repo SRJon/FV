@@ -10,6 +10,7 @@ import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.servi
 import { AlertsService } from 'src/app/Repository/Alerts/alerts.service';
 import { ITela } from '../../../../../../Domain/Models/ITela';
 import { Paginate } from '../../../../../../Domain/Models/Paginate';
+import * as shareds from 'src/app/Shared';
 
 @Component({
   selector: 'app-tela-grid',
@@ -24,11 +25,13 @@ export class TelaGridComponent implements OnInit, OnChanges {
   @Output() nextSelection = new EventEmitter<number>();
   selectedRecord: ITela | undefined;
   isDelete: boolean = false;
+  grid: shareds.Grid;
 
   constructor(
     private screensService: ScreensService,
     private alertsService: AlertsService
   ) {
+    this.grid = new shareds.Grid();
     this.paginate = new Paginate(2000, 50);
 
     this.titleList = [
@@ -102,31 +105,24 @@ export class TelaGridComponent implements OnInit, OnChanges {
   }
 
   initGrid(): void {
-    let ctx = this;
-    $(document).ready(function () {
-      // @ts-ignore: Unreachable code error
-
-      $('#table_id').dataTable({
-        paging: false,
-        lengthChange: false,
-        info: '',
-        language: {
-          zeroRecords: ' ',
-        },
-      });
-
-      ctx.setPaginate(ctx);
-    });
+    this.grid.createGrid({ selectorHtml: '#table_id', paging: false }, this);
   }
   setPaginate(ctx: this): void {
     // @ts-ignore: Unreachable code error
-    $('#table_id_paginate').pagination({
-      total: ctx.paginate.pageSize * 10,
-      current: ctx.paginate.currentPage,
-      click: function (e: any) {
-        // ctx.paginate.currentPage = e.current;
-        ctx.clickOnPagination(e.current);
-      },
+    // $('#table_id_paginate').pagination({
+    //   total: ctx.paginate.pageSize * 10,
+    //   current: ctx.paginate.currentPage,
+    //   click: function (e: any) {
+    //     // ctx.paginate.currentPage = e.current;
+    //     ctx.clickOnPagination(e.current);
+    //   },
+    // });
+    this.grid.sharePaginate.setHtml('#table_id_paginate');
+    this.grid.sharePaginate.paginate = this.paginate;
+    console.log(this.paginate);
+
+    this.grid.sharePaginate.setPaginate((e) => {
+      console.log(e);
     });
   }
   ngOnChanges(): void {
