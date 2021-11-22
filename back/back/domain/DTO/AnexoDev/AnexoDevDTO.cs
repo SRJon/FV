@@ -1,8 +1,9 @@
-﻿using System;
+﻿using back.domain.entities;
+using System;
 
 namespace back.domain.DTO.AnexoDev
 {
-    public class AnexoDevDTO
+    public class AnexoDevDTO : IAnexoDev
     {
         public int Id { get; set; }
         public string Descricao { get; set; }

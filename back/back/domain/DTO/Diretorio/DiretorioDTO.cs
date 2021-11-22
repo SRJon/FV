@@ -1,6 +1,8 @@
-﻿namespace back.domain.DTO.Diretorio
+﻿using back.domain.entities;
+
+namespace back.domain.DTO.Diretorio
 {
-    public class DiretorioDTO
+    public class DiretorioDTO : IDiretorio
     {
         public int Id { get; set; }
         public short Tipo { get; set; }

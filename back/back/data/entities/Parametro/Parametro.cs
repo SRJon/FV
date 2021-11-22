@@ -1,6 +1,8 @@
-﻿namespace back.data.entities.Parametro
+﻿using back.domain.entities;
+
+namespace back.data.entities.Parametro
 {
-    public class Parametro
+    public class Parametro : IParametro
     {
         public int Id { get; set; }
         public string Nome { get; set; }

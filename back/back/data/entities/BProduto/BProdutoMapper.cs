@@ -10,6 +10,9 @@ namespace back.data.entities.BProduto
             cfg.CreateMap<BProduto, BProdutoDTOUpdateDTO>();
             cfg.CreateMap<BProdutoDTOUpdateDTO, BProduto>();
 
+            cfg.CreateMap<BProduto, BProdutoDTO>();
+            cfg.CreateMap<BProdutoDTO, BProduto>();
+
             return cfg;
         }
 

@@ -1,6 +1,8 @@
-﻿namespace back.data.entities.VersionDetails
+﻿using back.domain.entities;
+
+namespace back.data.entities.VersionDetails
 {
-    public class VersionDetails
+    public class VersionDetails : IVersionDetails
     {
         public int Id { get; set; }
         public string Type { get; set; }

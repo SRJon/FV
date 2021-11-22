@@ -28,6 +28,7 @@ using back.domain.DTO.User;
 using back.ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace back.infra.Data.Context
 {

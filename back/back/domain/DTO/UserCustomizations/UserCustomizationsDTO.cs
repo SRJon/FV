@@ -1,6 +1,8 @@
-﻿namespace back.domain.DTO.UserCustomizations
+﻿using back.domain.entities;
+
+namespace back.domain.DTO.UserCustomizations
 {
-    public class UserCustomizationsDTO
+    public class UserCustomizationsDTO : IUserCustomizations
     {
         public int Id { get; set; }
         public string Key { get; set; }

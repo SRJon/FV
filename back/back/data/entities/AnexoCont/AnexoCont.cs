@@ -1,20 +1,17 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using back.domain.entities;
+using System;
 
 namespace back.data.entities.AnexoCont
 {
-    public class AnexoCont
+    public class AnexoCont : IAnexoCont
     {
-        public int Id { get; set; }
-        [MaxLength(200)]
+        public int Id { get; set; }        
         public string Descricao { get; set; }
-        public DateTime? Data { get; set; }
-        [MaxLength(100)]
-        public string NomeArq { get; set; }
-        [MaxLength(10)]
+        public DateTime? Data { get; set; }        
+        public string NomeArq { get; set; }        
         public string Extensao { get; set; }
         public int? Tamanho { get; set; }
         public int? Seq { get; set; }
-        public int CodPar { get; set; }
+        public int CodParc { get; set; }
     }
 }
