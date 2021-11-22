@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using back.data.entities.Enterprise;
-using back.data.entities.Pedido;
+using back.data.entities.Request;
+using back.data.entities.RequestItem;
 using back.data.http;
-using back.domain.DTO.Pedido;
+using back.domain.DTO.Request;
 using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;

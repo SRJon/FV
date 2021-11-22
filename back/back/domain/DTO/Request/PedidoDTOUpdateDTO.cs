@@ -1,9 +1,9 @@
 ﻿using back.domain.entities;
 using System;
 
-namespace back.domain.DTO.Pedido
+namespace back.domain.DTO.Request
 {
-    public class PedidoDTO : IPedido
+    public class PedidoDTOUpdateDTO : IPedido
     {
         public int Id { get; set; }
         public string Frete { get; set; }

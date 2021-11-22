@@ -1,4 +1,4 @@
-namespace back.data.entities.Enterprise
+namespace back.data.entities.RequestItem
 {
     public class PedidoItemGetAllEntity
     {

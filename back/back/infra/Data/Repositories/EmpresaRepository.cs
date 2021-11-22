@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Enterprise;
 using back.data.http;
-using back.domain.DTO.Empresa;
+using back.domain.DTO.Enterprise;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.EmpresaServices;

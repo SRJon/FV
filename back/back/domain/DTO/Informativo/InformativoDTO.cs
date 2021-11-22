@@ -1,4 +1,5 @@
-﻿using back.domain.entities;
+﻿using back.data.entities.Enterprise;
+using back.domain.entities;
 
 namespace back.domain.DTO.Informativo
 {
@@ -8,5 +9,6 @@ namespace back.domain.DTO.Informativo
         public string Descricao { get; set; }
         public string Texto { get; set; }
         public int EmpresaId { get; set; }
+        public virtual Empresa Empresa { get; set; }
     }
 }

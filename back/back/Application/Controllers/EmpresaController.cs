@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Enterprise;
 using back.data.http;
-using back.domain.DTO.Empresa;
+using back.domain.DTO.Enterprise;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.MappingConfig;
@@ -49,7 +49,7 @@ namespace back.Application.Controllers
         [Authorize]
         public async Task<ActionResult<IResponse<EmpresaDTO>>> getById(int id)
         {
-            Response<EmpresaDTO> response = null;
+            var response = new Response<EmpresaDTO>();
 
             try
             {
@@ -76,7 +76,7 @@ namespace back.Application.Controllers
         [Route("Create")]
         public async Task<ActionResult<IResponse<bool>>> create(Empresa empresa)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
 
             try
             {
@@ -103,7 +103,7 @@ namespace back.Application.Controllers
         [Authorize]
         public async Task<ActionResult<IResponse<bool>>> update(Empresa empresa)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._empresaRepository.Update(empresa);
@@ -128,7 +128,7 @@ namespace back.Application.Controllers
         [Authorize]
         public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._empresaRepository.Delete(id);

@@ -1,9 +1,14 @@
-﻿using back.domain.entities;
+﻿using back.data.entities.Enterprise;
+using back.data.entities.RequestItem;
+using back.data.entities.User;
+using back.domain.entities;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace back.domain.DTO.Pedido
+namespace back.data.entities.Request
 {
-    public class PedidoDTOUpdateDTO : IPedido
+    public class Pedido : IPedido
     {
         public int Id { get; set; }
         public string Frete { get; set; }
@@ -19,8 +24,6 @@ namespace back.domain.DTO.Pedido
         public DateTime? DtEnvio { get; set; }
         public int? PedSankhyaNuNota { get; set; }
         public bool Orcamento { get; set; }
-        public int UsuarioId { get; set; }
-        public int EmpresaId { get; set; }
         public string Estoque { get; set; }
         public bool Pilotagem { get; set; }
         public short? TipoPilotagem { get; set; }
@@ -48,5 +51,16 @@ namespace back.domain.DTO.Pedido
         public bool? PedidoItemOrdemComp { get; set; }
         public int? DiasVenc { get; set; }
         public DateTime? DtCartao { get; set; }
+        public int UsuarioId { get; set; }
+
+        [ForeignKey("UsuarioId")]
+        public virtual Usuario Usuario { get; set; }
+        public int EmpresaId { get; set; }
+
+        [ForeignKey("EmpresaId")]
+        public virtual Empresa Empresa { get; set; }
+
+        public virtual ICollection<PedidoItem> PedidoItem { get; set; }
+
     }
 }

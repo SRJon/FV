@@ -1,10 +1,9 @@
 ﻿using back.domain.entities;
 using System;
 
-
-namespace back.domain.DTO.PedidoItem
+namespace back.domain.DTO.RequestItem
 {
-    public class PedidoItemDTO : IPedidoItem
+    public class PedidoItemDTOUpdateDTO : IPedidoItem
     {
         public int Id { get; set; }
         public int PedidoId { get; set; }

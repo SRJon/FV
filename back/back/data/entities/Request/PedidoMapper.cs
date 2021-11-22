@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using back.domain.DTO.Pedido;
+using back.domain.DTO.Request;
 
-namespace back.data.entities.Pedido
+namespace back.data.entities.Request
 {
     public static class PedidoMapper
     {
