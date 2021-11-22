@@ -25,7 +25,6 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("/")]
         public async Task<ActionResult<IResponse<List<UsuarioDTO>>>> GetAll(int page = 1, int limit = 10)
         {
             var response = new Response<List<UsuarioDTO>>();
@@ -44,7 +43,7 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("/{id}")]
+        [Route("{id}")]
         public async Task<ActionResult<Response<UsuarioDTO>>> GetById(int id)
         {
 

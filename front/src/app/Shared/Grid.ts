@@ -9,26 +9,23 @@ export class Grid {
     this.sharePaginate = new PaginateShare();
   }
 
-  public createGrid(
-    data: { paging: boolean; selectorHtml: string },
-    ctx: any
-  ): void {
+  public createGrid(data: { paging: boolean; selectorHtml: string }): void {
     // @ts-ignore: Unreachable code error
     this.html = $(data.selectorHtml);
-    console.log(this.html);
 
     if (this.html) {
-      // @ts-ignore: Unreachable code error
-      this.html.dataTable({
-        paging: data.paging,
-        lengthChange: false,
-        info: '',
-        language: {
-          zeroRecords: ' ',
-        },
+      console.log(this.html);
+      $(document).ready(() => {
+        // @ts-ignore: Unreachable code error
+        this.html.dataTable({
+          paging: data.paging,
+          lengthChange: false,
+          info: '',
+          language: {
+            zeroRecords: ' ',
+          },
+        });
       });
     }
-
-    ctx.setPaginate(ctx);
   }
 }

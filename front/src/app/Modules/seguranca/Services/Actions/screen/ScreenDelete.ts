@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IResponse } from '../../../../Domain/Models/IResponse';
+import { IResponse } from 'src/app/Domain/Models/IResponse';
 
 export async function Delete(id: number): Promise<IResponse<boolean>> {
   return await (

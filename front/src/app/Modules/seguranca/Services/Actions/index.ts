@@ -1,6 +1,4 @@
-import { GetAll } from './ScreenGetAll';
-import { Delete } from './ScreenDelete';
-import { ScreenUpdate } from './ScreenUpdate';
-import { ScreenCreate } from './ScreenCreate';
+import * as screen from './screen';
+import * as user from './user';
 
-export { GetAll, Delete, ScreenUpdate, ScreenCreate };
+export { screen, user };
