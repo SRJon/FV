@@ -9,7 +9,7 @@ namespace back.infra.Services.PedidoServices
     {
         public static Task<Pedido> GetByIdService(this DbAppContextFVUDB_TESTE ctx, int id)
         {
-            var b = ctx.Pedido.Include(u => u.Usuario).Include(u => u.Empresa).FirstOrDefaultAsync(x => x.Id == id);
+            var b = ctx.Pedido.Include(u => u.Usuario).Include(u => u.Empresa).Include(p => p.PedidoItem).FirstOrDefaultAsync(x => x.Id == id);
             return b;
         }
     }

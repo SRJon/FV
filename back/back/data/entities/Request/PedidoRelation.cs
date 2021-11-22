@@ -14,7 +14,9 @@ namespace back.data.entities.Request
 
             modelBuilder.Entity<Pedido>()
                 .HasMany(p => p.PedidoItem)
-                .WithOne(p => p.Pedido);
+                .WithOne(p => p.Pedido)
+                .HasForeignKey(p => p.PedidoId);
+
             return modelBuilder;
         }
     }

@@ -13,6 +13,9 @@ namespace back.data.entities.RequestItem
             cfg.CreateMap<PedidoItem, PedidoItemDTO>();
             cfg.CreateMap<PedidoItemDTO, PedidoItem>();
 
+            cfg.CreateMap<PedidoItem, PedidoItemDTORequestless>();
+            cfg.CreateMap<PedidoItemDTORequestless, PedidoItem>();
+
             return cfg;
         }
 
