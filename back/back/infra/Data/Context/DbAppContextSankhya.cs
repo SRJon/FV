@@ -1,4 +1,5 @@
 using back.data.entities.AnexoCont;
+using back.data.entities.VIEW_AD_VGFRPV;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -19,11 +20,12 @@ namespace back.infra.Data.Context
         }
 
         // public DbSet<AnexoCont> AnexoCont { get; set; }
-        
+        public DbSet<AD_VGFRPV> AD_VGFRPV { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<AD_VGFRPV>().HasNoKey();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

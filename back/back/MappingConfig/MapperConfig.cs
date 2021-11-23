@@ -19,6 +19,7 @@ using back.data.entities.Projetos;
 using back.data.entities.UserCustomizations;
 using back.data.entities.VersaoProjetos;
 using back.data.entities.VersionDetails;
+using back.data.entities.VIEW_AD_VGFRPV;
 
 namespace back.MappingConfig
 {
@@ -49,6 +50,7 @@ namespace back.MappingConfig
                 cfg.CreateUserMapper();
                 cfg.CreateVersaoProjetosMapper();
                 cfg.CreateVersionDetailsMapper();
+                cfg.CreateAD_VGFRPVDetailsMapper();
                 cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;
