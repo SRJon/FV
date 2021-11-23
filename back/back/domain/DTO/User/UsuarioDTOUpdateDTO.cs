@@ -17,7 +17,7 @@ namespace back.domain.DTO.User
         public bool? AltSenha { get; set; }
         public DateTime? DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
-        public int? SGTSIUSU_USU_COD { get; set; }
+        public int? sgtsiusU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
 
         public UserAuthenticateDto ToDto()
@@ -31,7 +31,7 @@ namespace back.domain.DTO.User
                 Email = this.Email,
                 Ativo = this.Ativo,
                 PerfilId = this.PerfilId,
-                SGTSIUSU_USU_COD = this.SGTSIUSU_USU_COD,
+                sgtsiusU_USU_COD = this.sgtsiusU_USU_COD,
                 DtUltAltSenha = this.DtUltAltSenha
             };
         }

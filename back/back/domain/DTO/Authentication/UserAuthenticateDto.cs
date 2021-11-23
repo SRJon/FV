@@ -17,7 +17,7 @@ namespace back.DTO.Authentication
         public bool? AltSenha { get; set; }
         public DateTime? DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
-        public int? SGTSIUSU_USU_COD { get; set; }
+        public int? sgtsiusU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
         public string token { get; set; }
 
@@ -32,7 +32,7 @@ namespace back.DTO.Authentication
                 Email = this.Email,
                 Ativo = this.Ativo,
                 PerfilId = this.PerfilId,
-                SGTSIUSU_USU_COD = this.SGTSIUSU_USU_COD,
+                sgtsiusU_USU_COD = this.sgtsiusU_USU_COD,
                 DtUltAltSenha = this.DtUltAltSenha
             };
         }
@@ -48,7 +48,7 @@ namespace back.DTO.Authentication
                 Email = this.Email,
                 Ativo = this.Ativo,
                 PerfilId = this.PerfilId,
-                SGTSIUSU_USU_COD = this.SGTSIUSU_USU_COD,
+                sgtsiusU_USU_COD = this.sgtsiusU_USU_COD,
                 DtUltAltSenha = this.DtUltAltSenha
             };
         }
