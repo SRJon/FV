@@ -13,7 +13,21 @@ namespace back.data.http
         public O Data { get; set; }
 
 
+        public Response()
+        {
 
+        }
+        public Response(Response<O> data = null)
+        {
+            this.TotalPages = data.TotalPages;
+            this.Page = data.Page;
+
+        }
+        public void setHttpAtr(Response<O> data = null)
+        {
+            this.Page = data.Page;
+            this.TotalPages = data.TotalPages;
+        }
 
         public ActionResult<IResponse<O>> GetResponse()
         {
@@ -51,14 +65,13 @@ namespace back.data.http
             return res;
         }
 
-        public void SetConfig(int statusCode = 200, string message = "", bool success = true, int totalPages = 1, int page = 1)
+        public void SetConfig(int statusCode = 200, string message = "", bool success = true)
         {
 
             this.StatusCode = statusCode;
             this.Message = message;
             this.Success = success;
-            this.TotalPages = totalPages;
-            this.Page = page;
+
         }
     }
 }
