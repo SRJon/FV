@@ -6,6 +6,7 @@ using back.data.http;
 using back.domain.DTO.Diretorio;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,9 +38,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar os Diretorios", false);
+                response.SetConfig(400, "Erro ao buscar os Diretorios" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -63,9 +64,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Diretorio não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar o Diretório", false);
+                response.SetConfig(400, "Erro ao buscar o Diretório" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -90,9 +91,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Diretorio não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar o Diretorio", false);
+                response.SetConfig(400, "Erro ao criar o Diretorio" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -117,9 +118,9 @@ namespace back.Application.Controllers
                 }
                 return response;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o Diretorio", false);
+                response.SetConfig(400, "Erro ao atualizar o Diretorio" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -144,9 +145,9 @@ namespace back.Application.Controllers
                 }
 
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o Diretorio", false);
+                response.SetConfig(400, "Erro ao excluir o Diretorio" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

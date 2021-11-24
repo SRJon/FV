@@ -8,6 +8,7 @@ using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using back.domain.entities;
+using back.infra.Data.Utils;
 
 namespace back.Application.Controllers
 {
@@ -37,9 +38,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar os Parametros", false);
+                response.SetConfig(400, "Erro ao buscar os Parametros" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -63,9 +64,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Parametro não encontrado");
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar o parametro");
+                response.SetConfig(400, "Erro ao buscar o parametro" + InnerExceptionMessage.InnerExceptionError(e));
             }
             return response.GetResponse();
         }
@@ -89,9 +90,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Parametro não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar o parametro", false);
+                response.SetConfig(400, "Erro ao criar o parametro" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -115,9 +116,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Parametro não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o Parametro");
+                response.SetConfig(400, "Erro ao atualizar o Parametro" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -140,9 +141,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Parametro não excluído", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o Parametro", false);
+                response.SetConfig(400, "Erro ao excluir o Parametro" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

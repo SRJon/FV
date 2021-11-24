@@ -6,6 +6,7 @@ using back.data.http;
 using back.domain.DTO.User;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -63,9 +64,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Usuário não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar usuário", false);
+                response.SetConfig(400, "Erro ao buscar usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return Ok(response);
         }
@@ -89,9 +90,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Usuário não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar a usuário", false);
+                response.SetConfig(400, "Erro ao criar a usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -115,9 +116,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Usuário não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o usuário", false);
+                response.SetConfig(400, "Erro ao atualizar o usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -141,52 +142,35 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Usuário não excluído", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o usuário", false);
+                response.SetConfig(400, "Erro ao excluir o usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
         [HttpGet]
         [Route("GetbyLogin")]
-        public async Task<ActionResult<Response<UsuarioDTO>>> getByLogin(string login)
+        public async Task<ActionResult<IResponse<UsuarioDTO>>> getByLogin(string login)
         {
-            Response<UsuarioDTO> response = null;
+            var response = new Response<UsuarioDTO>();
             try
             {
                 UsuarioDTO result = await this._usuarioRepository.GetByLogin(login);
                 if (result != null)
                 {
-                    response = new Response<UsuarioDTO>
-                    {
-                        Message = "Usuário encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<UsuarioDTO>
-                    {
-                        Message = "Usuário não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Usuário não encontrado", false);
                 }
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar a tela",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao buscar usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-            return Ok(response);
+            return response.GetResponse();
 
         }
     }

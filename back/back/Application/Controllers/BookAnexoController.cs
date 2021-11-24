@@ -6,6 +6,7 @@ using back.data.http;
 using back.domain.DTO.BookAnexo;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,9 +39,9 @@ namespace back.Application.Controllers
                 response.setHttpAtr(result);
 
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar os BookAnexos", false);
+                response.SetConfig(400, "Erro ao buscar os BookAnexos" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -64,9 +65,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "BookAnexo não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar o BookAnexo", false);
+                response.SetConfig(400, "Erro ao buscar o BookAnexo" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -90,9 +91,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "BookAnexo não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar o BookAnexo", false);
+                response.SetConfig(400, "Erro ao criar o BookAnexo" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
 
@@ -117,9 +118,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "BookAnexo não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o BookAnexo", false);
+                response.SetConfig(400, "Erro ao atualizar o BookAnexo" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -143,9 +144,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "BookAnexo não excluido", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o BookAnexo", false);
+                response.SetConfig(400, "Erro ao excluir o BookAnexo" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

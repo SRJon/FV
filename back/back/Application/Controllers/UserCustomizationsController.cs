@@ -7,6 +7,8 @@ using back.domain.DTO.UserCustomizations;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using back.domain.entities;
+using back.infra.Data.Utils;
 
 namespace back.Application.Controllers
 {
@@ -25,208 +27,132 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<UserCustomizations>>>> GetAllAsync([FromQuery] UserCustomizationsGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<UserCustomizationsDTO>>>> GetAllAsync([FromQuery] UserCustomizationsGetAllEntity payload)
 
         {
-            Response<List<UserCustomizationsDTO>> result = null;
+            var response = new Response<List<UserCustomizationsDTO>>();
             try
             {
-                result = await _UserCustomizationsRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _UserCustomizationsRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar os UserCustomizationss",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
+                response.SetConfig(400, "Erro ao buscar os UserCustomizations" + InnerExceptionMessage.InnerExceptionError(e), false);
 
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<UserCustomizations>>> getById(int id)
+        public async Task<ActionResult<IResponse<UserCustomizationsDTO>>> getById(int id)
         {
-            Response<UserCustomizationsDTO> response = null;
+            var response = new Response<UserCustomizationsDTO>();
 
             try
             {
                 UserCustomizationsDTO result = await this._UserCustomizationsRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<UserCustomizationsDTO>
-                    {
-                        Message = "UserCustomizations encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<UserCustomizationsDTO>
-                    {
-                        Message = "UserCustomizations não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "UserCustomizations não encontrado", false);
                 }
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar o UserCustomizations",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar o UserCustomizations" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
 
 
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(UserCustomizations UserCustomizations)
+        public async Task<ActionResult<IResponse<bool>>> create(UserCustomizations UserCustomizations)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
 
             try
             {
                 var result = await this._UserCustomizationsRepository.Create(UserCustomizations);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "UserCustomizations criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "UserCustomizations não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "UserCustomizations não criado", false);
                 }
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o UserCustomizations",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o UserCustomizations" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
 
 
-            return Ok(response);
+            return response.GetResponse();
 
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(UserCustomizations UserCustomizations)
+        public async Task<ActionResult<IResponse<bool>>> update(UserCustomizations UserCustomizations)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._UserCustomizationsRepository.Update(UserCustomizations);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "UserCustomizations atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "UserCustomizations não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "UserCustomizations não atualizado", false);
                 }
-                return response;
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o UserCustomizations",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o UserCustomizations" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._UserCustomizationsRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "UserCustomizations excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "UserCustomizations não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "UserCustomizations não excluido", false);
                 }
-                return response;
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o UserCustomizations",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o UserCustomizations" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
 
 

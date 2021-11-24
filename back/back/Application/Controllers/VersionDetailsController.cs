@@ -8,6 +8,7 @@ using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using back.domain.entities;
+using back.infra.Data.Utils;
 
 namespace back.Application.Controllers
 {
@@ -37,9 +38,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar os VersionDetails", false);
+                response.SetConfig(400, "Erro ao buscar os VersionDetails" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -62,9 +63,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "VersionDetails não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar o VersionDetails", false);
+                response.SetConfig(400, "Erro ao buscar o VersionDetails" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -88,9 +89,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "VersionDetails não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar o VersionDetails", false);
+                response.SetConfig(400, "Erro ao criar o VersionDetails" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -114,9 +115,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "VersionDetails não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o VersionDetails", false);
+                response.SetConfig(400, "Erro ao atualizar o VersionDetails" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -139,9 +140,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "VersionDetails não excluido", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o VersionDetails", false);
+                response.SetConfig(400, "Erro ao excluir o VersionDetails" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
