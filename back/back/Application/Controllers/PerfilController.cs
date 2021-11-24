@@ -78,6 +78,31 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+        [HttpGet]
+        [Authorize]
+        [Route("GetName")]
+        public async Task<ActionResult<IResponse<PerfilDTONome>>> getNameById(int id)
+        {
+            var response = new Response<PerfilDTONome>();
+            try
+            {
+                var result = await this._perfilRepository.GetNameById(id);
+                if (result != null)
+                {
+                    response.SetConfig(200);
+                    response.Data = result;
+                }
+                else
+                {
+                    response.SetConfig(404, "Perfil não encontrado", false);
+                }
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar a perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
+            }
+            return response.GetResponse();
+        }
 
         [HttpGet]
         [Authorize]
