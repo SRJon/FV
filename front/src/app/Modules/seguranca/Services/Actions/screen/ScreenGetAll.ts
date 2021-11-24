@@ -1,6 +1,6 @@
-import { ITela } from '../../../../Domain/Models/ITela';
 import axios from 'axios';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
+import { ITela } from 'src/app/Domain/Models/ITela';
 
 export async function GetAll(
   page: number = 1,

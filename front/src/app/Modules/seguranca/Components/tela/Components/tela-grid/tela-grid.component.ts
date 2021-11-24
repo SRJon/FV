@@ -31,9 +31,6 @@ export class TelaGridComponent implements OnInit, OnChanges {
     private screensService: ScreensService,
     private alertsService: AlertsService
   ) {
-    this.grid = new shareds.Grid();
-    this.paginate = new Paginate(2000, 50);
-
     this.titleList = [
       'id',
       'nome',
@@ -43,6 +40,8 @@ export class TelaGridComponent implements OnInit, OnChanges {
       'ordem',
       'modulo',
     ];
+    this.grid = new shareds.Grid();
+    this.paginate = new Paginate(2000, 50);
   }
   clickOnPagination(page: number): void {
     this.nextSelection.emit(page);
@@ -105,27 +104,17 @@ export class TelaGridComponent implements OnInit, OnChanges {
   }
 
   initGrid(): void {
-    this.grid.createGrid({ selectorHtml: '#table_id', paging: false }, this);
+    this.grid.createGrid({ selectorHtml: '#table_id', paging: false });
   }
-  setPaginate(ctx: this): void {
-    // @ts-ignore: Unreachable code error
-    // $('#table_id_paginate').pagination({
-    //   total: ctx.paginate.pageSize * 10,
-    //   current: ctx.paginate.currentPage,
-    //   click: function (e: any) {
-    //     // ctx.paginate.currentPage = e.current;
-    //     ctx.clickOnPagination(e.current);
-    //   },
-    // });
+  setPaginate(): void {
     this.grid.sharePaginate.setHtml('#table_id_paginate');
     this.grid.sharePaginate.paginate = this.paginate;
-    console.log(this.paginate);
-
     this.grid.sharePaginate.setPaginate((e) => {
-      console.log(e);
+      this.clickOnPagination(e);
     });
+    this.grid.render();
   }
   ngOnChanges(): void {
-    this.setPaginate(this);
+    this.setPaginate();
   }
 }

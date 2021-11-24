@@ -1,3 +1,4 @@
+import { IResponse } from '../Domain/Models/IResponse';
 import { Paginate } from '../Domain/Models/Paginate';
 
 export class PaginateShare {
@@ -10,6 +11,11 @@ export class PaginateShare {
   setHtml(id: string) {
     // @ts-ignore: Unreachable code error
     this.paginateHtml = $(id);
+    this.setPaginate();
+  }
+  setAttr(res: IResponse<any>) {
+    this.paginate.currentPage = res.page;
+    this.paginate.pageSize = res.totalPages;
   }
   setPaginate(callback = (e: any) => {}): void {
     // @ts-ignore: Unreachable code error

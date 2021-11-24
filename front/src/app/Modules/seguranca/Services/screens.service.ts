@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ITela } from '../../../Domain/Models/ITela';
 import { IResponse } from '../../../Domain/Models/IResponse';
-import { Delete, GetAll, ScreenUpdate, ScreenCreate } from './Actions';
+import { Delete, GetAll, ScreenUpdate, ScreenCreate } from './Actions/screen';
 
 @Injectable({
   providedIn: 'root',

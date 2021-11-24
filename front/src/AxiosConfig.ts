@@ -33,7 +33,7 @@ export const AxiosConfig = (l = (isLoading: boolean) => {}, ctx: any) => {
         // window.location.href = '/login';
         let listUrl = window.location.href.split('/');
         if (listUrl[listUrl.length - 1] !== 'login') {
-          // window.location.href = '/login';
+          window.location.href = '/login';
         }
       }
       return Promise.reject(error);

@@ -26,7 +26,6 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("/")]
         public async Task<ActionResult<IResponse<List<UsuarioDTO>>>> GetAll(int page = 1, int limit = 10)
         {
             var response = new Response<List<UsuarioDTO>>();
@@ -46,7 +45,7 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("/{id}")]
+        [Route("{id}")]
         public async Task<ActionResult<Response<UsuarioDTO>>> GetById(int id)
         {
 
@@ -92,7 +91,10 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
+                response.SetConfig(400, "Erro ao criar a usuário: " + e.InnerException.Message.Split("tabela")[0], false);
+
                 response.SetConfig(400, "Erro ao criar a usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
+
             }
             return response.GetResponse();
         }
@@ -118,7 +120,9 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
+
                 response.SetConfig(400, "Erro ao atualizar o usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
+
             }
             return response.GetResponse();
         }
