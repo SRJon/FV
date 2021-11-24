@@ -1,0 +1,98 @@
+<div
+  _ngcontent-thm-c60=""
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  class="modal fade {{ isOpen ? 'show' : '' }}"
+  style="padding-right: 17px"
+  aria-modal="true"
+  role="dialog"
+>
+  <div _ngcontent-thm-c60="" role="document" class="modal-dialog">
+    <div _ngcontent-thm-c60="" class="modal-content">
+      <div _ngcontent-thm-c60="" class="modal-header">
+        <button
+          _ngcontent-thm-c60=""
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+          class="close"
+        >
+          <span _ngcontent-thm-c60="" aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div _ngcontent-thm-c60="" class="modal-body">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">{{ words.title }}</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form>
+            <div class="card-body">
+              <ng-template [ngIf]="currentUser">
+                <div class="form-group d-flex">
+                  <label style="width: 49px" for="InputID">{{
+                    words.idInput
+                  }}</label>
+                  <input
+                    type="text"
+                    disabled
+                    class="form-control"
+                    id="InputID"
+                    placeholder="ID"
+                    [(ngModel)]="currentUser.id"
+                    [name]="words.idInput"
+                  />
+                </div>
+                <div class="form-group d-flex">
+                  <label style="width: 49px" for="Inputnome">{{
+                    words.nomeInput
+                  }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Inputnome"
+                    placeholder="Nome"
+                    [(ngModel)]="currentUser.nome"
+                    [name]="words.nomeInput"
+                  />
+                </div>
+                <div class="form-group d-flex">
+                  <label style="width: 49px" for="InputCheckAtivo">{{
+                    words.ativoInput
+                  }}</label>
+                  <input
+                    type="checkbox"
+                    id="InputCheckAtivo"
+                    placeholder="Ativo"
+                    [(ngModel)]="currentUser.ativo"
+                    [name]="words.ativoInput"
+                  /></div
+              ></ng-template>
+            </div>
+            <!-- /.card-body -->
+          </form>
+        </div>
+      </div>
+      <div _ngcontent-thm-c60="" class="modal-footer">
+        <button
+          _ngcontent-thm-c60=""
+          type="button"
+          data-dismiss="modal"
+          class="btn btn-secondary"
+          (click)="onModalChange()"
+        >
+          Fechar</button
+        ><button
+          _ngcontent-thm-c60=""
+          type="button"
+          class="btn btn-primary"
+          (click)="onSave()"
+        >
+          Salvar Mudanças
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

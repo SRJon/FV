@@ -105,23 +105,14 @@ export class TelaGridComponent implements OnInit, OnChanges {
 
   initGrid(): void {
     this.grid.createGrid({ selectorHtml: '#table_id', paging: false });
-    this.titleList = [
-      'id',
-      'nome',
-      'url',
-      'target',
-      'nivel',
-      'ordem',
-      'modulo',
-    ];
   }
   setPaginate(): void {
     this.grid.sharePaginate.setHtml('#table_id_paginate');
     this.grid.sharePaginate.paginate = this.paginate;
-    console.log(this.paginate);
     this.grid.sharePaginate.setPaginate((e) => {
       this.clickOnPagination(e);
     });
+    this.grid.render();
   }
   ngOnChanges(): void {
     this.setPaginate();

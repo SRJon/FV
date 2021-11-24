@@ -114,9 +114,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Usuário não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o usuário", false);
+                response.SetConfig(400, "Erro ao atualizar o usuário: " + e.Message, false);
             }
             return response.GetResponse();
         }

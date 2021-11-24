@@ -1,18 +1,63 @@
+<!-- TODO Usuario EditModal -->
+<app-usuario-edit-modal
+  *ngIf="!isDiposed"
+  [isOpen]="IsOpen"
+  (modalState)="onModalChange($event)"
+  [currentUser]="selectedUser"
+  (onDisabled)="onDispose($event)"
+></app-usuario-edit-modal>
+
+<!-- TODO Usuario Grid -->
+<div class="row">
+  <div class="head">
+    <button class="btn btn-primary" (click)="openModal(null)">
+      Criar nova Tela
+    </button>
+  </div>
+</div>
 <div class="row">
   <table id="table_user">
     <thead>
       <tr>
-        <th>Nome</th>
-        <th>Email</th>
+        <th *ngFor="let title of listTitle">{{ title }}</th>
         <th>Ações</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let item of listGrid">
-        <td>{{ item.nome }}</td>
-        <td>{{ item.email }}</td>
-        <td></td>
+        <th *ngFor="let title of listTitle" [ngSwitch]="getType(item[title])">
+          <span *ngSwitchCase="'boolean'">
+            <input type="checkbox" [checked]="item[title]" disabled />
+          </span>
+
+          <span *ngSwitchDefault [ngSwitch]="title">
+            <span *ngSwitchCase="'email'">
+              <a href="mailto: {{ item[title] }}"> {{ item[title] }}</a>
+            </span>
+            <span *ngSwitchDefault> {{ item[title] }}</span>
+          </span>
+        </th>
+        <th>
+          <ul class="listActions">
+            <li>
+              <button
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#modal-default"
+                (click)="openModal(item)"
+              >
+                <i class="fa fa-pencil-alt"></i>
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-danger">
+                <!-- (click)="onDelete(item)" -->
+                <i class="fa fa-trash"></i>
+              </button>
+            </li>
+          </ul>
+        </th>
       </tr>
     </tbody>
   </table>

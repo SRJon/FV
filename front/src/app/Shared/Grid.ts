@@ -3,6 +3,7 @@ import { PaginateShare } from './';
 export class Grid {
   html: HTMLElement | undefined;
   sharePaginate: PaginateShare;
+  private selector = '';
 
   public constructor() {
     // super();
@@ -12,20 +13,33 @@ export class Grid {
   public createGrid(data: { paging: boolean; selectorHtml: string }): void {
     // @ts-ignore: Unreachable code error
     this.html = $(data.selectorHtml);
+    // @ts-ignore: Unreachable code error
+    this.selector = data.selectorHtml;
 
-    if (this.html) {
-      console.log(this.html);
-      $(document).ready(() => {
-        // @ts-ignore: Unreachable code error
-        this.html.dataTable({
-          paging: data.paging,
-          lengthChange: false,
-          info: '',
-          language: {
-            zeroRecords: ' ',
-          },
-        });
+    // $(document).ready(() => {
+    // if (this.html) {
+    //   this.render();
+    // }
+    // });
+  }
+  render() {
+    // @ts-ignore: Unreachable code error
+    let istable = $.fn.dataTable.isDataTable(this.selector);
+    if (!istable) {
+      // @ts-ignore: Unreachable code error
+      this.html.dataTable({
+        paging: this.sharePaginate.paginate.currentPage,
+        lengthChange: false,
+        info: '',
+        language: {
+          zeroRecords: ' ',
+        },
       });
+    } else {
+      // @ts-ignore: Unreachable code error
+      this.html.DataTable().destroy();
+      // @ts-ignore: Unreachable code error
+      this.html.dataTable();
     }
   }
 }
