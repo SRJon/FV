@@ -24,8 +24,6 @@ namespace back.infra.Data.Repositories
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
-
-
         }
 
         public Task<bool> Create(TelaDTOCreate tela)

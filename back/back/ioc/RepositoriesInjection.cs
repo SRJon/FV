@@ -35,7 +35,7 @@ namespace back.ioc
             services.AddScoped<IVersaoProjetosRepository, VersaoProjetosRepository>();
             services.AddScoped<IVersionDetailsRepository, VersionDetailsRepository>();
             services.AddScoped<IAD_VGFRPVRepository, AD_VGFRPVRepository>();
-
+            services.AddScoped<ITGFPARRepository, TGFPARRepository>();
 
             return services;
         }

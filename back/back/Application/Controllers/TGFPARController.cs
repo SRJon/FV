@@ -22,7 +22,7 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("/")]
+
         public async Task<ActionResult<IResponse<List<TGFPARDTO>>>> GetAll(int page = 1, int limit = 10)
         {
             var response = new Response<List<TGFPARDTO>>();
@@ -30,8 +30,7 @@ namespace back.Application.Controllers
             {
                 var result = await _TGFPARRepository.GetAllPaginateAsync(page, limit);
                 response.SetConfig(200);
-                // response.Data = result.Data;
-                // response.setHttpAtr(result);
+                response.Data = result.Data;
             }
             catch (System.Exception)
             {
@@ -40,9 +39,8 @@ namespace back.Application.Controllers
             return response.GetResponse();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [Authorize]
-        [Route("/{id}")]
         public async Task<ActionResult<Response<TGFPARDTO>>> GetById(int id)
         {
 
