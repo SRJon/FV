@@ -24,8 +24,6 @@ using back.data.entities.UserCustomizations;
 using back.data.entities.VersaoProjetos;
 using back.data.entities.VersionDetails;
 
-using back.domain.DTO.ScreenDTO;
-using back.domain.DTO.User;
 using back.ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
