@@ -11,6 +11,8 @@ import { IUser } from '../../../../../../Domain/Models/IUser';
 import { UsuarioEditWords } from './usuario-edit-words';
 import { AlertsService } from '../../../../../../Repository/Alerts/alerts.service';
 import { IPerfil } from 'src/app/Domain/Models/IPerfil';
+import { PerfilService } from 'src/app/Modules/seguranca/Services/perfil.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-usuario-edit-modal',
@@ -24,38 +26,46 @@ export class UsuarioEditModalComponent implements OnInit, OnChanges {
   @Output() onDisabled = new EventEmitter<boolean>();
   words: UsuarioEditWords;
   perfils: IPerfil[] = [];
+  select?: JQuery<HTMLElement>;
+  serviceForm: FormGroup;
 
   constructor(
     private services: UserService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private perfilService: PerfilService,
+    private fb: FormBuilder
   ) {
     this.words = new UsuarioEditWords();
-    for (let i = 0; i < 500; i++) {
-      this.perfils.push({
-        id: i,
-        nome: 'Perfil ' + i,
-      } as IPerfil);
-    }
+    this.serviceForm = this.fb.group({
+      login: ['', Validators.required],
+      senha: ['', Validators.required],
+      nome: ['', Validators.required],
+      email: ['', Validators.required],
+      alterPassNextLogonInput: [''],
+      ativo: [''],
+      select: [''],
+      id: [''],
+    });
   }
 
   ngOnInit(): void {
+    this.getAllPerfils();
     if (this.currentUser) {
       this.words.index = 0;
     } else {
       this.words.index = 1;
     }
-    let select;
 
     let interval = setInterval(() => {
-      select = $(
+      this.select = $(
         '#exampleModal > div > div > div.modal-body > div > form > div > div:nth-child(7) > select'
       );
 
       // @ts-ignore: Unreachable code error
-      select.select2();
-      console.log(select);
+      this.select.select2();
+      console.log(this.select);
 
-      if (select) {
+      if (this.select) {
         clearInterval(interval);
       }
     }, 100);
@@ -82,10 +92,30 @@ export class UsuarioEditModalComponent implements OnInit, OnChanges {
     this.modalState.emit(!this.isOpen);
   }
   async onSave() {
+    if (this.serviceForm.invalid) return;
     if (this.currentUser) {
       let response;
+      // this.currentUser.perfilId = this.currentUser.perfil
+      //   ? this.currentUser.perfil.id
+      //   : this.currentUser.perfilId;
+      if (this.select) {
+        // this.currentUser.perfilId = Number(this.select.val());
+        let val = this.select.val();
+        let options = document.querySelectorAll('option');
+        options.forEach((option) => {
+          if (option.value === val) {
+            // this.currentUser?.perfilId = option.text;
+            let c = option.attributes.item(1);
+            if (c) {
+              this.currentUser!.perfilId = Number(c.value);
+            }
+          }
+        });
+        console.log(val, options);
+      }
       delete this.currentUser.perfil;
       delete this.currentUser.sgtsiusU_USU_COD;
+      this.currentUser.vendedorUCod = 1;
       // delete this.currentUser.senhaFV;
       // delete this.currentUser.senha;
       let res;
@@ -118,5 +148,10 @@ export class UsuarioEditModalComponent implements OnInit, OnChanges {
       result += ' ' + array[i];
     }
     return result;
+  }
+
+  async getAllPerfils() {
+    let response = await this.perfilService.getAllNames(0, 0);
+    this.perfils = response.data;
   }
 }

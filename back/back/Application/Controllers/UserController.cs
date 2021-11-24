@@ -71,7 +71,7 @@ namespace back.Application.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         [Route("Create")]
         public async Task<ActionResult<IResponse<bool>>> create(UsuarioDTOCreate usuario)
         {

@@ -53,4 +53,16 @@ export class UserService {
       } as IResponse<boolean>;
     }
   }
+
+  public async delete(id: number): Promise<IResponse<boolean>> {
+    try {
+      var result = await actions.user.Userdelete(id);
+      return result;
+    } catch (error: any) {
+      return {
+        data: false,
+        message: error.response.data.message,
+      } as IResponse<boolean>;
+    }
+  }
 }

@@ -1,5 +1,4 @@
 <div
-  _ngcontent-thm-c60=""
   id="exampleModal"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
@@ -8,27 +7,26 @@
   aria-modal="true"
   role="dialog"
 >
-  <div _ngcontent-thm-c60="" role="document" class="modal-dialog">
-    <div _ngcontent-thm-c60="" class="modal-content">
-      <div _ngcontent-thm-c60="" class="modal-header">
+  <div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
         <button
-          _ngcontent-thm-c60=""
           type="button"
           data-dismiss="modal"
           aria-label="Close"
           class="close"
         >
-          <span _ngcontent-thm-c60="" aria-hidden="true">×</span>
+          <span aria-hidden="true">×</span>
         </button>
       </div>
-      <div _ngcontent-thm-c60="" class="modal-body">
+      <div class="modal-body">
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">{{ words.title }}</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form>
+          <form [formGroup]="serviceForm">
             <div class="card-body">
               <ng-template [ngIf]="currentUser">
                 <!-- TODO idINput -->
@@ -38,12 +36,13 @@
                   }}</label>
                   <input
                     type="text"
-                    disabled
                     class="form-control"
                     [id]="words.idInput"
                     [placeholder]="words.idInput"
                     [(ngModel)]="currentUser.id"
+                    [formControlName]="words.idInput"
                     [name]="words.idInput"
+                    [disabled]="true"
                   />
                 </div>
                 <!-- TODO LoginINput -->
@@ -57,7 +56,10 @@
                     [id]="words.loginInput"
                     [placeholder]="words.loginInput"
                     [(ngModel)]="currentUser.login"
+                    [formControlName]="words.loginInput"
                     [name]="words.loginInput"
+                    [class.is-invalid]="serviceForm.get('login')?.invalid"
+                    [class.is-valid]="serviceForm.get('login')?.valid"
                   />
                 </div>
                 <!-- TODO senhaINput -->
@@ -71,7 +73,10 @@
                     [id]="words.senhaInput"
                     [placeholder]="words.senhaInput"
                     [(ngModel)]="currentUser.senha"
+                    [formControlName]="words.senhaInput"
                     [name]="words.senhaInput"
+                    [class.is-invalid]="serviceForm.get('senha')?.invalid"
+                    [class.is-valid]="serviceForm.get('senha')?.valid"
                   />
                 </div>
                 <!-- TODO NomeINput -->
@@ -85,7 +90,10 @@
                     [id]="words.nomeInput"
                     [placeholder]="words.nomeInput"
                     [(ngModel)]="currentUser.nome"
+                    [formControlName]="words.nomeInput"
                     [name]="words.nomeInput"
+                    [class.is-invalid]="serviceForm.get('nome')?.invalid"
+                    [class.is-valid]="serviceForm.get('nome')?.valid"
                   />
                 </div>
                 <!-- TODO E-MailInput -->
@@ -99,9 +107,11 @@
                     [id]="words.emailInput"
                     [placeholder]="words.emailInput"
                     [(ngModel)]="currentUser.email"
+                    [formControlName]="words.emailInput"
                     [name]="words.emailInput"
                   />
                 </div>
+
                 <!-- TODO BoolInputs -->
 
                 <div class="container">
@@ -120,6 +130,7 @@
                           placeholder="Ativo"
                           [(ngModel)]="currentUser.ativo"
                           [name]="words.ativoInput"
+                          formControlName="ativo"
                         />
                       </div>
                     </div>
@@ -137,6 +148,7 @@
                           placeholder="Ativo"
                           [(ngModel)]="currentUser.altSenha"
                           [name]="words.alterPassNextLogonInput"
+                          formControlName="alterPassNextLogonInput"
                         />
                       </div>
                     </div>
@@ -148,18 +160,14 @@
                   <label style="width: 49px" [for]="words.perfilInput">{{
                     words.perfilInput
                   }}</label>
-                  <!-- <input
-                    type="text"
-                    class="form-control"
-                    [id]="words.perfilInput"
-                    [placeholder]="words.perfilInput"
-                    [(ngModel)]="currentUser.perfil"
-                    [name]="words.perfilInput"
-                  /> -->
+
                   <select
                     class="selectpicker"
                     data-live-search="true"
                     [(ngModel)]="currentUser.perfilId"
+                    data-width="300px"
+                    name="select"
+                    formControlName="select"
                   >
                     <option data-tokens="null" [selected]="!currentUser.perfil">
                       (Nenhum)
@@ -169,33 +177,39 @@
                       [selected]="perfil.id === currentUser.perfilId"
                       *ngFor="let perfil of perfils"
                     >
+                      {{ perfil.id }}
                       {{ perfil.nome }}
                     </option>
                   </select>
                 </div>
+
+                <!-- TODO dataUltima alteraçao Input -->
+                <div
+                  class="form-group d-flex"
+                  style="justify-content: space-around"
+                >
+                  <label style="font-size: 12px"
+                    >{{ words.lastUpdatePasswordInput }}:</label
+                  >
+                  <span>{{ currentUser.dtUltAltSenha }}</span>
+                </div>
               </ng-template>
             </div>
             <!-- /.card-body -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                data-dismiss="modal"
+                class="btn btn-secondary"
+                (click)="onModalChange()"
+              >
+                Fechar</button
+              ><button type="submit" class="btn btn-primary" (click)="onSave()">
+                Salvar Mudanças
+              </button>
+            </div>
           </form>
         </div>
-      </div>
-      <div _ngcontent-thm-c60="" class="modal-footer">
-        <button
-          _ngcontent-thm-c60=""
-          type="button"
-          data-dismiss="modal"
-          class="btn btn-secondary"
-          (click)="onModalChange()"
-        >
-          Fechar</button
-        ><button
-          _ngcontent-thm-c60=""
-          type="button"
-          class="btn btn-primary"
-          (click)="onSave()"
-        >
-          Salvar Mudanças
-        </button>
       </div>
     </div>
   </div>
