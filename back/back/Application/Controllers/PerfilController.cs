@@ -122,6 +122,25 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+        [HttpGet]
+        [Authorize]
+        [Route("GetAllNames")]
+        public async Task<ActionResult<IResponse<List<PerfilDTONome>>>> GetAllNamesAsync([FromQuery] ProfileGetAllEntity payload)
+        {
+            var response = new Response<List<PerfilDTONome>>();
+            try
+            {
+                var result = await _perfilRepository.GetAllNamesPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(404, "Erro ao buscar as perfis" + InnerExceptionMessage.InnerExceptionError(e), false);
+            }
+            return response.GetResponse();
+        }
 
         [HttpPost]
         [Route("Update")]

@@ -63,6 +63,37 @@ namespace back.infra.Data.Repositories
             }
         }
 
+        public async Task<Response<List<PerfilDTONome>>> GetAllNamesPaginateAsync(int page, int limit)
+        {
+            var response = new Response<List<PerfilDTONome>>();
+            var contexto = _ctxs.GetVFU();
+            try
+            {
+                base.ValidPaginate(page, limit);
+                var savedSearches = contexto.Perfil.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+
+                List<PerfilDTONome> dTOs = new List<PerfilDTONome>();
+
+                var perfis = await savedSearches.ToListAsync();
+                perfis.ForEach(e => dTOs.Add(_mapper.Map<PerfilDTONome>(e)));
+
+                response.Data = dTOs;
+                response.TotalPages = await contexto.Perfil.CountAsync();
+                response.Page = page;
+                response.TotalPages = (response.TotalPages / base.limit) + 1;
+                response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
+                response.Success = true;
+                response.StatusCode = 200;
+                return response;
+            }
+            catch (Exception)
+            {
+                response.Data = null;
+                response.StatusCode = 400;
+                return response;
+            }
+        }
+
         public async Task<Response<List<PerfilDTO>>> GetAllPaginateAsync(int page, int limit)
         {
             var response = new Response<List<PerfilDTO>>();

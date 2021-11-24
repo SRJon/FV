@@ -15,5 +15,6 @@ namespace back.domain.Repositories
         public Task<bool> Delete(int id);
         public Task<bool> Update(PerfilDTOUpdateDTO perfil);
         public Task<Response<List<PerfilDTO>>> GetAllPaginateAsync(int page, int limit);
+        public Task<Response<List<PerfilDTONome>>> GetAllNamesPaginateAsync(int page, int limit);
     }
 }
