@@ -20,6 +20,8 @@ namespace back.data.entities.Profile
             cfg.CreateMap<PerfilDTOCreate, Perfil>();
             cfg.CreateMap<Perfil, PerfilDTOUserProfilessDTO>();
             cfg.CreateMap<PerfilDTOUserProfilessDTO, Perfil>();
+            cfg.CreateMap<Perfil, PerfilDTONome>();
+            cfg.CreateMap<PerfilDTONome, Perfil>();
 
             return cfg;
         }

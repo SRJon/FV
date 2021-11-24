@@ -6,6 +6,7 @@ using back.data.http;
 using back.domain.DTO.BProdutoImg;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,9 +37,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar os BProdutoImgs", false);
+                response.SetConfig(400, "Erro ao buscar os BProdutoImgs" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -61,9 +62,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "BProdutoImg não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar o BProdutoImg", false);
+                response.SetConfig(400, "Erro ao buscar o BProdutoImg" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -89,9 +90,9 @@ namespace back.Application.Controllers
 
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar o BProdutoImg", false);
+                response.SetConfig(400, "Erro ao criar o BProdutoImg" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -116,9 +117,9 @@ namespace back.Application.Controllers
 
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o BProdutoImg", false);
+                response.SetConfig(400, "Erro ao atualizar o BProdutoImg" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -143,9 +144,9 @@ namespace back.Application.Controllers
 
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o BProdutoImg", false);
+                response.SetConfig(400, "Erro ao excluir o BProdutoImg" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

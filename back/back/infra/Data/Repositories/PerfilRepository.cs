@@ -117,6 +117,13 @@ namespace back.infra.Data.Repositories
             }
         }
 
+        public async Task<PerfilDTONome> GetNameById(int id)
+        {
+            return _mapper.Map<PerfilDTONome>(await this._ctxs
+             .GetVFU()
+             .GetNameByIdService(id));
+        }
+
         public Task<bool> Update(PerfilDTOUpdateDTO perfil)
         {
             if (perfil.Id == 0)

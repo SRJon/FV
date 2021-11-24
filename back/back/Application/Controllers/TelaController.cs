@@ -5,6 +5,7 @@ using back.data.http;
 using back.domain.DTO.ScreenDTO;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,9 +33,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar as telas", false);
+                response.SetConfig(400, "Erro ao buscar as telas" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -59,9 +60,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Tela não encontrada", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar a tela", false);
+                response.SetConfig(400, "Erro ao buscar a tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -87,9 +88,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Tela não criada", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar a tela", false);
+                response.SetConfig(400, "Erro ao criar a tela " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -115,9 +116,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Tela não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar a tela", false);
+                response.SetConfig(400, "Erro ao atualizar a tela " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -142,9 +143,9 @@ namespace back.Application.Controllers
                 }
                 return response;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir a tela", false);
+                response.SetConfig(400, "Erro ao excluir a tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

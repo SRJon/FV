@@ -8,6 +8,7 @@ using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using back.domain.entities;
+using back.infra.Data.Utils;
 
 namespace back.Application.Controllers
 {
@@ -36,9 +37,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar os Informativos", false);
+                response.SetConfig(400, "Erro ao buscar os Informativos" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -61,9 +62,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Informativo não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar o Informativo", false);
+                response.SetConfig(400, "Erro ao buscar o Informativo" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
 
 
@@ -90,9 +91,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Informativo não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar o Informativo", false);
+                response.SetConfig(400, "Erro ao criar o Informativo" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
 
 
@@ -120,9 +121,9 @@ namespace back.Application.Controllers
                 }
                 return response;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o Informativo", false);
+                response.SetConfig(400, "Erro ao atualizar o Informativo" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -146,9 +147,9 @@ namespace back.Application.Controllers
                 }
                 return response;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o Informativo", false);
+                response.SetConfig(400, "Erro ao excluir o Informativo" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

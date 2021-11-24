@@ -6,6 +6,7 @@ using back.data.http;
 using back.domain.DTO.AnexoCont;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,9 +39,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(404, "Erro ao buscar as AnexoConts", false);
+                response.SetConfig(404, "Erro ao buscar as AnexoConts " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -64,9 +65,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "AnexoCont não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar a AnexoCont", false);
+                response.SetConfig(400, "Erro ao buscar a AnexoCont " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -92,10 +93,10 @@ namespace back.Application.Controllers
                     response.Data = result;
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
 
-                response.SetConfig(400, "Erro ao criar a AnexoCont", false);
+                response.SetConfig(400, "Erro ao criar a AnexoCont " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -119,9 +120,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "AnexoCont não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o AnexoCont", false);
+                response.SetConfig(400, "Erro ao atualizar o AnexoCont " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -144,9 +145,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "AnexoCont não excluido", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o AnexoCont", false);
+                response.SetConfig(400, "Erro ao excluir o AnexoCont " + InnerExceptionMessage.InnerExceptionError(e), false);
 
             }
             return response.GetResponse();

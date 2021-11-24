@@ -18,7 +18,7 @@ namespace back.domain.entities
         public Nullable<bool> AltSenha { get; set; }
         public Nullable<DateTime> DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
-        public Nullable<int> SGTSIUSU_USU_COD { get; set; }
+        public Nullable<int> sgtsiusU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
 
         public UserAuthenticateDto ToDto();

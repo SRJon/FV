@@ -18,7 +18,9 @@ namespace back.data.entities.User
         public bool? AltSenha { get; set; }
         public DateTime? DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
-        public int? SGTSIUSU_USU_COD { get; set; }
+
+        [Column("SGTSIUSU_USU_COD")]
+        public int? sgtsiusU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
 
         public int? PerfilId { get; set; }
@@ -36,7 +38,7 @@ namespace back.data.entities.User
                 Email = this.Email,
                 Ativo = this.Ativo,
                 PerfilId = (int)this.PerfilId,
-                SGTSIUSU_USU_COD = this.SGTSIUSU_USU_COD,
+                sgtsiusU_USU_COD = this.sgtsiusU_USU_COD,
                 DtUltAltSenha = this.DtUltAltSenha
             };
         }
