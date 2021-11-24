@@ -6,6 +6,7 @@ using back.data.http;
 using back.domain.DTO.ProfileScreenDTO;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,44 +29,27 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(PerfilTelaDTOCreate perfilTela)
+        public async Task<ActionResult<IResponse<bool>>> create(PerfilTelaDTOCreate perfilTela)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._perfilTelaRepository.Create(perfilTela);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Perfil tela criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Perfil tela não criada",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Perfil tela não criada", false);
                 }
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar a Perfil tela",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o perfil tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
@@ -86,9 +70,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Perfil tela não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar a perfil tela", false);
+                response.SetConfig(400, "Erro ao buscar a perfil tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
 
             return response.GetResponse();
@@ -106,9 +90,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(404, "Erro ao buscar as perfis tela", false);
+                response.SetConfig(404, "Erro ao buscar as perfis tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -132,9 +116,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Perfil tela não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o Perfil tela", false);
+                response.SetConfig(400, "Erro ao atualizar o Perfil tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -158,9 +142,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Perfil tela não excluido", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o perfil tela", false);
+                response.SetConfig(400, "Erro ao excluir o perfil tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

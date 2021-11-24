@@ -10,6 +10,7 @@ using back.domain.Repositories;
 using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using back.infra.Data.Utils;
 
 namespace back.Application.Controllers
 {
@@ -46,9 +47,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Pefil não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar a perfil", false);
+                response.SetConfig(400, "Erro ao criar a perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -71,9 +72,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Perfil não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar a perfil", false);
+                response.SetConfig(400, "Erro ao buscar a perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -90,9 +91,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(404, "Erro ao buscar as perfis", false);
+                response.SetConfig(404, "Erro ao buscar as perfis" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -116,9 +117,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Perfil não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o Perfil", false);
+                response.SetConfig(400, "Erro ao atualizar o Perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -142,9 +143,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Perfil não excluido", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o perfil", false);
+                response.SetConfig(400, "Erro ao excluir o perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

@@ -6,6 +6,7 @@ using back.data.http;
 using back.domain.DTO.Enterprise;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,9 +40,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar as Empresas", false);
+                response.SetConfig(400, "Erro ao buscar as Empresas" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -65,9 +66,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Empresa não encontrada", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar a empresa", false);
+                response.SetConfig(400, "Erro ao buscar a empresa" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -92,9 +93,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Empresa não criada", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar a Empresa", false);
+                response.SetConfig(400, "Erro ao criar a Empresa" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -118,9 +119,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Empresa não atualizada", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar a empresa", false);
+                response.SetConfig(400, "Erro ao atualizar a empresa" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -143,9 +144,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Empresa não excluida", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir a empresa", false);
+                response.SetConfig(400, "Erro ao excluir a empresa" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

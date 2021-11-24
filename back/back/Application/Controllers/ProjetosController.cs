@@ -8,6 +8,7 @@ using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using back.domain.entities;
+using back.infra.Data.Utils;
 
 namespace back.Application.Controllers
 {
@@ -37,9 +38,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar os Projetos", false);
+                response.SetConfig(400, "Erro ao buscar os Projetos" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -62,9 +63,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Projetos não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar o Projetos", false);
+                response.SetConfig(400, "Erro ao buscar o Projetos" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -89,9 +90,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Projetos não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar o Projetos", false);
+                response.SetConfig(400, "Erro ao criar o Projetos" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -115,9 +116,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Projetos não atualizado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o Projetos", false);
+                response.SetConfig(400, "Erro ao atualizar o Projetos" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -141,9 +142,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Projetos não excluido", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao excluir o Projetos", false);
+                response.SetConfig(400, "Erro ao excluir o Projetos" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

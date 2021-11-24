@@ -7,6 +7,7 @@ using back.domain.DTO.Login;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.DTO.Authentication;
+using back.infra.Data.Utils;
 using back.infra.Services.Authentication;
 using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
@@ -93,7 +94,7 @@ namespace back.Application.Controllers
             catch (System.Exception e)
             {
 
-                response.SetConfig(404, "Usuário Não encontrado com sucesso " + e.Message, false);
+                response.SetConfig(404, "Usuário Não encontrado com sucesso " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

@@ -5,6 +5,7 @@ using back.data.http;
 using back.domain.DTO.AnexoDev;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,9 +37,9 @@ namespace back.Application.Controllers
                 response.Data = result.Data;
                 response.setHttpAtr(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar os AnexoDevs");
+                response.SetConfig(400, "Erro ao buscar os AnexoDevs " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -62,9 +63,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "AnexoDev não encontrado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar o AnexoDev");
+                response.SetConfig(400, "Erro ao buscar o AnexoDev " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -91,18 +92,11 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar o AnexoDev",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar o AnexoDev " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
 
 
-            return Ok(response);
+            return response.GetResponse();
 
         }
 
@@ -127,13 +121,7 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o AnexoDev",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o AnexoDev" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -158,13 +146,7 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o AnexoDev",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o AnexoDev" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
