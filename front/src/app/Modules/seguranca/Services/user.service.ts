@@ -34,8 +34,23 @@ export class UserService {
     try {
       var result = await actions.user.update(user);
       return result;
-    } catch (error) {
-      return { data: false } as IResponse<boolean>;
+    } catch (error: any) {
+      return {
+        data: false,
+        message: error.response.data.message,
+      } as IResponse<boolean>;
+    }
+  }
+
+  public async create(user: IUser): Promise<IResponse<boolean>> {
+    try {
+      var result = await actions.user.create(user);
+      return result;
+    } catch (error: any) {
+      return {
+        data: false,
+        message: error.response.data.message,
+      } as IResponse<boolean>;
     }
   }
 }

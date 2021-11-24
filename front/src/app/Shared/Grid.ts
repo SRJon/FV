@@ -3,6 +3,7 @@ import { PaginateShare } from './';
 export class Grid {
   html: HTMLElement | undefined;
   sharePaginate: PaginateShare;
+  private isPaging: boolean = false;
   private selector = '';
 
   public constructor() {
@@ -15,6 +16,7 @@ export class Grid {
     this.html = $(data.selectorHtml);
     // @ts-ignore: Unreachable code error
     this.selector = data.selectorHtml;
+    this.isPaging = data.paging;
 
     // $(document).ready(() => {
     // if (this.html) {
@@ -28,7 +30,7 @@ export class Grid {
     if (!istable) {
       // @ts-ignore: Unreachable code error
       this.html.dataTable({
-        paging: this.sharePaginate.paginate.currentPage,
+        paging: this.isPaging,
         lengthChange: false,
         info: '',
         language: {
@@ -39,7 +41,14 @@ export class Grid {
       // @ts-ignore: Unreachable code error
       this.html.DataTable().destroy();
       // @ts-ignore: Unreachable code error
-      this.html.dataTable();
+      this.html.dataTable({
+        paging: this.isPaging,
+        lengthChange: false,
+        info: '',
+        language: {
+          zeroRecords: ' ',
+        },
+      });
     }
   }
 }

@@ -88,9 +88,9 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Usuário não criado", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar a usuário", false);
+                response.SetConfig(400, "Erro ao criar a usuário: " + e.InnerException.Message.Split("tabela")[0], false);
             }
             return response.GetResponse();
         }
@@ -116,7 +116,7 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao atualizar o usuário: " + e.Message, false);
+                response.SetConfig(400, "Erro ao atualizar o usuário: " + e.InnerException.Message.Split("tabela")[0], false);
             }
             return response.GetResponse();
         }

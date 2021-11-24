@@ -1,3 +1,5 @@
+import { IPerfil } from './IPerfil';
+
 export interface IUser {
   id: number;
   login: string;
@@ -7,16 +9,10 @@ export interface IUser {
   ativo: boolean;
   perfilId: number;
   vendedorUCod: number;
-  altSenha: null;
+  altSenha: boolean;
   dtUltAltSenha: Date;
-  loginSnk: null;
-  sgtsiusU_USU_COD?: null;
+  loginSnk: string;
+  sgtsiusU_USU_COD?: number;
   senhaFV?: string;
-  perfil?: Perfil;
-}
-
-export interface Perfil {
-  id: number;
-  nome: string;
-  peR_COD: number;
+  perfil?: IPerfil;
 }

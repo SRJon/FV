@@ -31,45 +31,149 @@
           <form>
             <div class="card-body">
               <ng-template [ngIf]="currentUser">
+                <!-- TODO idINput -->
                 <div class="form-group d-flex">
-                  <label style="width: 49px" for="InputID">{{
+                  <label style="width: 49px" [for]="words.idInput">{{
                     words.idInput
                   }}</label>
                   <input
                     type="text"
                     disabled
                     class="form-control"
-                    id="InputID"
-                    placeholder="ID"
+                    [id]="words.idInput"
+                    [placeholder]="words.idInput"
                     [(ngModel)]="currentUser.id"
                     [name]="words.idInput"
                   />
                 </div>
+                <!-- TODO LoginINput -->
                 <div class="form-group d-flex">
-                  <label style="width: 49px" for="Inputnome">{{
+                  <label style="width: 49px" [for]="words.loginInput">{{
+                    words.loginInput
+                  }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="words.loginInput"
+                    [placeholder]="words.loginInput"
+                    [(ngModel)]="currentUser.login"
+                    [name]="words.loginInput"
+                  />
+                </div>
+                <!-- TODO senhaINput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.senhaInput">{{
+                    words.senhaInput
+                  }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="words.senhaInput"
+                    [placeholder]="words.senhaInput"
+                    [(ngModel)]="currentUser.senha"
+                    [name]="words.senhaInput"
+                  />
+                </div>
+                <!-- TODO NomeINput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.nomeInput">{{
                     words.nomeInput
                   }}</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="Inputnome"
-                    placeholder="Nome"
+                    [id]="words.nomeInput"
+                    [placeholder]="words.nomeInput"
                     [(ngModel)]="currentUser.nome"
                     [name]="words.nomeInput"
                   />
                 </div>
+                <!-- TODO E-MailInput -->
                 <div class="form-group d-flex">
-                  <label style="width: 49px" for="InputCheckAtivo">{{
-                    words.ativoInput
+                  <label style="width: 49px" [for]="words.emailInput">{{
+                    words.emailInput
                   }}</label>
                   <input
-                    type="checkbox"
-                    id="InputCheckAtivo"
-                    placeholder="Ativo"
-                    [(ngModel)]="currentUser.ativo"
-                    [name]="words.ativoInput"
-                  /></div
-              ></ng-template>
+                    type="text"
+                    class="form-control"
+                    [id]="words.emailInput"
+                    [placeholder]="words.emailInput"
+                    [(ngModel)]="currentUser.email"
+                    [name]="words.emailInput"
+                  />
+                </div>
+                <!-- TODO BoolInputs -->
+
+                <div class="container">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group d-flex">
+                        <label
+                          style="font-size: 10px"
+                          [for]="words.ativoInput"
+                          class="pr-2"
+                          >{{ words.ativoInput }}</label
+                        >
+                        <input
+                          type="checkbox"
+                          [id]="words.ativoInput"
+                          placeholder="Ativo"
+                          [(ngModel)]="currentUser.ativo"
+                          [name]="words.ativoInput"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group d-flex">
+                        <label
+                          style="font-size: 10px"
+                          [for]="words.alterPassNextLogonInput"
+                          class="pr-2"
+                          >{{ words.alterPassNextLogonInput }}</label
+                        >
+                        <input
+                          type="checkbox"
+                          [id]="words.alterPassNextLogonInput"
+                          placeholder="Ativo"
+                          [(ngModel)]="currentUser.altSenha"
+                          [name]="words.alterPassNextLogonInput"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TODO E-PerfilInput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.perfilInput">{{
+                    words.perfilInput
+                  }}</label>
+                  <!-- <input
+                    type="text"
+                    class="form-control"
+                    [id]="words.perfilInput"
+                    [placeholder]="words.perfilInput"
+                    [(ngModel)]="currentUser.perfil"
+                    [name]="words.perfilInput"
+                  /> -->
+                  <select
+                    class="selectpicker"
+                    data-live-search="true"
+                    [(ngModel)]="currentUser.perfilId"
+                  >
+                    <option data-tokens="null" [selected]="!currentUser.perfil">
+                      (Nenhum)
+                    </option>
+                    <option
+                      [attr.data-tokens]="perfil.id"
+                      [selected]="perfil.id === currentUser.perfilId"
+                      *ngFor="let perfil of perfils"
+                    >
+                      {{ perfil.nome }}
+                    </option>
+                  </select>
+                </div>
+              </ng-template>
             </div>
             <!-- /.card-body -->
           </form>

@@ -109,19 +109,13 @@ namespace back.infra.Data.Repositories
 
 
 
-        public Task<bool> Update(UsuarioDTOUpdateDTO usuario)
+        public async Task<bool> Update(UsuarioDTOUpdateDTO usuario)
         {
             if (usuario.Id == 0)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Id não informado",
-                    Data = "",
-                    Success = false,
-                    StatusCode = 400
-                });
+                return false;
             }
-            return _ctxs.GetVFU().UpdateUsuarioService(_mapper.Map<UsuarioDTOUpdateDTO>(usuario), usuario.Id);
+            return await _ctxs.GetVFU().UpdateUsuarioService(_mapper.Map<UsuarioDTOUpdateDTO>(usuario), usuario.Id);
         }
         public bool ProductExists(int id) => _ctxs.GetVFU().Usuario.Any(e => e.Id == id);
 

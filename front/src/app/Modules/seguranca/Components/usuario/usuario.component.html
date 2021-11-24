@@ -19,14 +19,20 @@
   <table id="table_user">
     <thead>
       <tr>
-        <th *ngFor="let title of listTitle">{{ title }}</th>
+        <th *ngFor="let title of listTitle" [class]="title + '-col'">
+          {{ title }}
+        </th>
         <th>Ações</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let item of listGrid">
-        <th *ngFor="let title of listTitle" [ngSwitch]="getType(item[title])">
+        <th
+          *ngFor="let title of listTitle"
+          [ngSwitch]="getType(item[title])"
+          [class]="title + '-col'"
+        >
           <span *ngSwitchCase="'boolean'">
             <input type="checkbox" [checked]="item[title]" disabled />
           </span>
@@ -61,8 +67,14 @@
       </tr>
     </tbody>
   </table>
-
-  <div class="col-lg-8 col-md-8 -col-sm-12">
-    <ul id="table_id_paginate" class="pagination"></ul>
+</div>
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-6">
+      <span>sss</span>
+    </div>
+    <div class="col-6">
+      <ul id="table_id_paginate" class="pagination"></ul>
+    </div>
   </div>
 </div>

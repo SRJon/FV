@@ -30,6 +30,7 @@ export class UsuarioComponent implements OnInit {
     this.isDiposed = isDiposed;
     this.selectedUser = this.makeEmptyUser();
     this.IsOpen = false;
+    this.getAll(this.grid.sharePaginate.paginate.currentPage);
   }
   cloneUser(user: IUser): IUser {
     return { ...user };
@@ -61,6 +62,7 @@ export class UsuarioComponent implements OnInit {
       this.grid.sharePaginate.setAttr(response);
       this.grid.sharePaginate.setPaginate((p) => this.getAll(p));
       this.grid.render();
+      console.log(this.listGrid);
     }
   }
   getType(type: string): string {
@@ -70,7 +72,7 @@ export class UsuarioComponent implements OnInit {
     // this.grid.createGrid({ selectorHtml: '#table_user', paging: false });
     this.getAll();
     this.grid.createGrid({ selectorHtml: '#table_user', paging: false });
-    // this.grid.sharePaginate.setHtml('.pagination');
+    this.grid.sharePaginate.setHtml('.pagination');
     // this.grid.sharePaginate.setPaginate();
   }
 }

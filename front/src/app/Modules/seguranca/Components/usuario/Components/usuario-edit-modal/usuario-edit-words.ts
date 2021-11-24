@@ -2,6 +2,17 @@ export class UsuarioEditWords {
   idInput: string = 'id';
   nomeInput: string = 'nome';
   ativoInput: string = 'ativo';
+  loginInput: string = 'login';
+  senhaInput: string = 'senha';
+  emailInput: string = 'email';
+  alterPassNextLogonInput: string = 'ALTERAR SENHA PRÓX. LOGIN';
+
+  perfilInput: string = 'perfil';
+  vendedorInput: string = 'Vendedor';
+  sankyaUserId: string = 'USUÁRIO';
+  sakyaGrupId: string = 'GRUPO';
+  limitInput: string = 'LIMITE ACESSO';
+
   private _titles: string[];
   private _index: number = 0;
 
