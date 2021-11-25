@@ -65,4 +65,14 @@ export class UserService {
       } as IResponse<boolean>;
     }
   }
+  public async getUserByToken(
+    token: string
+  ): Promise<IResponse<IUser | undefined>> {
+    var result = await actions.user.GetByUserToken(token);
+    if (result.data) {
+      return result;
+    } else {
+      return {} as IResponse<IUser | undefined>;
+    }
+  }
 }
