@@ -1,6 +1,8 @@
-﻿namespace back.domain.DTO.Parametro
+﻿using back.domain.entities;
+
+namespace back.domain.DTO.Parametro
 {
-    public class ParametroDTO
+    public class ParametroDTO : IParametro
     {
         public int Id { get; set; }
         public string Nome { get; set; }

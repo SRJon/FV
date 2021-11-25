@@ -6,7 +6,7 @@ namespace back.domain.DTO.BookAnexo
     public class BookAnexoDTOUpdateDTO : IBookAnexo
     {
         public int Id { get; set; }
-        public data.entities.Book.Book BookId { get; set; }
+        public int? CodProd { get; set; }
         public string Descricao { get; set; }
         public DateTime? Data { get; set; }
         public string NomeArq { get; set; }

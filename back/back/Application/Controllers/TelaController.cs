@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 using back.data.entities.Screen;
 using back.data.http;
 using back.domain.DTO.ScreenDTO;
+using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +15,6 @@ namespace back.Application.Controllers
     [Route("api/[controller]")]
     public class TelaController : ControllerBase
     {
-
         private ITelaRepository _telaRepository;
 
         public TelaController(ITelaRepository telaRepository)
@@ -22,220 +23,131 @@ namespace back.Application.Controllers
         }
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<Tela>>>> GetAllAsync([FromQuery] ScreenGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<TelaDTO>>>> GetAllAsync([FromQuery] ScreenGetAllEntity payload)
         {
-            Response<List<TelaDTO>> result = null;
+            var response = new Response<List<TelaDTO>>();
             try
             {
-                result = await _telaRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _telaRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200, "");
+                response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar as telas",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar as telas" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<Tela>>> getById(int id)
+        public async Task<ActionResult<IResponse<TelaDTO>>> getById(int id)
         {
-            Response<TelaDTO> response = null;
+            var response = new Response<TelaDTO>();
 
             try
             {
-                TelaDTO result = await this._telaRepository.GetById(id);
+                var result = await this._telaRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<TelaDTO>
-                    {
-                        Message = "Tela encontrada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<TelaDTO>
-                    {
-                        Message = "Tela não encontrada",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Tela não encontrada", false);
                 }
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar a tela",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar a tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(TelaDTOCreate tela)
+        public async Task<ActionResult<IResponse<bool>>> create(TelaDTOCreate tela)
         {
 
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._telaRepository.Create(tela);
-
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Tela criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Tela não criada",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Tela não criada", false);
                 }
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar a tela",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar a tela " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
 
         [HttpPost]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Tela tela)
+        public async Task<ActionResult<IResponse<bool>>> update(Tela tela)
         {
 
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._telaRepository.Update(tela);
-
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Tela atualizada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Tela não atualizada",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Tela não atualizado", false);
                 }
-
-                return response;
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar a tela",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar a tela " + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._telaRepository.Delete(id);
-
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Tela excluida com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Tela não excluida",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Tela não excluida", false);
                 }
-
                 return response;
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir a tela",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir a tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
-
     }
 }

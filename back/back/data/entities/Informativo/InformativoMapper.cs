@@ -10,6 +10,9 @@ namespace back.data.entities.Informativo
             cfg.CreateMap<Informativo, InformativoDTOUpdateDTO>();
             cfg.CreateMap<InformativoDTOUpdateDTO, Informativo>();
 
+            cfg.CreateMap<Informativo, InformativoDTO>();
+            cfg.CreateMap<InformativoDTO, Informativo>();
+
             return cfg;
         }
 

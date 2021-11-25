@@ -1,11 +1,16 @@
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using back.data.entities.Profile;
 using back.data.http;
 using back.domain.DTO.ProfileDTO;
+using back.domain.entities;
 using back.domain.Repositories;
+using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using back.infra.Data.Utils;
 
 namespace back.Application.Controllers
 {
@@ -13,206 +18,181 @@ namespace back.Application.Controllers
     [Route("api/[controller]")]
     public class PerfilController : ControllerBase
     {
+        private readonly IMapper _mapper;
         private IPerfilRepository _perfilRepository;
 
         public PerfilController(IPerfilRepository perfilRepository)
         {
+            _mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _perfilRepository = perfilRepository;
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(PerfilDTOCreate perfil)
+        public async Task<ActionResult<IResponse<bool>>> create(PerfilDTOCreate perfil)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._perfilRepository.Create(perfil);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Perfil criado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
+
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Pefil não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Pefil não criado", false);
                 }
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar a perfil",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar a perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<Perfil>>> getById(int id)
+        public async Task<ActionResult<IResponse<PerfilDTO>>> getById(int id)
         {
-            Response<PerfilDTO> response = null;
-
+            var response = new Response<PerfilDTO>();
             try
             {
-                PerfilDTO result = await this._perfilRepository.GetById(id);
+                var result = await this._perfilRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<PerfilDTO>
-                    {
-                        Message = "Perfil encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<PerfilDTO>
-                    {
-                        Message = "Perfil não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Perfil não encontrado", false);
                 }
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar a perfil",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao buscar a perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-            return Ok(response);
+            return response.GetResponse();
+        }
+        [HttpGet]
+        [Authorize]
+        [Route("GetName")]
+        public async Task<ActionResult<IResponse<PerfilDTONome>>> getNameById(int id)
+        {
+            var response = new Response<PerfilDTONome>();
+            try
+            {
+                var result = await this._perfilRepository.GetNameById(id);
+                if (result != null)
+                {
+                    response.SetConfig(200);
+                    response.Data = result;
+                }
+                else
+                {
+                    response.SetConfig(404, "Perfil não encontrado", false);
+                }
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar a perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
+            }
+            return response.GetResponse();
         }
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<Perfil>>>> GetAllAsync([FromQuery] ProfileGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<PerfilDTO>>>> GetAllAsync([FromQuery] ProfileGetAllEntity payload)
         {
-            Response<List<PerfilDTO>> result = null;
+            var response = new Response<List<PerfilDTO>>();
             try
             {
-                result = await _perfilRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _perfilRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar as perfis",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
+                response.SetConfig(404, "Erro ao buscar as perfis" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
-
-        [HttpPost]
-        [Route("Delete")]
+        [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        [Route("GetAllNames")]
+        public async Task<ActionResult<IResponse<List<PerfilDTONome>>>> GetAllNamesAsync([FromQuery] ProfileGetAllEntity payload)
         {
-            Response<bool> response = null;
+            var response = new Response<List<PerfilDTONome>>();
             try
             {
-                var result = await this._perfilRepository.Delete(id);
-                if (result)
-                {
-                    response = new Response<bool>
-                    {
-                        Message = "Perfil excluido com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
-                }
-                else
-                {
-                    response = new Response<bool>
-                    {
-                        Message = "Perfil não excluido",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
-                }
-                return response;
+                var result = await _perfilRepository.GetAllNamesPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir a perfil",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(404, "Erro ao buscar as perfis" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Perfil perfil)
+        public async Task<ActionResult<IResponse<bool>>> update(PerfilDTOUpdateDTO perfil)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._perfilRepository.Update(perfil);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Perfil atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Perfil não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Perfil não atualizado", false);
                 }
-                return response;
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o perfil",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar o Perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
+
+        [HttpPost]
+        [Route("Delete")]
+        [Authorize]
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
+        {
+            var response = new Response<bool>();
+            try
+            {
+                var result = await this._perfilRepository.Delete(id);
+                if (result)
+                {
+                    response.SetConfig(200);
+                    response.Data = result;
+                }
+                else
+                {
+                    response.SetConfig(404, "Perfil não excluido", false);
+                }
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao excluir o perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
+            }
+            return response.GetResponse();
+        }
+
     }
 }

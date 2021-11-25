@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using back.data.entities.Enterprise;
+using back.domain.entities;
 
 namespace back.domain.DTO.Informativo
 {
-    public class InformativoDTO
+    public class InformativoDTO : IInformativo
     {
+        public int Id { get; set; }
+        public string Descricao { get; set; }
+        public string Texto { get; set; }
+        public int EmpresaId { get; set; }
+        public virtual Empresa Empresa { get; set; }
     }
 }

@@ -24,8 +24,6 @@ namespace back.infra.Data.Repositories
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
-
-
         }
 
         public Task<bool> Create(TelaDTOCreate tela)
@@ -76,7 +74,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Tela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.Tela.Skip(base.skip).Include(t => t.tela).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
 
                 List<TelaDTO> dTOs = new List<TelaDTO>();
 
@@ -92,22 +90,22 @@ namespace back.infra.Data.Repositories
                 response.StatusCode = 200;
                 return response;
             }
-            catch (System.Exception e)
+            catch (Exception)
             {
-                throw e;
+                response.Data = null;
+                response.StatusCode = 400;
+                return response;
             }
         }
 
         public async Task<TelaDTO> GetById(int id)
         {
-            var b = _mapper.Map<TelaDTO>(await this._ctxs
+            var res = await this._ctxs
             .GetVFU()
-            .GetByIdService(id));
-            if (b.TelaId != null)
-            {
-                b.tela = _mapper.Map<TelaDTOChild>(await this._ctxs.GetVFU().GetByIdService(b.TelaId.Value));
-            }
-            return b;
+            .GetByIdService(id);
+            var rmapper = _mapper.Map<TelaDTO>(res);
+
+            return rmapper;
         }
 
 

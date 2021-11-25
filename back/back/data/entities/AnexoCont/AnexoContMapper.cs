@@ -9,6 +9,11 @@ namespace back.data.entities.AnexoCont
         {
             cfg.CreateMap<AnexoCont, AnexoContDTOUpdateDTO>();
             cfg.CreateMap<AnexoContDTOUpdateDTO, AnexoCont>();
+            cfg.CreateMap<AnexoCont, AnexoContDTO>();
+            cfg.CreateMap<AnexoContDTO, AnexoCont>();
+
+            cfg.CreateMap<AnexoCont, AnexoContDTO>();
+            cfg.CreateMap<AnexoContDTO, AnexoCont>();
 
             return cfg;
         }

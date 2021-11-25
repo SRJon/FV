@@ -10,6 +10,9 @@ namespace back.data.entities.Diretorio
             cfg.CreateMap<Diretorio, DiretorioDTOUpdateDTO>();
             cfg.CreateMap<DiretorioDTOUpdateDTO, Diretorio>();
 
+            cfg.CreateMap<Diretorio, DiretorioDTO>();
+            cfg.CreateMap<DiretorioDTO, Diretorio>();
+
             return cfg;
         }
 

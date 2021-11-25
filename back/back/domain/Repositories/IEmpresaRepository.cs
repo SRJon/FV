@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.Enterprise;
 using back.data.http;
-using back.domain.DTO.Empresa;
+using back.domain.DTO.Enterprise;
 
 namespace back.domain.Repositories
 {

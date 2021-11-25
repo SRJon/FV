@@ -2,8 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\back",
-    "\\back\\back"
+    "\\back\\back",
+    "\\back\\back\\data",
+    "\\back\\back\\data\\entities",
+    "\\back\\back\\data\\entities\\Pedido",
+    "\\back\\back\\domain",
+    "\\back\\back\\domain\\Repositories",
+    "\\back\\back\\infra",
+    "\\back\\back\\infra\\Data"
   ],
-  "SelectedNode": "\\back\\back\\Settings.cs",
+  "SelectedNode": "\\back\\back.sln",
   "PreviewInSolutionExplorer": false
 }

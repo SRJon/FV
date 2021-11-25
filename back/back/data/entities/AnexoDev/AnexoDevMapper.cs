@@ -10,6 +10,9 @@ namespace back.data.entities.AnexoDev
             cfg.CreateMap<AnexoDev, AnexoDevDTOUpdateDTO>();
             cfg.CreateMap<AnexoDevDTOUpdateDTO, AnexoDev>();
 
+            cfg.CreateMap<AnexoDev, AnexoDevDTO>();
+            cfg.CreateMap<AnexoDevDTO, AnexoDev>();
+
             return cfg;
         }
     }

@@ -8,7 +8,7 @@ namespace back.domain.entities
         public int Id { get; set; }
         public String Descricao { get; set; }
         public String Texto { get; set; }
-        public Empresa ToModel();
 
+        public int EmpresaId { get; set; }
     }
 }

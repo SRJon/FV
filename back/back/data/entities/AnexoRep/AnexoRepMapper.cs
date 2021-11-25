@@ -10,6 +10,9 @@ namespace back.data.entities.AnexoRep
             cfg.CreateMap<AnexoRep, AnexoRepDTOUpdateDTO>();
             cfg.CreateMap<AnexoRepDTOUpdateDTO, AnexoRep>();
 
+            cfg.CreateMap<AnexoRep, AnexoRepDTO>();
+            cfg.CreateMap<AnexoRepDTO, AnexoRep>();
+
             return cfg;
         }
     }

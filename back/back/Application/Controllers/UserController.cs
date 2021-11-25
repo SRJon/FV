@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using back.data.entities.User;
 using back.data.http;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.User;
+using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,232 +26,155 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("/")]
-        public async Task<ActionResult<Response<List<Usuario>>>> GetAll(int page = 1, int limit = 10)
+        public async Task<ActionResult<IResponse<List<UsuarioDTO>>>> GetAll(int page = 1, int limit = 10)
         {
-
-
-            var response = await _usuarioRepository.GetAllPaginateAsync(page, limit);
-
-            var result = new HttpAdapter<Response<List<Usuario>>>(response.StatusCode, response);
-            return result.GetResponse();
+            var response = new Response<List<UsuarioDTO>>();
+            try
+            {
+                var result = await _usuarioRepository.GetAllPaginateAsync(page, limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
+            }
+            catch (System.Exception)
+            {
+                response.SetConfig(400, "Erro ao buscar as telas", false);
+            }
+            return response.GetResponse();
         }
 
         [HttpGet]
         [Authorize]
-        [Route("/{id}")]
-        public async Task<ActionResult<Response<Usuario>>> GetById(int id)
+        [Route("{id}")]
+        public async Task<ActionResult<Response<UsuarioDTO>>> GetById(int id)
         {
 
-            Response<UsuarioDTO> response = null;
+            var response = new Response<UsuarioDTO>();
             try
             {
                 UsuarioDTO result = await this._usuarioRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<UsuarioDTO>
-                    {
-                        Message = "Usuário encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<UsuarioDTO>
-                    {
-                        Message = "Usuário não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Usuário não encontrado", false);
                 }
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar a tela",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao buscar usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return Ok(response);
         }
 
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(UsuarioDTOCreate usuario)
+        public async Task<ActionResult<IResponse<bool>>> create(UsuarioDTOCreate usuario)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._usuarioRepository.Create(usuario);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuario criado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuário não criado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Usuário não criado", false);
                 }
-                return response;
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar a usuário",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar a usuário: " + e.InnerException.Message.Split("tabela")[0], false);
+
+                response.SetConfig(400, "Erro ao criar a usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
+
             }
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Usuario usuario)
+        public async Task<ActionResult<IResponse<bool>>> update(UsuarioDTOUpdateDTO usuario)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._usuarioRepository.Update(usuario);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuário atualizado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuário não atualizado",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Usuário não atualizado", false);
                 }
-
-                return response;
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar o usuário",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+
+                response.SetConfig(400, "Erro ao atualizar o usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
+
             }
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._usuarioRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuário excluído com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Usuário não excluído",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Usuário não excluído", false);
                 }
-
-                return response;
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir o usuário",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir o usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
         [HttpGet]
         [Route("GetbyLogin")]
-        public async Task<ActionResult<Response<Usuario>>> getByLogin(string login)
+        public async Task<ActionResult<IResponse<UsuarioDTO>>> getByLogin(string login)
         {
-            Response<UsuarioDTO> response = null;
+            var response = new Response<UsuarioDTO>();
             try
             {
                 UsuarioDTO result = await this._usuarioRepository.GetByLogin(login);
                 if (result != null)
                 {
-                    response = new Response<UsuarioDTO>
-                    {
-                        Message = "Usuário encontrado com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<UsuarioDTO>
-                    {
-                        Message = "Usuário não encontrado",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Usuário não encontrado", false);
                 }
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar a tela",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao buscar usuário" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-            return Ok(response);
+            return response.GetResponse();
 
         }
     }

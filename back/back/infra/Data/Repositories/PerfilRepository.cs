@@ -63,6 +63,37 @@ namespace back.infra.Data.Repositories
             }
         }
 
+        public async Task<Response<List<PerfilDTONome>>> GetAllNamesPaginateAsync(int page, int limit)
+        {
+            var response = new Response<List<PerfilDTONome>>();
+            var contexto = _ctxs.GetVFU();
+            try
+            {
+                base.ValidPaginate(page, limit);
+                var savedSearches = contexto.Perfil.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+
+                List<PerfilDTONome> dTOs = new List<PerfilDTONome>();
+
+                var perfis = await savedSearches.ToListAsync();
+                perfis.ForEach(e => dTOs.Add(_mapper.Map<PerfilDTONome>(e)));
+
+                response.Data = dTOs;
+                response.TotalPages = await contexto.Perfil.CountAsync();
+                response.Page = page;
+                response.TotalPages = (response.TotalPages / base.limit) + 1;
+                response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
+                response.Success = true;
+                response.StatusCode = 200;
+                return response;
+            }
+            catch (Exception)
+            {
+                response.Data = null;
+                response.StatusCode = 400;
+                return response;
+            }
+        }
+
         public async Task<Response<List<PerfilDTO>>> GetAllPaginateAsync(int page, int limit)
         {
             var response = new Response<List<PerfilDTO>>();
@@ -70,7 +101,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Perfil.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.Perfil.Include(u => u.Usuario).Include(p => p.PerfilTela).ThenInclude(t => t.Telas).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
 
                 List<PerfilDTO> dTOs = new List<PerfilDTO>();
 
@@ -86,9 +117,11 @@ namespace back.infra.Data.Repositories
                 response.StatusCode = 200;
                 return response;
             }
-            catch (System.Exception e)
+            catch (Exception)
             {
-                throw e;
+                response.Data = null;
+                response.StatusCode = 400;
+                return response;
             }
         }
 
@@ -115,7 +148,14 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public Task<bool> Update(Perfil perfil)
+        public async Task<PerfilDTONome> GetNameById(int id)
+        {
+            return _mapper.Map<PerfilDTONome>(await this._ctxs
+             .GetVFU()
+             .GetNameByIdService(id));
+        }
+
+        public Task<bool> Update(PerfilDTOUpdateDTO perfil)
         {
             if (perfil.Id == 0)
             {

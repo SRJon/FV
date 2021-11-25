@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Enterprise;
 using back.data.http;
-using back.domain.DTO.Empresa;
+using back.domain.DTO.Enterprise;
+using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,208 +28,127 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<Response<List<Empresa>>>> GetAllAsync([FromQuery] EmpresaGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<EmpresaDTO>>>> GetAllAsync([FromQuery] EmpresaGetAllEntity payload)
 
         {
-            Response<List<EmpresaDTO>> result = null;
+            var response = new Response<List<EmpresaDTO>>();
+
             try
             {
-                result = await _empresaRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                var result = await _empresaRepository.GetAllPaginateAsync(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar as Empresas",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-
-                });
-
+                response.SetConfig(400, "Erro ao buscar as Empresas" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-            return Ok(result);
+            return response.GetResponse();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Response<Empresa>>> getById(int id)
+        public async Task<ActionResult<IResponse<EmpresaDTO>>> getById(int id)
         {
-            Response<EmpresaDTO> response = null;
+            var response = new Response<EmpresaDTO>();
 
             try
             {
                 EmpresaDTO result = await this._empresaRepository.GetById(id);
                 if (result != null)
                 {
-                    response = new Response<EmpresaDTO>
-                    {
-                        Message = "Empresa encontrada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<EmpresaDTO>
-                    {
-                        Message = "Empresa não encontrada",
-                        Data = null,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Empresa não encontrada", false);
                 }
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao buscar a empresa",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
-
-
+                response.SetConfig(400, "Erro ao buscar a empresa" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-
-
-            return Ok(response);
+            return response.GetResponse();
         }
 
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<Response<bool>>> create(Empresa empresa)
+        public async Task<ActionResult<IResponse<bool>>> create(Empresa empresa)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
 
             try
             {
                 var result = await this._empresaRepository.Create(empresa);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Empresa criada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Empresa não criada",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Empresa não criada", false);
                 }
             }
             catch (System.Exception e)
             {
-
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao criar a Empresa",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao criar a Empresa" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
-
-
-            return Ok(response);
-
+            return response.GetResponse();
         }
 
         [HttpPost()]
         [Route("Update")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> update(Empresa empresa)
+        public async Task<ActionResult<IResponse<bool>>> update(Empresa empresa)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._empresaRepository.Update(empresa);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Empresa atualizada com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Empresa não atualizada",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Empresa não atualizada", false);
                 }
-                return response;
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao atualizar a empresa",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao atualizar a empresa" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
         [HttpPost]
         [Route("Delete")]
         [Authorize]
-        public async Task<ActionResult<Response<bool>>> delete(int id)
+        public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._empresaRepository.Delete(id);
                 if (result)
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Empresa excluida com sucesso",
-                        Data = result,
-                        Success = true,
-                        StatusCode = 200
-                    };
+                    response.SetConfig(200);
+                    response.Data = result;
                 }
                 else
                 {
-                    response = new Response<bool>
-                    {
-                        Message = "Empresa não excluida",
-                        Data = result,
-                        Success = false,
-                        StatusCode = 404
-                    };
+                    response.SetConfig(404, "Empresa não excluida", false);
                 }
-                return response;
             }
             catch (System.Exception e)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Erro ao excluir a empresa",
-                    Data = e.Message,
-                    Success = false,
-                    StatusCode = 400
-                });
+                response.SetConfig(400, "Erro ao excluir a empresa" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
+            return response.GetResponse();
         }
 
 

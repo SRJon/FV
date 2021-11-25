@@ -7,7 +7,7 @@ namespace back.domain.DTO.BProdutoImg
     {
         public int Id { get; set; }
         public int FCodProd { get; set; }
-        public IBProduto IBProdutoId { get; set; }
+        public int BProdutoId { get; set; }
         public DateTime Data { get; set; }
         public bool Ativo { get; set; }
         public string NomeArq { get; set; }

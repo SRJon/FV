@@ -1,0 +1,216 @@
+<div
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  class="modal fade {{ isOpen ? 'show' : '' }}"
+  style="padding-right: 17px"
+  aria-modal="true"
+  role="dialog"
+>
+  <div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+          class="close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">{{ words.title }}</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form [formGroup]="serviceForm">
+            <div class="card-body">
+              <ng-template [ngIf]="currentUser">
+                <!-- TODO idINput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.idInput">{{
+                    words.idInput
+                  }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="words.idInput"
+                    [placeholder]="words.idInput"
+                    [(ngModel)]="currentUser.id"
+                    [formControlName]="words.idInput"
+                    [name]="words.idInput"
+                    [disabled]="true"
+                  />
+                </div>
+                <!-- TODO LoginINput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.loginInput">{{
+                    words.loginInput
+                  }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="words.loginInput"
+                    [placeholder]="words.loginInput"
+                    [(ngModel)]="currentUser.login"
+                    [formControlName]="words.loginInput"
+                    [name]="words.loginInput"
+                    [class.is-invalid]="serviceForm.get('login')?.invalid"
+                    [class.is-valid]="serviceForm.get('login')?.valid"
+                  />
+                </div>
+                <!-- TODO senhaINput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.senhaInput">{{
+                    words.senhaInput
+                  }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="words.senhaInput"
+                    [placeholder]="words.senhaInput"
+                    [(ngModel)]="currentUser.senha"
+                    [formControlName]="words.senhaInput"
+                    [name]="words.senhaInput"
+                    [class.is-invalid]="serviceForm.get('senha')?.invalid"
+                    [class.is-valid]="serviceForm.get('senha')?.valid"
+                  />
+                </div>
+                <!-- TODO NomeINput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.nomeInput">{{
+                    words.nomeInput
+                  }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="words.nomeInput"
+                    [placeholder]="words.nomeInput"
+                    [(ngModel)]="currentUser.nome"
+                    [formControlName]="words.nomeInput"
+                    [name]="words.nomeInput"
+                    [class.is-invalid]="serviceForm.get('nome')?.invalid"
+                    [class.is-valid]="serviceForm.get('nome')?.valid"
+                  />
+                </div>
+                <!-- TODO E-MailInput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.emailInput">{{
+                    words.emailInput
+                  }}</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [id]="words.emailInput"
+                    [placeholder]="words.emailInput"
+                    [(ngModel)]="currentUser.email"
+                    [formControlName]="words.emailInput"
+                    [name]="words.emailInput"
+                  />
+                </div>
+
+                <!-- TODO BoolInputs -->
+
+                <div class="container">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group d-flex">
+                        <label
+                          style="font-size: 10px"
+                          [for]="words.ativoInput"
+                          class="pr-2"
+                          >{{ words.ativoInput }}</label
+                        >
+                        <input
+                          type="checkbox"
+                          [id]="words.ativoInput"
+                          placeholder="Ativo"
+                          [(ngModel)]="currentUser.ativo"
+                          [name]="words.ativoInput"
+                          formControlName="ativo"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group d-flex">
+                        <label
+                          style="font-size: 10px"
+                          [for]="words.alterPassNextLogonInput"
+                          class="pr-2"
+                          >{{ words.alterPassNextLogonInput }}</label
+                        >
+                        <input
+                          type="checkbox"
+                          [id]="words.alterPassNextLogonInput"
+                          placeholder="Ativo"
+                          [(ngModel)]="currentUser.altSenha"
+                          [name]="words.alterPassNextLogonInput"
+                          formControlName="alterPassNextLogonInput"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TODO E-PerfilInput -->
+                <div class="form-group d-flex">
+                  <label style="width: 49px" [for]="words.perfilInput">{{
+                    words.perfilInput
+                  }}</label>
+
+                  <select
+                    class="selectpicker"
+                    data-live-search="true"
+                    [(ngModel)]="currentUser.perfilId"
+                    data-width="300px"
+                    name="select"
+                    formControlName="select"
+                  >
+                    <option data-tokens="null" [selected]="!currentUser.perfil">
+                      (Nenhum)
+                    </option>
+                    <option
+                      [attr.data-tokens]="perfil.id"
+                      [selected]="perfil.id === currentUser.perfilId"
+                      *ngFor="let perfil of perfils"
+                    >
+                      {{ perfil.id }}
+                      {{ perfil.nome }}
+                    </option>
+                  </select>
+                </div>
+
+                <!-- TODO dataUltima alteraçao Input -->
+                <div
+                  class="form-group d-flex"
+                  style="justify-content: space-around"
+                >
+                  <label style="font-size: 12px"
+                    >{{ words.lastUpdatePasswordInput }}:</label
+                  >
+                  <span>{{ currentUser.dtUltAltSenha }}</span>
+                </div>
+              </ng-template>
+            </div>
+            <!-- /.card-body -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                data-dismiss="modal"
+                class="btn btn-secondary"
+                (click)="onModalChange()"
+              >
+                Fechar</button
+              ><button type="submit" class="btn btn-primary" (click)="onSave()">
+                Salvar Mudanças
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System;
 using System.Text;
+using back.infra.Services.UsuarioServices;
 
 namespace back.infra.Services.Authentication
 {
@@ -21,7 +22,7 @@ namespace back.infra.Services.Authentication
 
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.PrimarySid, user.PerfilId.ToString()),
+                    new Claim(ClaimTypes.PrimarySid, user.Id.ToString()),
                 }),
                 Expires = expires.AddHours(1),
                 NotBefore = expires,
@@ -60,6 +61,32 @@ namespace back.infra.Services.Authentication
 
             var newToken = GenerateToken(new UserAuthenticateDto { PerfilId = int.Parse(userId) });
             return newToken;
+        }
+        public static int getIdByToken(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                // ClockSkew = TimeSpan.Zero,
+
+            };
+
+            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
+            var jwtSecurityToken = securityToken as JwtSecurityToken;
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                throw new SecurityTokenException("Invalid token");
+
+            var userId = principal.FindFirst(ClaimTypes.PrimarySid)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                throw new SecurityTokenException("Invalid token");
+
+            return int.Parse(userId);
         }
 
 
