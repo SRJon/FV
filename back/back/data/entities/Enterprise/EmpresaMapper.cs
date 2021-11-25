@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using back.domain.DTO.Empresa;
+using back.domain.DTO.Enterprise;
 
 namespace back.data.entities.Enterprise
 {

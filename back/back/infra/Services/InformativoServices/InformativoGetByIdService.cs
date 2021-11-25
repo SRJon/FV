@@ -7,6 +7,6 @@ namespace back.infra.Services.InformativoServices
 {
     public static class InformativoGetByIdService
     {
-        public static Task<Informativo> GetByIdService(this DbAppContextFVUDB_TESTE ctx, int id) => ctx.Informativo.FirstOrDefaultAsync(x => x.Id == id);
+        public static Task<Informativo> GetByIdService(this DbAppContextFVUDB_TESTE ctx, int id) => ctx.Informativo.Include(e => e.Empresa).FirstOrDefaultAsync(x => x.Id == id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using back.domain.entities;
+﻿using back.domain.DTO.Enterprise;
+using back.domain.entities;
 
 namespace back.domain.DTO.AnexoRep
 {
@@ -9,6 +10,7 @@ namespace back.domain.DTO.AnexoRep
         public string Titulo { get; set; }
         public string Extensao { get; set; }
         public int EmpresaId { get; set; }
+        public virtual EmpresaDTO Empresa { get; set; }
     }
 }
 

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using back.data.entities.Pedido;
+using back.data.entities.Request;
 using back.data.http;
-using back.domain.DTO.Pedido;
+using back.domain.DTO.Request;
 
 namespace back.domain.Repositories
 {

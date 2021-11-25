@@ -11,14 +11,16 @@ using back.data.entities.Diretorio;
 using back.data.entities.Enterprise;
 using back.data.entities.Informativo;
 using back.data.entities.Parametro;
-using back.data.entities.Pedido;
-using back.data.entities.PedidoItem;
+using back.data.entities.Request;
+using back.data.entities.RequestItem;
 using back.data.entities.ProfileScreen;
 using back.data.entities.Profile;
 using back.data.entities.Projetos;
 using back.data.entities.UserCustomizations;
 using back.data.entities.VersaoProjetos;
 using back.data.entities.VersionDetails;
+using back.data.entities.VIEW_AD_VGFRPV;
+using back.data.entities.TGFParceiro;
 
 namespace back.MappingConfig
 {
@@ -49,6 +51,8 @@ namespace back.MappingConfig
                 cfg.CreateUserMapper();
                 cfg.CreateVersaoProjetosMapper();
                 cfg.CreateVersionDetailsMapper();
+                cfg.CreateAD_VGFRPVDetailsMapper();
+                cfg.CreateTGFPARMapper();
                 cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;

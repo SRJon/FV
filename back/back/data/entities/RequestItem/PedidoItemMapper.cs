@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using back.domain.DTO.PedidoItem;
+using back.domain.DTO.RequestItem;
 
-namespace back.data.entities.PedidoItem
+namespace back.data.entities.RequestItem
 {
     public static class PedidoItemItemMapper
     {
@@ -12,6 +12,9 @@ namespace back.data.entities.PedidoItem
 
             cfg.CreateMap<PedidoItem, PedidoItemDTO>();
             cfg.CreateMap<PedidoItemDTO, PedidoItem>();
+
+            cfg.CreateMap<PedidoItem, PedidoItemDTORequestless>();
+            cfg.CreateMap<PedidoItemDTORequestless, PedidoItem>();
 
             return cfg;
         }

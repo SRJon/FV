@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using back.data.entities.PedidoItem;
+using back.data.entities.RequestItem;
 using back.data.http;
-using back.domain.DTO.PedidoItem;
+using back.domain.DTO.RequestItem;
 
 namespace back.domain.Repositories
 {
@@ -12,7 +12,7 @@ namespace back.domain.Repositories
         public Task<PedidoItemDTO> GetById(int id);
         public Task<bool> Create(PedidoItem PedidoItem);
         public Task<bool> Delete(int id);
-        public Task<bool> Update(PedidoItem PedidoItem);       
-        
+        public Task<bool> Update(PedidoItem PedidoItem);
+
     }
 }
