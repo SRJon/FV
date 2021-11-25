@@ -1,6 +1,7 @@
 import { TelasService } from './../../Repository/Telas/telas.service';
 import { Component, OnInit } from '@angular/core';
 import { Tela } from 'src/app/Models/Tela';
+import { IUser } from '../../Domain/Models/IUser';
 
 @Component({
   selector: 'app-MainSidebarContainer',
@@ -9,6 +10,7 @@ import { Tela } from 'src/app/Models/Tela';
 })
 export class MainSidebarContainerComponent implements OnInit {
   screens: Tela[] = [];
+  user?: IUser;
 
   constructor(private telasservice: TelasService) {
     this.getAll();
