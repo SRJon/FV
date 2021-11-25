@@ -63,7 +63,6 @@ export class UsuarioEditModalComponent implements OnInit, OnChanges {
 
       // @ts-ignore: Unreachable code error
       this.select.select2();
-      console.log(this.select);
 
       if (this.select) {
         clearInterval(interval);
