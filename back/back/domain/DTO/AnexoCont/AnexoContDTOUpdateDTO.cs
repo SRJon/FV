@@ -12,6 +12,6 @@ namespace back.domain.DTO.AnexoCont
         public string Extensao { get; set; }
         public int? Tamanho { get; set; }
         public int? Seq { get; set; }
-        public int CodPar { get; set; }
+        public int CodParc { get; set; }
     }
 }

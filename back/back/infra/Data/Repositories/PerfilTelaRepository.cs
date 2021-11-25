@@ -72,7 +72,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.PerfilTela.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+                var savedSearches = contexto.PerfilTela.Include(p => p.Perfil).ThenInclude(u => u.Usuario).Include(e => e.Telas).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
                 List<PerfilTelaDTO> dTOs = new List<PerfilTelaDTO>();
 
@@ -88,9 +88,11 @@ namespace back.infra.Data.Repositories
                 response.StatusCode = 200;
                 return response;
             }
-            catch (System.Exception e)
+            catch (Exception)
             {
-                throw e;
+                response.Data = null;
+                response.StatusCode = 400;
+                return response;
             }
         }
 
@@ -104,7 +106,7 @@ namespace back.infra.Data.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> Update(PerfilTela perfilTela)
+        public Task<bool> Update(PerfilTelaDTOUpdateDTO perfilTela)
         {
             if (perfilTela.Id == 0)
             {

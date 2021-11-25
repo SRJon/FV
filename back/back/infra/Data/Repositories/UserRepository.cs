@@ -1,16 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Login;
 using back.data.entities.User;
 using back.data.http;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.User;
 using back.domain.Repositories;
 using back.infra.Data.Context;
-using back.infra.Services.Authentication;
 using back.infra.Services.UsuarioServices;
 using back.MappingConfig;
 using Microsoft.EntityFrameworkCore;
@@ -66,19 +64,23 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        public async Task<Response<List<Usuario>>> GetAllPaginateAsync(int page, int limit)
+        public async Task<Response<List<UsuarioDTO>>> GetAllPaginateAsync(int page, int limit)
         {
-            var response = new Response<List<Usuario>>();
-            var GRUPOLITORAL = _ctxs.GetVFU();
+            var response = new Response<List<UsuarioDTO>>();
+            var contexto = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = GRUPOLITORAL.Usuario.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+                var savedSearches = contexto.Usuario.Include(p => p.Perfil).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);//.Include(x => x.Parameters);
+
+                List<UsuarioDTO> dTOs = new List<UsuarioDTO>();
+
+                var usuarios = await savedSearches.ToListAsync();
+                usuarios.ForEach(e => dTOs.Add(_mapper.Map<UsuarioDTO>(e)));
 
 
-
-                response.Data = await savedSearches.ToListAsync();
-                response.TotalPages = await GRUPOLITORAL.Usuario.CountAsync();
+                response.Data = dTOs;
+                response.TotalPages = await contexto.Usuario.CountAsync();
                 response.Page = page;
                 response.TotalPages = (response.TotalPages / base.limit) + 1;
                 response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
@@ -86,7 +88,7 @@ namespace back.infra.Data.Repositories
                 response.StatusCode = 200;
                 return response;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 response.Data = null;
                 response.StatusCode = 400;
@@ -96,26 +98,24 @@ namespace back.infra.Data.Repositories
 
         public async Task<UsuarioDTO> GetById(int id)
         {
-            return _mapper.Map<UsuarioDTO>(await this._ctxs
+            var response = await this._ctxs
             .GetVFU()
-            .GetByIdService(id));
+            .GetByIdUserService(id);
+            var result = _mapper.Map<UsuarioDTO>(response);
+
+
+            return result;
         }
 
 
 
-        public Task<bool> Update(Usuario usuario)
+        public async Task<bool> Update(UsuarioDTOUpdateDTO usuario)
         {
             if (usuario.Id == 0)
             {
-                return BadRequest(new Response<string>
-                {
-                    Message = "Id não informado",
-                    Data = "",
-                    Success = false,
-                    StatusCode = 400
-                });
+                return false;
             }
-            return _ctxs.GetVFU().UpdateUsuarioService(_mapper.Map<UsuarioDTOUpdateDTO>(usuario), usuario.Id);
+            return await _ctxs.GetVFU().UpdateUsuarioService(_mapper.Map<UsuarioDTOUpdateDTO>(usuario), usuario.Id);
         }
         public bool ProductExists(int id) => _ctxs.GetVFU().Usuario.Any(e => e.Id == id);
 
@@ -162,5 +162,7 @@ namespace back.infra.Data.Repositories
             .GetVFU()
             .GetByLoginService(login));
         }
+
+
     }
 }

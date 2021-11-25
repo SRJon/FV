@@ -1,1 +1,151 @@
-<p>usuario works!</p>
+<!-- TODO Usuario EditModal -->
+<app-usuario-edit-modal
+  *ngIf="!isDiposed"
+  [isOpen]="IsOpen"
+  (modalState)="onModalChange($event)"
+  [currentUser]="selectedUser"
+  (onDisabled)="onDispose($event)"
+></app-usuario-edit-modal>
+
+<!-- TODO title -->
+<div class="row pb-5">
+  <app-title [title]="'Usuario'"
+    ><div class="head_project">
+      <h1>Tela <span></span></h1></div
+  ></app-title>
+</div>
+<!-- TODO Usuario Grid -->
+<div class="row">
+  <div class="head">
+    <button class="btn btn-primary" (click)="openModal(null)">
+      Criar nova Tela
+    </button>
+  </div>
+</div>
+<div class="row">
+  <table id="table_user">
+    <thead>
+      <tr>
+        <th *ngFor="let title of listTitle" [class]="title + '-col'">
+          {{ title }}
+        </th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of listGrid">
+        <th
+          *ngFor="let title of listTitle"
+          [ngSwitch]="getType(item[title])"
+          [class]="title + '-col'"
+        >
+          <span *ngSwitchCase="'boolean'">
+            <input type="checkbox" [checked]="item[title]" disabled />
+          </span>
+
+          <span *ngSwitchDefault [ngSwitch]="title">
+            <span *ngSwitchCase="'email'">
+              <a href="mailto: {{ item[title] }}"> {{ item[title] }}</a>
+            </span>
+            <span *ngSwitchDefault> {{ item[title] }}</span>
+          </span>
+        </th>
+        <th>
+          <ul class="listActions">
+            <li>
+              <button
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#modal-default"
+                (click)="openModal(item)"
+              >
+                <i class="fa fa-pencil-alt"></i>
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn btn-danger"
+                (click)="changeModalDeleteState(true, item)"
+              >
+                <!-- (click)="onDelete(item)" -->
+                <i class="fa fa-trash"></i>
+              </button>
+            </li>
+          </ul>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-6">
+      <span>sss</span>
+    </div>
+    <div class="col-6">
+      <ul id="table_id_paginate" class="pagination"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- TODO modal Usuario delete -->
+<div
+  *ngIf="modalIsOpen"
+  _ngcontent-twf-c56=""
+  id="modal-sm"
+  aria-hidden="true"
+  role="dialog"
+  class="modal fade show"
+  style="
+    display: block;
+    padding-right: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Deseja Excluir a Tela</h4>
+        <button
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+          class="close"
+          (click)="changeModalDeleteState(false)"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ng-template [ngIf]="selectedUser">
+          <p>
+            Id: <strong>{{ selectedUser.id }}</strong>
+          </p>
+          <p>
+            Nome: <strong>{{ selectedUser.nome }}</strong>
+          </p>
+        </ng-template>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button
+          type="button"
+          data-dismiss="modal"
+          class="btn btn-default"
+          (click)="changeModalDeleteState(false)"
+        >
+          Fechar</button
+        ><button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteUser(selectedUser)"
+        >
+          Salvar mudanças
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

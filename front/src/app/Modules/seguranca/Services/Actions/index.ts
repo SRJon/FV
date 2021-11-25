@@ -1,4 +1,4 @@
-import { GetAll } from './ScreenGetAll';
-import { Delete } from './ScreenDelete';
+import * as screen from './screen/';
+import * as user from './user/index';
 
-export { GetAll, Delete };
+export { screen, user };

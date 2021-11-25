@@ -1,6 +1,7 @@
 ﻿using back.data.entities.Enterprise;
 using back.domain.entities;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace back.data.entities.Informativo
 {
@@ -9,10 +10,8 @@ namespace back.data.entities.Informativo
         public int Id { get; set; }
         public string Descricao { get; set; }
         public string Texto { get; set; }
-
-        public Empresa ToModel()
-        {
-            throw new NotImplementedException();
-        }
+        public int EmpresaId { get; set; }
+        [ForeignKey("EmpresaId")]
+        public virtual Empresa Empresa { get; set; }
     }
 }

@@ -10,6 +10,9 @@ namespace back.data.entities.VersaoProjetos
             cfg.CreateMap<VersaoProjetos, VersaoProjetosDTOUpdateDTO>();
             cfg.CreateMap<VersaoProjetosDTOUpdateDTO, VersaoProjetos>();
 
+            cfg.CreateMap<VersaoProjetos, VersaoProjetosDTO>();
+            cfg.CreateMap<VersaoProjetosDTO, VersaoProjetos>();
+
             return cfg;
         }
 

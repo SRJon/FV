@@ -5,22 +5,23 @@ namespace back.data.http
 {
     public class HttpAdapter<T>
     {
-        public int StatusCode { get; set; }
-        public T Response { get; set; }
+        public Response<T> Response { get; set; }
         public ActionResult result { get; set; }
-        public HttpAdapter(int statusCode, T response)
+        public HttpAdapter()
         {
-            StatusCode = statusCode;
-            Response = response;
+        }
+        public HttpAdapter(Response<T> r)
+        {
+            Response = r;
         }
 
 
 
-        public ActionResult<T> GetResponse()
+        public ActionResult<Response<T>> GetResponse()
         {
 
             ActionResult res = null;
-
+            var StatusCode = this.Response.StatusCode;
 
 
             switch (StatusCode)
@@ -50,6 +51,12 @@ namespace back.data.http
 
 
             return res;
+        }
+
+        public static HttpAdapter<T> getInstance()
+        {
+
+            return new HttpAdapter<T>();
         }
     }
 }

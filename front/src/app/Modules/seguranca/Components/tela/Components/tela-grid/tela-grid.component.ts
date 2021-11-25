@@ -10,6 +10,7 @@ import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.servi
 import { AlertsService } from 'src/app/Repository/Alerts/alerts.service';
 import { ITela } from '../../../../../../Domain/Models/ITela';
 import { Paginate } from '../../../../../../Domain/Models/Paginate';
+import * as shareds from 'src/app/Shared';
 
 @Component({
   selector: 'app-tela-grid',
@@ -24,13 +25,12 @@ export class TelaGridComponent implements OnInit, OnChanges {
   @Output() nextSelection = new EventEmitter<number>();
   selectedRecord: ITela | undefined;
   isDelete: boolean = false;
+  grid: shareds.Grid;
 
   constructor(
     private screensService: ScreensService,
     private alertsService: AlertsService
   ) {
-    this.paginate = new Paginate(2000, 50);
-
     this.titleList = [
       'id',
       'nome',
@@ -40,6 +40,8 @@ export class TelaGridComponent implements OnInit, OnChanges {
       'ordem',
       'modulo',
     ];
+    this.grid = new shareds.Grid();
+    this.paginate = new Paginate(2000, 50);
   }
   clickOnPagination(page: number): void {
     this.nextSelection.emit(page);
@@ -58,7 +60,7 @@ export class TelaGridComponent implements OnInit, OnChanges {
       this.selectedRecord = this.listGrid.find((e) => e.id === obj.id);
     }
   }
-  async onDelete(obj: ITela | undefined = undefined): Promise<void> {
+  onDelete(obj: ITela | undefined = undefined) {
     this.selectedRecord = obj;
 
     this.isDelete = true;
@@ -68,7 +70,6 @@ export class TelaGridComponent implements OnInit, OnChanges {
       .deleteScreen(id || 0)
       .then((res) => {
         this.clickOnPagination(this.paginate.currentPage);
-        console.log(res, 'res');
 
         if (res.data) {
           this.alertsService.showAlert('Tela excluida com sucesso', 'success');
@@ -84,6 +85,7 @@ export class TelaGridComponent implements OnInit, OnChanges {
       })
       .finally(() => {
         this.isDelete = false;
+        this.selectedRecord = undefined;
       });
   }
   onModalClose(isClose: boolean) {
@@ -102,34 +104,17 @@ export class TelaGridComponent implements OnInit, OnChanges {
   }
 
   initGrid(): void {
-    let ctx = this;
-    $(document).ready(function () {
-      // @ts-ignore: Unreachable code error
-
-      $('#table_id').dataTable({
-        paging: false,
-        lengthChange: false,
-        info: '',
-        language: {
-          zeroRecords: ' ',
-        },
-      });
-
-      ctx.setPaginate(ctx);
-    });
+    this.grid.createGrid({ selectorHtml: '#table_id', paging: false });
   }
-  setPaginate(ctx: this): void {
-    // @ts-ignore: Unreachable code error
-    $('#table_id_paginate').pagination({
-      total: ctx.paginate.pageSize * 10,
-      current: ctx.paginate.currentPage,
-      click: function (e: any) {
-        // ctx.paginate.currentPage = e.current;
-        ctx.clickOnPagination(e.current);
-      },
+  setPaginate(): void {
+    this.grid.sharePaginate.setHtml('#table_id_paginate');
+    this.grid.sharePaginate.paginate = this.paginate;
+    this.grid.sharePaginate.setPaginate((e) => {
+      this.clickOnPagination(e);
     });
+    this.grid.render();
   }
   ngOnChanges(): void {
-    this.setPaginate(this);
+    this.setPaginate();
   }
 }

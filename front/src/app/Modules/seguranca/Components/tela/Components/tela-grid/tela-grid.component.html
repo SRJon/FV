@@ -48,11 +48,12 @@
   </div>
 </div>
 
-<app-edit-tela-component
-  [tela]="selectedRecord"
-  *ngIf="selectedRecord"
-  (onCloseModal)="stateModal($event)"
-></app-edit-tela-component>
+<div id="tela_grid_edit_component" *ngIf="selectedRecord && !isDelete">
+  <app-edit-tela-component
+    [tela]="selectedRecord"
+    (onCloseModal)="stateModal($event)"
+  ></app-edit-tela-component>
+</div>
 
 <!--  TODO modal delete -->
 <div

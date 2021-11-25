@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
 import { ITela } from 'src/app/Domain/Models/ITela';
 import { Paginate } from 'src/app/Domain/Models/Paginate';
@@ -22,10 +22,10 @@ export class TelaContentComponent implements OnInit {
     this.initialParam = {
       id: 0,
       nome: '',
-      addUrl: '',
-      iconClass: '',
-      imagemSd: '',
-      modulo: '',
+      addUrl: ' ',
+      iconClass: ' ',
+      imagemSd: ' ',
+      modulo: ' ',
       ordem: 0,
       nivel: false,
       relateds: [],
@@ -40,9 +40,11 @@ export class TelaContentComponent implements OnInit {
     this.getAll(1);
   }
 
-  openModal() {
-    this.isOpen = true;
-    alert('teste');
+  openModal(isClose: boolean) {
+    this.isOpen = !isClose;
+    if (isClose) {
+      this.getAll(this.paginate.currentPage);
+    }
   }
   getAll(page: number, limit: number = 7) {
     this.screensService.getScreens(page, limit).then((response) => {

@@ -10,6 +10,9 @@ namespace back.data.entities.Parametro
             cfg.CreateMap<Parametro, ParametroDTOUpdateDTO>();
             cfg.CreateMap<ParametroDTOUpdateDTO, Parametro>();
 
+            cfg.CreateMap<Parametro, ParametroDTO>();
+            cfg.CreateMap<ParametroDTO, Parametro>();
+
             return cfg;
         }
 

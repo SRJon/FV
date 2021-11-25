@@ -13,16 +13,16 @@ namespace back.domain.entities
         public string Nome { get; set; }
         public string Email { get; set; }
         public bool Ativo { get; set; }
-        public int PerfilId { get; set; }
+        public Nullable<int> PerfilId { get; set; }
         public Nullable<int> VendedorUCod { get; set; }
         public Nullable<bool> AltSenha { get; set; }
         public Nullable<DateTime> DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
-        public Nullable<int> SGTSIUSU_USU_COD { get; set; }
+        public Nullable<int> sgtsiusU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
 
         public UserAuthenticateDto ToDto();
-        public Usuario ToModel();
+
 
     }
 }

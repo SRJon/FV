@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.User;
-using back.domain.DTO.Usuario;
+using back.domain.DTO.User;
 using back.infra.Data.Context;
 using back.infra.Services.Authentication;
 using back.MappingConfig;

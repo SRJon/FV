@@ -36,7 +36,8 @@
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/admin-lte/plugins/fontawesome-free/css/all.css",
               "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.css",
-              "node_modules/admin-lte/dist/css/adminlte.css"
+              "node_modules/admin-lte/dist/css/adminlte.css",
+              "node_modules/bootstrap-select/dist/css/bootstrap-select.css"
             ],
             "scripts": [
               "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.js",
@@ -51,7 +52,8 @@
               "src/assets/js/select2.full.min.js",
               "src/assets/js/jquery.bootstrap-duallistbox.min.js",
               "node_modules/admin-lte/plugins/jquery/jquery.js",
-              "src/assets/js/bootstrap.bundle.min.js"
+              "src/assets/js/bootstrap.bundle.min.js",
+              "node_modules/bootstrap-select/dist/js/bootstrap-select.js"
             ]
           },
           "configurations": {
