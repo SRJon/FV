@@ -1,12 +1,14 @@
-﻿using back.domain.entities;
+﻿
+using back.domain.DTO.Request;
+using back.domain.entities;
 using System;
 
-namespace back.data.entities.PedidoItem
+
+namespace back.domain.DTO.RequestItem
 {
-    public class PedidoItem : IPedidoItem
+    public class PedidoItemDTO : IPedidoItem
     {
         public int Id { get; set; }
-        public int PedidoId { get; set; }
         public int ProdCodProd { get; set; }
         public decimal? Qtd { get; set; }
         public decimal? Preco { get; set; }
@@ -20,5 +22,7 @@ namespace back.data.entities.PedidoItem
         public decimal? PercIpi { get; set; }
         public decimal? PrecoTab { get; set; }
         public Boolean? ForaPolitica { get; set; }
+        public int PedidoId { get; set; }
+        public virtual PedidoDTOItemless Pedido { get; set; }
     }
 }

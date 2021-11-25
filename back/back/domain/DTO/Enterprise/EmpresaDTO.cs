@@ -1,6 +1,6 @@
 using back.domain.entities;
 
-namespace back.domain.DTO.Empresa
+namespace back.domain.DTO.Enterprise
 {
     public class EmpresaDTO : IEmpresa
     {

@@ -33,7 +33,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.AnexoRep.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+                var savedSearches = contexto.AnexoRep.Include(e => e.Empresa).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
                 List<AnexoRepDTO> dTOs = new List<AnexoRepDTO>();
 

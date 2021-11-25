@@ -12,8 +12,8 @@ using back.data.entities.Diretorio;
 using back.data.entities.Enterprise;
 using back.data.entities.Informativo;
 using back.data.entities.Parametro;
-using back.data.entities.Pedido;
-using back.data.entities.PedidoItem;
+using back.data.entities.Request;
+using back.data.entities.RequestItem;
 using back.data.entities.Profile;
 using back.data.entities.ProfileScreen;
 using back.data.entities.Projetos;
@@ -24,12 +24,10 @@ using back.data.entities.UserCustomizations;
 using back.data.entities.VersaoProjetos;
 using back.data.entities.VersionDetails;
 
-using back.domain.DTO.ScreenDTO;
-using back.domain.DTO.User;
 using back.ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
+
 
 namespace back.infra.Data.Context
 {
@@ -74,36 +72,15 @@ namespace back.infra.Data.Context
 
             modelBuilder.EntitiesConfigurationInjection();
             // modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
-            modelBuilder.Entity<Tela>().HasOne(a => a.tela).WithOne().HasForeignKey<Tela>(a => a.TelaId);
-
-            modelBuilder.Entity<Usuario>()
-                        .HasOne(a => a.Perfil)
-                        .WithMany(a => a.Usuario);
-
-            modelBuilder.Entity<Perfil>()
-                        .HasMany(a => a.Usuario)
-                        .WithOne(a => a.Perfil);
-
-            modelBuilder.Entity<Perfil>()
-                        .HasMany(a => a.PerfilTela)
-                        .WithOne(a => a.Perfil);
-
-            modelBuilder.Entity<Perfil>()
-                        .HasMany(a => a.PerfilTela)
-                        .WithOne(p => p.Perfil);
-
-            modelBuilder.Entity<PerfilTela>()
-                        .HasOne(a => a.Telas)
-                        .WithOne();
-
-            modelBuilder.Entity<PerfilTela>()
-                        .HasOne(a => a.Perfil)
-                        .WithMany(b => b.PerfilTela);
 
 
+            modelBuilder.UserRelationConfiguring();
+            modelBuilder.ProfileScreenConfiguring();
+            modelBuilder.ProfileRelationConfiguring();
+            modelBuilder.PedidoRelationConfiguring();
+            modelBuilder.AnexoRepRelationConfiguring();
+            modelBuilder.InformativoRelationConfiguring();
 
-
-            // modelBuilder.UserRelationConfiguring();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

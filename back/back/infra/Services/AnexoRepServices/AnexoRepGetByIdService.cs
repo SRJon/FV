@@ -7,6 +7,6 @@ namespace back.infra.Services.AnexoRepServices
 {
     public static class AnexoRepGetByIdService
     {
-        public static Task<AnexoRep> GetByIdService(this DbAppContextFVUDB_TESTE ctx, int id) => ctx.AnexoRep.FirstOrDefaultAsync(x => x.Id == id);
+        public static Task<AnexoRep> GetByIdService(this DbAppContextFVUDB_TESTE ctx, int id) => ctx.AnexoRep.Include(e => e.Empresa).FirstOrDefaultAsync(x => x.Id == id);
     }
 }

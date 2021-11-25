@@ -7,13 +7,9 @@ namespace back.data.entities.User
     {
         public static ModelBuilder UserRelationConfiguring(this ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<Usuario>()
-            //     .HasOne(u => u.Perfil)
-            //     .WithOne();
-            // .HasForeignKey(e => e.PerfilId);
-            // modelBuilder.Entity<TelaDTO>().HasOne(a => a.tela).WithOne().HasForeignKey<TelaDTOChild>(a => a.TelaId);
-
-
+            modelBuilder.Entity<Usuario>()
+                        .HasOne(a => a.Perfil)
+                        .WithMany(a => a.Usuario);
             return modelBuilder;
         }
     }

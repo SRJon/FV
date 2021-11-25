@@ -1,9 +1,13 @@
-﻿using back.domain.entities;
+﻿using back.domain.DTO.Enterprise;
+using back.domain.DTO.RequestItem;
+using back.domain.DTO.User;
+using back.domain.entities;
 using System;
+using System.Collections.Generic;
 
-namespace back.domain.DTO.Pedido
+namespace back.domain.DTO.Request
 {
-    public class PedidoDTOUpdateDTO : IPedido
+    public class PedidoDTO : IPedido
     {
         public int Id { get; set; }
         public string Frete { get; set; }
@@ -48,5 +52,9 @@ namespace back.domain.DTO.Pedido
         public bool? PedidoItemOrdemComp { get; set; }
         public int? DiasVenc { get; set; }
         public DateTime? DtCartao { get; set; }
+        public virtual EmpresaDTO Empresa { get; set; }
+        public virtual UsuarioDTO Usuario { get; set; }
+        public virtual ICollection<PedidoItemDTORequestless> PedidoItem { get; set; }
+
     }
 }

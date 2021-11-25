@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using back.data.entities.Pedido;
+using back.data.entities.Request;
 using back.data.http;
-using back.domain.DTO.Pedido;
+using back.domain.DTO.Request;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.PedidoServices;
@@ -33,7 +33,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Pedido.Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+                var savedSearches = contexto.Pedido.Include(u => u.Usuario).Include(e => e.Empresa).Include(p => p.PedidoItem).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
                 List<PedidoDTO> dTOs = new List<PedidoDTO>();
 

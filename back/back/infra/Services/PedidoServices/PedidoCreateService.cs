@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using back.data.entities.Pedido;
+using back.data.entities.Request;
 using back.infra.Data.Context;
 
 namespace back.infra.Services.PedidoServices
