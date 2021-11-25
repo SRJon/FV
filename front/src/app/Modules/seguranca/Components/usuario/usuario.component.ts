@@ -73,7 +73,6 @@ export class UsuarioComponent implements OnInit {
       this.grid.sharePaginate.setAttr(response);
       this.grid.sharePaginate.setPaginate((p) => this.getAll(p));
       this.grid.render();
-      console.log(this.listGrid);
     }
   }
   getType(type: string): string {
