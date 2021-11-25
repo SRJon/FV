@@ -12,6 +12,7 @@ export class UsuarioEditWords {
   sankyaUserId: string = 'USUÁRIO';
   sakyaGrupId: string = 'GRUPO';
   limitInput: string = 'LIMITE ACESSO';
+  lastUpdatePasswordInput: string = 'Última alteração de senha';
 
   private _titles: string[];
   private _index: number = 0;

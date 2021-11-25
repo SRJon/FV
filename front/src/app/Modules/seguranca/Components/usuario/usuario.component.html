@@ -7,6 +7,13 @@
   (onDisabled)="onDispose($event)"
 ></app-usuario-edit-modal>
 
+<!-- TODO title -->
+<div class="row pb-5">
+  <app-title [title]="'Usuario'"
+    ><div class="head_project">
+      <h1>Tela <span></span></h1></div
+  ></app-title>
+</div>
 <!-- TODO Usuario Grid -->
 <div class="row">
   <div class="head">
@@ -57,7 +64,10 @@
               </button>
             </li>
             <li>
-              <button class="btn btn-danger">
+              <button
+                class="btn btn-danger"
+                (click)="changeModalDeleteState(true, item)"
+              >
                 <!-- (click)="onDelete(item)" -->
                 <i class="fa fa-trash"></i>
               </button>
@@ -75,6 +85,67 @@
     </div>
     <div class="col-6">
       <ul id="table_id_paginate" class="pagination"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- TODO modal Usuario delete -->
+<div
+  *ngIf="modalIsOpen"
+  _ngcontent-twf-c56=""
+  id="modal-sm"
+  aria-hidden="true"
+  role="dialog"
+  class="modal fade show"
+  style="
+    display: block;
+    padding-right: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Deseja Excluir a Tela</h4>
+        <button
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+          class="close"
+          (click)="changeModalDeleteState(false)"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ng-template [ngIf]="selectedUser">
+          <p>
+            Id: <strong>{{ selectedUser.id }}</strong>
+          </p>
+          <p>
+            Nome: <strong>{{ selectedUser.nome }}</strong>
+          </p>
+        </ng-template>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button
+          type="button"
+          data-dismiss="modal"
+          class="btn btn-default"
+          (click)="changeModalDeleteState(false)"
+        >
+          Fechar</button
+        ><button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteUser(selectedUser)"
+        >
+          Salvar mudanças
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Grid } from 'src/app/Shared';
 import { UserService } from '../../Services/user.service';
 import { IUser } from '../../../../Domain/Models/IUser';
+import { AlertsService } from '../../../../Repository/Alerts/alerts.service';
 
 @Component({
   selector: 'app-usuario',
@@ -9,19 +10,29 @@ import { IUser } from '../../../../Domain/Models/IUser';
   styleUrls: ['./usuario.component.scss'],
 })
 export class UsuarioComponent implements OnInit {
-  IsOpen: boolean = true;
+  IsOpen: boolean = false;
   listGrid: any[] = [];
   listTitle: string[];
   grid: Grid;
   selectedUser: IUser;
   isDiposed: boolean = false;
+  modalIsOpen: boolean = false;
 
-  constructor(private service: UserService) {
+  constructor(
+    private service: UserService,
+    private alertsService: AlertsService
+  ) {
     this.selectedUser = this.makeEmptyUser();
     this.grid = new Grid();
     this.grid.sharePaginate.setHtml('.pagination');
 
     this.listTitle = ['id', 'nome', 'email', 'ativo'];
+  }
+  changeModalDeleteState(isOpen: boolean, IUser: IUser | null = null) {
+    this.modalIsOpen = isOpen;
+    if (IUser) {
+      this.selectedUser = this.cloneUser(IUser);
+    }
   }
   onModalChange(isOpen: boolean) {
     this.IsOpen = isOpen;
@@ -67,6 +78,21 @@ export class UsuarioComponent implements OnInit {
   }
   getType(type: string): string {
     return (typeof type).trim();
+  }
+
+  public async deleteUser(user: IUser) {
+    var response = await this.service.delete(user.id);
+
+    if (response) {
+      this.alertsService.showAlert(
+        response.data
+          ? 'Deletado com sucesso'
+          : 'Usuario não pode ser deletado',
+        response.data ? 'success' : 'error'
+      );
+      this.getAll();
+      this.changeModalDeleteState(false);
+    }
   }
   ngOnInit(): void {
     // this.grid.createGrid({ selectorHtml: '#table_user', paging: false });

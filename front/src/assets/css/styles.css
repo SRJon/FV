@@ -1,3 +1,6 @@
 span.select2-container {
   z-index: 99999 !important;
 }
+/* .select2-container--default {
+  width: 228px !important;
+} */
