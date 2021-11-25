@@ -36,14 +36,14 @@ namespace back.infra.Data.Repositories
             throw new System.NotImplementedException();
         }
 
-        public async Task<Response<List<AD_VGFRPVDTO>>> GetAllPaginateAsync(int page, int limit)
+        public async Task<Response<List<AD_VGFRPVDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor)
         {
             var response = new Response<List<AD_VGFRPVDTO>>();
             var contexto = _ctxs.GetSankhya();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.AD_VGFRPV.Skip(base.skip).Take(base.limit);
+                var savedSearches = contexto.AD_VGFRPV.Where(u => u.Codvend == codVendedor).Skip(base.skip).Take(base.limit);
                 List<AD_VGFRPVDTO> dTOs = new List<AD_VGFRPVDTO>();
 
                 var AD_VGFRPV = await savedSearches.ToListAsync();

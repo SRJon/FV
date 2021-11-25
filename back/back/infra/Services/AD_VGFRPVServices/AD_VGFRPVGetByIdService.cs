@@ -10,7 +10,7 @@ namespace back.infra.Services.AD_VGFRPVServices
     {
         public static Task<AD_VGFRPV> GetByIdService(this DbAppContextSankhya ctx, Int16 codVend)
         {
-            var b = ctx.AD_VGFRPV.FirstOrDefaultAsync(x => x.CODVEND == codVend);
+            var b = ctx.AD_VGFRPV.FirstOrDefaultAsync(x => x.Codvend == codVend);
 
             return b;
         }

@@ -1,9 +1,9 @@
 using System;
 using back.domain.entities;
 
-namespace back.domain.DTO.AD_VGFRPVDTO
+namespace back.data.entities.VIEW_AD_VGFRPV
 {
-    public class AD_VGFRPVDTO : IAD_VGFRPV
+    public class AD_VGFRPV : IAD_VGFRPV
     {
         public Int16 Codvend { get; set; }
         public string Nomvend { get; set; }

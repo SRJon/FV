@@ -4,11 +4,11 @@ namespace back.domain.entities
 {
     public interface IAD_VGFRPV
     {
-        public Int16 CODVEND { get; set; }
-        public string NOMEVEND { get; set; }
-        public int CODPARC { get; set; }
-        public string NOMEPARC { get; set; }
-        public string CGC_CPF { get; set; }
-        public Nullable<int> ATRASO { get; set; }
+        public Int16 Codvend { get; set; }
+        public string Nomvend { get; set; }
+        public int Codparc { get; set; }
+        public string Nomeparc { get; set; }
+        public string Cgc_cpf { get; set; }
+        public Nullable<int> Atraso { get; set; }
     }
 }
