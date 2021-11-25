@@ -1,4 +1,5 @@
 using back.data.entities.AnexoCont;
+using back.data.entities.DataViews.VIEW_AD_VGFRPV;
 using back.data.entities.TGFParceiro;
 using back.data.entities.VIEW_AD_VGFRPV;
 using Microsoft.EntityFrameworkCore;
@@ -27,8 +28,8 @@ namespace back.infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AD_VGFRPV>().HasNoKey();
-            modelBuilder.Entity<TGFPAR>().HasNoKey();
+            modelBuilder.AD_VGFRPVRelationConfiguring();
+            modelBuilder.TGFPARRelationConfiguring();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

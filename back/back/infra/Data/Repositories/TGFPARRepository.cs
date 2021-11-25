@@ -46,10 +46,11 @@ namespace back.infra.Data.Repositories
                 return response;
 
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.Data = null;
+
                 response.StatusCode = 400;
+                response.Message = e.Message;
                 return response;
             }
 

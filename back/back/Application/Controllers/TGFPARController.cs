@@ -60,7 +60,7 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar parceiro" + e.Message, false);
+                response.SetConfig(400, "Erro ao buscar parceiro " + e.Message, false);
             }
             return Ok(response);
         }

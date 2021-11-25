@@ -8,7 +8,7 @@ namespace back.domain.Repositories
 {
     public interface IAD_VGFRPVRepository
     {
-        public Task<data.http.Response<List<AD_VGFRPVDTO>>> GetAllPaginateAsync(int page, int limit);
+        public Task<data.http.Response<List<AD_VGFRPVDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor);
         public Task<AD_VGFRPVDTO> GetById(Int16 codVend);
         public Task<bool> Create(AD_VGFRPV AD_VGFRPV);
         public Task<bool> Delete(int id);
