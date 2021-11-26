@@ -1,5 +1,5 @@
 ﻿using back.data.http;
-using back.domain.DTO.TGFVEN;
+using back.domain.DTO.TSIEMP;
 using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -8,35 +8,35 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 /*
- * Controle da tabela TGFVEN do Sankhya somente leitura - VENDEDORES
+ * Controle da tabela TSIEMP do Sankhya somente leitura - EMPRESAS
  */
 namespace back.Application.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TGFVENController : ControllerBase
+    public class TSIEMPController : ControllerBase
     {
-        protected readonly ITGFVENRepository _TGFVENRepository;
+        protected readonly ITSIEMPRepository _TSIEMPRepository;
 
-        public TGFVENController(ITGFVENRepository TGFVENRepository)
+        public TSIEMPController(ITSIEMPRepository TSIEMPRepository)
         {
-            _TGFVENRepository = TGFVENRepository;
+            _TSIEMPRepository = TSIEMPRepository;
         }
 
 
 
         /*
-         * Consulta todos os registros e quantidade de páginas da tabela TGFVEN
+         * Consulta todos os registros e quantidade de páginas da tabela TSIEMP
          */
         [HttpGet]
-        //[Authorize]
+        [Authorize]
 
-        public async Task<ActionResult<IResponse<List<TGFVENDTO>>>> GetAll(int page = 1, int limit = 10)
+        public async Task<ActionResult<IResponse<List<TSIEMPDTO>>>> GetAll(int page = 1, int limit = 10)
         {
-            var response = new Response<List<TGFVENDTO>>();
+            var response = new Response<List<TSIEMPDTO>>();
             try
             {
-                var result = await _TGFVENRepository.GetAllPaginateAsync(page, limit);
+                var result = await _TSIEMPRepository.GetAllPaginateAsync(page, limit);
                 response.SetConfig(200);
                 response.Data = result.Data;
             }
@@ -48,17 +48,17 @@ namespace back.Application.Controllers
         }
 
         /*
-         * Consulta do registro pelo código da empresa "CODEMP" da tabela TGFVEN
+         * Consulta do registro pelo código de vendedor "CODEMP" da tabela TSIEMP
          */
-        [HttpGet("{CODVEND}")]
-        //[Authorize]
-        public async Task<ActionResult<Response<TGFVENDTO>>> GetByCODVEND(int CODVEND)
+        [HttpGet("{CODEMP}")]
+        [Authorize]
+        public async Task<ActionResult<Response<TSIEMPDTO>>> GetByCODEMP(int CODEMP)
         {
 
-            var response = new Response<TGFVENDTO>();
+            var response = new Response<TSIEMPDTO>();
             try
             {
-                TGFVENDTO result = await this._TGFVENRepository.GetByCODVEND(CODVEND);
+                TSIEMPDTO result = await this._TSIEMPRepository.GetByCODEMP(CODEMP);
                 if (result != null)
                 {
                     response.SetConfig(200);

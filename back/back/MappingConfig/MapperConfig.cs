@@ -22,6 +22,7 @@ using back.data.entities.VersionDetails;
 using back.data.entities.VIEW_AD_VGFRPV;
 using back.data.entities.TGFParceiro;
 using back.data.entities.TGFVEN;
+using back.data.entities.TSIEMP;
 
 namespace back.MappingConfig
 {
@@ -55,6 +56,7 @@ namespace back.MappingConfig
                 cfg.CreateAD_VGFRPVDetailsMapper();
                 cfg.CreateTGFPARMapper();
                 cfg.CreateTGFVENMapper();
+                cfg.CreateTSIEMPMapper();
                 cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;
