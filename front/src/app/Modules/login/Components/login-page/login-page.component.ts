@@ -58,7 +58,7 @@ export class LoginPageComponent implements OnInit {
     this.isLoading = true;
     const { user, password } = this;
     try {
-      await this.ServiceLogin.login(user, password).then(() => {
+      await this.ServiceLogin.login(toLogin.user, toLogin.password).then(() => {
         location.reload();
 
         this.router.navigate(['/wpinicio']);
@@ -68,7 +68,10 @@ export class LoginPageComponent implements OnInit {
       let status = error.response.status || 500;
 
       if (status === 500) {
-        this.alertsService.showAlert('Ocorreu um error tente novamente!', 'error');
+        this.alertsService.showAlert(
+          'Ocorreu um error tente novamente!',
+          'error'
+        );
       } else {
         this.alertsService.showAlert(error.response.data, 'warning');
       }
