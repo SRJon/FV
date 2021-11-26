@@ -1,9 +1,13 @@
-import { FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 import { AlertsService } from 'src/app/Repository/Alerts/alerts.service';
 import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as Entities from './../../Entities/';
-
 
 @Component({
   selector: 'app-login-menu',
@@ -14,18 +18,17 @@ export class LoginMenuComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<Entities.ILogin>();
 
   loginEntity: Entities.ILogin;
-  isValid: boolean = false;
   serviceForm: FormGroup;
 
-  constructor(private ScreensService: ScreensService,
-              private AlertsService: AlertsService,
-              private FormBuilder: FormBuilder
-    ){
+  constructor(
+    private ScreensService: ScreensService,
+    private AlertsService: AlertsService,
+    private FormBuilder: FormBuilder
+  ) {
     this.serviceForm = this.FormBuilder.group({
-      senha: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(4)]],
     });
 
-    
     this.loginEntity = {
       password: '',
       user: '',
@@ -35,8 +38,15 @@ export class LoginMenuComponent implements OnInit {
   ngOnInit(): void {}
 
   Login() {
-    this.onSubmit.emit(this.loginEntity);
+    if(this.serviceForm.valid){
+      console.log(this.serviceForm.get('password'));
+      this.onSubmit.emit(this.loginEntity);
+      return;
+    } else {
+        return;
+    }
   }
-
-
+  getEntries(obj: any) {
+    return Object.entries(obj).map((e) => e[0]);
+  }
 }
