@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using back.data.entities.SintegraCNPJQuery;
 using back.data.entities.TGFParceiro;
 using back.data.http;
 using back.domain.DTO.TGFParceiroDTO;
@@ -56,12 +58,43 @@ namespace back.infra.Data.Repositories
 
         }
 
+        public async Task<TGFPARDTO> GetByCgc_cpf(string cgc_cpf)
+        {
+            var res = await this._ctxs.GetSankhya().GetByCNPJService(cgc_cpf);
+            var rmapper = _mapper.Map<TGFPARDTO>(res);
+            return rmapper;
+        }
+
         public async Task<TGFPARDTO> GetById(int id)
         {
             var res = await this._ctxs.GetSankhya().GetByIdService(id);
             var rmapper = _mapper.Map<TGFPARDTO>(res);
 
             return rmapper;
+        }
+
+        public Task<bool> Create(TGFPARDTOCreate cliente)
+        {
+            try
+            {
+                return _ctxs.GetSankhya().Create(cliente);
+            }
+            catch (Exception)
+            {
+
+            }
+            return null;
+        }
+
+        public void AtribuicaoValoresCliente(TGFPARDTO cliente, SintegraCNPJ cnpj)
+        {
+            cliente.Cgc_cpf = cnpj.Cnpj;
+            cliente.Razaosocial = cnpj.Nome;
+            cliente.Tippessoa = 'J';
+            cliente.Cep = cnpj.Cep;
+
+
+
         }
     }
 }
