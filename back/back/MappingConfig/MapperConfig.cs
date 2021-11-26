@@ -21,6 +21,7 @@ using back.data.entities.VersaoProjetos;
 using back.data.entities.VersionDetails;
 using back.data.entities.VIEW_AD_VGFRPV;
 using back.data.entities.TGFParceiro;
+using back.data.entities.TGFVEN;
 
 namespace back.MappingConfig
 {
@@ -53,6 +54,7 @@ namespace back.MappingConfig
                 cfg.CreateVersionDetailsMapper();
                 cfg.CreateAD_VGFRPVDetailsMapper();
                 cfg.CreateTGFPARMapper();
+                cfg.CreateTGFVENMapper();
                 cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;
