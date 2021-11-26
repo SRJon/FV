@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using back.data.entities.Screen;
 using back.data.http;
 using back.domain.DTO.ScreenDTO;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Data.Utils;
+using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
