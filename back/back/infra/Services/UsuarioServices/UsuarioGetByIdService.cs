@@ -19,6 +19,8 @@ namespace back.infra.Services.UsuarioServices
             // }
             var user = await ctx.Usuario
             .Include(e => e.Perfil)
+            .ThenInclude(e => e.PerfilTela)
+            .ThenInclude(e => e.Telas)
             .FirstOrDefaultAsync(x => x.Id == id);
 
 

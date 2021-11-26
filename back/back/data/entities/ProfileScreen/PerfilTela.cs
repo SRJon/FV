@@ -19,6 +19,6 @@ namespace back.data.entities.ProfileScreen
         [ForeignKey("PerfilId")]
         public virtual Perfil Perfil { get; set; }
         [ForeignKey("TelaId")]
-        public virtual ICollection<Tela> Telas { get; set; }
+        public virtual Tela Telas { get; set; }
     }
 }

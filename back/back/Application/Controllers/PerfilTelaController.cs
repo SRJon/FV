@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.ProfileScreen;
 using back.data.http;
 using back.domain.DTO.ProfileScreenDTO;
+using back.domain.DTO.ScreenDTO;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Data.Utils;
@@ -19,11 +21,13 @@ namespace back.Application.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IPerfilTelaRepository _perfilTelaRepository;
+        private readonly IPerfilRepository _perfilRepository;
 
-        public PerfilTelaController(IPerfilTelaRepository perfilTelaRepository)
+        public PerfilTelaController(IPerfilTelaRepository perfilTelaRepository, IPerfilRepository rep)
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _perfilTelaRepository = perfilTelaRepository;
+            _perfilRepository = rep;
         }
 
         [HttpPost]
@@ -147,6 +151,25 @@ namespace back.Application.Controllers
                 response.SetConfig(400, "Erro ao excluir o perfil tela" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
+        }
+        [HttpGet("getByProfile/{profileID}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetScreeensByProfileAsync(int profileID)
+        {
+
+            var profile = await _perfilRepository.GetById(profileID);
+            var screens = new List<TelaDTO>();
+            if (profile != null)
+            {
+                var screenList = profile.PerfilTela.ToList();
+                screenList.ForEach(x =>
+                {
+                    var tr = x.Telas;
+
+                    screens.Add(tr);
+                });
+            }
+            return Ok(screens);
         }
     }
 }
