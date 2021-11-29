@@ -81,7 +81,11 @@
 <div class="container">
   <div class="row pt-3">
     <div class="col-6">
-      <span>sss</span>
+      <span
+        >Showing {{ grid.sharePaginate.paginate.currentPage }} to
+        {{ grid.sharePaginate.paginate.pageSize }} of
+        {{ grid.sharePaginate.paginate.pageSize * 10 }} entries</span
+      >
     </div>
     <div class="col-6">
       <ul id="table_id_paginate" class="pagination"></ul>

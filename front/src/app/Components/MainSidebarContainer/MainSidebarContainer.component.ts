@@ -20,9 +20,9 @@ export class MainSidebarContainerComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.getUser();
     this.getAll();
-    this.getUser();
   }
 
   async getUser(): Promise<void> {
@@ -32,19 +32,21 @@ export class MainSidebarContainerComponent implements OnInit {
   }
 
   async getAll() {
-    let screens: Tela[] = await this.telasservice.getAll();
+    if (this.user) {
+      let screens: Tela[] = await this.telasservice.getAll(this.user.perfilId);
 
-    this.screens = screens.map((screen) => Tela.fromJson(screen));
+      this.screens = screens.map((screen) => Tela.fromJson(screen));
 
-    let granScreens = screens.filter((e) => e.nivel);
-    let subScreens = screens.filter((e) => !e.nivel);
+      let granScreens = screens.filter((e) => e.nivel);
+      let subScreens = screens.filter((e) => !e.nivel);
 
-    granScreens.forEach((e, i) => {
-      let related = subScreens.filter((sub) => sub.telaId == e.id);
+      granScreens.forEach((e, i) => {
+        let related = subScreens.filter((sub) => sub.telaId == e.id);
 
-      granScreens[i].relateds = related;
-    });
-    this.screens = granScreens;
+        granScreens[i].relateds = related;
+      });
+      this.screens = granScreens;
+    }
   }
 
   checkRouteModule(route: string): boolean {
