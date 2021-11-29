@@ -84,6 +84,7 @@ namespace back.infra.Data.Context
             modelBuilder.AnexoRepRelationConfiguring();
             modelBuilder.InformativoRelationConfiguring();
             modelBuilder.UserEmpRelationConfiguring();
+            modelBuilder.EmpresaRelationConfiguring();
 
         }
 

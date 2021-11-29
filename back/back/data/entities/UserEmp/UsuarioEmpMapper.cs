@@ -14,6 +14,9 @@ namespace back.data.entities.UserEmp
             cfg.CreateMap<UsuarioEmp, UsuarioEmpDTO>();
             cfg.CreateMap<UsuarioEmpDTO, UsuarioEmp>();
 
+            cfg.CreateMap<UsuarioEmp, UsuarioEmpresaDTO>();
+            cfg.CreateMap<UsuarioEmpresaDTO, UsuarioEmp>();
+
             return cfg;
         }
 

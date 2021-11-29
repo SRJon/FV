@@ -1,4 +1,5 @@
-﻿using back.domain.entities;
+﻿using back.data.entities.Enterprise;
+using back.domain.entities;
 
 namespace back.domain.DTO.UserEmp
 {
@@ -6,6 +7,7 @@ namespace back.domain.DTO.UserEmp
     {
         public int Id { get; set; }
         public int UsuarioId { get; set; }
-        public int EmpresaId { get; set; }
+        public int EmpresaId { get; set; }     
+        public virtual Empresa empresa { get; set; }
     }
 }

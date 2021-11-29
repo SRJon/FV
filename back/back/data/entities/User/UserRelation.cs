@@ -8,13 +8,9 @@ namespace back.data.entities.User
         public static ModelBuilder UserRelationConfiguring(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>().HasOne(a => a.Perfil).WithMany(a => a.Usuario);
-            modelBuilder.Entity<Usuario>().HasOne(a => a.Perfil).WithMany(a => a.Usuario);
-           // modelBuilder.Entity<Usuario>().HasOne(a => a.UsuarioEmp).WithOne().HasForeignKey<UsuarioEmp>(u => u.UsuarioId);
-            // var mm = modelBuilder.Entity<Usuario>();
-            // mm.HasOne(a => a.Perfil)
-            //   .WithMany(a => a.Usuario);
 
-            // mm.HasOne(a => a.UsuarioEmp);            
+            modelBuilder.Entity<Usuario>().HasMany(a => a.UsuarioEmp).WithOne().HasForeignKey(a => a.UsuarioId);
+
             return modelBuilder;
         }
     }

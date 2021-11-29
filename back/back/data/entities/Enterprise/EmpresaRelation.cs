@@ -9,7 +9,7 @@ namespace back.data.entities.Enterprise
     public static class EmpresaRelation
     {
         public static ModelBuilder EmpresaRelationConfiguring(this ModelBuilder modelBuilder)
-        {
+        {            
             return modelBuilder;
         }
     }
