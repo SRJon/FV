@@ -86,15 +86,29 @@ namespace back.infra.Data.Repositories
             return null;
         }
 
-        public void AtribuicaoValoresCliente(TGFPARDTO cliente, SintegraCNPJ cnpj)
+        public TGFPARDTO AtribuicaoValoresCliente(TGFPARDTO cliente, SintegraCNPJ cnpj)
         {
-            cliente.Cgc_cpf = cnpj.Cnpj;
+            cliente.Codparcmatriz = cliente.Codparc;
             cliente.Razaosocial = cnpj.Nome;
+            cliente.Nomeparc = cnpj.Nome;
             cliente.Tippessoa = 'J';
+            cliente.Numend = cnpj.Numero.ToString();
+            cliente.Complemento = cnpj.Complemento;
+            cliente.Telefone = cnpj.Telefone;
+            cliente.Email = cnpj.Email;
             cliente.Cep = cnpj.Cep;
+            cliente.Codbai = 0;
+            cliente.Codcid = 0;
+            cliente.Codreg = 0;
 
+            cliente.Cgc_cpf = cnpj.Cnpj;
 
+            return cliente;
+        }
 
+        public int GetLastIdCreated()
+        {
+            return this._ctxs.GetSankhya().GetLastIdCreated();
         }
     }
 }

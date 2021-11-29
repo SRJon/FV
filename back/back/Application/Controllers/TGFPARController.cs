@@ -4,6 +4,7 @@ using AutoMapper;
 using back.data.entities.SintegraCNPJQuery;
 using back.data.http;
 using back.domain.DTO.TGFParceiroDTO;
+using back.domain.DTO.TSIEnderecoDTO;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Data.Utils;
@@ -19,12 +20,14 @@ namespace back.Application.Controllers
     {
         protected readonly ITGFPARRepository _TGFPARRepository;
         private readonly ISintegraCNPJRepository _SintegraCNPJRepository;
+        private readonly ITSIENDRepository _TSIENDRepository;
         private readonly IMapper _mapper;
 
-        public TGFPARController(ITGFPARRepository TGFPARRepository, ISintegraCNPJRepository SintegraCNPJRepository)
+        public TGFPARController(ITGFPARRepository TGFPARRepository, ISintegraCNPJRepository SintegraCNPJRepository, ITSIENDRepository TSIENDRepository)
         {
             _TGFPARRepository = TGFPARRepository;
             _SintegraCNPJRepository = SintegraCNPJRepository;
+            _TSIENDRepository = TSIENDRepository;
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
         }
 
@@ -109,6 +112,7 @@ namespace back.Application.Controllers
         [Route("CreateClient")]
         public async Task<ActionResult<IResponse<bool>>> create(string cgc_cpf)
         {
+
             var response = new Response<bool>();
             TGFPARDTO cliente = await this._TGFPARRepository.GetByCgc_cpf(cgc_cpf);
             if (cliente != null)
@@ -117,11 +121,29 @@ namespace back.Application.Controllers
             }
             else
             {
+                cliente = new TGFPARDTO();
                 SintegraCNPJ cnpj = new SintegraCNPJ();
                 cnpj = _SintegraCNPJRepository.consultaCNPJSintegraWS(cgc_cpf);
                 try
                 {
-                    _TGFPARRepository.AtribuicaoValoresCliente(cliente, cnpj);
+                    try
+                    {
+                        TSIENDDTO endereco = new TSIENDDTO();
+                        endereco = await this._TSIENDRepository.GetByNome(cnpj.Logradouro.Substring(cnpj.Logradouro.IndexOf(" ") + 1));
+                        if (endereco == null)
+                        {
+                            endereco = _TSIENDRepository.AtribuicaoValoresCliente(endereco, cnpj);
+                            var resultEnd = _TSIENDRepository.Create(endereco);
+                        }
+                        cliente.Codend = endereco.Codend;
+                    }
+                    catch (System.Exception err)
+                    {
+                        response.SetConfig(400, "Erro ao criar o endereço do cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
+                        throw;
+                    }
+                    cliente.Codparc = _TGFPARRepository.GetLastIdCreated();
+                    cliente = _TGFPARRepository.AtribuicaoValoresCliente(cliente, cnpj);
 
                     var result = await this._TGFPARRepository.Create(_mapper.Map<TGFPARDTOCreate>(cliente));
                     response.SetConfig(200);

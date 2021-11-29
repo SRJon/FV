@@ -9,10 +9,11 @@ namespace back.domain.Repositories
     public interface ITGFPARRepository
     {
         public Task<TGFPARDTO> GetById(int id);
+        public int GetLastIdCreated();
         public Task<Response<List<TGFPARDTO>>> GetAllPaginateAsync(int page, int limit);
         public Task<TGFPARDTO> GetByCgc_cpf(string cgc_cpf);
         public Task<bool> Create(TGFPARDTOCreate cliente);
-        public void AtribuicaoValoresCliente(TGFPARDTO cliente, SintegraCNPJ cnpj);
+        public TGFPARDTO AtribuicaoValoresCliente(TGFPARDTO cliente, SintegraCNPJ cnpj);
 
     }
 }
