@@ -18,14 +18,12 @@ namespace back.data.entities.User
         public bool? AltSenha { get; set; }
         public DateTime? DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
-
         [Column("SGTSIUSU_USU_COD")]
         public int? sgtsiusU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
-
         public int? PerfilId { get; set; }
         [ForeignKey("PerfilId")]
-        public virtual Perfil Perfil { get; set; }
+        public virtual Perfil Perfil { get; set; }        
 
         public UserAuthenticateDto ToDto()
         {
@@ -42,7 +40,5 @@ namespace back.data.entities.User
                 DtUltAltSenha = this.DtUltAltSenha
             };
         }
-
-
     }
 }

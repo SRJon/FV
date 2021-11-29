@@ -23,6 +23,7 @@ using back.data.entities.VIEW_AD_VGFRPV;
 using back.data.entities.TGFParceiro;
 using back.data.entities.TGFVEN;
 using back.data.entities.TSIEMP;
+using back.data.entities.UserEmp;
 
 namespace back.MappingConfig
 {
@@ -51,6 +52,7 @@ namespace back.MappingConfig
                 cfg.CreateTelaMapper();
                 cfg.CreateUserCustomizationsMapper();
                 cfg.CreateUserMapper();
+                cfg.CreateUsuarioEmpMapper();
                 cfg.CreateVersaoProjetosMapper();
                 cfg.CreateVersionDetailsMapper();
                 cfg.CreateAD_VGFRPVDetailsMapper();
