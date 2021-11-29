@@ -25,7 +25,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult<IResponse<List<UsuarioEmpDTO>>>> GetAllAsync([FromQuery] UsuarioEmpGetAllEntity payload)
 
         {
@@ -46,7 +46,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult<IResponse<UsuarioEmpDTO>>> getById(int id)
         {
             var response = new Response<UsuarioEmpDTO>();
@@ -72,7 +72,7 @@ namespace back.Application.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [Route("Create")]
         public async Task<ActionResult<IResponse<bool>>> create(UsuarioEmp UsuarioEmp)
         {
@@ -100,7 +100,7 @@ namespace back.Application.Controllers
 
         [HttpPost()]
         [Route("Update")]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult<IResponse<bool>>> update(UsuarioEmp UsuarioEmp)
         {
             var response = new Response<bool>();
@@ -125,7 +125,7 @@ namespace back.Application.Controllers
         }
         [HttpPost]
         [Route("Delete")]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
             var response = new Response<bool>();
