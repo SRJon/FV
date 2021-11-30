@@ -158,15 +158,15 @@ namespace back.Application.Controllers
         {
 
             var profile = await _perfilRepository.GetById(profileID);
-            var screens = new List<TelaDTO>();
+            var screens = new List<TelaDTOChild>();
             if (profile != null)
             {
                 var screenList = profile.PerfilTela.ToList();
                 screenList.ForEach(x =>
                 {
                     var tr = x.Telas;
-
-                    screens.Add(tr);
+                    var th = _mapper.Map<TelaDTOChild>(tr);
+                    screens.Add(th);
                 });
             }
             return Ok(screens);
