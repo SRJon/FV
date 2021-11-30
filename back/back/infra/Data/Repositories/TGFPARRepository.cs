@@ -97,6 +97,11 @@ namespace back.infra.Data.Repositories
             cliente.Telefone = cnpj.Telefone;
             cliente.Email = cnpj.Email;
             cliente.Cep = cnpj.Cep;
+            cliente.Socios = new List<string>();
+            foreach (var socio in cnpj.Qsa)
+            {
+                cliente.Socios.Add(socio.Nome);
+            }
 
             cliente.Cgc_cpf = cnpj.Cnpj;
 
