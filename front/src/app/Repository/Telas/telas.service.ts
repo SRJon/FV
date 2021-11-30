@@ -8,9 +8,9 @@ import { ITela } from '../../Domain/Models/ITela';
 export class TelasService {
   constructor() {}
 
-  async getAll(): Promise<ITela[]> {
-    return await axios
-      .get('api/Tela?page=0&limit=0')
-      .then((response) => response.data.data);
+  async getAll(perfilid: number): Promise<ITela[]> {
+    var result = await axios.get('PerfilTela/getByProfile/' + perfilid);
+
+    return result.data;
   }
 }

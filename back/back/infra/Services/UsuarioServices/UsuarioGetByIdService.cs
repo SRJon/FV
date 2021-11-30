@@ -14,9 +14,12 @@ namespace back.infra.Services.UsuarioServices
 
             var user = await ctx.Usuario
                 .Include(e => e.Perfil)
+                .ThenInclude(e => e.PerfilTela)
+                .ThenInclude(e => e.Telas)
                 .Include(e => e.UsuarioEmp) 
                 .ThenInclude( e => e.Empresa)
                 .FirstOrDefaultAsync(x => x.Id == id);
+
 
             return user;
         }

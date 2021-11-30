@@ -107,6 +107,17 @@ namespace back.infra.Data.Repositories
             return result;
         }
 
+        public async Task<UsuarioWiTHPerfilDTO> GetByIdWithPerfil(int id)
+        {
+            var response = await this._ctxs
+            .GetVFU()
+            .GetByIdUserService(id);
+            var result = _mapper.Map<UsuarioWiTHPerfilDTO>(response);
+
+
+            return result;
+        }
+
 
 
         public async Task<bool> Update(UsuarioDTOUpdateDTO usuario)

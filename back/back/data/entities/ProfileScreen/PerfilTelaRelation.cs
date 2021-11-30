@@ -7,7 +7,7 @@ namespace back.data.entities.ProfileScreen
         {
             modelBuilder.Entity<PerfilTela>()
                         .HasOne(a => a.Telas)
-                        .WithOne();
+                        ;
 
             modelBuilder.Entity<PerfilTela>()
                             .HasOne(a => a.Perfil)
