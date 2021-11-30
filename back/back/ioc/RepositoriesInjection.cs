@@ -31,13 +31,14 @@ namespace back.ioc
             services.AddScoped<IUserCustomizations, UserCustomizations>();
             services.AddScoped<IUserRepository, UserRepository>();
             //services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            //services.AddScoped<IUsuarioEmpRepository, UsuarioEmpRepository>();
+            services.AddScoped<IUsuarioEmpRepository, UsuarioEmpRepository>();
             services.AddScoped<IVersaoProjetosRepository, VersaoProjetosRepository>();
             services.AddScoped<IVersionDetailsRepository, VersionDetailsRepository>();
             services.AddScoped<IAD_VGFRPVRepository, AD_VGFRPVRepository>();
             services.AddScoped<ITGFPARRepository, TGFPARRepository>();
             services.AddScoped<ITGFVENRepository, TGFVENRepository>();
             services.AddScoped<ITSIEMPRepository, TSIEMPRepository>();
+            services.AddScoped<IAD_TIPNEGRepository, AD_TIPNEGRepository>();
             return services;
         }
     }
