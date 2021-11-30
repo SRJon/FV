@@ -154,11 +154,12 @@ namespace back.Application.Controllers
         }
         [HttpGet("getByProfile/{profileID}")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetScreeensByProfileAsync(int profileID)
+        public async Task<ActionResult<IResponse<List<TelaDTOChild>>>> GetScreeensByProfileAsync(int profileID)
         {
 
             var profile = await _perfilRepository.GetById(profileID);
             var screens = new List<TelaDTOChild>();
+            var response = new Response<List<TelaDTOChild>>();
             if (profile != null)
             {
                 var screenList = profile.PerfilTela.ToList();
@@ -169,7 +170,7 @@ namespace back.Application.Controllers
                     screens.Add(th);
                 });
             }
-            return Ok(screens);
+            return response.GetResponse();
         }
     }
 }
