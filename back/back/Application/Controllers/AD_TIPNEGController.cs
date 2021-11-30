@@ -29,7 +29,7 @@ namespace back.Application.Controllers
          * Consulta todos os registros e quantidade de páginas da exibição AD_TIPNEG
          */
         [HttpGet]
-        //[Authorize]
+        [Authorize]
 
         public async Task<ActionResult<IResponse<List<AD_TIPNEGDTO>>>> GetAll(int page = 1, int limit = 10)
         {
@@ -51,7 +51,7 @@ namespace back.Application.Controllers
          * Consulta do registro pelo código do tipo da consulta "CodTipVenda" da exibição AD_TIPNEG
          */
         [HttpGet("{CodTipVenda}")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<Response<AD_TIPNEGDTO>>> GetByCodTipVenda(int CodTipVenda)
         {
 
