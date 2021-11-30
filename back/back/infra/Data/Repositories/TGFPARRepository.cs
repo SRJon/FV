@@ -97,9 +97,6 @@ namespace back.infra.Data.Repositories
             cliente.Telefone = cnpj.Telefone;
             cliente.Email = cnpj.Email;
             cliente.Cep = cnpj.Cep;
-            cliente.Codbai = 0;
-            cliente.Codcid = 0;
-            cliente.Codreg = 0;
 
             cliente.Cgc_cpf = cnpj.Cnpj;
 

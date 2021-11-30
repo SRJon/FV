@@ -16,7 +16,7 @@ namespace back.infra.Data.Repositories
         private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
 
-        public TSIENDRepository(IMapper mapper, DbContexts ctxs)
+        public TSIENDRepository(DbContexts ctxs)
         {
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;

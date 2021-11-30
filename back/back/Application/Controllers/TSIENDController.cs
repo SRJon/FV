@@ -37,16 +37,16 @@ namespace back.Application.Controllers
                 }
                 else
                 {
-                    response.SetConfig(404, "Parceiro não encontrado", false);
+                    response.SetConfig(404, "Endereço não encontrado", false);
                 }
             }
             catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar parceiro " + e.Message, false);
+                response.SetConfig(400, "Erro ao buscar Endereço " + e.Message, false);
             }
             return response.GetResponse();
         }
-        [HttpGet()]
+        [HttpGet]
         [Authorize]
         [Route("GetByNomeEnd")]
         public async Task<ActionResult<IResponse<TSIENDDTO>>> GetByNomeEnd(string nomeEnd)

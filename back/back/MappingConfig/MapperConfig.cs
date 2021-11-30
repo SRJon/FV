@@ -22,6 +22,8 @@ using back.data.entities.VersionDetails;
 using back.data.entities.VIEW_AD_VGFRPV;
 using back.data.entities.TGFParceiro;
 using back.data.entities.TSIEndereco;
+using back.data.entities.TSIBairro;
+using back.data.entities.TSICidade;
 
 namespace back.MappingConfig
 {
@@ -55,6 +57,8 @@ namespace back.MappingConfig
                 cfg.CreateAD_VGFRPVDetailsMapper();
                 cfg.CreateTGFPARMapper();
                 cfg.CreateTSIENDMapper();
+                cfg.CreateTSIBAIMapper();
+                cfg.CreateTSICIDMapper();
             });
             return configuration;
         }

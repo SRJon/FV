@@ -4,6 +4,8 @@ using AutoMapper;
 using back.data.entities.SintegraCNPJQuery;
 using back.data.http;
 using back.domain.DTO.TGFParceiroDTO;
+using back.domain.DTO.TSIBairroDTO;
+using back.domain.DTO.TSICidadeDTO;
 using back.domain.DTO.TSIEnderecoDTO;
 using back.domain.entities;
 using back.domain.Repositories;
@@ -21,13 +23,17 @@ namespace back.Application.Controllers
         protected readonly ITGFPARRepository _TGFPARRepository;
         private readonly ISintegraCNPJRepository _SintegraCNPJRepository;
         private readonly ITSIENDRepository _TSIENDRepository;
+        private readonly ITSIBAIRepository _TSIBAIRepository;
+        private readonly ITSICIDRepository _TSICIDRepository;
         private readonly IMapper _mapper;
 
-        public TGFPARController(ITGFPARRepository TGFPARRepository, ISintegraCNPJRepository SintegraCNPJRepository, ITSIENDRepository TSIENDRepository)
+        public TGFPARController(ITGFPARRepository TGFPARRepository, ISintegraCNPJRepository SintegraCNPJRepository, ITSIENDRepository TSIENDRepository, ITSIBAIRepository TSIBAIRepository, ITSICIDRepository TSICIDRepository)
         {
             _TGFPARRepository = TGFPARRepository;
             _SintegraCNPJRepository = SintegraCNPJRepository;
             _TSIENDRepository = TSIENDRepository;
+            _TSIBAIRepository = TSIBAIRepository;
+            _TSICIDRepository = TSICIDRepository;
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
         }
 
@@ -109,9 +115,10 @@ namespace back.Application.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("CreateClient")]
-        public async Task<ActionResult<IResponse<bool>>> create(string cgc_cpf)
+        [Route("BuscarCNPJ")]
+        public async Task<ActionResult<IResponse<bool>>> BuscarCNPJ(string cgc_cpf)
         {
+            //Função que busca o cnpj na receita e atribui os valores
 
             var response = new Response<bool>();
             TGFPARDTO cliente = await this._TGFPARRepository.GetByCgc_cpf(cgc_cpf);
@@ -124,33 +131,72 @@ namespace back.Application.Controllers
                 cliente = new TGFPARDTO();
                 SintegraCNPJ cnpj = new SintegraCNPJ();
                 cnpj = _SintegraCNPJRepository.consultaCNPJSintegraWS(cgc_cpf);
-                try
+                if (cnpj == null)
+                {
+                    response.SetConfig(400, "CNPJ inativo na base do sintegra", false);
+                }
+                else
                 {
                     try
                     {
-                        TSIENDDTO endereco = new TSIENDDTO();
-                        endereco = await this._TSIENDRepository.GetByNome(cnpj.Logradouro.Substring(cnpj.Logradouro.IndexOf(" ") + 1));
-                        if (endereco == null)
+                        try
                         {
-                            endereco = _TSIENDRepository.AtribuicaoValoresCliente(endereco, cnpj);
-                            var resultEnd = _TSIENDRepository.Create(endereco);
+                            TSIENDDTO endereco;
+                            endereco = await this._TSIENDRepository.GetByNome(cnpj.Logradouro.Substring(cnpj.Logradouro.IndexOf(" ") + 1));
+                            if (endereco == null)
+                            {
+                                endereco = new TSIENDDTO();
+                                endereco = _TSIENDRepository.AtribuicaoValoresCliente(endereco, cnpj);
+                                var resultEnd = _TSIENDRepository.Create(endereco);
+                            }
+                            cliente.Codend = endereco.Codend;
                         }
-                        cliente.Codend = endereco.Codend;
-                    }
-                    catch (System.Exception err)
-                    {
-                        response.SetConfig(400, "Erro ao criar o endereço do cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
-                        throw;
-                    }
-                    cliente.Codparc = _TGFPARRepository.GetLastIdCreated();
-                    cliente = _TGFPARRepository.AtribuicaoValoresCliente(cliente, cnpj);
+                        catch (System.Exception err)
+                        {
+                            response.SetConfig(400, "Erro ao criar o endereço do cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
+                        }
+                        try
+                        {
+                            TSIBAIDTO bairro;
+                            bairro = await this._TSIBAIRepository.GetByNome(cnpj.Bairro);
+                            if (bairro == null)
+                            {
+                                bairro = new TSIBAIDTO();
+                                bairro = _TSIBAIRepository.AtribuicaoValoresCliente(bairro, cnpj);
+                                var resultBai = _TSIBAIRepository.Create(bairro);
+                            }
+                            cliente.Codbai = bairro.CodBai;
+                        }
+                        catch (System.Exception err)
+                        {
+                            response.SetConfig(400, "Erro ao criar o bairro do cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
+                        }
+                        try
+                        {
+                            TSICIDDTO cidade;
+                            cidade = await this._TSICIDRepository.GetByNome(cnpj.Municipio);
+                            if (cidade == null)
+                            {
+                                cidade = new TSICIDDTO();
+                                cidade = _TSICIDRepository.AtribuicaoValoresCliente(cidade, cnpj);
+                                var resultBai = _TSICIDRepository.Create(cidade);
+                            }
+                            cliente.Codcid = cidade.CodCid;
+                        }
+                        catch (System.Exception err)
+                        {
+                            response.SetConfig(400, "Erro ao criar o cidade  do cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
+                        }
+                        cliente.Codparc = _TGFPARRepository.GetLastIdCreated() + 1;
+                        cliente = _TGFPARRepository.AtribuicaoValoresCliente(cliente, cnpj);
 
-                    var result = await this._TGFPARRepository.Create(_mapper.Map<TGFPARDTOCreate>(cliente));
-                    response.SetConfig(200);
-                }
-                catch (System.Exception e)
-                {
-                    response.SetConfig(400, "Erro ao criar o cliente" + InnerExceptionMessage.InnerExceptionError(e), false);
+                        var result = await this._TGFPARRepository.Create(_mapper.Map<TGFPARDTOCreate>(cliente));
+                        response.SetConfig(200);
+                    }
+                    catch (System.Exception e)
+                    {
+                        response.SetConfig(400, "Erro ao criar o cliente" + InnerExceptionMessage.InnerExceptionError(e), false);
+                    }
                 }
 
             }

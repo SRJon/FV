@@ -6,6 +6,8 @@ using back.data.entities.TSIEndereco;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using back.data.entities.TSIBairro;
+using back.data.entities.TSICidade;
 
 namespace back.infra.Data.Context
 {
@@ -26,6 +28,8 @@ namespace back.infra.Data.Context
         public DbSet<AD_VGFRPV> AD_VGFRPV { get; set; }
         public DbSet<TGFPAR> TGFPAR { get; set; }
         public DbSet<TSIEND> TSIEND { get; set; }
+        public DbSet<TSIBAI> TSIBAI { get; set; }
+        public DbSet<TSICID> TSICID { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,6 +37,8 @@ namespace back.infra.Data.Context
             modelBuilder.AD_VGFRPVRelationConfiguring();
             modelBuilder.TGFPARRelationConfiguring();
             modelBuilder.TSIENDRelationConfiguring();
+            modelBuilder.TSIBAIRelationConfiguring();
+            modelBuilder.TSICIDRelationConfiguring();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
