@@ -38,6 +38,7 @@ namespace back.ioc
             services.AddScoped<ITGFPARRepository, TGFPARRepository>();
             services.AddScoped<ITGFVENRepository, TGFVENRepository>();
             services.AddScoped<ITSIEMPRepository, TSIEMPRepository>();
+            services.AddScoped<IAD_TIPNEGRepository, AD_TIPNEGRepository>();
             return services;
         }
     }

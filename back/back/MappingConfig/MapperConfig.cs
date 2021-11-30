@@ -24,6 +24,7 @@ using back.data.entities.TGFParceiro;
 using back.data.entities.TGFVEN;
 using back.data.entities.TSIEMP;
 using back.data.entities.UserEmp;
+using back.data.entities.AD_TIPNEG;
 
 namespace back.MappingConfig
 {
@@ -59,6 +60,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFPARMapper();
                 cfg.CreateTGFVENMapper();
                 cfg.CreateTSIEMPMapper();
+                cfg.CreateAD_TIPNEGMapper();
                 cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;
