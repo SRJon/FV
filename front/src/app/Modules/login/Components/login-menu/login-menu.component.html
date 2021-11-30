@@ -10,7 +10,10 @@
       "
     >
       <span class="fa fa-user" aria-hidden="true"></span>
-      <input type="text" placeholder="Usuário" [(ngModel)]="loginEntity.user" />
+      <input type="text"
+      formControlName="user"
+      placeholder="Usuário"
+      [(ngModel)]="loginEntity.user" />
     </div>
   </div>
   <div class="col-3 title">
@@ -67,6 +70,6 @@
     <label class="form-check-label" for="flexSwitchCheckChecked"
       >Manter logado</label
     >
-    <a class="text-right" href="#">Esqueceu a senha?</a>
+    <a class="text-right" (click)="Redefine()">Esqueceu a senha?</a>
   </div>
 </form>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginPageComponent } from '../login-page/login-page.component';
 
 @Component({
   selector: 'app-email-check',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailCheckComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private backLogin: LoginPageComponent
+  ) { }
+
+  back(){
+    this.backLogin.teste(2);
+  }
 
   ngOnInit(): void {
   }

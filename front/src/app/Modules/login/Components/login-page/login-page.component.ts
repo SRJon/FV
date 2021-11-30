@@ -15,11 +15,11 @@ export class LoginPageComponent implements OnInit {
   isLoading: boolean;
 
   stateEnum = {
-    isLogin: 'l',
+    isLogin: '1',
     isNewPassword: 'p',
     isCheckEmal: 'e',
   };
-  state: string = this.stateEnum.isNewPassword;
+  state: string = this.stateEnum.isLogin;
 
   constructor(
     private ServiceLogin: AuthenticationService,
