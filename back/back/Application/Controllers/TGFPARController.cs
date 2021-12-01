@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.SintegraCNPJQuery;
+using back.data.entities.TGFContato;
 using back.data.http;
+using back.domain.DTO.TGFContatoDTO;
+using back.domain.DTO.TGFPAR_TGFCTT;
 using back.domain.DTO.TGFParceiroDTO;
 using back.domain.DTO.TSIBairroDTO;
 using back.domain.DTO.TSICidadeDTO;
@@ -25,16 +28,18 @@ namespace back.Application.Controllers
         private readonly ITSIENDRepository _TSIENDRepository;
         private readonly ITSIBAIRepository _TSIBAIRepository;
         private readonly ITSICIDRepository _TSICIDRepository;
+        private readonly ITGFCTTRepository _TGFCTTRepository;
         TGFPARDTO cliente;
         private readonly IMapper _mapper;
 
-        public TGFPARController(ITGFPARRepository TGFPARRepository, ISintegraCNPJRepository SintegraCNPJRepository, ITSIENDRepository TSIENDRepository, ITSIBAIRepository TSIBAIRepository, ITSICIDRepository TSICIDRepository)
+        public TGFPARController(ITGFPARRepository TGFPARRepository, ISintegraCNPJRepository SintegraCNPJRepository, ITSIENDRepository TSIENDRepository, ITSIBAIRepository TSIBAIRepository, ITSICIDRepository TSICIDRepository, ITGFCTTRepository TGFCTTRepository)
         {
             _TGFPARRepository = TGFPARRepository;
             _SintegraCNPJRepository = SintegraCNPJRepository;
             _TSIENDRepository = TSIENDRepository;
             _TSIBAIRepository = TSIBAIRepository;
             _TSICIDRepository = TSICIDRepository;
+            _TGFCTTRepository = TGFCTTRepository;
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
         }
 
@@ -119,8 +124,8 @@ namespace back.Application.Controllers
         [Route("BuscarCNPJ")]
         public async Task<ActionResult<IResponse<TGFPARDTO>>> BuscarCNPJ(string cgc_cpf)
         {
-            //Função que busca o cnpj na receita e atribui os valores
 
+            //Função que busca o cnpj na receita e atribui os valores
             var response = new Response<TGFPARDTO>();
             cliente = await this._TGFPARRepository.GetByCgc_cpf(cgc_cpf);
             if (cliente != null)
@@ -209,10 +214,41 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("CriarCliente")]
-        public async Task<ActionResult<IResponse<bool>>> CreateClient()
+        public async Task<ActionResult<IResponse<bool>>> CreateClient([FromBody] TGFPAR_TGFCTTDTO clienteComprador)
         {
             var response = new Response<bool>();
+            try
+            {
+                var result = await this._TGFPARRepository.Create(clienteComprador.Cliente);
+                if (result)
+                {
+                    foreach (var comprador in clienteComprador.Compradores)
+                    {
+                        comprador.CodContato = this._TGFCTTRepository.GetLastIdCreated(clienteComprador.Cliente.Codparc) + 1;
+                        comprador.Codparc = clienteComprador.Cliente.Codparc;
+                        comprador.CodEnd = clienteComprador.Cliente.Codend;
+                        comprador.CodBai = clienteComprador.Cliente.Codbai;
+                        comprador.CodBai = clienteComprador.Cliente.Codcid;
+                        try
+                        {
+                            result = await this._TGFCTTRepository.Create(comprador);
+                            if (!result)
+                            {
+                                response.SetConfig(404, "Comprador não criada", false);
+                            }
+                        }
+                        catch (System.Exception err)
+                        {
+                            response.SetConfig(400, "Erro ao criar o comprador  do cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
+                        }
+                    }
+                }
+            }
+            catch (System.Exception err)
+            {
 
+                response.SetConfig(400, "Erro ao criar o cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
+            }
             return response.GetResponse();
         }
 
