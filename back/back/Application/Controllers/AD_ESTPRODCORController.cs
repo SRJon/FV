@@ -2,6 +2,7 @@
 using back.domain.DTO.AD_ESTPRODCOR;
 using back.domain.entities;
 using back.domain.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,10 +20,8 @@ namespace back.Application.Controllers
             _AD_ESTPRODCORRepository = AD_ESTPRODCORRepository;
         }
 
-
-
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<IResponse<List<AD_ESTPRODCORDTO>>>> GetAll(int page = 1, int limit = 10)
         {
             var response = new Response<List<AD_ESTPRODCORDTO>>();

@@ -10,5 +10,6 @@ namespace back.data.entities.Enterprise
         public decimal? VlrMinFrete { get; set; }
         public decimal? VlrMinPedido { get; set; }
         public UsuarioEmp UsuarioEmp { get; set; }
+        public short? CodEmp { get; set; }
     }
 }

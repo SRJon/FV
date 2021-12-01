@@ -8,5 +8,6 @@ namespace back.domain.entities
         public string Nome { get; set; }
         public Nullable<decimal> VlrMinFrete { get; set; }
         public Nullable<decimal> VlrMinPedido { get; set; }
+        public Nullable<short> CodEmp { get; set; }
     }
 }
