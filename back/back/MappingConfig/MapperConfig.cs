@@ -25,6 +25,15 @@ using back.data.entities.TGFVEN;
 using back.data.entities.TSIEMP;
 using back.data.entities.UserEmp;
 using back.data.entities.AD_TIPNEG;
+using back.data.entities.AD_ESTPROGPROD;
+using back.data.entities.AD_FAMGR1;
+using back.data.entities.AD_FAMGR2;
+using back.data.entities.AD_FAMGR3;
+using back.data.entities.TGFEXC;
+using back.data.entities.TGFIPI;
+using back.data.entities.TGFPRO;
+using back.data.entities.VGFTAB;
+using back.data.entities.AD_PANTONE;
 
 namespace back.MappingConfig
 {
@@ -61,6 +70,15 @@ namespace back.MappingConfig
                 cfg.CreateTGFVENMapper();
                 cfg.CreateTSIEMPMapper();
                 cfg.CreateAD_TIPNEGMapper();
+                cfg.CreateAD_ESTPROGPRODMapper();
+                cfg.CreateAD_FAMGR1Mapper();
+                cfg.CreateAD_FAMGR2Mapper();
+                cfg.CreateAD_FAMGR3Mapper();
+                cfg.CreateTGFEXCMapper();
+                cfg.CreateTGFIPIMapper();
+                cfg.CreateTGFPROMapper();
+                cfg.CreateVGFTABMapper();
+                cfg.CreateAD_PANTONEMapper();
                 cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;
