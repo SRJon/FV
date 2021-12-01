@@ -169,8 +169,14 @@ namespace back.Application.Controllers
                     var th = _mapper.Map<TelaDTOChild>(tr);
                     screens.Add(th);
                 });
+                response.Data = screens;
             }
+            response.SetConfig(200);
             return response.GetResponse();
         }
+
+
+
+
     }
 }
