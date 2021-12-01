@@ -62,5 +62,37 @@ namespace back.infra.Data.Repositories
 
             return rmapper;
         }
+
+        public async Task<Response<List<AD_TIPNEGDTO>>> GetByDescrTipVendaPaginateAsync(int page, int limit, string DescrTipVenda)
+        {
+            var response = new Response<List<AD_TIPNEGDTO>>();
+            var contexto = _ctxs.GetSankhya();
+            try
+            {
+                base.ValidPaginate(page, limit);
+                var savedSearches = contexto.AD_TIPNEG.Where(o => o.DescrTipVenda.Contains(DescrTipVenda)).Skip(skip).OrderBy(o => o.CodTipVenda).Take(base.limit);
+                List<AD_TIPNEGDTO> dTOs = new List<AD_TIPNEGDTO>();
+
+                var parceiros = await savedSearches.ToListAsync();
+                parceiros.ForEach(e => dTOs.Add(_mapper.Map<AD_TIPNEGDTO>(e)));
+
+                response.Data = dTOs;
+                response.TotalPages = await contexto.AD_TIPNEG.CountAsync();
+                response.Page = page;
+                response.TotalPages = (response.TotalPages / base.limit) + 1;
+                response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
+                response.Success = true;
+                response.StatusCode = 200;
+                return response;
+
+            }
+            catch (System.Exception e)
+            {
+
+                response.StatusCode = 400;
+                response.Message = e.Message;
+                return response;
+            }
+        }
     }
 }

@@ -24,17 +24,8 @@ namespace back.infra.Data.Repositories
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
         }
-        //TODO CREATE AD_VGFRPV
-        public Task<bool> Create(AD_VGFRPV AD_VGFRPV)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        //TODO DELETE AD_VGFRPV
-        public Task<bool> Delete(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+
 
         public async Task<Response<List<AD_VGFRPVDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor)
         {
@@ -67,7 +58,6 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        //TODO GETBYID AD_VGFRPV
         public async Task<AD_VGFRPVDTO> GetById(Int16 codVend)
         {
             return _mapper.Map<AD_VGFRPVDTO>(await this._ctxs.
@@ -75,10 +65,6 @@ namespace back.infra.Data.Repositories
             .GetByIdService(codVend));
         }
 
-        //TODO UPDATE AD_VGFRPV
-        public Task<bool> Update(AD_VGFRPV AD_VGFRPV)
-        {
-            throw new System.NotImplementedException();
-        }
+
     }
 }

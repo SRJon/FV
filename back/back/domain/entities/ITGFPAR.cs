@@ -15,7 +15,6 @@ namespace back.domain.entities
         public string Complemento { get; set; }
         public int Codbai { get; set; }
         public int Codcid { get; set; }
-        public int Codreg { get; set; }
         public string Cep { get; set; }
         public string Caixapostal { get; set; }
         public string Telefone { get; set; }
