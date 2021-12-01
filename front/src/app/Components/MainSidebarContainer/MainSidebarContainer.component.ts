@@ -13,18 +13,27 @@ import { AuthenticationService } from 'src/app/Modules/login/Services/Authentica
 export class MainSidebarContainerComponent implements OnInit {
   screens: Tela[] = [];
   user?: IUser;
-
+  isLoading: boolean = false;
+  angle = 0;
   constructor(
     private telasservice: TelasService,
     private userService: UserService,
     private authenticationService: AuthenticationService
   ) {}
 
-  ngOnInit() {
-    this.getAll();
-    this.getUser();
+  async ngOnInit() {
+    this.isLoading = true;
+    await this.getUser();
+    await this.getAll();
+    this.isLoading = false;
   }
-
+  checkLoadindState() {
+    if (this.isLoading) {
+      return 'in';
+    } else {
+      return 'd-none';
+    }
+  }
   async getUser(): Promise<void> {
     let token = this.authenticationService.getToken() || '';
     let user = await this.userService.getUserByToken(token);
@@ -32,19 +41,26 @@ export class MainSidebarContainerComponent implements OnInit {
   }
 
   async getAll() {
-    let screens: Tela[] = await this.telasservice.getAll();
+    if (this.user) {
+      let screens: Tela[] = await this.telasservice.getAll(this.user.perfilId);
 
-    this.screens = screens.map((screen) => Tela.fromJson(screen));
+      this.screens = screens.map((screen) => Tela.fromJson(screen));
 
-    let granScreens = screens.filter((e) => e.nivel);
-    let subScreens = screens.filter((e) => !e.nivel);
+      let granScreens = screens.filter((e) => e.nivel);
+      let subScreens = screens.filter((e) => !e.nivel);
 
-    granScreens.forEach((e, i) => {
-      let related = subScreens.filter((sub) => sub.telaId == e.id);
+      granScreens.forEach((e, i) => {
+        let related = subScreens.filter((sub) => sub.telaId == e.id);
 
-      granScreens[i].relateds = related;
-    });
-    this.screens = granScreens;
+        related.sort((a, b) => (b.ordem > a.ordem ? -1 : 1));
+        // console.log(related.map((e) => e.ordem));
+        // console.log(related);
+
+        granScreens[i].relateds = related;
+      });
+      granScreens.sort((a, b) => (b.ordem > a.ordem ? -1 : 1));
+      this.screens = granScreens;
+    }
   }
 
   checkRouteModule(route: string): boolean {

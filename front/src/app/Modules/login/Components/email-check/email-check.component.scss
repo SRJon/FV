@@ -128,3 +128,13 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+
+.form-switch a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.form-switch a:hover{
+  color: #919497cc;
+  cursor: pointer;
+}

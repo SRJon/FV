@@ -98,7 +98,8 @@ namespace back.infra.Data.Repositories
 
         public async Task<PerfilTelaDTO> GetById(int id)
         {
-            return _mapper.Map<PerfilTelaDTO>(await this._ctxs.GetVFU().GetByIdService(id));
+            var result = await this._ctxs.GetVFU().GetByIdService(id);
+            return _mapper.Map<PerfilTelaDTO>(result);
         }
 
         public PerfilTelaDTO GetByIdAsync(int id)

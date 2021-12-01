@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using back.data.entities.UserEmp;
 using back.domain.DTO.ProfileDTO;
+using back.domain.DTO.UserEmp;
 using back.domain.entities;
 using back.DTO.Authentication;
 
@@ -21,6 +24,7 @@ namespace back.domain.DTO.User
         public int? sgtsiusU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
         public virtual PerfilDTOUserless Perfil { get; set; }
+        public virtual ICollection<UsuarioEmpresaDTO> UsuarioEmp { get; set; }
 
         public UserAuthenticateDto ToDto()
         {

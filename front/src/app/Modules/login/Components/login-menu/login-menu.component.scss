@@ -57,9 +57,11 @@
   color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
 }
-input[type="text"], input[type="password"] {
+input[type="text"],
+input[type="password"] {
   background: transparent;
   border: none;
+  margin-left: 10px;
 }
 
 .input-transparent > input::placeholder {
@@ -75,9 +77,19 @@ input[type="text"], input[type="password"] {
 }
 .form-control {
   border: none !important;
-  display: flex;
+  display: block;
   justify-content: space-evenly;
   align-items: baseline;
+}
+
+.is-valid {
+  border: 1px solid #009100 !important;
+}
+.listErrors {
+  list-style: none;
+}
+.is-invalid {
+  border: 1px solid #ff0000 !important;
 }
 
 .btn-danger {
@@ -93,6 +105,7 @@ input[type="text"], input[type="password"] {
   margin-right: 20px;
   text-decoration: none;
   color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 
 .form-check-input:checked {
@@ -102,6 +115,11 @@ input[type="text"], input[type="password"] {
 
 .form-check-input {
   background-color: #67594b;
+}
+
+.form-switch {
+  padding-top: 10px !important;
+  padding-left: 3.5rem !important;
 }
 
 .bottom-grid,

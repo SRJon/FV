@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
+
+WORKDIR /app
+
+COPY ./back /app
+
+RUN dotnet restore
+
+
+EXPOSE 5000
+CMD dotnet watch run

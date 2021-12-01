@@ -22,6 +22,9 @@ export class AlertsService {
 
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', () =>
+          Swal.increaseTimer(Math.abs((Swal.getTimerLeft() || 0) - timer))
+        );
         toast.addEventListener('mouseleave', Swal.resumeTimer);
       },
       ...options,

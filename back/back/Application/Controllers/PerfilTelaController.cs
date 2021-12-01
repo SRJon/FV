@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.ProfileScreen;
 using back.data.http;
 using back.domain.DTO.ProfileScreenDTO;
+using back.domain.DTO.ScreenDTO;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Data.Utils;
@@ -19,11 +21,13 @@ namespace back.Application.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IPerfilTelaRepository _perfilTelaRepository;
+        private readonly IPerfilRepository _perfilRepository;
 
-        public PerfilTelaController(IPerfilTelaRepository perfilTelaRepository)
+        public PerfilTelaController(IPerfilTelaRepository perfilTelaRepository, IPerfilRepository rep)
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _perfilTelaRepository = perfilTelaRepository;
+            _perfilRepository = rep;
         }
 
         [HttpPost]
@@ -148,5 +152,31 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+        [HttpGet("getByProfile/{profileID}")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IResponse<List<TelaDTOChild>>>> GetScreeensByProfileAsync(int profileID)
+        {
+
+            var profile = await _perfilRepository.GetById(profileID);
+            var screens = new List<TelaDTOChild>();
+            var response = new Response<List<TelaDTOChild>>();
+            if (profile != null)
+            {
+                var screenList = profile.PerfilTela.ToList();
+                screenList.ForEach(x =>
+                {
+                    var tr = x.Telas;
+                    var th = _mapper.Map<TelaDTOChild>(tr);
+                    screens.Add(th);
+                });
+                response.Data = screens;
+            }
+            response.SetConfig(200);
+            return response.GetResponse();
+        }
+
+
+
+
     }
 }
