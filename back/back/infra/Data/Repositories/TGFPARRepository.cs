@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using back.data.entities.SintegraCNPJQuery;
 using back.data.entities.TGFParceiro;
 using back.data.http;
 using back.domain.DTO.TGFParceiroDTO;
@@ -56,12 +58,59 @@ namespace back.infra.Data.Repositories
 
         }
 
+        public async Task<TGFPARDTO> GetByCgc_cpf(string cgc_cpf)
+        {
+            var res = await this._ctxs.GetSankhya().GetByCNPJService(cgc_cpf);
+            var rmapper = _mapper.Map<TGFPARDTO>(res);
+            return rmapper;
+        }
+
         public async Task<TGFPARDTO> GetById(int id)
         {
             var res = await this._ctxs.GetSankhya().GetByIdService(id);
             var rmapper = _mapper.Map<TGFPARDTO>(res);
 
             return rmapper;
+        }
+
+        public Task<bool> Create(TGFPARDTOCreate cliente)
+        {
+            try
+            {
+                return _ctxs.GetSankhya().Create(cliente);
+            }
+            catch (Exception)
+            {
+
+            }
+            return null;
+        }
+
+        public TGFPARDTO AtribuicaoValoresCliente(TGFPARDTO cliente, SintegraCNPJ cnpj)
+        {
+            cliente.Codparcmatriz = cliente.Codparc;
+            cliente.Razaosocial = cnpj.Nome;
+            cliente.Nomeparc = cnpj.Nome;
+            cliente.Tippessoa = 'J';
+            cliente.Numend = cnpj.Numero.ToString();
+            cliente.Complemento = cnpj.Complemento;
+            cliente.Telefone = cnpj.Telefone;
+            cliente.Email = cnpj.Email;
+            cliente.Cep = cnpj.Cep;
+            cliente.Socios = new List<string>();
+            foreach (var socio in cnpj.Qsa)
+            {
+                cliente.Socios.Add(socio.Nome);
+            }
+
+            cliente.Cgc_cpf = cnpj.Cnpj;
+
+            return cliente;
+        }
+
+        public int GetLastIdCreated()
+        {
+            return this._ctxs.GetSankhya().GetLastIdCreated();
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using back.data.entities.Screen;
 using back.data.http;
 using back.domain.DTO.ProfileScreenDTO;
@@ -9,6 +10,8 @@ using back.domain.DTO.User;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Data.Utils;
+using back.MappingConfig;
+
 using back.infra.Services.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

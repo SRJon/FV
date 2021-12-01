@@ -57,15 +57,6 @@ namespace back.Application.Controllers
             return Ok(new TokenResponse { token = tokenString });
         }
 
-        [HttpPost("/mapping")]
-        public testeDTO testeMapping([FromBody] Teste teste)
-        {
-
-            var t = _mapper.Map<testeDTO>(teste);
-            var s = _mapper.Map<Teste>(t);
-            return _mapper.Map<testeDTO>(s);
-        }
-
 
         [HttpPost("/getUserByToken")]
         [Authorize]
