@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
+using back.data.entities.TGFContato;
 
 namespace back.infra.Data.Context
 {
@@ -30,6 +31,7 @@ namespace back.infra.Data.Context
         public DbSet<TSIEND> TSIEND { get; set; }
         public DbSet<TSIBAI> TSIBAI { get; set; }
         public DbSet<TSICID> TSICID { get; set; }
+        public DbSet<TGFCTT> TGFCTT { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,6 +41,7 @@ namespace back.infra.Data.Context
             modelBuilder.TSIENDRelationConfiguring();
             modelBuilder.TSIBAIRelationConfiguring();
             modelBuilder.TSICIDRelationConfiguring();
+            modelBuilder.TGFCTTRelationConfiguring();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

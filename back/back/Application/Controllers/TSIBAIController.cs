@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 
 namespace back.Application.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TSIBAIController : Controller
     {
         private readonly ITSIBAIRepository _ITSIBAIRepository;

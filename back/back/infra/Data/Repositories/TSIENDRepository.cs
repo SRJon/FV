@@ -42,11 +42,7 @@ namespace back.infra.Data.Repositories
             }
         }
 
-        //TODO DELETE ENDEREÇO
-        public Task<bool> Delete(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+
 
         //TODO GET ALL ENDERECO
         public Task<Response<List<TSIENDDTO>>> GetAllPaginateAsync(int page, int limit)
@@ -68,10 +64,5 @@ namespace back.infra.Data.Repositories
             return rmapper;
         }
 
-        //TODO UPDATE ENDERECO
-        public Task<bool> Update(TSIENDDTOUpdateDTO tsiend)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

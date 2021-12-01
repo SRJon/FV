@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace back.Application.Controllers
 {
+    [Route("api/[controller]")]
     public class TSIENDController : ControllerBase
     {
         private readonly ITSIENDRepository _ITSIENDRepository;

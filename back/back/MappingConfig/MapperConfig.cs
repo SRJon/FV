@@ -24,6 +24,7 @@ using back.data.entities.TGFParceiro;
 using back.data.entities.TSIEndereco;
 using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
+using back.data.entities.TGFContato;
 
 namespace back.MappingConfig
 {
@@ -59,6 +60,7 @@ namespace back.MappingConfig
                 cfg.CreateTSIENDMapper();
                 cfg.CreateTSIBAIMapper();
                 cfg.CreateTSICIDMapper();
+                cfg.CreateTGFCTTMapper();
             });
             return configuration;
         }

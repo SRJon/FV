@@ -40,6 +40,8 @@ namespace back.ioc
             services.AddScoped<ITSIENDRepository, TSIENDRepository>();
             services.AddScoped<ITSIBAIRepository, TSIBAIRepository>();
             services.AddScoped<ITSICIDRepository, TSICIDRepository>();
+            services.AddScoped<ITGFCTTRepository, TGFCTTRepository>();
+
 
 
             return services;
