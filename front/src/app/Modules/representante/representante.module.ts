@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RepresentanteComponent } from './Components/representante/representante.component';
-import { LoginRoutingModule } from '../login/login-routing.module';
+import { ClientComponent } from './Components/client/client.component';
+import { RepresentanteRoutingModule } from './representante-routing.module';
 
 @NgModule({
-  declarations: [RepresentanteComponent],
-  imports: [CommonModule, LoginRoutingModule],
+  declarations: [ClientComponent],
+  imports: [CommonModule, RepresentanteRoutingModule],
 })
 export class RepresentanteModule {}
