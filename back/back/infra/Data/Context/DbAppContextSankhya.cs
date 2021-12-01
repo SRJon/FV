@@ -1,3 +1,4 @@
+using back.data.entities.AD_ESTPRODCOR;
 using back.data.entities.AD_ESTPROGPROD;
 using back.data.entities.AD_FAMGR1;
 using back.data.entities.AD_FAMGR2;
@@ -48,6 +49,7 @@ namespace back.infra.Data.Context
         public DbSet<TGFPRO> TGFPRO { get; set; }
         public DbSet<VGFTAB> VGFTAB { get; set; }
         public DbSet<AD_PANTONE> AD_PANTONE { get; set; }
+        public DbSet<AD_ESTPRODCOR> AD_ESTPRODCOR { get; set; }
 
 
 
@@ -67,6 +69,7 @@ namespace back.infra.Data.Context
             modelBuilder.Entity<TGFPRO>().HasKey(x => x.CodProd).HasName("PrimaryKey_CodProd");
             modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab");
             modelBuilder.Entity<AD_PANTONE>().HasKey(x => x.CodCor).HasName("PrimaryKey_CodCor");
+            modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
