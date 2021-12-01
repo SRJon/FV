@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+
+    tty: true
+    restart: always
+    ports:
+      - 4200:4200
+
+    volumes:
+      - ./front:/app
+
+  backend:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - ./back/back:/app
+
+    tty: true
+    restart: always
