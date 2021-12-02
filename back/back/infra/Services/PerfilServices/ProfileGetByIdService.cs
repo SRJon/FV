@@ -8,7 +8,10 @@ namespace back.infra.Services.PerfilServices
     public static class ProfileGetByIdService
     {
         public static Task<Perfil> GetByIdService(
-            this DbAppContextFVUDB_TESTE ctx, int id) => ctx.Perfil.Include(u => u.Usuario).Include(p => p.PerfilTela).ThenInclude(p => p.Telas).
-            FirstOrDefaultAsync(x => x.Id == id);
+            this DbAppContextFVUDB_TESTE ctx, int id) =>
+            ctx.Perfil
+            .Include(p => p.PerfilTela)
+            .ThenInclude(p => p.Telas)
+            .FirstOrDefaultAsync(x => x.Id == id);
     }
 }

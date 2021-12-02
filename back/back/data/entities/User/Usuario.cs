@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using back.data.entities.Profile;
+using back.data.entities.UserEmp;
 using back.domain.entities;
 using back.DTO.Authentication;
 
@@ -18,14 +20,13 @@ namespace back.data.entities.User
         public bool? AltSenha { get; set; }
         public DateTime? DtUltAltSenha { get; set; }
         public string LoginSnk { get; set; }
-
         [Column("SGTSIUSU_USU_COD")]
         public int? sgtsiusU_USU_COD { get; set; }
         public string SenhaFV { get; set; }
-
         public int? PerfilId { get; set; }
         [ForeignKey("PerfilId")]
-        public virtual Perfil Perfil { get; set; }
+        public virtual Perfil Perfil { get; set; }           
+        public virtual ICollection<UsuarioEmp>  UsuarioEmp { get; set; }        
 
         public UserAuthenticateDto ToDto()
         {
@@ -42,7 +43,5 @@ namespace back.data.entities.User
                 DtUltAltSenha = this.DtUltAltSenha
             };
         }
-
-
     }
 }

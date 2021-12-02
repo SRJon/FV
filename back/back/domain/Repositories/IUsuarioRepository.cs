@@ -19,6 +19,6 @@ namespace back.domain.Repositories
         public Usuario GetByIdAsync(int id);
         public bool ProductExists(int id);
         public decimal UserValidation(LoginEntity user);
-
+        public Task<UsuarioWiTHPerfilDTO> GetByIdWithPerfil(int id);
     }
 }

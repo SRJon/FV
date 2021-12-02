@@ -1,13 +1,18 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Screen;
 using back.data.http;
+using back.domain.DTO.ProfileScreenDTO;
 using back.domain.DTO.ScreenDTO;
+using back.domain.DTO.User;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Data.Utils;
 using back.MappingConfig;
+
+using back.infra.Services.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,10 +23,14 @@ namespace back.Application.Controllers
     public class TelaController : ControllerBase
     {
         private ITelaRepository _telaRepository;
+        private IUserRepository _usuarioRepository;
+        private IPerfilTelaRepository _perfilTelaRepository;
 
-        public TelaController(ITelaRepository telaRepository)
+        public TelaController(ITelaRepository telaRepository, IUserRepository usuarioRepository, IPerfilTelaRepository perfilTelaRepository)
         {
             _telaRepository = telaRepository;
+            _usuarioRepository = usuarioRepository;
+            _perfilTelaRepository = perfilTelaRepository;
         }
         [HttpGet]
         [Authorize]
@@ -33,6 +42,33 @@ namespace back.Application.Controllers
                 var result = await _telaRepository.GetAllPaginateAsync(payload.page, payload.limit);
                 response.SetConfig(200, "");
                 response.Data = result.Data;
+                response.setHttpAtr(result);
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar as telas" + InnerExceptionMessage.InnerExceptionError(e), false);
+            }
+            return response.GetResponse();
+        }
+        [HttpGet("getByToken")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IResponse<List<TelaDTO>>>> GetAllByUserAsync([FromQuery] ScreenGetAllEntity payload)
+        {
+            var token = "";
+            UsuarioWiTHPerfilDTO user = null;
+            if (HttpContext.Request.Headers.ContainsKey("Authorization"))
+            {
+                token = HttpContext.Request.Headers["Authorization"];
+                var id = TokenService.getIdByToken(token.Split("Bearer")[1].Trim());
+                user = await _usuarioRepository.GetByIdWithPerfil(id);
+            }
+            var response = new Response<List<TelaDTO>>();
+            try
+            {
+
+                var result = new Response<List<TelaDTO>>();
+                response.SetConfig(200, "");
+                response.Data = new List<TelaDTO>();
                 response.setHttpAtr(result);
             }
             catch (System.Exception e)

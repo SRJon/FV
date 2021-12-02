@@ -26,6 +26,12 @@ using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
 
+using back.data.entities.TGFVEN;
+using back.data.entities.TSIEMP;
+using back.data.entities.UserEmp;
+using back.data.entities.AD_TIPNEG;
+
+
 namespace back.MappingConfig
 {
     public class MapperConfig
@@ -53,6 +59,7 @@ namespace back.MappingConfig
                 cfg.CreateTelaMapper();
                 cfg.CreateUserCustomizationsMapper();
                 cfg.CreateUserMapper();
+                cfg.CreateUsuarioEmpMapper();
                 cfg.CreateVersaoProjetosMapper();
                 cfg.CreateVersionDetailsMapper();
                 cfg.CreateAD_VGFRPVDetailsMapper();
@@ -61,6 +68,10 @@ namespace back.MappingConfig
                 cfg.CreateTSIBAIMapper();
                 cfg.CreateTSICIDMapper();
                 cfg.CreateTGFCTTMapper();
+                cfg.CreateTGFVENMapper();
+                cfg.CreateTSIEMPMapper();
+                cfg.CreateAD_TIPNEGMapper();
+                cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;
         }

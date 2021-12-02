@@ -1,3 +1,4 @@
+using back.data.entities.UserEmp;
 using back.domain.entities;
 
 namespace back.data.entities.Enterprise
@@ -8,5 +9,6 @@ namespace back.data.entities.Enterprise
         public string Nome { get; set; }
         public decimal? VlrMinFrete { get; set; }
         public decimal? VlrMinPedido { get; set; }
+        public UsuarioEmp UsuarioEmp { get; set; }
     }
 }

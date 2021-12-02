@@ -27,7 +27,9 @@ using back.data.entities.VersionDetails;
 using back.ioc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-
+using back.data.entities.UserEmp;
+using System.Threading.Tasks;
+using back.domain.DTO.UserEmp;
 
 namespace back.infra.Data.Context
 {
@@ -63,9 +65,10 @@ namespace back.infra.Data.Context
         public DbSet<Tela> Tela { get; set; }
         public DbSet<UserCustomizations> UserCustomizations { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
-        //public DbSet<UsuarioEmp> UsuarioEmp { get; set; }
+        public DbSet<UsuarioEmp> UsuarioEmp { get; set; }
         public DbSet<VersaoProjetos> VersaoProjetos { get; set; }
         public DbSet<VersionDetails> VersionDetails { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -80,6 +83,8 @@ namespace back.infra.Data.Context
             modelBuilder.PedidoRelationConfiguring();
             modelBuilder.AnexoRepRelationConfiguring();
             modelBuilder.InformativoRelationConfiguring();
+            modelBuilder.UserEmpRelationConfiguring();
+            modelBuilder.EmpresaRelationConfiguring();
 
         }
 
