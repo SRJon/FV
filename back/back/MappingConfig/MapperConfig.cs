@@ -71,7 +71,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFVENMapper();
                 cfg.CreateTSIEMPMapper();
                 cfg.CreateAD_TIPNEGMapper();
-                cfg.CreateMap<Teste, testeDTO>();
+                //cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;
         }

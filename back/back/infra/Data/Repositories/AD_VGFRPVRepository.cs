@@ -34,16 +34,16 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.AD_VGFRPV.Where(u => u.Codvend == codVendedor).Skip(base.skip).Take(base.limit);
+                var savedSearches = contexto.AD_VGFRPV.Where(u => u.Codvend == codVendedor);
+                // .Skip(base.skip).Take(base.limit);
                 List<AD_VGFRPVDTO> dTOs = new List<AD_VGFRPVDTO>();
 
-                var AD_VGFRPV = await savedSearches.ToListAsync();
+                var AD_VGFRPV = await savedSearches.Skip(base.skip).Take(base.limit).ToListAsync();
                 AD_VGFRPV.ForEach(e => dTOs.Add(_mapper.Map<AD_VGFRPVDTO>(e)));
                 response.Data = dTOs;
-                response.TotalPages = await contexto.AD_VGFRPV.CountAsync();
+                response.TotalPages = await savedSearches.CountAsync();
                 response.Page = page;
-                response.TotalPages = (response.TotalPages / base.limit) + 1;
-                response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
+                response.TotalPages = base.getTotalPages(response.TotalPages);
                 response.Success = true;
                 response.StatusCode = 200;
                 return response;
