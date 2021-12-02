@@ -13,6 +13,9 @@ import { TelaGridComponent } from './Components/tela/Components/tela-grid/tela-g
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTelaComponentComponent } from './Components/tela/Components/tela-content/edit-tela-component/edit-tela-component.component';
 import { UsuarioEditModalComponent } from './Components/usuario/Components/usuario-edit-modal/usuario-edit-modal.component';
+import { EmpresaGridComponent } from './Components/empresa/Components/empresa-grid/empresa-grid.component';
+import { EditEmpresaComponentComponent } from './Components/empresa/Components/empresa-content/edit-empresa-component/edit-empresa-component.component';
+import { EmpresaContentComponent } from './Components/empresa/Components/empresa-content/empresa-content.component';
 
 @NgModule({
   imports: [
@@ -33,6 +36,9 @@ import { UsuarioEditModalComponent } from './Components/usuario/Components/usuar
     TelaGridComponent,
     EditTelaComponentComponent,
     UsuarioEditModalComponent,
+    EmpresaGridComponent,
+    EditEmpresaComponentComponent,
+    EmpresaContentComponent,
   ],
   bootstrap: [PerfilComponent],
 })
