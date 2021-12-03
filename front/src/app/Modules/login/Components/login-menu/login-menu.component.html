@@ -8,13 +8,22 @@
         form-control form-control-lg
         input-transparent
       "
+      [class.is-invalid]="
+        serviceForm.get('user')?.invalid &&
+        serviceForm.get('user')?.touched &&
+        serviceForm.get('password')?.valid
+      "
+      [class.is-valid]="serviceForm.get('user')?.valid"
     >
       <span class="fa fa-user" aria-hidden="true"></span>
-      <input type="text"
-      formControlName="user"
-      placeholder="Usuário"
-      [(ngModel)]="loginEntity.user" />
+      <input
+        type="text"
+        formControlName="user"
+        placeholder="Usuário"
+        [(ngModel)]="loginEntity.user"
+      />
     </div>
+
   </div>
   <div class="col-3 title">
     <div
@@ -25,7 +34,10 @@
         form-control form-control-lg
         input-transparent
       "
-      [class.is-invalid]="serviceForm.get('password')?.invalid"
+      [class.is-invalid]="
+        serviceForm.get('password')?.invalid &&
+        serviceForm.get('password')?.touched
+      "
       [class.is-valid]="serviceForm.get('password')?.valid"
     >
       <span class="fas fa-lock"></span>

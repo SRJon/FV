@@ -129,6 +129,11 @@ input:focus {
   outline: none;
 }
 
+.form-switch{
+  margin-top: 10px;
+  margin-left: auto;
+}
+
 .form-switch a {
   color: #fff;
   text-decoration: none;
@@ -137,4 +142,8 @@ input:focus {
 .form-switch a:hover{
   color: #919497cc;
   cursor: pointer;
+}
+
+.fa-home {
+  color: #FFFFFF !important;
 }
