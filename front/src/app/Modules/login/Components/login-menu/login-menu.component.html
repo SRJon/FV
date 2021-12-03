@@ -13,7 +13,6 @@
         serviceForm.get('user')?.touched &&
         serviceForm.get('password')?.valid
       "
-      [class.is-valid]="serviceForm.get('user')?.valid"
     >
       <span class="fa fa-user" aria-hidden="true"></span>
       <input
@@ -38,7 +37,6 @@
         serviceForm.get('password')?.invalid &&
         serviceForm.get('password')?.touched
       "
-      [class.is-valid]="serviceForm.get('password')?.valid"
     >
       <span class="fas fa-lock"></span>
       <input
@@ -58,8 +56,8 @@
             "
             [ngSwitch]="error"
           >
-            <span *ngSwitchCase="'required'">Requerido*</span>
-            <span *ngSwitchCase="'minlength'">Tamanho Minimo 4 Caracteres</span>
+            <span *ngSwitchCase="'required'">*Requerido</span>
+            <span *ngSwitchCase="'minlength'">*Tamanho Minimo 4 Caracteres</span>
           </li>
         </ng-template>
       </ul>
