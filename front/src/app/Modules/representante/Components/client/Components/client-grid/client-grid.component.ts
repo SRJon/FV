@@ -34,17 +34,16 @@ export class ClientGridComponent implements OnInit {
   getTitle(t: string) {
     return this.listGridTitle[this.listGridTitle.indexOf(t)];
   }
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.grid.createGrid({ selectorHtml: '#table_client', paging: false });
     // this.grid.render();
-    this.getAll(1, 10);
+    await this.getAll(1, 10);
+    this.grid.render();
   }
 
   async getAll(page = 1, limit = 10) {
     const response = await this.aDVGFRPVService.getAll(page, limit);
     // this.grid.setData(response.data);
-    console.log(response.data, 'response');
     this.listGrid = response.data;
-    this.grid.render();
   }
 }
