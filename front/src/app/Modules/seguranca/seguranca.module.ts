@@ -16,6 +16,9 @@ import { UsuarioEditModalComponent } from './Components/usuario/Components/usuar
 import { EmpresaGridComponent } from './Components/empresa/Components/empresa-grid/empresa-grid.component';
 import { EditEmpresaComponentComponent } from './Components/empresa/Components/empresa-content/edit-empresa-component/edit-empresa-component.component';
 import { EmpresaContentComponent } from './Components/empresa/Components/empresa-content/empresa-content.component';
+import { ParametroGridComponent } from './Components/parametro/Components/parametro-grid/parametro-grid.component';
+import { ParametroContentComponent } from './Components/parametro/Components/parametro-content/parametro-content.component';
+import { EditParametroComponentComponent } from './Components/parametro/Components/parametro-content/edit-parametro-component/edit-parametro-component.component';
 
 @NgModule({
   imports: [
@@ -39,6 +42,9 @@ import { EmpresaContentComponent } from './Components/empresa/Components/empresa
     EmpresaGridComponent,
     EditEmpresaComponentComponent,
     EmpresaContentComponent,
+    ParametroGridComponent,
+    ParametroContentComponent,
+    EditParametroComponentComponent,
   ],
   bootstrap: [PerfilComponent],
 })

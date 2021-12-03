@@ -1,0 +1,26 @@
+<div class="h-100">
+  <div class="body-content">
+    <div class="row">
+      <div class="head">
+        <button class="btn btn-primary" (click)="openModal(false)">
+          Criar novo Parâmetro
+        </button>
+      </div>
+    </div>
+    <div class="row pb-5">
+      <div class="pt-4">
+        <app-parametro-grid
+          [listGrid]="parametros.data"
+          [paginate]="paginate"
+          [totalItems]="paginate.totalItems"
+          (nextSelection)="onNextSelection($event)"
+        ></app-parametro-grid>
+        <app-edit-parametro-component
+          [parametro]="initialParam"
+          *ngIf="isOpen"
+          (onCloseModal)="openModal($event)"
+        ></app-edit-parametro-component>
+      </div>
+    </div>
+  </div>
+</div>

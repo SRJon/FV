@@ -1,0 +1,132 @@
+<p>edit-parametro-component works!</p>
+<div
+  class="modal fade show"
+  id="modal-default"
+  aria-hidden="true"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <!-- style="display: none" -->
+  <div class="modal-dialog" style="height: -webkit-fill-available; width: 50vw">
+    <div class="modal-content" style="height: inherit; width: inherit">
+      <!-- TODO modalLoading -->
+      <div class="overlay" id="overloadModal">
+        <i class="fas fa-2x fa-sync fa-spin"></i>
+      </div>
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="onClose()"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">{{ words.title }}</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <ng-template [ngIf]="parametro">
+            <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
+              <div class="card-body">
+                <div class="form-group row">
+                  <label for="IdInput" class="col-12">{{
+                    words.idInput
+                  }}</label>
+                  <input
+                    type="number"
+                    class="form-control col-10"
+                    id="IdInput"
+                    disabled
+                    [value]="parametro.id"
+                    [name]="words.idInput"
+                    required
+                  />
+                </div>
+                <div class="form-group row">
+                  <label for="nomeInput" class="col-12">{{
+                    words.nomeInput
+                  }}</label>
+                  <input
+                    required
+                    type="text"
+                    class="form-control col-10"
+                    id="nomeInput"
+                    placeholder="Digite o nome"
+                    [(ngModel)]="parametro.nome"
+                    formControlName="nome"
+                    [class.is-invalid]="serviceForm.get('nome')?.invalid"
+                    [class.is-valid]="serviceForm.get('nome')?.valid"
+                  />
+                  <span class="error invalid-feedback">*Requerido</span>
+                </div>
+                <div class="form-group row">
+                  <label for="valorInput" class="col-12">{{
+                    words.valorInput
+                  }}</label>
+                  <input
+                    required
+                    type="text"
+                    class="form-control col-10"
+                    id="valorInput"
+                    placeholder="Digite o valor"
+                    [(ngModel)]="parametro.valor"
+                    formControlName="valor"
+                    [class.is-invalid]="serviceForm.get('valor')?.invalid"
+                    [class.is-valid]="serviceForm.get('valor')?.valid"
+                  />
+                  <span class="error invalid-feedback">*Requerido</span>
+                </div>
+                <div class="form-group row">
+                  <label for="descricaoInput" class="col-12">{{
+                    words.descricaoInput
+                  }}</label>
+                  <input
+                    required
+                    type="text"
+                    class="form-control col-10"
+                    id="descricaoInput"
+                    placeholder="Digite a descrição"
+                    [(ngModel)]="parametro.descricao"
+                    formControlName="descricao"
+                    [class.is-invalid]="serviceForm.get('descricao')?.invalid"
+                    [class.is-valid]="serviceForm.get('descricao')?.valid"
+                  />
+                  <span class="error invalid-feedback">*Requerido</span>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="modal-footer justify-content-between">
+                <button
+                  (click)="onClose()"
+                  type="button"
+                  class="btn btn-default"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="this.serviceForm.invalid"
+                >
+                  Save changes
+                </button>
+              </div>
+            </form>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
