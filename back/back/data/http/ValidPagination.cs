@@ -22,7 +22,14 @@ namespace back.data.http
 
             if (limit == 0)
                 this.limit = int.MaxValue;
-            skip = (this.page - 1) * limit;
+            skip = (this.page - 1) * this.limit;
+        }
+        protected int getTotalPages(int totalPages)
+        {
+
+
+            var result = totalPages / this.limit;
+            return result == 0 ? 0 : result;
         }
     }
 }
