@@ -1,8 +1,16 @@
 import axios from 'axios';
 import { AuthenticationService } from './app/Modules/login/Services/Authentication.service';
+import { Settings } from './Settings';
 
 export const AxiosConfig = (l = (isLoading: boolean) => {}, ctx: any) => {
-  axios.defaults.baseURL = 'http://localhost:5000';
+  let settings = Settings.getInstance();
+
+  if (settings.isProduction) {
+    axios.defaults.baseURL = 'http://10.200.200.6:5000';
+  } else {
+    axios.defaults.baseURL = 'http://localhost:5000';
+  }
+
   let load = l.bind(ctx);
   axios.defaults.headers.common['Authorization'] =
     'Bearer ' + localStorage.getItem('token');

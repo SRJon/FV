@@ -92,7 +92,6 @@ namespace back.MappingConfig
                 cfg.CreateVGFTABMapper();
                 cfg.CreateAD_PANTONEMapper();
                 cfg.CreateAD_ESTPRODCORMapper();
-                cfg.CreateMap<Teste, testeDTO>();
 
             });
             return configuration;
