@@ -35,5 +35,6 @@ import { UsuarioEditModalComponent } from './Components/usuario/Components/usuar
     UsuarioEditModalComponent,
   ],
   bootstrap: [PerfilComponent],
+  exports: [TitleComponent],
 })
 export class SegurancaModule {}

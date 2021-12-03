@@ -1,0 +1,19 @@
+<table id="table_client">
+  <thead>
+    <tr>
+      <th></th>
+      <th *ngFor="let title of listTitle">{{ getTitle(title) }}</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listGrid">
+      <td><a href="">Visualizar</a></td>
+      <td *ngFor="let title of listTitle">{{ item[title] }}</td>
+      <td>
+        <button click="edit(client)" class="btn btn-primary">Editar</button>
+        <button click="delete(client)" class="btn btn-danger">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -12,6 +12,7 @@ using System;
 using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
+using Microsoft.Extensions.Configuration;
 
 namespace back.infra.Data.Context
 {
@@ -57,7 +58,16 @@ namespace back.infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.LogTo(Console.WriteLine);
+            IConfiguration _config = new ConfigurationBuilder()
+               .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+               .AddJsonFile("appsettings.json")
+               .Build();
+            var isProduction = _config.GetValue<bool>("isProduction");
+            if (!isProduction)
+            {
+
+                optionsBuilder.LogTo(Console.WriteLine);
+            }
             base.OnConfiguring(optionsBuilder);
 
         }

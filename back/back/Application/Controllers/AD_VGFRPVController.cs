@@ -93,5 +93,15 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("SALDO_LIMITE_CREDITO")]
+        public IActionResult AD_SALDO_LIMITE_CREDITO(int codProd)
+        {
+
+            this._AD_VGFRPVRepository.get_saldoAsync(codProd);
+            return Ok();
+        }
     }
 }
