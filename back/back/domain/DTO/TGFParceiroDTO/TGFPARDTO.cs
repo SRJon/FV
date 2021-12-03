@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using back.domain.entities;
 
 namespace back.domain.DTO.TGFParceiroDTO
@@ -26,5 +27,12 @@ namespace back.domain.DTO.TGFParceiroDTO
         public string Inscestadnauf { get; set; }
         public string Cgc_cpf { get; set; }
         public decimal Limcred { get; set; }
+
+        //Uso do front
+        public virtual string Endereco { get; set; }
+        public virtual string Bairro { get; set; }
+        public virtual string Uf { get; set; }
+        public virtual string Cidade { get; set; }
+        public ICollection<string> Socios { get; set; }
     }
 }

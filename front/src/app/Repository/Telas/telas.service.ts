@@ -11,6 +11,6 @@ export class TelasService {
   async getAll(perfilid: number): Promise<ITela[]> {
     var result = await axios.get('PerfilTela/getByProfile/' + perfilid);
 
-    return result.data;
+    return result.data.data;
   }
 }

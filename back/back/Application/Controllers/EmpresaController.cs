@@ -22,7 +22,6 @@ namespace back.Application.Controllers
 
         public EmpresaController(IEmpresaRepository empresaRepository)
         {
-
             _empresaRepository = empresaRepository;
         }
 

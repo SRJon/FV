@@ -21,6 +21,11 @@ using back.data.entities.VersaoProjetos;
 using back.data.entities.VersionDetails;
 using back.data.entities.VIEW_AD_VGFRPV;
 using back.data.entities.TGFParceiro;
+using back.data.entities.TSIEndereco;
+using back.data.entities.TSIBairro;
+using back.data.entities.TSICidade;
+using back.data.entities.TGFContato;
+
 using back.data.entities.TGFVEN;
 using back.data.entities.TSIEMP;
 using back.data.entities.UserEmp;
@@ -35,6 +40,7 @@ using back.data.entities.TGFPRO;
 using back.data.entities.VGFTAB;
 using back.data.entities.AD_PANTONE;
 using back.data.entities.AD_ESTPRODCOR;
+
 
 namespace back.MappingConfig
 {
@@ -68,9 +74,14 @@ namespace back.MappingConfig
                 cfg.CreateVersionDetailsMapper();
                 cfg.CreateAD_VGFRPVDetailsMapper();
                 cfg.CreateTGFPARMapper();
+                cfg.CreateTSIENDMapper();
+                cfg.CreateTSIBAIMapper();
+                cfg.CreateTSICIDMapper();
+                cfg.CreateTGFCTTMapper();
                 cfg.CreateTGFVENMapper();
                 cfg.CreateTSIEMPMapper();
                 cfg.CreateAD_TIPNEGMapper();
+
                 cfg.CreateAD_ESTPROGPRODMapper();
                 cfg.CreateAD_FAMGR1Mapper();
                 cfg.CreateAD_FAMGR2Mapper();
@@ -82,6 +93,7 @@ namespace back.MappingConfig
                 cfg.CreateAD_PANTONEMapper();
                 cfg.CreateAD_ESTPRODCORMapper();
                 cfg.CreateMap<Teste, testeDTO>();
+
             });
             return configuration;
         }
