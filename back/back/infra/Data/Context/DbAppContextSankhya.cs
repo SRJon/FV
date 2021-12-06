@@ -12,6 +12,7 @@ using System;
 using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
+using back.data.entities.View_AD_SALDO_PARCEIRO;
 
 namespace back.infra.Data.Context
 {
@@ -38,6 +39,7 @@ namespace back.infra.Data.Context
         public DbSet<TGFVEN> TGFVEN { get; set; }
         public DbSet<TSIEMP> TSIEMP { get; set; }
         public DbSet<AD_TIPNEG> AD_TIPNEG { get; set; }
+        public DbSet<AD_SALDO_PARCEIRO> AD_SALDO_PARCEIRO { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -48,6 +50,7 @@ namespace back.infra.Data.Context
             modelBuilder.TSIBAIRelationConfiguring();
             modelBuilder.TSICIDRelationConfiguring();
             modelBuilder.TGFCTTRelationConfiguring();
+            modelBuilder.AD_SALDO_PARCEIRORelationConfiguring();
 
             modelBuilder.Entity<TGFVEN>().HasKey(x => x.CODVEND).HasName("PrimaryKey_CODVEND");
             modelBuilder.Entity<TSIEMP>().HasKey(x => x.CODEMP).HasName("PrimaryKey_CODEMP");

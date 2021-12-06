@@ -44,6 +44,7 @@ namespace back.ioc
             services.AddScoped<ITGFVENRepository, TGFVENRepository>();
             services.AddScoped<ITSIEMPRepository, TSIEMPRepository>();
             services.AddScoped<IAD_TIPNEGRepository, AD_TIPNEGRepository>();
+            services.AddScoped<IAD_SALDO_PARCEIRORepository, AD_SALDO_PARCEIRORepository>();
 
             return services;
         }

@@ -30,7 +30,7 @@ using back.data.entities.TGFVEN;
 using back.data.entities.TSIEMP;
 using back.data.entities.UserEmp;
 using back.data.entities.AD_TIPNEG;
-
+using back.data.entities.View_AD_SALDO_PARCEIRO;
 
 namespace back.MappingConfig
 {
@@ -71,6 +71,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFVENMapper();
                 cfg.CreateTSIEMPMapper();
                 cfg.CreateAD_TIPNEGMapper();
+                cfg.CreateAD_SALDO_PARCEIROMapper();
                 //cfg.CreateMap<Teste, testeDTO>();
             });
             return configuration;
