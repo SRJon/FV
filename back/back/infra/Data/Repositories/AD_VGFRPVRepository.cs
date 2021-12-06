@@ -65,6 +65,11 @@ namespace back.infra.Data.Repositories
             .GetByIdService(codVend));
         }
 
-
+        public async Task<AD_VGFRPVDTO> GetById(int codParc)
+        {
+            return _mapper.Map<AD_VGFRPVDTO>(await this._ctxs
+                .GetSankhya()
+                .GetByIdService(codParc));
+        }
     }
 }

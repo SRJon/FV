@@ -76,8 +76,10 @@ namespace back.Application.Controllers
             return response.GetResponse();
         }
 
-        [HttpGet("{codVend}")]
+        //TODO COLOCAR CODPARC
+        [HttpGet]
         [Authorize]
+        [Route("GetByIdVend")]
         public async Task<ActionResult<IResponse<AD_VGFRPVDTO>>> getById(Int16 codVend)
         {
             var response = new Response<AD_VGFRPVDTO>();
@@ -85,6 +87,33 @@ namespace back.Application.Controllers
             try
             {
                 var result = await this._AD_VGFRPVRepository.GetById(codVend);
+                if (result != null)
+                {
+                    response.SetConfig(200);
+                    response.Data = result;
+                }
+                else
+                {
+                    response.SetConfig(404, "AD_VGFRPV não encontrado", false);
+                }
+            }
+            catch (System.Exception)
+            {
+                response.SetConfig(400, "Erro ao buscar a AD_VGFRPV", false);
+            }
+            return response.GetResponse();
+        }
+        [HttpGet]
+        [Authorize]
+        [Route("GetByIdParc")]
+
+        public async Task<ActionResult<IResponse<AD_VGFRPVDTO>>> getById(int codParc)
+        {
+            var response = new Response<AD_VGFRPVDTO>();
+
+            try
+            {
+                var result = await this._AD_VGFRPVRepository.GetById(codParc);
                 if (result != null)
                 {
                     response.SetConfig(200);

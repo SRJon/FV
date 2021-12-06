@@ -1,0 +1,117 @@
+<div class="row">
+  <table id="table_id" class="display">
+    <thead>
+      <tr>
+        <th *ngFor="let title of titleList">{{ getTitle(title) }}</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listGrid">
+        <th *ngFor="let title of titleList" [ngSwitch]="getType(item[title])">
+          <!-- {{ item[title] }} -->
+          <span *ngSwitchCase="'boolean'"
+            ><input type="checkbox" [checked]="item[title]"
+          /></span>
+          <span *ngSwitchDefault>{{ item[title] }}</span>
+        </th>
+        <th>
+          <ul class="listActions">
+            <li>
+              <button
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#modal-default"
+                (click)="openModal(item)"
+              >
+                <i class="fa fa-pencil-alt"></i>
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-danger" (click)="onDelete(item)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </li>
+          </ul>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="row pt-5">
+  <div class="col-lg-4 col-md-4 -col-sm-12">
+    Showing {{ paginate.currentPage }} to 10 of
+    {{ paginate.total * paginate.pageSize }} entries
+  </div>
+  <div class="col-lg-8 col-md-8 -col-sm-12">
+    <ul id="table_id_paginate" class="pagination"></ul>
+  </div>
+</div>
+
+<div id="empresa_grid_edit_component" *ngIf="selectedRecord && !isDelete">
+  <app-edit-empresa-component
+    [empresa]="selectedRecord"
+    (onCloseModal)="stateModal($event)"
+  ></app-edit-empresa-component>
+</div>
+
+<!--  TODO modal delete -->
+<div
+  class="modal fade show"
+  id="modal-sm"
+  style="
+    display: block;
+    padding-right: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+  aria-hidden="true"
+  role="dialog"
+  *ngIf="isDelete"
+>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Deseja Excluir a Empresa?</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="onModalClose(true)"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Id: <strong>{{ selectedRecord?.id }}</strong>
+        </p>
+        <p>
+          Nome: <strong>{{ selectedRecord?.nome }}</strong>
+        </p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button
+          type="button"
+          class="btn btn-default"
+          data-dismiss="modal"
+          (click)="onModalClose(true)"
+        >
+          Fechar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="onModalClose(false)"
+        >
+          Salvar mudanças
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

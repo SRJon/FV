@@ -8,5 +8,6 @@ namespace back.domain.DTO.Enterprise
         public string Nome { get; set; }
         public decimal? VlrMinFrete { get; set; }
         public decimal? VlrMinPedido { get; set; }
+        public short? CodEmp { get; set; }
     }
 }
