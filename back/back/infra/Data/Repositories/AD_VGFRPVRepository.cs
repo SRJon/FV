@@ -27,19 +27,19 @@ namespace back.infra.Data.Repositories
 
 
 
-        public async Task<Response<List<AD_VGFRPVDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor)
+        public async Task<Response<List<AD_VGFRPVSaldoDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor)
         {
-            var response = new Response<List<AD_VGFRPVDTO>>();
+            var response = new Response<List<AD_VGFRPVSaldoDTO>>();
             var contexto = _ctxs.GetSankhya();
             try
             {
                 base.ValidPaginate(page, limit);
                 var savedSearches = contexto.AD_VGFRPV.Where(u => u.Codvend == codVendedor);
                 // .Skip(base.skip).Take(base.limit);
-                List<AD_VGFRPVDTO> dTOs = new List<AD_VGFRPVDTO>();
+                List<AD_VGFRPVSaldoDTO> dTOs = new List<AD_VGFRPVSaldoDTO>();
 
                 var AD_VGFRPV = await savedSearches.Skip(base.skip).Take(base.limit).ToListAsync();
-                AD_VGFRPV.ForEach(e => dTOs.Add(_mapper.Map<AD_VGFRPVDTO>(e)));
+                AD_VGFRPV.ForEach(e => dTOs.Add(_mapper.Map<AD_VGFRPVSaldoDTO>(e)));
                 response.Data = dTOs;
                 response.TotalPages = await savedSearches.CountAsync();
                 response.Page = page;

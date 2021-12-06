@@ -24,17 +24,19 @@ namespace back.Application.Controllers
         private readonly IMapper _mapper;
         private readonly IAD_VGFRPVRepository _AD_VGFRPVRepository;
         private readonly IUserRepository _UserRepository;
+        private readonly IAD_SALDO_PARCEIRORepository _IAD_SALDO_PARCEIRORepository;
 
-        public AD_VGFRPVController(IAD_VGFRPVRepository AD_VGFRPVRepository, IUserRepository UserRepository)
+        public AD_VGFRPVController(IAD_VGFRPVRepository AD_VGFRPVRepository, IUserRepository UserRepository, IAD_SALDO_PARCEIRORepository AD_SALDO_PARCEIRORepository)
         {
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _AD_VGFRPVRepository = AD_VGFRPVRepository;
             _UserRepository = UserRepository;
+            _IAD_SALDO_PARCEIRORepository = AD_SALDO_PARCEIRORepository;
         }
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IResponse<List<AD_VGFRPVDTO>>>> GetAllAsync([FromQuery] AD_VGFRPVGetAllEntity payload)
+        public async Task<ActionResult<IResponse<List<AD_VGFRPVSaldoDTO>>>> GetAllAsync([FromQuery] AD_VGFRPVGetAllEntity payload)
         {
             string token = "";
             var authorization = Request.Headers[HeaderNames.Authorization];
@@ -46,12 +48,18 @@ namespace back.Application.Controllers
             var user = await _UserRepository.GetById(id);
 
 
-            var response = new Response<List<AD_VGFRPVDTO>>();
+            var response = new Response<List<AD_VGFRPVSaldoDTO>>();
             try
             {
                 if (user != null)
                 {
                     var result = await _AD_VGFRPVRepository.GetAllPaginateAsync(payload.page, payload.limit, (int)user.VendedorUCod);
+                    foreach (var parceiro in result.Data)
+                    {
+                        var saldoCredito = await this._IAD_SALDO_PARCEIRORepository.GetById(parceiro.Codparc);
+                        parceiro.Saldo = saldoCredito.Saldo;
+                        parceiro.LimCred = saldoCredito.LimCred;
+                    }
                     response.SetConfig(200);
                     response.Data = result.Data;
                     response.setHttpAtr(result);
