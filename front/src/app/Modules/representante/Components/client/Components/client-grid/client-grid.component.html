@@ -8,7 +8,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of listGrid">
-      <td><a href="">Visualizar</a></td>
+      <td>
+        <a [routerLink]="['details/' + item['codparc']]">Visualizar</a>
+      </td>
       <td *ngFor="let title of listTitle">{{ item[title] }}</td>
       <td>
         <button click="edit(client)" class="btn btn-primary">Editar</button>
@@ -17,3 +19,5 @@
     </tr>
   </tbody>
 </table>
+
+<app-min_loading *ngIf="!isShowing"></app-min_loading>

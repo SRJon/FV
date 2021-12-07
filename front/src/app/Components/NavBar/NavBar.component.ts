@@ -11,7 +11,7 @@ import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
 export class NavBarComponent implements OnInit {
   isOpen = false;
   aside = new AsideMenu();
-  _title = 's';
+  _title = '';
   constructor(
     private menuAsideObs: GlobalMenuService<AsideMenu>,
     private globalTitle: GlobalTitle<string>
