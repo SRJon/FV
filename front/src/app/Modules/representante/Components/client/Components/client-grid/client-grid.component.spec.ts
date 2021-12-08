@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RepresentanteComponent } from './representante.component';
+import { ClientGridComponent } from './client-grid.component';
 
-describe('RepresentanteComponent', () => {
-  let component: RepresentanteComponent;
-  let fixture: ComponentFixture<RepresentanteComponent>;
+describe('ClientGridComponent', () => {
+  let component: ClientGridComponent;
+  let fixture: ComponentFixture<ClientGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RepresentanteComponent ]
+      declarations: [ ClientGridComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RepresentanteComponent);
+    fixture = TestBed.createComponent(ClientGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

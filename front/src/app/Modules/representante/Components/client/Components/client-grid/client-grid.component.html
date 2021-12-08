@@ -1,0 +1,67 @@
+<!-- <table id="table_client">
+  <thead>
+    <tr>
+      <th></th>
+      <th *ngFor="let title of listTitle">{{ getTitle(title) }}</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listGrid">
+      <td>
+        <a [routerLink]="['details/' + item['codparc']]">Visualizar</a>
+      </td>
+      <td *ngFor="let title of listTitle">{{ item[title] }}</td>
+      <td>
+        <button click="edit(client)" class="btn btn-primary">Editar</button>
+        <button click="delete(client)" class="btn btn-danger">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-min_loading *ngIf="!isShowing"></app-min_loading> -->
+
+<table data-vertable="ver5">
+  <thead>
+    <tr class="row100 head">
+      <th class="column100 column1" data-column="column1"></th>
+      <th
+        class="column100 column{{ toNumber(i, 2, true) }}"
+        [attr.data-column]="'column' + toNumber(i, 2, true)"
+        *ngFor="let title of listTitle; let i = index"
+      >
+        {{ getTitle(title) }}
+      </th>
+      <th
+        class="column100 column{{ lastI }}"
+        attr.data-column="column{{ lastI }}"
+      >
+        Açoes
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row100" *ngFor="let item of listGrid; let i = index">
+      <td class="column100 column1" data-column="column1">
+        <a [routerLink]="['details/' + item['codparc']]">Visualizar</a>
+      </td>
+      <td
+        *ngFor="let title of listTitle; let j = index"
+        class="column100 column{{ toNumber(j, 1) }}"
+        [attr.data-column]="'column' + toNumber(j, 1)"
+      >
+        {{ item[title] }}
+      </td>
+
+      <td style="display: flex" [attr.data-column]="'column' + lastI">
+        <button click="edit(client)" class="button-48 edit" role="button">
+          <span class="text"><i class="fas fa-pen"></i></span>
+        </button>
+        <button click="delete(client)" class="button-48" role="button">
+          <span class="text"><i class="fas fa-trash"></i></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

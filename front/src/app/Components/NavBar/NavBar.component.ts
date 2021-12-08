@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AsideMenu } from 'src/app/Models/AsideMenu';
 import { GlobalMenuService } from 'src/app/Shared/global-menu.service';
+import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
 
 @Component({
   selector: 'app-NavBar',
@@ -10,9 +11,17 @@ import { GlobalMenuService } from 'src/app/Shared/global-menu.service';
 export class NavBarComponent implements OnInit {
   isOpen = false;
   aside = new AsideMenu();
-  constructor(private menuAsideObs: GlobalMenuService<AsideMenu>) {}
+  _title = '';
+  constructor(
+    private menuAsideObs: GlobalMenuService<AsideMenu>,
+    private globalTitle: GlobalTitle<string>
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.globalTitle.getObservable().subscribe((value) => {
+      this._title = value;
+    });
+  }
 
   onMenuClickModal() {
     this.isOpen = !this.isOpen;

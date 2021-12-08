@@ -9,6 +9,7 @@
 @import url("./../assets/css/select2.min.css");
 @import url("./../assets/css/tempusdominus-bootstrap-4.min.css");
 @import url("./../assets/css/adminlte.min.css");
+
 aside.asideMenu {
   height: 100vh;
   background: black;
@@ -41,9 +42,8 @@ aside.asideMenu {
   }
 }
 
-
 .logout {
-  color: #FFFFFF
+  color: #ffffff;
 }
 
 .logout:hover {

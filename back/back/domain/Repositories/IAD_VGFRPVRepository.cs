@@ -10,6 +10,8 @@ namespace back.domain.Repositories
     {
         public Task<data.http.Response<List<AD_VGFRPVSaldoDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor);
         public Task<AD_VGFRPVDTO> GetById(Int16 codVend);
+
         public Task<AD_VGFRPVDTO> GetById(int codParc);
+
     }
 }

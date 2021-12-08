@@ -25,6 +25,7 @@ using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
 
+
 namespace back.infra.Data.Context
 {
     public class DbAppContextSankhya : DbContext
@@ -92,7 +93,16 @@ namespace back.infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.LogTo(Console.WriteLine);
+            IConfiguration _config = new ConfigurationBuilder()
+               .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+               .AddJsonFile("appsettings.json")
+               .Build();
+            var isProduction = _config.GetValue<bool>("isProduction");
+            if (!isProduction)
+            {
+
+                optionsBuilder.LogTo(Console.WriteLine);
+            }
             base.OnConfiguring(optionsBuilder);
 
         }

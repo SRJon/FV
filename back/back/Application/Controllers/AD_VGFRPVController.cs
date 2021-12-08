@@ -103,6 +103,7 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+
         [HttpGet]
         [Authorize]
         [Route("GetByIdParc")]
@@ -129,6 +130,7 @@ namespace back.Application.Controllers
                 response.SetConfig(400, "Erro ao buscar a AD_VGFRPV", false);
             }
             return response.GetResponse();
+
         }
     }
 }

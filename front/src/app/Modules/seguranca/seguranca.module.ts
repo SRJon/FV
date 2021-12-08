@@ -41,5 +41,6 @@ import { EmpresaContentComponent } from './Components/empresa/Components/empresa
     EmpresaContentComponent,
   ],
   bootstrap: [PerfilComponent],
+  exports: [TitleComponent],
 })
 export class SegurancaModule {}

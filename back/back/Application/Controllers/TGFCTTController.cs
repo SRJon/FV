@@ -53,7 +53,7 @@ namespace back.Application.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetLastCreated")]
-        public async Task<ActionResult<IResponse<int>>> GetLastIdCreated(int codParc)
+        public ActionResult<IResponse<int>> GetLastIdCreated(int codParc)
         {
             var response = new Response<int>();
             int result = _TGFCTTRepository.GetLastIdCreated(codParc);
