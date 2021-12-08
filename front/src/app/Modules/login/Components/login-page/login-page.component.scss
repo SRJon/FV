@@ -15,14 +15,20 @@
   text-transform: capitalize;
   font-size: 16px;
 }
-.navbar-expand-lg .navbar-collapse {
+.navbar-expand-lg .navbar-collapse .one {
   display: flex !important;
   flex-basis: auto;
-  justify-content: right;
+  justify-content: flex-start;
 }
+
+.navbar-expand-lg .two {
+  display: flex;
+  flex-basis: auto;
+  justify-content: flex-end;
+}
+
 .mainLogin {
-  background: url("https://demo.w3layouts.com/demos_new/template_demo/27-02-2019/key-demo_Free/282453819/web/images/bg.jpg")
-    no-repeat center center;
+  background-image: url('/assets/image/textil.png');
   height: 100vh;
   background-size: cover;
 }
@@ -67,7 +73,7 @@ input[type="text"] {
 }
 
 .content {
-  height: 90%;
+  height: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,9 +125,7 @@ input[type="text"] {
   text-decoration: none;
 }
 
-ul{
-  margin-bottom: 2rem;
-}
+
 textarea:focus, input:focus{
   outline: none;
 }
