@@ -9,6 +9,7 @@ import { Grid } from 'src/app/Shared';
 })
 export class ClientGridComponent implements OnInit {
   isShowing: boolean = false;
+  lastI = 0;
   listTitle: string[] = [
     'codparc',
     'nomeparc',
@@ -18,9 +19,9 @@ export class ClientGridComponent implements OnInit {
     'atraso',
   ];
   listGridTitle: string[] = [
-    'codparc',
-    'nomeparc',
-    'cgc_cpf',
+    'Codigo',
+    'Nome Par',
+    'cgc/cpf',
     'CRÉDITO',
     'CRÉDITO DISPONIVEL',
     'atraso',
@@ -30,9 +31,11 @@ export class ClientGridComponent implements OnInit {
   grid: Grid;
   constructor(private aDVGFRPVService: ADVGFRPVService) {
     this.grid = new Grid();
+    this.lastI = this.listTitle.length + 1;
   }
   getTitle(t: string) {
-    return this.listGridTitle[this.listGridTitle.indexOf(t)];
+    let i = this.listTitle.indexOf(t);
+    return this.listGridTitle[i];
   }
   async ngOnInit(): Promise<void> {
     this.showGrid(false);
@@ -41,6 +44,7 @@ export class ClientGridComponent implements OnInit {
     await this.getAll(1, 10);
     this.grid.render();
     this.showGrid(true);
+    this.gridEvents();
   }
 
   async getAll(page = 1, limit = 10) {
@@ -55,12 +59,50 @@ export class ClientGridComponent implements OnInit {
 
   showGrid(show: boolean) {
     this.isShowing = show;
-    let grid = document.getElementById('table_client');
+    // let grid = document.getElementById('table_client');
 
-    if (show) {
-      grid!.style!.opacity = '1';
-    } else {
-      grid!.style!.opacity = '0';
-    }
+    // if (show) {
+    //   grid!.style!.opacity = '1';
+    // } else {
+    //   grid!.style!.opacity = '0';
+    // }
+  }
+
+  gridEvents() {
+    // $('th').hover((e) => {
+    //   $(e.target).toggleClass('hov-column-head-ver5');
+
+    //   let index = $(e.target).index();
+    //   index++;
+    //   let tds = $(`[data-column=column${index}]`);
+    //   delete tds[0];
+
+    //   tds.toggleClass('hov-column-ver5');
+    // });
+
+    let inter = setInterval(() => {
+      if ($('td').length > 0) {
+        $('td').hover((e) => {
+          let index = $(e.target).index();
+          index++;
+
+          let tds = $(`td[data-column=column${index}]`);
+          tds.toggleClass('hov-column-ver5');
+
+          // let ths = $(`th[data-column=column${index}]`);
+          // ths.toggleClass(' hov-column-head-ver5');
+          let childrens = e.currentTarget.parentElement?.children;
+
+          if (childrens) {
+            let ch = $(childrens);
+            ch.toggleClass('hov-column-ver5');
+          }
+        });
+        clearInterval(inter);
+      }
+    }, 100);
+  }
+  toNumber(value: any, t: any, isTitle: boolean = false) {
+    return Number(value) + Number(t);
   }
 }
