@@ -38,8 +38,7 @@ namespace back.infra.Data.Repositories
                 response.Data = dTOs;
                 response.TotalPages = await contexto.TGFVEN.CountAsync();
                 response.Page = page;
-                response.TotalPages = (response.TotalPages / base.limit) + 1;
-                response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
+                response.TotalPages = base.getTotalPages(response.TotalPages);
                 response.Success = true;
                 response.StatusCode = 200;
                 return response;

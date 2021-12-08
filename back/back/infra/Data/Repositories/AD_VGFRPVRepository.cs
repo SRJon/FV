@@ -30,23 +30,23 @@ namespace back.infra.Data.Repositories
 
 
 
-        public async Task<Response<List<AD_VGFRPVDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor)
+        public async Task<Response<List<AD_VGFRPVSaldoDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor)
         {
-            var response = new Response<List<AD_VGFRPVDTO>>();
+            var response = new Response<List<AD_VGFRPVSaldoDTO>>();
             var contexto = _ctxs.GetSankhya();
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.AD_VGFRPV.Where(u => u.Codvend == codVendedor).Skip(base.skip).Take(base.limit);
-                List<AD_VGFRPVDTO> dTOs = new List<AD_VGFRPVDTO>();
+                var savedSearches = contexto.AD_VGFRPV.Where(u => u.Codvend == codVendedor);
+                // .Skip(base.skip).Take(base.limit);
+                List<AD_VGFRPVSaldoDTO> dTOs = new List<AD_VGFRPVSaldoDTO>();
 
-                var AD_VGFRPV = await savedSearches.ToListAsync();
-                AD_VGFRPV.ForEach(e => dTOs.Add(_mapper.Map<AD_VGFRPVDTO>(e)));
+                var AD_VGFRPV = await savedSearches.Skip(base.skip).Take(base.limit).ToListAsync();
+                AD_VGFRPV.ForEach(e => dTOs.Add(_mapper.Map<AD_VGFRPVSaldoDTO>(e)));
                 response.Data = dTOs;
-                response.TotalPages = await contexto.AD_VGFRPV.CountAsync();
+                response.TotalPages = await savedSearches.CountAsync();
                 response.Page = page;
-                response.TotalPages = (response.TotalPages / base.limit) + 1;
-                response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
+                response.TotalPages = base.getTotalPages(response.TotalPages);
                 response.Success = true;
                 response.StatusCode = 200;
                 return response;
@@ -68,43 +68,12 @@ namespace back.infra.Data.Repositories
             .GetByIdService(codVend));
         }
 
-        public async Task get_saldoAsync(int codProd)
+
+        public async Task<AD_VGFRPVDTO> GetById(int codParc)
         {
-            // var SQl = " select ROUND((COALESCE((SELECT  LIMCRED FROM TGFPAR PAR WHERE PAR.CODPARC in (	SELECT CODPARCMATRIZ FROM TGFPAR  PAR  WHERE PAR.CODPARC = 4062)),0) - COALESCE(d.JAUSADO,0)),2) Saldo from (SELECT ( SUM(DADOS.PEDIDOS_PENDENTE) + SUM(DADOS.FINANCEIRO)) JAUSADO FROM(SELECT COALESCE((SELECT SUM(C.VLRNOTA)FROM TGFCAB C WHERE C.CODPARC = PAR.CODPARC AND C.TIPMOV = 'P' AND C.PENDENTE = 'S' AND C.STATUSNOTA = 'L'),0) PEDIDOS_PENDENTE ,COALESCE((SELECT SUM(F.VLRDESDOB) FROM TGFFIN F WHERE PROVISAO = 'N' AND RECDESP = 1 AND F.DHBAIXA IS NULL AND F.CODPARC = PAR.CODPARC),0)FINANCEIRO from TGFPAR PAR INNER JOIN TGFPAR MAT ON MAT.CODPARC = PAR.CODPARCMATRIZ where PAR.CODPARCMATRIZ in (SELECT CODPARCMATRIZ FROM TGFPAR  PAR  WHERE PAR.CODPARC = 4062))DADOS) d";
-            var SQl = "select top 2 *  from sankhya.tgfcab";
-            // decimal saldo = 0;
-            // var emailAddressParam = new SqlParameter("@CODPARC", codProd);
-            // var passwordParam = new SqlParameter("@SALDO", saldo);
-            // var result = this._ctxs.GetSankhya().Database.ExecuteSqlRaw(SQl);
-            // // context.Database.ExecuteSqlRaw(        "exec uspInsertCategory @CategoryName,@Description,@Identity out", parameters:        parameters);
-            // var b = result;
-            // Console.WriteLine(result);
-
-
-            var connection = this._ctxs.GetSankhya().Database.GetDbConnection();
-
-            using (DbCommand cmd = connection.CreateCommand())
-            {
-                if (connection.State.Equals(ConnectionState.Closed)) { connection.Open(); }
-                cmd.CommandText = SQl;
-                try
-                {
-                    var value = (string)await cmd.ExecuteScalarAsync();
-
-                    Console.WriteLine(value);
-                }
-                catch (System.Exception e)
-                {
-
-                    throw e;
-                }
-            }
-
-
-
-
+            return _mapper.Map<AD_VGFRPVDTO>(await this._ctxs
+                .GetSankhya()
+                .GetByIdService(codParc));
         }
-
-
     }
 }
