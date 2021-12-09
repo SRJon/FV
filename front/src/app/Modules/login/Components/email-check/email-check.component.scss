@@ -129,7 +129,7 @@ input:focus {
 }
 
 .form-switch{
-  margin-top: 10px;
+  margin-bottom: 10%;
   margin-left: auto;
 }
 
@@ -145,4 +145,28 @@ input:focus {
 
 .fa-home {
   color: #FFFFFF !important;
+  margin-left: -43%;
+  margin-top: 40%;
+}
+
+.login-color{
+  background-color: rgb(0 0 0 / 74%);
+  width: 400px;
+  height: 400px;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-login-img {
+ width: 150px;
+ height: 40px;
+ margin-left: 30%;
+ margin-top: 10%;
+ filter: brightness(200%);
+}
+
+.col-3 {
+  margin-top: 17%;
+  margin-left: 9%;
 }
