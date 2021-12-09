@@ -3,13 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-diretorio',
   templateUrl: './diretorio.component.html',
-  styleUrls: ['./diretorio.component.scss']
+  styleUrls: ['./diretorio.component.scss'],
 })
 export class DiretorioComponent implements OnInit {
+  title: string = 'Diretório';
+  description: string = '';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  getHeigth(): number {
+    let doc = document.querySelector('#middleWrapper');
+    return doc ? doc.clientHeight : 0;
   }
 
+  ngOnInit(): void {}
 }

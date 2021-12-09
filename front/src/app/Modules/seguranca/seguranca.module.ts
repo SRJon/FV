@@ -19,6 +19,9 @@ import { EmpresaContentComponent } from './Components/empresa/Components/empresa
 import { ParametroGridComponent } from './Components/parametro/Components/parametro-grid/parametro-grid.component';
 import { ParametroContentComponent } from './Components/parametro/Components/parametro-content/parametro-content.component';
 import { EditParametroComponentComponent } from './Components/parametro/Components/parametro-content/edit-parametro-component/edit-parametro-component.component';
+import { DiretorioContentComponent } from './Components/diretorio/Components/diretorio-content/diretorio-content.component';
+import { DiretorioGridComponent } from './Components/diretorio/Components/diretorio-grid/diretorio-grid.component';
+import { EditDiretorioComponentComponent } from './Components/diretorio/Components/diretorio-content/edit-diretorio-component/edit-diretorio-component.component';
 
 @NgModule({
   imports: [
@@ -45,6 +48,9 @@ import { EditParametroComponentComponent } from './Components/parametro/Componen
     ParametroGridComponent,
     ParametroContentComponent,
     EditParametroComponentComponent,
+    DiretorioContentComponent,
+    DiretorioGridComponent,
+    EditDiretorioComponentComponent,
   ],
   bootstrap: [PerfilComponent],
 })
