@@ -24,7 +24,7 @@ using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
-
+using Microsoft.Extensions.Configuration;
 
 namespace back.infra.Data.Context
 {
