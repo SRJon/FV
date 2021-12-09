@@ -69,7 +69,7 @@ namespace back.Application.Controllers
                     response.SetConfig(400, "Não há vendedor associado ao usuário - AD_VGFRPVs", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
                 response.SetConfig(404, "Erro ao buscar as AD_VGFRPVs", false);
             }
