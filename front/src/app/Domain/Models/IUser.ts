@@ -1,3 +1,4 @@
+import { IUsuarioEmp } from './IUsuarioEmp';
 import { IPerfil } from './IPerfil';
 
 export interface IUser {
@@ -15,4 +16,5 @@ export interface IUser {
   sgtsiusU_USU_COD?: number;
   senhaFV?: string;
   perfil?: IPerfil;
+  usuarioEmp?: IUsuarioEmp[];
 }

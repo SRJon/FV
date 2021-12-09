@@ -40,7 +40,15 @@
         </form>
       </div>
     </li>
-
+    <!-- Seleção de empresas -->
+    <li>
+      <select class="form-select" aria-label="Default select">
+        <option selected>Selecione uma empresa</option>
+        <option *ngFor="let empresa of empresas" [value]="empresa.nome">
+          {{ empresa.nome }}
+        </option>
+      </select>
+    </li>
     <!-- Messages Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
