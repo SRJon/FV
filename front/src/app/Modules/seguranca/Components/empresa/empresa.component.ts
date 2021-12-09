@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-empresa',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./empresa.component.scss'],
 })
 export class EmpresaComponent implements OnInit {
-  title: string = 'Empresa';
-  description: string = '';
-
-  constructor() {}
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Empresa');
+  }
   getHeigth(): number {
     let doc = document.querySelector('#middleWrapper');
     return doc ? doc.clientHeight : 0;

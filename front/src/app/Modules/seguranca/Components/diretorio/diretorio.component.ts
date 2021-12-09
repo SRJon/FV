@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-diretorio',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./diretorio.component.scss'],
 })
 export class DiretorioComponent implements OnInit {
-  title: string = 'Diretório';
-  description: string = '';
-
-  constructor() {}
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Diretório');
+  }
 
   getHeigth(): number {
     let doc = document.querySelector('#middleWrapper');

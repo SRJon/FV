@@ -3,7 +3,7 @@ import { Grid } from 'src/app/Shared';
 import { UserService } from '../../Services/user.service';
 import { IUser } from '../../../../Domain/Models/IUser';
 import { AlertsService } from '../../../../Repository/Alerts/alerts.service';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -19,13 +19,14 @@ export class UsuarioComponent implements OnInit {
   modalIsOpen: boolean = false;
 
   constructor(
+    private titleService: Title,
     private service: UserService,
     private alertsService: AlertsService
   ) {
+    this.titleService.setTitle('Usuário');
     this.selectedUser = this.makeEmptyUser();
     this.grid = new Grid();
     this.grid.sharePaginate.setHtml('.pagination');
-
     this.listTitle = ['id', 'nome', 'email', 'ativo'];
   }
   changeModalDeleteState(isOpen: boolean, IUser: IUser | null = null) {
