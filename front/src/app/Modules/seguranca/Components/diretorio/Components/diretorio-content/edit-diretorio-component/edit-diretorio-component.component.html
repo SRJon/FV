@@ -1,0 +1,132 @@
+<p>edit-diretorio-component works!</p>
+<div
+  class="modal fade show"
+  id="modal-default"
+  aria-hidden="true"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <!-- style="display: none" -->
+  <div class="modal-dialog" style="height: -webkit-fill-available; width: 50vw">
+    <div class="modal-content" style="height: inherit; width: inherit">
+      <!-- TODO modalLoading -->
+      <div class="overlay" id="overloadModal">
+        <i class="fas fa-2x fa-sync fa-spin"></i>
+      </div>
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="onClose()"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">{{ words.title }}</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <ng-template [ngIf]="diretorio">
+            <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
+              <div class="card-body">
+                <div class="form-group row">
+                  <label for="IdInput" class="col-12">{{
+                    words.idInput
+                  }}</label>
+                  <input
+                    type="number"
+                    class="form-control col-10"
+                    id="IdInput"
+                    disabled
+                    [value]="diretorio.id"
+                    [name]="words.idInput"
+                    required
+                  />
+                </div>
+                <div class="form-group row">
+                  <label for="tipoInput" class="col-12">{{
+                    words.tipoInput
+                  }}</label>
+                  <input
+                    required
+                    type="number"
+                    class="form-control col-10"
+                    id="tipoInput"
+                    placeholder="Digite o tipo"
+                    [(ngModel)]="diretorio.tipo"
+                    formControlName="tipo"
+                    [class.is-invalid]="serviceForm.get('tipo')?.invalid"
+                    [class.is-valid]="serviceForm.get('tipo')?.valid"
+                  />
+                  <span class="error invalid-feedback">*Requerido</span>
+                </div>
+                <div class="form-group row">
+                  <label for="linkInput" class="col-12">{{
+                    words.linkInput
+                  }}</label>
+                  <input
+                    required
+                    type="text"
+                    class="form-control col-10"
+                    id="linkInput"
+                    placeholder="Digite o link"
+                    [(ngModel)]="diretorio.link"
+                    formControlName="link"
+                    [class.is-invalid]="serviceForm.get('link')?.invalid"
+                    [class.is-valid]="serviceForm.get('link')?.valid"
+                  />
+                  <span class="error invalid-feedback">*Requerido</span>
+                </div>
+                <div class="form-group row">
+                  <label for="virtualInput" class="col-12">{{
+                    words.virtualInput
+                  }}</label>
+                  <input
+                    required
+                    type="text"
+                    class="form-control col-10"
+                    id="virtualInput"
+                    placeholder="Digite a descrição"
+                    [(ngModel)]="diretorio.virtual"
+                    formControlName="virtual"
+                    [class.is-invalid]="serviceForm.get('virtual')?.invalid"
+                    [class.is-valid]="serviceForm.get('virtual')?.valid"
+                  />
+                  <span class="error invalid-feedback">*Requerido</span>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="modal-footer justify-content-between">
+                <button
+                  (click)="onClose()"
+                  type="button"
+                  class="btn btn-default"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="this.serviceForm.invalid"
+                >
+                  Save changes
+                </button>
+              </div>
+            </form>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
