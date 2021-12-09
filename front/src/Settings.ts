@@ -3,7 +3,7 @@ export class Settings {
   static instance: Settings | null = null;
 
   constructor() {
-    this.isProduction = false;
+    this.isProduction = true;
   }
 
   static getInstance() {
