@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-tela',
   templateUrl: './tela.component.html',
@@ -9,7 +9,9 @@ export class TelaComponent implements OnInit {
   title: string = 'Tela';
   description: string = '';
 
-  constructor() {}
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Tela');
+  }
   getHeigth(): number {
     let doc = document.querySelector('#middleWrapper');
     return doc ? doc.clientHeight : 0;
