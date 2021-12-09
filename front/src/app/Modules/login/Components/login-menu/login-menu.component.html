@@ -1,6 +1,10 @@
 <div class="login-color">
   <form [formGroup]="serviceForm">
-    <img class="form-login-img" src="/assets/image/GrupoLitoralGrande.png" alt="logo-litoral">
+    <img
+      class="form-login-img"
+      src="/assets/image/GrupoLitoralGrande.png"
+      alt="logo-litoral"
+    />
     <div class="col-3">
       <div
         class="
@@ -58,7 +62,9 @@
               [ngSwitch]="error"
             >
               <span *ngSwitchCase="'required'">*Requerido</span>
-              <span *ngSwitchCase="'minlength'">*Tamanho Minimo 4 Caracteres</span>
+              <span *ngSwitchCase="'minlength'"
+                >*Tamanho Minimo 4 Caracteres</span
+              >
             </li>
           </ng-template>
         </ul>
@@ -67,8 +73,6 @@
 
     <div class="col-3 title">
       <button class="btn btn-danger" (click)="Login()">Logar</button>
-
-      <!-- [disabled]="isLoading" (click)="login()" -->
     </div>
     <div class="form-check form-switch">
       <input
@@ -84,5 +88,5 @@
       <a class="text-right" (click)="Redefine()">Esqueceu a senha?</a>
     </div>
   </form>
-<div>
-
+  <div></div>
+</div>

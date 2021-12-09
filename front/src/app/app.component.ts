@@ -54,7 +54,7 @@ export class AppComponent {
 
   getHeight() {
     let dom = document.getElementById('middleWrapper');
-
+    if (this.isLogin) return -1;
     if (dom) {
       return dom.clientHeight;
     }

@@ -22,8 +22,6 @@ export class LoginMenuComponent implements OnInit {
   serviceForm: FormGroup;
 
   constructor(
-    private ScreensService: ScreensService,
-    private AlertsService: AlertsService,
     private FormBuilder: FormBuilder,
     private loginew: LoginPageComponent
   ) {
@@ -57,6 +55,4 @@ export class LoginMenuComponent implements OnInit {
   getEntries(obj: any) {
     return Object.entries(obj).map((e) => e[0]);
   }
-
-
 }
