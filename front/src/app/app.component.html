@@ -8,7 +8,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div
     class="{{ isLogin ? '' : 'content-wrapper' }}"
-    style="height: 100%"
+    style="height: 100%; max-height: 91vh"
     id="middleWrapper"
   >
     <!-- TODO SplashScreen -->
@@ -24,7 +24,7 @@
         [style.display]="isLoading ? '' : 'none'"
       />
     </div>
-    <div class="pl-2">
+    <div class="pl-2" [style.height.px]="getHeight()">
       <!-- Control Sidebar -->
       <!-- /.control-sidebar -->
       <router-outlet></router-outlet>

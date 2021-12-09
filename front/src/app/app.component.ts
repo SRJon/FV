@@ -36,7 +36,7 @@ export class AppComponent {
     });
   }
 
-  Logout(){
+  Logout() {
     this.authenticator.removeToken();
   }
 
@@ -44,12 +44,20 @@ export class AppComponent {
     this.loadingObservable.setObservable(value);
   }
   setMenuState(value: boolean) {
-    console.log(this.menuAsideModal, value);
     this.menuAsideModal.setValue(value);
 
     this.menuAsideObs.setObservable(this.menuAsideModal);
   }
   ngOnInit() {
     AxiosConfig(this.setLoading, this);
+  }
+
+  getHeight() {
+    let dom = document.getElementById('middleWrapper');
+
+    if (dom) {
+      return dom.clientHeight;
+    }
+    return 0;
   }
 }
