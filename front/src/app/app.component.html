@@ -24,7 +24,7 @@
         [style.display]="isLoading ? '' : 'none'"
       />
     </div>
-    <div class="pl-2" [style.height.px]="getHeight()">
+    <div class="pl-2" [style.height.px]="getHeight()" style="overflow: scroll">
       <!-- Control Sidebar -->
       <!-- /.control-sidebar -->
       <router-outlet></router-outlet>
