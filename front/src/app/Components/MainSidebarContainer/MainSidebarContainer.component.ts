@@ -17,22 +17,7 @@ export class MainSidebarContainerComponent implements OnInit {
   screens: Tela[] = [];
   user?: IUser;
 
-  empresas: IEmpresa[] = [
-    {
-      id: 1,
-      nome: 'Litoral Têxtil',
-      vlrMinFrete: 0,
-      vlrMinPedido: 0,
-      codEmp: 1,
-    },
-    {
-      id: 2,
-      nome: 'Maioral Têxtil',
-      vlrMinFrete: 0,
-      vlrMinPedido: 0,
-      codEmp: 2,
-    },
-  ];
+  empresas: IEmpresa[] = [];
 
   isLoading: boolean = false;
   angle = 0;
