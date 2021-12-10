@@ -25,6 +25,7 @@ namespace back.domain.entities
         public string Cgc_cpf { get; set; }
         public decimal Limcred { get; set; }
         public string Cliente { get; set; }
+        public string ClassIfiCms { get; set; }
 
     }
 }

@@ -225,8 +225,7 @@ namespace back.Application.Controllers
                 {
                     foreach (var comprador in clienteComprador.Compradores)
                     {
-                        comprador.CodContato = this._TGFCTTRepository.GetLastIdCreated(clienteComprador.Cliente.Codparc) + 1;
-                        comprador.Codparc = clienteComprador.Cliente.Codparc;
+                        comprador.Codparc = _TGFPARRepository.GetLastIdCreated();
                         comprador.CodEnd = clienteComprador.Cliente.Codend;
                         comprador.CodBai = clienteComprador.Cliente.Codbai;
                         comprador.CodBai = clienteComprador.Cliente.Codcid;
@@ -243,6 +242,10 @@ namespace back.Application.Controllers
                             response.SetConfig(400, "Erro ao criar o comprador  do cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
                         }
                     }
+                }
+                else
+                {
+                    response.SetConfig(404, "Cliente não criado", false);
                 }
             }
             catch (System.Exception err)

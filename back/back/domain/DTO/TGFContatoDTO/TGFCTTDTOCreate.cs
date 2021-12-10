@@ -10,7 +10,6 @@ namespace back.domain.DTO.TGFContatoDTO
     public class TGFCTTDTOCreate : ToJsonClass, ITGFCTT
     {
         public int Codparc { get; set; }
-        public int CodContato { get; set; }
         public string NomeContato { get; set; }
         public string Apelido { get; set; }
         public string Cargo { get; set; }

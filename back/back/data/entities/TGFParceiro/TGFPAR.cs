@@ -31,5 +31,6 @@ namespace back.data.entities.TGFParceiro
         public string Cgc_cpf { get; set; }
         public decimal Limcred { get; set; }
         public string Cliente { get; set; }
+        public string ClassIfiCms { get; set; }
     }
 }

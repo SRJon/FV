@@ -36,5 +36,6 @@ namespace back.domain.DTO.TGFParceiroDTO
         public virtual string Uf { get; set; }
         public virtual string Cidade { get; set; }
         public ICollection<string> Socios { get; set; }
+        public string ClassIfiCms { get; set; }
     }
 }
