@@ -34,6 +34,8 @@ export class MainSidebarContainerComponent implements OnInit {
     },
   ];
 
+  isLoading: boolean = false;
+  angle = 0;
   constructor(
     private telasservice: TelasService,
     private userService: UserService,
@@ -42,10 +44,18 @@ export class MainSidebarContainerComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.isLoading = true;
     await this.getUser();
-    this.getAll();
+    await this.getAll();
+    this.isLoading = false;
   }
-
+  checkLoadindState() {
+    if (this.isLoading) {
+      return 'in';
+    } else {
+      return 'd-none';
+    }
+  }
   async getUser(): Promise<void> {
     let token = this.authenticationService.getToken() || '';
     let user = await this.userService.getUserByToken(token);

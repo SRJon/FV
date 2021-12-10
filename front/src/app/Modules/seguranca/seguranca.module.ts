@@ -22,6 +22,7 @@ import { EditParametroComponentComponent } from './Components/parametro/Componen
 import { DiretorioContentComponent } from './Components/diretorio/Components/diretorio-content/diretorio-content.component';
 import { DiretorioGridComponent } from './Components/diretorio/Components/diretorio-grid/diretorio-grid.component';
 import { EditDiretorioComponentComponent } from './Components/diretorio/Components/diretorio-content/edit-diretorio-component/edit-diretorio-component.component';
+import { PerfilGridComponent } from './Components/perfil/Components/perfil-grid/perfil-grid.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,9 @@ import { EditDiretorioComponentComponent } from './Components/diretorio/Componen
     DiretorioContentComponent,
     DiretorioGridComponent,
     EditDiretorioComponentComponent,
+    PerfilGridComponent,
   ],
   bootstrap: [PerfilComponent],
+  exports: [TitleComponent],
 })
 export class SegurancaModule {}

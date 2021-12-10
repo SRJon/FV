@@ -1,0 +1,3 @@
+import { AVGFRPVGETALL } from './AD_VGFRPVGETALL';
+
+export { AVGFRPVGETALL };

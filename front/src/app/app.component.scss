@@ -9,3 +9,43 @@
 @import url("./../assets/css/select2.min.css");
 @import url("./../assets/css/tempusdominus-bootstrap-4.min.css");
 @import url("./../assets/css/adminlte.min.css");
+
+aside.asideMenu {
+  height: 100vh;
+  background: black;
+  color: #eee;
+  width: 250px;
+  transition: all 0.5s;
+}
+.in {
+  animation: in_frame 0.5s forwards;
+}
+.out {
+  animation: out_frame 0.5s forwards;
+}
+
+@keyframes in_frame {
+  0% {
+    right: -250px;
+  }
+  100% {
+    right: 0px;
+  }
+}
+
+@keyframes out_frame {
+  0% {
+    right: 0px;
+  }
+  100% {
+    right: -250px;
+  }
+}
+
+.logout {
+  color: #ffffff;
+}
+
+.logout:hover {
+  color: #919497cc;
+}

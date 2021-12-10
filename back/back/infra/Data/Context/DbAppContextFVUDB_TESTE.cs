@@ -30,6 +30,7 @@ using Microsoft.Extensions.Logging;
 using back.data.entities.UserEmp;
 using System.Threading.Tasks;
 using back.domain.DTO.UserEmp;
+using Microsoft.Extensions.Configuration;
 
 namespace back.infra.Data.Context
 {
@@ -37,12 +38,14 @@ namespace back.infra.Data.Context
     {
 
         ILoggerFactory _loggerFactory;
+        IConfiguration _config;
 
-        public DbAppContextFVUDB_TESTE(DbContextOptions<DbAppContextFVUDB_TESTE> options, ILoggerFactory loggerFactory)
+        public DbAppContextFVUDB_TESTE(DbContextOptions<DbAppContextFVUDB_TESTE> options, ILoggerFactory loggerFactory, IConfiguration config)
         : base(options)
         {
             _loggerFactory = loggerFactory;
             _ = Database.EnsureCreated();
+            _config = config;
 
         }
 
@@ -68,7 +71,7 @@ namespace back.infra.Data.Context
         public DbSet<UsuarioEmp> UsuarioEmp { get; set; }
         public DbSet<VersaoProjetos> VersaoProjetos { get; set; }
         public DbSet<VersionDetails> VersionDetails { get; set; }
-        
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -90,17 +93,17 @@ namespace back.infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //var loggerFactory = LoggerFactory.Create(builder =>
-            //{
-            //    builder
-            //    .AddConsole((options) => { })
-            //    .AddFilter((category, level) =>
-            //        category == DbLoggerCategory.Database.Command.Name
-            //        && level == LogLevel.Information);
-            //}
-            //    );
-            // optionsBuilder.UseLoggerFactory(loggerFactory);
-            // optionsBuilder.LogTo(Console.WriteLine);
+            IConfiguration _config = new ConfigurationBuilder()
+               .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+               .AddJsonFile("appsettings.json")
+               .Build();
+            var isProduction = _config.GetValue<bool>("isProduction");
+            if (!isProduction)
+            {
+
+                optionsBuilder.LogTo(Console.WriteLine);
+            }
+
             base.OnConfiguring(optionsBuilder);
 
 

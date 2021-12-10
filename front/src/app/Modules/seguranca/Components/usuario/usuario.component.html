@@ -11,14 +11,14 @@
 <div class="row pb-5">
   <app-title [title]="'Usuario'"
     ><div class="head_project">
-      <h1>Tela <span></span></h1></div
+      <h1>Usuário <span></span></h1></div
   ></app-title>
 </div>
 <!-- TODO Usuario Grid -->
 <div class="row">
   <div class="head">
     <button class="btn btn-primary" (click)="openModal(null)">
-      Criar nova Tela
+      Criar novo usuário
     </button>
   </div>
 </div>
@@ -35,7 +35,7 @@
 
     <tbody>
       <tr *ngFor="let item of listGrid">
-        <th
+        <td
           *ngFor="let title of listTitle"
           [ngSwitch]="getType(item[title])"
           [class]="title + '-col'"
@@ -50,8 +50,8 @@
             </span>
             <span *ngSwitchDefault> {{ item[title] }}</span>
           </span>
-        </th>
-        <th>
+        </td>
+        <td>
           <ul class="listActions">
             <li>
               <button
@@ -73,7 +73,7 @@
               </button>
             </li>
           </ul>
-        </th>
+        </td>
       </tr>
     </tbody>
   </table>

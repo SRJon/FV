@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { IEmpresa } from 'src/app/Domain/Models/IEmpresa';
 import { IUser } from 'src/app/Domain/Models/IUser';
 import { UserGlobal } from 'src/app/Shared';
+
+import { AsideMenu } from 'src/app/Models/AsideMenu';
+import { GlobalMenuService } from 'src/app/Shared/global-menu.service';
+import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
+
 
 @Component({
   selector: 'app-NavBar',
@@ -9,21 +15,9 @@ import { UserGlobal } from 'src/app/Shared';
   styleUrls: ['./NavBar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
+
   empresas: IEmpresa[] = [
-    // {
-    //   id: 1,
-    //   nome: 'Litoral Têxtil',
-    //   vlrMinFrete: 0,
-    //   vlrMinPedido: 0,
-    //   codEmp: 1,
-    // },
-    // {
-    //   id: 2,
-    //   nome: 'Maioral Têxtil',
-    //   vlrMinFrete: 0,
-    //   vlrMinPedido: 0,
-    //   codEmp: 2,
-    // },
+
   ];
 
   constructor(private userG: UserGlobal<IUser>) {}
@@ -39,5 +33,24 @@ export class NavBarComponent implements OnInit {
         this.empresas = nonNUll;
       }
     });
+  isOpen = false;
+  aside = new AsideMenu();
+  _title = '';
+  constructor(
+    private menuAsideObs: GlobalMenuService<AsideMenu>,
+    private globalTitle: GlobalTitle<string>
+  ) {}
+
+  ngOnInit() {
+    this.globalTitle.getObservable().subscribe((value) => {
+      this._title = value;
+    });
+  }
+
+  onMenuClickModal() {
+    this.isOpen = !this.isOpen;
+    this.aside.setValue(this.isOpen);
+    this.menuAsideObs.set(this.aside);
+
   }
 }

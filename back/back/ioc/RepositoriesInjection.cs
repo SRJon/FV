@@ -36,9 +36,15 @@ namespace back.ioc
             services.AddScoped<IVersionDetailsRepository, VersionDetailsRepository>();
             services.AddScoped<IAD_VGFRPVRepository, AD_VGFRPVRepository>();
             services.AddScoped<ITGFPARRepository, TGFPARRepository>();
+            services.AddScoped<ISintegraCNPJRepository, SintegraCNPJRepository>();
+            services.AddScoped<ITSIENDRepository, TSIENDRepository>();
+            services.AddScoped<ITSIBAIRepository, TSIBAIRepository>();
+            services.AddScoped<ITSICIDRepository, TSICIDRepository>();
+            services.AddScoped<ITGFCTTRepository, TGFCTTRepository>();
             services.AddScoped<ITGFVENRepository, TGFVENRepository>();
             services.AddScoped<ITSIEMPRepository, TSIEMPRepository>();
             services.AddScoped<IAD_TIPNEGRepository, AD_TIPNEGRepository>();
+            services.AddScoped<IAD_SALDO_PARCEIRORepository, AD_SALDO_PARCEIRORepository>();
             services.AddScoped<IAD_ESTPROGPRODRepository, AD_ESTPROGPRODRepository>();
             services.AddScoped<IAD_FAMGR1Repository, AD_FAMGR1Repository>();
             services.AddScoped<IAD_FAMGR2Repository, AD_FAMGR2Repository>();
@@ -49,6 +55,7 @@ namespace back.ioc
             services.AddScoped<IVGFTABRepository, VGFTABRepository>();
             services.AddScoped<IAD_PANTONERepository, AD_PANTONERepository>();
             services.AddScoped<IAD_ESTPRODCORRepository, AD_ESTPRODCORRepository>();
+
             return services;
         }
     }

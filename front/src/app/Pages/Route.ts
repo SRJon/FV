@@ -25,6 +25,13 @@ export class Route implements IRoutes {
           (m) => m.SegurancaModule
         ),
     },
+    {
+      path: 'representante',
+      loadChildren: () =>
+        import('../Modules/representante/representante.module').then(
+          (m) => m.RepresentanteModule
+        ),
+    },
   ];
 
   getRoutes(): Routes {
