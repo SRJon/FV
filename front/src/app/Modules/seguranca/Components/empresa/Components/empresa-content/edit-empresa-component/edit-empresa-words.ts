@@ -1,7 +1,7 @@
 export class EditEmpresaWords {
   private _title: string = '';
   private _indexTitle: number = 0;
-  private _titleList: string[] = ['Create', 'Edit'];
+  private _titleList: string[] = ['CRIAR EMPRESA', 'EDITAR EMPRESA'];
   private _idInput: string = 'Id';
   private _nomeInput: string = 'Nome';
   private _vlrMinFreteInput: string = 'Valor de Frete Mínimo';

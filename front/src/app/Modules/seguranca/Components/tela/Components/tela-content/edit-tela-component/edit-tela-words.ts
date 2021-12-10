@@ -1,7 +1,7 @@
 export class EditTelaWords {
   private _title: string = '';
   private _indexTitle: number = 0;
-  private _titleList: string[] = ['Create', 'Edit'];
+  private _titleList: string[] = ['CRIAR TELA', 'EDITAR TELA'];
   private _idInput: string = 'Id';
   private _nomeInput: string = 'Nome';
 

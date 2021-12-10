@@ -1,7 +1,7 @@
 export class EditParametroWords {
   private _title: string = '';
   private _indexTitle: number = 0;
-  private _titleList: string[] = ['Create', 'Edit'];
+  private _titleList: string[] = ['CRIAR PARÂMETRO', 'EDITAR PARÂMETRO'];
   private _idInput: string = 'Id';
   private _nomeInput: string = 'Nome';
   private _valorInput: string = 'Valor';
