@@ -49,7 +49,7 @@ namespace back.Application.Controllers
         [Authorize]
         public async Task<ActionResult<IResponse<DiretorioDTO>>> getById(int id)
         {
-            Response<DiretorioDTO> response = null;
+            var response = new Response<DiretorioDTO>();
 
             try
             {
@@ -76,7 +76,7 @@ namespace back.Application.Controllers
         [Route("Create")]
         public async Task<ActionResult<IResponse<bool>>> create(Diretorio Diretorio)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
 
             try
             {
@@ -103,7 +103,7 @@ namespace back.Application.Controllers
         [Authorize]
         public async Task<ActionResult<IResponse<bool>>> update(Diretorio Diretorio)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._DiretorioRepository.Update(Diretorio);
@@ -130,7 +130,7 @@ namespace back.Application.Controllers
         [Authorize]
         public async Task<ActionResult<IResponse<bool>>> delete(int id)
         {
-            Response<bool> response = null;
+            var response = new Response<bool>();
             try
             {
                 var result = await this._DiretorioRepository.Delete(id);

@@ -1,9 +1,12 @@
+import { IEmpresa } from './../../Domain/Models/IEmpresa';
 import { TelasService } from './../../Repository/Telas/telas.service';
 import { Component, OnInit } from '@angular/core';
 import { Tela } from 'src/app/Models/Tela';
 import { IUser } from '../../Domain/Models/IUser';
 import { UserService } from 'src/app/Modules/seguranca/Services/user.service';
 import { AuthenticationService } from 'src/app/Modules/login/Services/Authentication.service';
+import { UserGlobal } from 'src/app/Shared';
+import { IUsuarioEmp } from 'src/app/Domain/Models/IUsuarioEmp';
 
 @Component({
   selector: 'app-MainSidebarContainer',
@@ -13,12 +16,31 @@ import { AuthenticationService } from 'src/app/Modules/login/Services/Authentica
 export class MainSidebarContainerComponent implements OnInit {
   screens: Tela[] = [];
   user?: IUser;
+
+  empresas: IEmpresa[] = [
+    {
+      id: 1,
+      nome: 'Litoral Têxtil',
+      vlrMinFrete: 0,
+      vlrMinPedido: 0,
+      codEmp: 1,
+    },
+    {
+      id: 2,
+      nome: 'Maioral Têxtil',
+      vlrMinFrete: 0,
+      vlrMinPedido: 0,
+      codEmp: 2,
+    },
+  ];
+
   isLoading: boolean = false;
   angle = 0;
   constructor(
     private telasservice: TelasService,
     private userService: UserService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private userG: UserGlobal<IUser>
   ) {}
 
   async ngOnInit() {
@@ -38,6 +60,8 @@ export class MainSidebarContainerComponent implements OnInit {
     let token = this.authenticationService.getToken() || '';
     let user = await this.userService.getUserByToken(token);
     this.user = user.data;
+    let e: IUsuarioEmp[] = [];
+    this.userG.setObservable(this.user || ({ usuarioEmp: e } as IUser));
   }
 
   async getAll() {

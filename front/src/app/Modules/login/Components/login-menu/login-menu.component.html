@@ -1,75 +1,92 @@
-<form [formGroup]="serviceForm">
-  <div class="col-3">
-    <div
-      class="
-        mb-3
-        form-container
-        field-group
-        form-control form-control-lg
-        input-transparent
-      "
-    >
-      <span class="fa fa-user" aria-hidden="true"></span>
-      <input type="text"
-      formControlName="user"
-      placeholder="Usuário"
-      [(ngModel)]="loginEntity.user" />
-    </div>
-  </div>
-  <div class="col-3 title">
-    <div
-      class="
-        mb-3
-        form-container
-        field-group
-        form-control form-control-lg
-        input-transparent
-      "
-      [class.is-invalid]="serviceForm.get('password')?.invalid"
-      [class.is-valid]="serviceForm.get('password')?.valid"
-    >
-      <span class="fas fa-lock"></span>
-      <input
-        type="password"
-        formControlName="password"
-        placeholder="Senha"
-        name="password"
-        [(ngModel)]="loginEntity.password"
-      />
-    </div>
-    <span class="error invalid-feedback">
-      <ul style="width: 235px" class="listErrors">
-        <ng-template [ngIf]="serviceForm.get('password')?.errors">
-          <li
-            *ngFor="
-              let error of getEntries(serviceForm.get('password')?.errors)
-            "
-            [ngSwitch]="error"
-          >
-            <span *ngSwitchCase="'required'">Requerido*</span>
-            <span *ngSwitchCase="'minlength'">Tamanho Minimo 4 Caracteres</span>
-          </li>
-        </ng-template>
-      </ul>
-    </span>
-  </div>
-
-  <div class="col-3 title">
-    <button class="btn btn-danger" (click)="Login()">Logar</button>
-
-    <!-- [disabled]="isLoading" (click)="login()" -->
-  </div>
-  <div class="form-check form-switch">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      role="switch"
-      id="flexSwitchCheckChecked"
-      checked
+<div class="login-color">
+  <form [formGroup]="serviceForm">
+    <img
+      class="form-login-img"
+      src="/assets/image/GrupoLitoralGrande.png"
+      alt="logo-litoral"
     />
-    <label class="form-check-label" for="flexSwitchCheckChecked"
-      >Manter logado</label
-    >
-    <a class="text-right" (click)="Redefine()">Esqueceu a senha?</a>
-  </div>
-</form>
+    <div class="col-3">
+      <div
+        class="
+          mb-3
+          form-container
+          field-group
+          form-control form-control-lg
+          input-transparent
+        "
+        [class.is-invalid]="
+          serviceForm.get('user')?.invalid &&
+          serviceForm.get('user')?.touched &&
+          serviceForm.get('password')?.valid
+        "
+      >
+        <span class="fa fa-user" aria-hidden="true"></span>
+        <input
+          type="text"
+          formControlName="user"
+          placeholder="Usuário"
+          [(ngModel)]="loginEntity.user"
+        />
+      </div>
+    </div>
+    <div class="col-3 title">
+      <div
+        class="
+          mb-3
+          form-container
+          field-group
+          form-control form-control-lg
+          input-transparent
+        "
+        [class.is-invalid]="
+          serviceForm.get('password')?.invalid &&
+          serviceForm.get('password')?.touched
+        "
+      >
+        <span class="fas fa-lock"></span>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Senha"
+          name="password"
+          [(ngModel)]="loginEntity.password"
+        />
+      </div>
+      <span class="error invalid-feedback">
+        <ul style="width: 235px" class="listErrors">
+          <ng-template [ngIf]="serviceForm.get('password')?.errors">
+            <li
+              *ngFor="
+                let error of getEntries(serviceForm.get('password')?.errors)
+              "
+              [ngSwitch]="error"
+            >
+              <span *ngSwitchCase="'required'">*Requerido</span>
+              <span *ngSwitchCase="'minlength'"
+                >*Tamanho Minimo 4 Caracteres</span
+              >
+            </li>
+          </ng-template>
+        </ul>
+      </span>
+    </div>
+
+    <div class="col-3 title">
+      <button class="btn btn-danger" (click)="Login()">Logar</button>
+    </div>
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckChecked"
+        checked
+      />
+      <label class="form-check-label" for="flexSwitchCheckChecked"
+        >Manter logado</label
+      >
+      <a class="text-right" (click)="Redefine()">Esqueceu a senha?</a>
+    </div>
+  </form>
+  <div></div>
+</div>

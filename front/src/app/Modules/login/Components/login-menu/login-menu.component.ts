@@ -22,13 +22,11 @@ export class LoginMenuComponent implements OnInit {
   serviceForm: FormGroup;
 
   constructor(
-    private ScreensService: ScreensService,
-    private AlertsService: AlertsService,
     private FormBuilder: FormBuilder,
     private loginew: LoginPageComponent
   ) {
     this.serviceForm = this.FormBuilder.group({
-      user: ['', Validators.nullValidator],
+      user: ['', [Validators.required, Validators.minLength(2)]],
       password: ['', [Validators.required, Validators.minLength(4)]],
     });
 
@@ -40,18 +38,18 @@ export class LoginMenuComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  Redefine(){
+  Redefine() {
     this.loginew.teste(1);
   }
 
   Login() {
-    if(this.serviceForm.valid){
+    if (this.serviceForm.valid) {
       console.log(this.serviceForm.get('password'));
       console.log(this.serviceForm.get('user'));
       this.onSubmit.emit(this.loginEntity);
       return;
     } else {
-        return;
+      return;
     }
   }
   getEntries(obj: any) {

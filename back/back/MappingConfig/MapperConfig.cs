@@ -82,6 +82,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFVENMapper();
                 cfg.CreateTSIEMPMapper();
                 cfg.CreateAD_TIPNEGMapper();
+
                 cfg.CreateAD_SALDO_PARCEIROMapper();
                 //cfg.CreateMap<Teste, testeDTO>();
 

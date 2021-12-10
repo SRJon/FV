@@ -8,7 +8,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div
     class="{{ isLogin ? '' : 'content-wrapper' }}"
-    style="height: 100%"
+    style="height: 100%; max-height: {{ isLogin ? '100' : '91' }}vh"
     id="middleWrapper"
   >
     <!-- TODO SplashScreen -->
@@ -24,7 +24,7 @@
         [style.display]="isLoading ? '' : 'none'"
       />
     </div>
-    <div class="pl-2">
+    <div class="pl-2" [style.height.px]="getHeight()">
       <!-- Control Sidebar -->
       <!-- /.control-sidebar -->
       <router-outlet></router-outlet>
@@ -47,7 +47,7 @@
     </div>
   </aside>
   <!-- Main Footer -->
-  <footer class="main-footer" [style.display]="isLogin ? 'none' : ''">
+  <footer class="main-footer" style="display: none">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">Anything you want</div>
     <!-- Default to the left -->

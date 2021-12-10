@@ -20,6 +20,7 @@ namespace back.infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.EntitiesConfigurationInjection();
         }
     }

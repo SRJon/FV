@@ -69,7 +69,7 @@ namespace back.Application.Controllers
                     response.SetConfig(400, "Não há vendedor associado ao usuário - AD_VGFRPVs", false);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
                 response.SetConfig(404, "Erro ao buscar as AD_VGFRPVs", false);
             }
@@ -103,6 +103,7 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+
         [HttpGet]
         [Authorize]
         [Route("GetByIdParc")]
@@ -129,6 +130,7 @@ namespace back.Application.Controllers
                 response.SetConfig(400, "Erro ao buscar a AD_VGFRPV", false);
             }
             return response.GetResponse();
+
         }
     }
 }

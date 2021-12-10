@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-parametro',
   templateUrl: './parametro.component.html',
-  styleUrls: ['./parametro.component.scss']
+  styleUrls: ['./parametro.component.scss'],
 })
 export class ParametroComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Parâmetro');
   }
 
+  getHeigth(): number {
+    let doc = document.querySelector('#middleWrapper');
+    return doc ? doc.clientHeight : 0;
+  }
+
+  ngOnInit(): void {}
 }

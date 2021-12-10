@@ -25,10 +25,11 @@ namespace back.infra.Data.Repositories
 
         public async Task<AD_SALDO_PARCEIRODTO> GetById(int codParc)
         {
-
-            return _mapper.Map<AD_SALDO_PARCEIRODTO>(await this._ctxs.
+            var result = await this._ctxs.
             GetSankhya()
-            .GetByIdService(codParc));
+            .GetByIdService(codParc);
+
+            return _mapper.Map<AD_SALDO_PARCEIRODTO>(result);
         }
     }
 }

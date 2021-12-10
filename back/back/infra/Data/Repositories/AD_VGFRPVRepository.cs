@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -10,6 +12,7 @@ using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.AD_VGFRPVServices;
 using back.MappingConfig;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories
@@ -64,6 +67,7 @@ namespace back.infra.Data.Repositories
             GetSankhya()
             .GetByIdService(codVend));
         }
+
 
         public async Task<AD_VGFRPVDTO> GetById(int codParc)
         {
