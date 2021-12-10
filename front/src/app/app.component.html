@@ -7,7 +7,7 @@
   <app-MainSidebarContainer *ngIf="!isLogin"></app-MainSidebarContainer>
   <!-- Content Wrapper. Contains page content -->
   <div
-    class="{{ isLogin ? '' : 'content-wrapper' }}"
+    class="dark-mode {{ isLogin ? '' : 'content-wrapper' }}"
     style="height: 100%; max-height: {{ isLogin ? '100' : '91' }}vh"
     id="middleWrapper"
   >
