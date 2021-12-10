@@ -1,5 +1,11 @@
-﻿using back.domain.DTO.Enterprise;
+﻿using back.data.entities.TCSProjeto;
+using back.data.entities.TGFParceiro;
+using back.data.entities.TGFTPVenda;
+using back.domain.DTO.Enterprise;
 using back.domain.DTO.RequestItem;
+using back.domain.DTO.TCSProjetoDTO;
+using back.domain.DTO.TGFParceiroDTO;
+using back.domain.DTO.TGFTPVendaDTO;
 using back.domain.DTO.User;
 using back.domain.entities;
 using System;
@@ -54,6 +60,9 @@ namespace back.domain.DTO.Request
         public DateTime? DtCartao { get; set; }
         public virtual EmpresaDTO Empresa { get; set; }
         public virtual UsuarioDTO Usuario { get; set; }
+        public virtual TGFTPVDTO TGFTPV { get; set; }
+        public virtual TCSPRJDTO TCSPRJ { get; set; }
+        public virtual TGFPARDTOPedido TGFPAR { get; set; }
         public virtual ICollection<PedidoItemDTORequestless> PedidoItem { get; set; }
 
     }
