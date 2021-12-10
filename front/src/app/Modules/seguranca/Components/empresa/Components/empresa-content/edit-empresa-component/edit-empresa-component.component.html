@@ -9,14 +9,16 @@
   aria-hidden="true"
 >
   <!-- style="display: none" -->
-  <div class="modal-dialog" style="height: -webkit-fill-available; width: 50vw">
+  <div class="modal-dialog">
     <div class="modal-content" style="height: inherit; width: inherit">
       <!-- TODO modalLoading -->
       <div class="overlay" id="overloadModal">
         <i class="fas fa-2x fa-sync fa-spin"></i>
       </div>
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: #343a40; color: white">
+        <h5 class="modal-title">{{ words.title }}</h5>
         <button
+          style="color: white"
           type="button"
           class="close"
           data-dismiss="modal"
@@ -27,106 +29,98 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">{{ words.title }}</h3>
-          </div>
-          <!-- /.card-header -->
-          <!-- form start -->
-          <ng-template [ngIf]="empresa">
-            <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
-              <div class="card-body">
-                <div class="form-group row">
-                  <label for="IdInput" class="col-12">{{
-                    words.idInput
-                  }}</label>
-                  <input
-                    type="number"
-                    class="form-control col-10"
-                    id="IdInput"
-                    disabled
-                    [value]="empresa.id"
-                    [name]="words.idInput"
-                    required
-                  />
-                </div>
-                <div class="form-group row">
-                  <label for="nomeInput" class="col-12">{{
-                    words.nomeInput
-                  }}</label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control col-10"
-                    id="nomeInput"
-                    placeholder="Digite o nome"
-                    [(ngModel)]="empresa.nome"
-                    formControlName="nome"
-                    [class.is-invalid]="serviceForm.get('nome')?.invalid"
-                    [class.is-valid]="serviceForm.get('nome')?.valid"
-                  />
-                  <span class="error invalid-feedback">*Requerido</span>
-                </div>
-                <div class="form-group row">
-                  <label for="vlrMinFreteInput" class="col-12">{{
-                    words.vlrMinFreteInput
-                  }}</label>
-                  <input
-                    type="number"
-                    class="form-control col-10"
-                    id="vlrMinFreteInput"
-                    [value]="empresa.vlrMinFrete"
-                    [name]="words.vlrMinFreteInput"
-                  />
-                </div>
-                <div class="form-group row">
-                  <label for="vlrMinPedidoInput" class="col-12">{{
-                    words.vlrMinPedidoInput
-                  }}</label>
-                  <input
-                    type="number"
-                    class="form-control col-10"
-                    id="vlrMinPedidoInput"
-                    [value]="empresa.vlrMinPedido"
-                    [name]="words.vlrMinPedidoInput"
-                  />
-                </div>
-                <div class="form-group row">
-                  <label for="codEmpInput" class="col-12">{{
-                    words.codEmpInput
-                  }}</label>
-                  <input
-                    type="number"
-                    class="form-control col-10"
-                    id="codEmpInput"
-                    [(ngModel)]="empresa.codEmp"
-                    formControlName="codEmp"
-                    [class.is-invalid]="serviceForm.get('codEmp')?.invalid"
-                    [class.is-valid]="serviceForm.get('codEmp')?.valid"
-                  />
-                </div>
+        <!-- form start -->
+        <ng-template [ngIf]="empresa">
+          <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="IdInput" class="col-12">{{ words.idInput }}</label>
+                <input
+                  type="number"
+                  class="form-control col-10"
+                  id="IdInput"
+                  disabled
+                  [value]="empresa.id"
+                  [name]="words.idInput"
+                  required
+                />
               </div>
-              <!-- /.card-body -->
-              <div class="modal-footer justify-content-between">
-                <button
-                  (click)="onClose()"
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  [disabled]="this.serviceForm.invalid"
-                >
-                  Save changes
-                </button>
+              <div class="form-group row">
+                <label for="nomeInput" class="col-12">{{
+                  words.nomeInput
+                }}</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control col-10"
+                  id="nomeInput"
+                  placeholder="Digite o nome"
+                  [(ngModel)]="empresa.nome"
+                  formControlName="nome"
+                  [class.is-invalid]="serviceForm.get('nome')?.invalid"
+                  [class.is-valid]="serviceForm.get('nome')?.valid"
+                />
+                <span class="error invalid-feedback">*Requerido</span>
               </div>
-            </form>
-          </ng-template>
-        </div>
+              <div class="form-group row">
+                <label for="vlrMinFreteInput" class="col-12">{{
+                  words.vlrMinFreteInput
+                }}</label>
+                <input
+                  type="number"
+                  class="form-control col-10"
+                  id="vlrMinFreteInput"
+                  [value]="empresa.vlrMinFrete"
+                  [name]="words.vlrMinFreteInput"
+                />
+              </div>
+              <div class="form-group row">
+                <label for="vlrMinPedidoInput" class="col-12">{{
+                  words.vlrMinPedidoInput
+                }}</label>
+                <input
+                  type="number"
+                  class="form-control col-10"
+                  id="vlrMinPedidoInput"
+                  [value]="empresa.vlrMinPedido"
+                  [name]="words.vlrMinPedidoInput"
+                />
+              </div>
+              <div class="form-group row">
+                <label for="codEmpInput" class="col-12">{{
+                  words.codEmpInput
+                }}</label>
+                <input
+                  type="number"
+                  class="form-control col-10"
+                  id="codEmpInput"
+                  [(ngModel)]="empresa.codEmp"
+                  formControlName="codEmp"
+                  [class.is-invalid]="serviceForm.get('codEmp')?.invalid"
+                  [class.is-valid]="serviceForm.get('codEmp')?.valid"
+                />
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="modal-footer justify-content-between">
+              <button
+                (click)="onClose()"
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                FECHAR
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="this.serviceForm.invalid"
+              >
+                SALVAR
+              </button>
+            </div>
+          </form>
+        </ng-template>
       </div>
     </div>
     <!-- /.modal-content -->

@@ -46,7 +46,7 @@ export class TelaContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 7) {
+  getAll(page: number, limit: number = 10) {
     this.screensService.getScreens(page, limit).then((response) => {
       // this.telas = telas;
       // this.cdRef.detectChanges();

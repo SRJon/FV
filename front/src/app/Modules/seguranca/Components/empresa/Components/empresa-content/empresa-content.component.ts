@@ -37,7 +37,7 @@ export class EmpresaContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 7) {
+  getAll(page: number, limit: number = 10) {
     this.companyService.getCompany(page, limit).then((response) => {
       this.empresas = response;
       this.paginate.pageSize = response.totalPages;
