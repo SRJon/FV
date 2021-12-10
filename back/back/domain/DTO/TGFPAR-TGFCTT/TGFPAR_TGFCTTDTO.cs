@@ -9,7 +9,7 @@ namespace back.domain.DTO.TGFPAR_TGFCTT
 {
     public class TGFPAR_TGFCTTDTO
     {
-        public TGFPARDTOCreate Cliente { get; set; }
+        public TGFPARDTO Cliente { get; set; }
         public ICollection<TGFCTTDTOCreate> Compradores { get; set; }
     }
 }

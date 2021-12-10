@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using back.data.entities.Abstract_Class;
 using back.domain.entities;
 
 namespace back.domain.DTO.TGFParceiroDTO
 {
-    public class TGFPARDTO : ITGFPAR
+    public class TGFPARDTO : ToJsonClass, ITGFPAR
     {
         public int Codparc { get; set; }
         public short Codvend { get; set; }
@@ -27,6 +28,7 @@ namespace back.domain.DTO.TGFParceiroDTO
         public string Inscestadnauf { get; set; }
         public string Cgc_cpf { get; set; }
         public decimal Limcred { get; set; }
+        public string Cliente { get; set; }
 
         //Uso do front
         public virtual string Endereco { get; set; }

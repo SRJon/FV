@@ -30,5 +30,6 @@ namespace back.data.entities.TGFParceiro
         public string Inscestadnauf { get; set; }
         public string Cgc_cpf { get; set; }
         public decimal Limcred { get; set; }
+        public string Cliente { get; set; }
     }
 }

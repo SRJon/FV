@@ -29,7 +29,7 @@ namespace back.Application.Controllers
         private readonly ITSIBAIRepository _TSIBAIRepository;
         private readonly ITSICIDRepository _TSICIDRepository;
         private readonly ITGFCTTRepository _TGFCTTRepository;
-        TGFPARDTO cliente;
+
         private readonly IMapper _mapper;
 
         public TGFPARController(ITGFPARRepository TGFPARRepository, ISintegraCNPJRepository SintegraCNPJRepository, ITSIENDRepository TSIENDRepository, ITSIBAIRepository TSIBAIRepository, ITSICIDRepository TSICIDRepository, ITGFCTTRepository TGFCTTRepository)
@@ -127,7 +127,7 @@ namespace back.Application.Controllers
 
             //Função que busca o cnpj na receita e atribui os valores
             var response = new Response<TGFPARDTO>();
-            cliente = await this._TGFPARRepository.GetByCgc_cpf(cgc_cpf);
+            var cliente = await this._TGFPARRepository.GetByCgc_cpf(cgc_cpf);
             if (cliente != null)
             {
                 response.SetConfig(400, "Cliente  já cadastrado no sistema", false);
@@ -153,7 +153,7 @@ namespace back.Application.Controllers
                             {
                                 endereco = new TSIENDDTO();
                                 endereco = _TSIENDRepository.AtribuicaoValoresCliente(endereco, cnpj);
-                                var resultEnd = _TSIENDRepository.Create(endereco);
+                                var resultEnd = _TSIENDRepository.Create(_mapper.Map<TSIENDDTOCreate>(endereco));
                             }
                             cliente.Codend = endereco.Codend;
                             cliente.Endereco = cnpj.Logradouro;
@@ -170,7 +170,7 @@ namespace back.Application.Controllers
                             {
                                 bairro = new TSIBAIDTO();
                                 bairro = _TSIBAIRepository.AtribuicaoValoresCliente(bairro, cnpj);
-                                var resultBai = _TSIBAIRepository.Create(bairro);
+                                var resultBai = _TSIBAIRepository.Create(_mapper.Map<TSIBAIDTOCreate>(bairro));
                             }
                             cliente.Codbai = bairro.CodBai;
                             cliente.Bairro = cnpj.Bairro;
@@ -187,7 +187,7 @@ namespace back.Application.Controllers
                             {
                                 cidade = new TSICIDDTO();
                                 cidade = _TSICIDRepository.AtribuicaoValoresCliente(cidade, cnpj);
-                                var resultBai = _TSICIDRepository.Create(cidade);
+                                var resultBai = _TSICIDRepository.Create(_mapper.Map<TSICIDDTOCreate>(cidade));
                             }
                             cliente.Codcid = cidade.CodCid;
                             cliente.Cidade = cnpj.Municipio;
@@ -205,6 +205,7 @@ namespace back.Application.Controllers
                     {
                         response.SetConfig(400, "Erro ao criar o cliente" + InnerExceptionMessage.InnerExceptionError(e), false);
                     }
+
                     response.Data = cliente;
                 }
 
@@ -219,7 +220,7 @@ namespace back.Application.Controllers
             var response = new Response<bool>();
             try
             {
-                var result = await this._TGFPARRepository.Create(clienteComprador.Cliente);
+                var result = await this._TGFPARRepository.Create(_mapper.Map<TGFPARDTOCreate>(clienteComprador.Cliente));
                 if (result)
                 {
                     foreach (var comprador in clienteComprador.Compradores)
