@@ -7,6 +7,7 @@ using back.data.http;
 using back.domain.DTO.TGFContatoDTO;
 using back.domain.entities;
 using back.domain.Repositories;
+using back.infra.Data.Utils;
 using back.MappingConfig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -61,5 +62,33 @@ namespace back.Application.Controllers
             response.Data = result;
             return response.GetResponse();
         }
+
+        [HttpPost]
+        [Authorize]
+        [Route("Create")]
+        public async Task<ActionResult<IResponse<bool>>> create(TGFCTTDTOCreate tgfctt)
+        {
+            var response = new Response<bool>();
+            try
+            {
+                var result = await this._TGFCTTRepository.Create(tgfctt);
+                if (result)
+                {
+                    response.SetConfig(200);
+                    response.Data = result;
+
+                }
+                else
+                {
+                    response.SetConfig(404, "Contato não criado", false);
+                }
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao criar a contato" + InnerExceptionMessage.InnerExceptionError(e), false);
+            }
+            return response.GetResponse();
+        }
+
     }
 }
