@@ -11,6 +11,8 @@ namespace back.data.entities.TSIEndereco
             cfg.CreateMap<TSIENDDTO, TSIEND>();
             cfg.CreateMap<TSIEND, TSIENDDTOCreate>();
             cfg.CreateMap<TSIENDDTOCreate, TSIEND>();
+            cfg.CreateMap<TSIENDDTO, TSIENDDTOCreate>();
+            cfg.CreateMap<TSIENDDTOCreate, TSIENDDTO>();
 
 
             return cfg;

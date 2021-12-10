@@ -1,9 +1,10 @@
 using System;
+using back.data.entities.Abstract_Class;
 using back.domain.entities;
 
 namespace back.domain.DTO.TSIEnderecoDTO
 {
-    public class TSIENDDTOCreate : ITSIEND
+    public class TSIENDDTOCreate : ToJsonClass, ITSIEND
     {
         public string Nomeend { get; set; }
         public string Tipo { get; set; }

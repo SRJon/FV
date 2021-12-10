@@ -30,7 +30,7 @@ namespace back.infra.Data.Repositories
             return endereco;
         }
 
-        public Task<bool> Create(TSIENDDTO tsiend)
+        public Task<bool> Create(TSIENDDTOCreate tsiend)
         {
             try
             {

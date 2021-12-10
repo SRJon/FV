@@ -76,7 +76,7 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<IResponse<bool>>> create(TSIENDDTO tsiend)
+        public async Task<ActionResult<IResponse<bool>>> create(TSIENDDTOCreate tsiend)
         {
 
             var response = new Response<bool>();
