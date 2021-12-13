@@ -1,7 +1,7 @@
 ﻿using back.domain.entities;
 using System;
 
-namespace back.domain.DTO.TSIEMP
+namespace back.domain.DTO.TSIEmpDTO
 {
     public class TSIEMPDTO : ITSIEMP
     {

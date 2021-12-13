@@ -1,7 +1,7 @@
 ﻿using back.domain.entities;
 using System;
 
-namespace back.data.entities.TSIEMP
+namespace back.data.entities.TSIEmpresa
 {
     public class TSIEMP : ITSIEMP
     {

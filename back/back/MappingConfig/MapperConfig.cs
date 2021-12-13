@@ -27,7 +27,7 @@ using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
 
 using back.data.entities.TGFVEN;
-using back.data.entities.TSIEMP;
+using back.data.entities.TSIEmpresa;
 using back.data.entities.UserEmp;
 using back.data.entities.AD_TIPNEG;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
@@ -43,6 +43,7 @@ using back.data.entities.AD_PANTONE;
 using back.data.entities.AD_ESTPRODCOR;
 using back.data.entities.TGFTPVenda;
 using back.data.entities.TCSProjeto;
+using back.data.entities.TGFCABNota;
 
 namespace back.MappingConfig
 {
@@ -83,6 +84,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFVENMapper();
                 cfg.CreateTSIEMPMapper();
                 cfg.CreateAD_TIPNEGMapper();
+                cfg.CreateTGFCABMapper();
 
                 cfg.CreateAD_SALDO_PARCEIROMapper();
                 //cfg.CreateMap<Teste, testeDTO>();

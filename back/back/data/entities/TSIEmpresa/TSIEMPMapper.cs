@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using back.domain.DTO.TSIEMP;
+using back.domain.DTO.TSIEmpDTO;
 
-namespace back.data.entities.TSIEMP
+namespace back.data.entities.TSIEmpresa
 {
     public static class TSIEMPMapper
     {
