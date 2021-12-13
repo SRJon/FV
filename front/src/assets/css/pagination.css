@@ -46,12 +46,21 @@ ul.pagination > li > a:hover {
   border: 1px solid #343a40;
 }
 
+ul.pagination > li > span:hover {
+  border: 1px solid #343a40;
+}
+
 ul.pagination > li > span {
-  display: inline;
-  padding: 7px 10px;
-  cursor: default;
+  display: block;
+  margin: 0;
+  padding: 0 14px;
+  cursor: pointer;
   text-align: center;
+  text-decoration: none;
   color: #343a40;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  background-color: #fff;
 }
 
 ul.pagination > li.active > a,
