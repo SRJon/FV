@@ -4,14 +4,16 @@ import { UserService } from '../../Services/user.service';
 import { IUser } from '../../../../Domain/Models/IUser';
 import { AlertsService } from '../../../../Repository/Alerts/alerts.service';
 import { Title } from '@angular/platform-browser';
+import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.scss'],
 })
 export class UsuarioComponent implements OnInit {
-  title: string = 'Perfil';
+  title: string = 'Usuário';
   description: string = '';
+  _title: string = '';
   IsOpen: boolean = false;
   listGrid: any[] = [];
   listTitle: string[];
@@ -23,13 +25,17 @@ export class UsuarioComponent implements OnInit {
   constructor(
     private titleService: Title,
     private service: UserService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private globalTitle: GlobalTitle<string>
   ) {
     this.titleService.setTitle(this.title);
     this.selectedUser = this.makeEmptyUser();
     this.grid = new Grid();
     this.grid.sharePaginate.setHtml('.pagination');
     this.listTitle = ['id', 'nome', 'email', 'ativo'];
+    this.globalTitle.getObservable().subscribe((value) => {
+      this._title = value;
+    });
   }
   changeModalDeleteState(isOpen: boolean, IUser: IUser | null = null) {
     this.modalIsOpen = isOpen;
@@ -102,5 +108,6 @@ export class UsuarioComponent implements OnInit {
     this.grid.createGrid({ selectorHtml: '#table_user', paging: false });
     this.grid.sharePaginate.setHtml('.pagination');
     // this.grid.sharePaginate.setPaginate();
+    this.globalTitle.setValue(this.title);
   }
 }
