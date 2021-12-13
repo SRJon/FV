@@ -8,7 +8,7 @@ namespace back.domain.entities
     public interface ITGFTPV
     {
         public short Codtipvenda { get; set; }
-        public DateTimeOffset Dhalter { get; set; }
+        public DateTime Dhalter { get; set; }
         public string Descrtipvenda { get; set; }
         public string Subtipovenda { get; set; }
         public Nullable<short> CodTab { get; set; }
@@ -21,7 +21,7 @@ namespace back.domain.entities
         public string Grupoautor { get; set; }
         public string Valprazocliente { get; set; }
         public Nullable<short> Baseprazo { get; set; }
-        public Nullable<decimal> Comissao { get; set; }
+        public Nullable<double> Comissao { get; set; }
         public string Fixavenc { get; set; }
         public string Emiteboleta { get; set; }
         public string Emitedupl { get; set; }
@@ -39,24 +39,24 @@ namespace back.domain.entities
         public Nullable<short> Codusu { get; set; }
         public Nullable<int> Codformdescmax { get; set; }
         public Nullable<int> Codformdescmaxitens { get; set; }
-        public Nullable<decimal> Lucromin { get; set; }
+        public Nullable<double> Lucromin { get; set; }
         public string Descprom { get; set; }
-        public Nullable<decimal> Percminentrada { get; set; }
+        public Nullable<double> Percminentrada { get; set; }
         public Nullable<short> Nroparcelas { get; set; }
         public Nullable<short> Prazomaxpriparc { get; set; }
         public Nullable<int> Codtcf { get; set; }
         public string Flex { get; set; }
-        public Nullable<decimal> MargemMin { get; set; }
+        public Nullable<double> MargemMin { get; set; }
         public string Modelopgto { get; set; }
-        public Nullable<decimal> TaxaJurSim { get; set; }
+        public Nullable<double> TaxaJurSim { get; set; }
         public string TipoJurSim { get; set; }
-        public Nullable<decimal> PercDesagFlex { get; set; }
-        public Nullable<decimal> CompraMax { get; set; }
+        public Nullable<double> PercDesagFlex { get; set; }
+        public Nullable<double> CompraMax { get; set; }
         public Nullable<short> PrazoMin { get; set; }
         public string Editasimulacao { get; set; }
         public string Exptes { get; set; }
         public Nullable<short> Expgrs { get; set; }
-        public Nullable<decimal> Txparcadm { get; set; }
+        public Nullable<double> Txparcadm { get; set; }
         public string Integraeconect { get; set; }
         public Nullable<int> FormarECbtoSocin { get; set; }
         public string Fastusa { get; set; }

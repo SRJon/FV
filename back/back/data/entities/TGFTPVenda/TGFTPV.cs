@@ -15,7 +15,7 @@ namespace back.data.entities.TGFTPVenda
         public short Codtipvenda { get; set; }
         [Key]
         [Column("DHALTER")]
-        public DateTimeOffset Dhalter { get; set; }
+        public DateTime Dhalter { get; set; }
         public string Descrtipvenda { get; set; }
         public string Subtipovenda { get; set; }
         public short? CodTab { get; set; }
@@ -28,7 +28,7 @@ namespace back.data.entities.TGFTPVenda
         public string Grupoautor { get; set; }
         public string Valprazocliente { get; set; }
         public short? Baseprazo { get; set; }
-        public decimal? Comissao { get; set; }
+        public double? Comissao { get; set; }
         public string Fixavenc { get; set; }
         public string Emiteboleta { get; set; }
         public string Emitedupl { get; set; }
@@ -46,24 +46,24 @@ namespace back.data.entities.TGFTPVenda
         public short? Codusu { get; set; }
         public int? Codformdescmax { get; set; }
         public int? Codformdescmaxitens { get; set; }
-        public decimal? Lucromin { get; set; }
+        public double? Lucromin { get; set; }
         public string Descprom { get; set; }
-        public decimal? Percminentrada { get; set; }
+        public double? Percminentrada { get; set; }
         public short? Nroparcelas { get; set; }
         public short? Prazomaxpriparc { get; set; }
         public int? Codtcf { get; set; }
         public string Flex { get; set; }
-        public decimal? MargemMin { get; set; }
+        public double? MargemMin { get; set; }
         public string Modelopgto { get; set; }
-        public decimal? TaxaJurSim { get; set; }
+        public double? TaxaJurSim { get; set; }
         public string TipoJurSim { get; set; }
-        public decimal? PercDesagFlex { get; set; }
-        public decimal? CompraMax { get; set; }
+        public double? PercDesagFlex { get; set; }
+        public double? CompraMax { get; set; }
         public short? PrazoMin { get; set; }
         public string Editasimulacao { get; set; }
         public string Exptes { get; set; }
         public short? Expgrs { get; set; }
-        public decimal? Txparcadm { get; set; }
+        public double? Txparcadm { get; set; }
         public string Integraeconect { get; set; }
         public int? FormarECbtoSocin { get; set; }
         public string Fastusa { get; set; }
