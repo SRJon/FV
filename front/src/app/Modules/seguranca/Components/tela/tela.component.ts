@@ -10,7 +10,7 @@ export class TelaComponent implements OnInit {
   description: string = '';
 
   constructor(private titleService: Title) {
-    this.titleService.setTitle('Tela');
+    this.titleService.setTitle(this.title);
   }
   getHeigth(): number {
     let doc = document.querySelector('#middleWrapper');

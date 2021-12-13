@@ -10,7 +10,7 @@ export class EmpresaComponent implements OnInit {
   title: string = 'Empresa';
   description: string = '';
   constructor(private titleService: Title) {
-    this.titleService.setTitle('Empresa');
+    this.titleService.setTitle(this.title);
   }
   getHeigth(): number {
     let doc = document.querySelector('#middleWrapper');

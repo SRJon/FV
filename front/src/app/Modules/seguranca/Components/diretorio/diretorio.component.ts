@@ -10,7 +10,7 @@ export class DiretorioComponent implements OnInit {
   title: string = 'Diretório';
   description: string = '';
   constructor(private titleService: Title) {
-    this.titleService.setTitle('Diretório');
+    this.titleService.setTitle(this.title);
   }
 
   getHeigth(): number {

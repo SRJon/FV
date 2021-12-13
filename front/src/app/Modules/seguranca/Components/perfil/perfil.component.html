@@ -1,9 +1,8 @@
-<app-title [title]="'Perfil'" [description]="''"></app-title>
-
-<div class="row h-100">
-  <div class="container">
-    <div class="content h-75">
-      <app-perfil-grid></app-perfil-grid>
-    </div>
+<div class="contentFlex" style="height: 100%">
+  <div class="row">
+    <app-title title="{{ title }}" description="{{ description }}"></app-title>
+  </div>
+  <div class="row h-100">
+    <app-perfil-grid></app-perfil-grid>
   </div>
 </div>

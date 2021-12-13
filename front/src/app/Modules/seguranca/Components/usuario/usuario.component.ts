@@ -10,6 +10,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./usuario.component.scss'],
 })
 export class UsuarioComponent implements OnInit {
+  title: string = 'Perfil';
+  description: string = '';
   IsOpen: boolean = false;
   listGrid: any[] = [];
   listTitle: string[];
@@ -23,7 +25,7 @@ export class UsuarioComponent implements OnInit {
     private service: UserService,
     private alertsService: AlertsService
   ) {
-    this.titleService.setTitle('Usuário');
+    this.titleService.setTitle(this.title);
     this.selectedUser = this.makeEmptyUser();
     this.grid = new Grid();
     this.grid.sharePaginate.setHtml('.pagination');

@@ -7,8 +7,10 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./perfil.component.scss'],
 })
 export class PerfilComponent implements OnInit {
+  title: string = 'Perfil';
+  description: string = '';
   constructor(private titleService: Title) {
-    this.titleService.setTitle('Perfil');
+    this.titleService.setTitle(this.title);
   }
 
   ngOnInit(): void {}

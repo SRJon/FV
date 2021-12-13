@@ -9,7 +9,7 @@ export class ParametroComponent implements OnInit {
   title: string = 'Parâmetro';
   description: string = '';
   constructor(private titleService: Title) {
-    this.titleService.setTitle('Parâmetro');
+    this.titleService.setTitle(this.title);
   }
 
   getHeigth(): number {
