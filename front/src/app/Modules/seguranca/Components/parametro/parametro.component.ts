@@ -6,6 +6,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./parametro.component.scss'],
 })
 export class ParametroComponent implements OnInit {
+  title: string = 'Parâmetro';
+  description: string = '';
   constructor(private titleService: Title) {
     this.titleService.setTitle('Parâmetro');
   }

@@ -7,6 +7,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./diretorio.component.scss'],
 })
 export class DiretorioComponent implements OnInit {
+  title: string = 'Diretório';
+  description: string = '';
   constructor(private titleService: Title) {
     this.titleService.setTitle('Diretório');
   }

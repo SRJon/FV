@@ -7,6 +7,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./empresa.component.scss'],
 })
 export class EmpresaComponent implements OnInit {
+  title: string = 'Empresa';
+  description: string = '';
   constructor(private titleService: Title) {
     this.titleService.setTitle('Empresa');
   }
