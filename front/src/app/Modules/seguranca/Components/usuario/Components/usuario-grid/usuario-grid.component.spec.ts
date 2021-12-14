@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsuarioEditModalComponent } from './usuario-edit-modal.component';
+import { UsuarioGridComponent } from './usuario-grid.component';
 
-describe('UsuarioEditModalComponent', () => {
-  let component: UsuarioEditModalComponent;
-  let fixture: ComponentFixture<UsuarioEditModalComponent>;
+describe('UsuarioGridComponent', () => {
+  let component: UsuarioGridComponent;
+  let fixture: ComponentFixture<UsuarioGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UsuarioEditModalComponent ]
+      declarations: [ UsuarioGridComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsuarioEditModalComponent);
+    fixture = TestBed.createComponent(UsuarioGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

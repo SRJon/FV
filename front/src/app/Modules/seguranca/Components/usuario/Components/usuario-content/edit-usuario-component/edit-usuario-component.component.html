@@ -1,4 +1,3 @@
-<p>edit-diretorio-component works!</p>
 <div
   class="modal fade show"
   id="modal-default"
@@ -31,7 +30,7 @@
       </div>
       <div class="modal-body">
         <!-- form start -->
-        <ng-template [ngIf]="diretorio">
+        <ng-template [ngIf]="usuario">
           <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
             <div class="card-body">
               <div class="form-group row">
@@ -41,59 +40,59 @@
                   class="form-control col-10"
                   id="IdInput"
                   disabled
-                  [value]="diretorio.id"
+                  [value]="usuario.id"
                   [name]="words.idInput"
                   required
                 />
               </div>
               <div class="form-group row">
-                <label for="tipoInput" class="col-12">{{
-                  words.tipoInput
+                <label for="nomeInput" class="col-12">{{
+                  words.nomeInput
                 }}</label>
                 <input
                   required
                   type="number"
                   class="form-control col-10"
-                  id="tipoInput"
-                  placeholder="Digite o tipo"
-                  [(ngModel)]="diretorio.tipo"
-                  formControlName="tipo"
-                  [class.is-invalid]="serviceForm.get('tipo')?.invalid"
-                  [class.is-valid]="serviceForm.get('tipo')?.valid"
+                  id="nomeInput"
+                  placeholder="Digite o nome"
+                  [(ngModel)]="usuario.nome"
+                  formControlName="nome"
+                  [class.is-invalid]="serviceForm.get('nome')?.invalid"
+                  [class.is-valid]="serviceForm.get('nome')?.valid"
                 />
                 <span class="error invalid-feedback">*Requerido</span>
               </div>
               <div class="form-group row">
-                <label for="linkInput" class="col-12">{{
-                  words.linkInput
+                <label for="emailInput" class="col-12">{{
+                  words.emailInput
                 }}</label>
                 <input
                   required
                   type="text"
                   class="form-control col-10"
-                  id="linkInput"
-                  placeholder="Digite o link"
-                  [(ngModel)]="diretorio.link"
-                  formControlName="link"
-                  [class.is-invalid]="serviceForm.get('link')?.invalid"
-                  [class.is-valid]="serviceForm.get('link')?.valid"
+                  id="emailInput"
+                  placeholder="Digite o email"
+                  [(ngModel)]="usuario.email"
+                  formControlName="email"
+                  [class.is-invalid]="serviceForm.get('email')?.invalid"
+                  [class.is-valid]="serviceForm.get('email')?.valid"
                 />
                 <span class="error invalid-feedback">*Requerido</span>
               </div>
               <div class="form-group row">
-                <label for="virtualInput" class="col-12">{{
-                  words.virtualInput
+                <label for="ativoInput" class="col-12">{{
+                  words.ativoInput
                 }}</label>
                 <input
                   required
                   type="text"
                   class="form-control col-10"
-                  id="virtualInput"
+                  id="ativoInput"
                   placeholder="Digite a descrição"
-                  [(ngModel)]="diretorio.virtual"
-                  formControlName="virtual"
-                  [class.is-invalid]="serviceForm.get('virtual')?.invalid"
-                  [class.is-valid]="serviceForm.get('virtual')?.valid"
+                  [(ngModel)]="usuario.ativo"
+                  formControlName="ativo"
+                  [class.is-invalid]="serviceForm.get('ativo')?.invalid"
+                  [class.is-valid]="serviceForm.get('ativo')?.valid"
                 />
                 <span class="error invalid-feedback">*Requerido</span>
               </div>

@@ -12,7 +12,6 @@ import { TelaContentComponent } from './Components/tela/Components/tela-content/
 import { TelaGridComponent } from './Components/tela/Components/tela-grid/tela-grid.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTelaComponentComponent } from './Components/tela/Components/tela-content/edit-tela-component/edit-tela-component.component';
-import { UsuarioEditModalComponent } from './Components/usuario/Components/usuario-edit-modal/usuario-edit-modal.component';
 import { EmpresaGridComponent } from './Components/empresa/Components/empresa-grid/empresa-grid.component';
 import { EditEmpresaComponentComponent } from './Components/empresa/Components/empresa-content/edit-empresa-component/edit-empresa-component.component';
 import { EmpresaContentComponent } from './Components/empresa/Components/empresa-content/empresa-content.component';
@@ -23,7 +22,9 @@ import { DiretorioContentComponent } from './Components/diretorio/Components/dir
 import { DiretorioGridComponent } from './Components/diretorio/Components/diretorio-grid/diretorio-grid.component';
 import { EditDiretorioComponentComponent } from './Components/diretorio/Components/diretorio-content/edit-diretorio-component/edit-diretorio-component.component';
 import { PerfilGridComponent } from './Components/perfil/Components/perfil-grid/perfil-grid.component';
-
+import { UsuarioGridComponent } from './Components/usuario/Components/usuario-grid/usuario-grid.component';
+import { UsuarioContentComponent } from './Components/usuario/Components/usuario-content/usuario-content.component';
+import { EditUsuarioComponentComponent } from './Components/usuario/Components/usuario-content/edit-usuario-component/edit-usuario-component.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -42,7 +43,6 @@ import { PerfilGridComponent } from './Components/perfil/Components/perfil-grid/
     TelaContentComponent,
     TelaGridComponent,
     EditTelaComponentComponent,
-    UsuarioEditModalComponent,
     EmpresaGridComponent,
     EditEmpresaComponentComponent,
     EmpresaContentComponent,
@@ -53,6 +53,9 @@ import { PerfilGridComponent } from './Components/perfil/Components/perfil-grid/
     DiretorioGridComponent,
     EditDiretorioComponentComponent,
     PerfilGridComponent,
+    UsuarioGridComponent,
+    UsuarioContentComponent,
+    EditUsuarioComponentComponent,
   ],
   bootstrap: [PerfilComponent],
   exports: [TitleComponent],
