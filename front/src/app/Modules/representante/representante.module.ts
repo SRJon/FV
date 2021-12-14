@@ -16,9 +16,15 @@ import { GridNotaFiscalComponent } from './Components/client/Components/client_d
 import { NotaFiscalComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/nota-fiscal/nota-fiscal.component';
 import { FinanceiroGridComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/financeiro-grid/financeiro-grid.component';
 import { FinanceiroComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/financeiro/financeiro.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, RepresentanteRoutingModule, SegurancaModule],
+  imports: [
+    CommonModule,
+    RepresentanteRoutingModule,
+    SegurancaModule,
+    FormsModule,
+  ],
   declarations: [
     GeralComponent,
     ClientComponent,
