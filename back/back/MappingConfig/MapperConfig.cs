@@ -41,7 +41,8 @@ using back.data.entities.TGFPRO;
 using back.data.entities.VGFTAB;
 using back.data.entities.AD_PANTONE;
 using back.data.entities.AD_ESTPRODCOR;
-
+using back.data.entities.TGFTPVenda;
+using back.data.entities.TCSProjeto;
 
 namespace back.MappingConfig
 {
@@ -96,6 +97,8 @@ namespace back.MappingConfig
                 cfg.CreateVGFTABMapper();
                 cfg.CreateAD_PANTONEMapper();
                 cfg.CreateAD_ESTPRODCORMapper();
+                cfg.CreateTGFTPVMapper();
+                cfg.CreateTCSPRJMapper();
 
             });
             return configuration;

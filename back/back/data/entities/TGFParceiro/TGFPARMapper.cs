@@ -13,6 +13,10 @@ namespace back.data.entities.TGFParceiro
             cfg.CreateMap<TGFPARDTOCreate, TGFPAR>();
             cfg.CreateMap<TGFPARDTO, TGFPARDTOCreate>();
             cfg.CreateMap<TGFPARDTOCreate, TGFPARDTO>();
+            cfg.CreateMap<TGFPAR, TGFPARDTOPedido>();
+            cfg.CreateMap<TGFPARDTOPedido, TGFPAR>();
+            cfg.CreateMap<TGFPARDTO, TGFPARDTOPedido>();
+            cfg.CreateMap<TGFPARDTOPedido, TGFPARDTO>();
 
             return cfg;
         }
