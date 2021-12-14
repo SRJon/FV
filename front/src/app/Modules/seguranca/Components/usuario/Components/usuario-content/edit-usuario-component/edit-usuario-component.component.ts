@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { IPerfil } from 'src/app/Domain/Models/IPerfil';
 import { IUser } from 'src/app/Domain/Models/IUser';
+import { PerfilService } from 'src/app/Modules/seguranca/Services/perfil.service';
 import { UserService } from 'src/app/Modules/seguranca/Services/user.service';
 import { AlertsService } from 'src/app/Repository/Alerts/alerts.service';
 import { EditUsuarioWords } from './edit-usuario-words';
@@ -15,19 +17,26 @@ export class EditUsuarioComponentComponent implements OnInit {
   @Input() usuario: IUser | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
   words: EditUsuarioWords;
+  perfis: IPerfil[] = [];
   isValid: boolean = false;
   serviceForm: FormGroup;
 
   constructor(
     private userService: UserService,
     private alertsService: AlertsService,
+    private perfilService: PerfilService,
     private fb: FormBuilder
   ) {
     this.words = EditUsuarioWords.getInstance();
     this.serviceForm = this.fb.group({
-      tipo: ['', Validators.required],
-      link: ['', Validators.required],
-      virtual: ['', Validators.required],
+      login: ['', Validators.required],
+      senha: ['', Validators.required],
+      nome: ['', Validators.required],
+      email: ['', Validators.required],
+      alterPassNextLogonInput: [''],
+      ativo: [''],
+      select: [''],
+      id: [''],
     });
   }
 
@@ -38,6 +47,7 @@ export class EditUsuarioComponentComponent implements OnInit {
       id > 0 ? this.Doupdate() : this.DoCreate();
     }
   }
+
   async DoCreate() {
     try {
       if (this.usuario) {
@@ -48,7 +58,7 @@ export class EditUsuarioComponentComponent implements OnInit {
         }
       } else {
         this.alertsService.showAlert(
-          'Não foi possível criar a usuario!',
+          'Não foi possível criar o usuario!',
           'error'
         );
       }
@@ -58,6 +68,7 @@ export class EditUsuarioComponentComponent implements OnInit {
       this.onClose();
     }
   }
+
   async Doupdate() {
     try {
       if (this.usuario) {
@@ -74,7 +85,8 @@ export class EditUsuarioComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllUser();
+    //this.getAllUser();
+    this.getAllPerfis();
     this.words.indexTitle = this.usuario && this.usuario.id ? 1 : 0;
   }
 
@@ -84,20 +96,24 @@ export class EditUsuarioComponentComponent implements OnInit {
       $('.modal-backdrop').remove();
     }, 500);
   }
-  async getAllUser() {
-    let result = await this.userService.getUser(0, 0);
-    this.setLoading(false);
-    // @ts-ignore: Unreachable code error
-    $('.select2-danger').select2();
-  }
+
   setLoading(value: boolean) {
     this.isLoading = value;
     this.changeStateLoadComponent();
   }
+
   changeStateLoadComponent() {
     let component = document.getElementById('overloadModal');
     if (component) {
       component.style.display = this.isLoading ? 'block' : 'none';
     }
+  }
+
+  async getAllPerfis() {
+    let response = await this.perfilService.getAllNames(0, 0);
+    this.setLoading(false);
+    this.perfis = response.data;
+    // @ts-ignore: Unreachable code error
+    $('.select2-danger').select2();
   }
 }

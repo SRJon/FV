@@ -33,6 +33,7 @@
         <ng-template [ngIf]="usuario">
           <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
             <div class="card-body">
+              <!-- TODO idInput -->
               <div class="form-group row">
                 <label for="IdInput" class="col-12">{{ words.idInput }}</label>
                 <input
@@ -45,15 +46,17 @@
                   required
                 />
               </div>
+              <!-- TODO NomeInput -->
+
               <div class="form-group row">
-                <label for="nomeInput" class="col-12">{{
+                <label [for]="words.nomeInput" class="col-12">{{
                   words.nomeInput
                 }}</label>
                 <input
                   required
-                  type="number"
+                  type="text"
                   class="form-control col-10"
-                  id="nomeInput"
+                  [id]="words.nomeInput"
                   placeholder="Digite o nome"
                   [(ngModel)]="usuario.nome"
                   formControlName="nome"
@@ -62,41 +65,133 @@
                 />
                 <span class="error invalid-feedback">*Requerido</span>
               </div>
+
+              <!-- TODO LoginInput -->
               <div class="form-group row">
-                <label for="emailInput" class="col-12">{{
+                <label class="col-12" [for]="words.loginInput">{{
+                  words.loginInput
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [id]="words.loginInput"
+                  [placeholder]="words.loginInput"
+                  [(ngModel)]="usuario.login"
+                  formControlName="login"
+                  [name]="words.loginInput"
+                  [class.is-invalid]="serviceForm.get('login')?.invalid"
+                  [class.is-valid]="serviceForm.get('login')?.valid"
+                />
+              </div>
+              <!-- TODO senhaInput -->
+              <div class="form-group row">
+                <label class="col-12" [for]="words.senhaInput">{{
+                  words.senhaInput
+                }}</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  [id]="words.senhaInput"
+                  [placeholder]="words.senhaInput"
+                  [(ngModel)]="usuario.senha"
+                  formControlName="senha"
+                  [name]="words.senhaInput"
+                  [class.is-invalid]="serviceForm.get('senha')?.invalid"
+                  [class.is-valid]="serviceForm.get('senha')?.valid"
+                />
+              </div>
+
+              <!-- TODO E-MailInput -->
+              <div class="form-group row">
+                <label class="col-12" [for]="words.emailInput">{{
                   words.emailInput
                 }}</label>
                 <input
-                  required
                   type="text"
-                  class="form-control col-10"
-                  id="emailInput"
-                  placeholder="Digite o email"
+                  class="form-control"
+                  [id]="words.emailInput"
+                  [placeholder]="words.emailInput"
                   [(ngModel)]="usuario.email"
                   formControlName="email"
-                  [class.is-invalid]="serviceForm.get('email')?.invalid"
-                  [class.is-valid]="serviceForm.get('email')?.valid"
+                  [name]="words.emailInput"
                 />
-                <span class="error invalid-feedback">*Requerido</span>
               </div>
+
+              <!-- TODO BoolInputs -->
+
+              <div class="row">
+                <div class="col-6 d-flex justify-content-start">
+                  <div class="form-group">
+                    <label
+                      style="font-size: 10px"
+                      [for]="words.ativoInput"
+                      class="pr-2"
+                      >{{ words.ativoInput }}</label
+                    >
+                    <input
+                      type="checkbox"
+                      [id]="words.ativoInput"
+                      placeholder="Ativo"
+                      [(ngModel)]="usuario.ativo"
+                      [name]="words.ativoInput"
+                      formControlName="ativo"
+                    />
+                  </div>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                  <div class="form-group">
+                    <label
+                      style="font-size: 10px"
+                      [for]="words.alterPassNextLogonInput"
+                      class="pr-2"
+                      >{{ words.alterPassNextLogonInput }}</label
+                    >
+                    <input
+                      type="checkbox"
+                      [id]="words.alterPassNextLogonInput"
+                      placeholder="Ativo"
+                      [(ngModel)]="usuario.altSenha"
+                      [name]="words.alterPassNextLogonInput"
+                      formControlName="alterPassNextLogonInput"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- TODO E-PerfilInput -->
               <div class="form-group row">
-                <label for="ativoInput" class="col-12">{{
-                  words.ativoInput
+                <label class="col-12" [for]="words.perfilInput">{{
+                  words.perfilInput
                 }}</label>
-                <input
-                  required
-                  type="text"
-                  class="form-control col-10"
-                  id="ativoInput"
-                  placeholder="Digite a descrição"
-                  [(ngModel)]="usuario.ativo"
-                  formControlName="ativo"
-                  [class.is-invalid]="serviceForm.get('ativo')?.invalid"
-                  [class.is-valid]="serviceForm.get('ativo')?.valid"
-                />
-                <span class="error invalid-feedback">*Requerido</span>
+
+                <select class="form-select" aria-label="Default select">
+                  <option selected>Selecione um perfil</option>
+                  <option
+                    [attr.data-tokens]="perfil.id"
+                    [selected]="perfil.id === usuario.perfilId"
+                    *ngFor="let perfil of perfis"
+                    [value]="perfil.nome"
+                  >
+                    {{ perfil.id }} -
+                    {{ perfil.nome }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- TODO dataUltima alteraçao Input -->
+              <div
+                class="form-group d-flex"
+                style="justify-content: space-around"
+              >
+                <label style="font-size: 12px"
+                  >{{ words.lastUpdatePasswordInput }}:</label
+                >
+                <span>{{
+                  usuario.dtUltAltSenha | date: "dd/MM/yyyy HH:mm"
+                }}</span>
               </div>
             </div>
+
             <!-- /.card-body -->
             <div class="modal-footer justify-content-between">
               <button
