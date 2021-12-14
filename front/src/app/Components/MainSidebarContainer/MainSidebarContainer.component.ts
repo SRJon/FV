@@ -16,6 +16,7 @@ import { IUsuarioEmp } from 'src/app/Domain/Models/IUsuarioEmp';
 export class MainSidebarContainerComponent implements OnInit {
   screens: Tela[] = [];
   user?: IUser;
+  selectCompany!: number;
 
   empresas: IEmpresa[] = [];
 
@@ -79,5 +80,9 @@ export class MainSidebarContainerComponent implements OnInit {
       return result;
     }
     return false;
+  }
+
+  onChange(id: number) {
+    this.selectCompany = id;
   }
 }
