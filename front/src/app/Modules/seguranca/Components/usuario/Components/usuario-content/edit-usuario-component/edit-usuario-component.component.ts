@@ -20,6 +20,7 @@ export class EditUsuarioComponentComponent implements OnInit {
   perfis: IPerfil[] = [];
   isValid: boolean = false;
   serviceForm: FormGroup;
+  selectPerfil!: number;
 
   constructor(
     private userService: UserService,
@@ -35,7 +36,6 @@ export class EditUsuarioComponentComponent implements OnInit {
       email: ['', Validators.required],
       alterPassNextLogonInput: [''],
       ativo: [''],
-      select: [''],
       id: [''],
     });
   }
@@ -51,6 +51,9 @@ export class EditUsuarioComponentComponent implements OnInit {
   async DoCreate() {
     try {
       if (this.usuario) {
+        if (this.selectPerfil) {
+          this.usuario.perfilId = this.selectPerfil;
+        }
         var response = await this.userService.createUser(this.usuario);
         if (response.success && response.data) {
           this.alertsService.showAlert(response.message);
@@ -72,6 +75,9 @@ export class EditUsuarioComponentComponent implements OnInit {
   async Doupdate() {
     try {
       if (this.usuario) {
+        if (this.selectPerfil) {
+          this.usuario.perfilId = this.selectPerfil;
+        }
         let result = await this.userService.updateUser(this.usuario);
         if (result.success && result.data) {
           this.alertsService.showAlert(result.message);
@@ -113,7 +119,9 @@ export class EditUsuarioComponentComponent implements OnInit {
     let response = await this.perfilService.getAllNames(0, 0);
     this.setLoading(false);
     this.perfis = response.data;
-    // @ts-ignore: Unreachable code error
-    $('.select2-danger').select2();
+  }
+
+  onChange(id: number) {
+    this.selectPerfil = id;
   }
 }

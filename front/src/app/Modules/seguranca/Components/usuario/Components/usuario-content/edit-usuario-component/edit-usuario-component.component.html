@@ -171,6 +171,7 @@
                     [selected]="perfil.id === usuario.perfilId"
                     *ngFor="let perfil of perfis"
                     [value]="perfil.nome"
+                    (click)="onChange(perfil.id)"
                   >
                     {{ perfil.id }} -
                     {{ perfil.nome }}

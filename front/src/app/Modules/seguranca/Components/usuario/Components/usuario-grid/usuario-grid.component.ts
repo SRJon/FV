@@ -12,9 +12,7 @@ import * as shareds from 'src/app/Shared';
 })
 export class UsuarioGridComponent implements OnInit {
   @Input() listGrid: any[] = [];
-
   isShowing: boolean = false;
-
   @Input() paginate: Paginate;
   @Input() totalItems: number = 0;
   @Output() nextSelection = new EventEmitter<number>();
