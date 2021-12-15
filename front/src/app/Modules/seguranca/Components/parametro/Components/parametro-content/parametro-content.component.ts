@@ -36,7 +36,7 @@ export class ParametroContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 7) {
+  getAll(page: number, limit: number = 10) {
     this.parameterService.getParameter(page, limit).then((response) => {
       this.parametros = response;
       this.paginate.pageSize = response.totalPages;

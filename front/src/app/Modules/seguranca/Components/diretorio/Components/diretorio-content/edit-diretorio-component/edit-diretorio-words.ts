@@ -1,7 +1,7 @@
 export class EditDiretorioWords {
   private _title: string = '';
   private _indexTitle: number = 0;
-  private _titleList: string[] = ['Create', 'Edit'];
+  private _titleList: string[] = ['CRIAR DIRETÓRIO', 'EDITAR DIRETÓRIO'];
   private _idInput: string = 'Id';
   private _tipoInput: string = 'Tipo';
   private _linkInput: string = 'Link';

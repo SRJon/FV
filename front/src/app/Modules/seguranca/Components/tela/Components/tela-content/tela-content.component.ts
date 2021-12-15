@@ -15,7 +15,7 @@ export class TelaContentComponent implements OnInit {
   isOpen: boolean = false;
   initialParam: ITela = {} as ITela;
 
-  constructor(private screensService: ScreensService) {
+  constructor(private screenService: ScreensService) {
     this.telas = {} as IResponse<ITela[]>;
     this.paginate = new Paginate(1, 1);
 
@@ -46,10 +46,8 @@ export class TelaContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 7) {
-    this.screensService.getScreens(page, limit).then((response) => {
-      // this.telas = telas;
-      // this.cdRef.detectChanges();
+  getAll(page: number, limit: number = 10) {
+    this.screenService.getScreens(page, limit).then((response) => {
       this.telas = response;
       this.paginate.pageSize = response.totalPages;
       this.paginate.totalItems = response.totalPages * limit;

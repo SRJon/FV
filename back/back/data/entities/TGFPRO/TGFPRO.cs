@@ -554,5 +554,7 @@ namespace back.data.entities.TGFPRO
         public string Calcfunttelpro { get; set; }
         public string Codbardifgtin { get; set; }
         public string Codbartribdifgtin { get; set; }
+
+
     }
 }

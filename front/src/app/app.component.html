@@ -7,7 +7,7 @@
   <app-MainSidebarContainer *ngIf="!isLogin"></app-MainSidebarContainer>
   <!-- Content Wrapper. Contains page content -->
   <div
-    class="{{ isLogin ? '' : 'content-wrapper' }}"
+    class="dark-mode {{ isLogin ? '' : 'content-wrapper' }}"
     style="height: 100%; max-height: {{ isLogin ? '100' : '91' }}vh"
     id="middleWrapper"
   >
@@ -24,7 +24,7 @@
         [style.display]="isLoading ? '' : 'none'"
       />
     </div>
-    <div class="pl-2" [style.height.px]="getHeight()">
+    <div class="pl-2" [style.height.px]="getHeight()" style="overflow: scroll">
       <!-- Control Sidebar -->
       <!-- /.control-sidebar -->
       <router-outlet></router-outlet>
