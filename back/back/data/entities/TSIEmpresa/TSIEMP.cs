@@ -1,10 +1,14 @@
 ﻿using back.domain.entities;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace back.data.entities.TSIEmpresa
 {
     public class TSIEMP : ITSIEMP
     {
+        [Key]
+        [Column("CODEMP")]
         public short CODEMP { get; set; }
         public string NOMEFANTASIA { get; set; }
         public string RAZAOSOCIAL { get; set; }
