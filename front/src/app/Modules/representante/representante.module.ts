@@ -7,6 +7,20 @@ import { ClientGridComponent } from './Components/client/Components/client-grid/
 import { Min_loadingComponent } from 'src/app/Components/min_loading/min_loading/min_loading.component';
 import { GeralComponent } from './Components/client/Components/client_details/Components/Geral/Geral.component';
 import { Client_detailsComponent } from './Components/client/Components/client_details/client_details.component';
+// a
+import { PedidoandamentoComponent } from './Components/pedidoandamento/pedidoandamento.component';
+import { PedidosComponent } from './Components/pedidos/pedidos.component';
+import { ClientesComponent } from './Components/clientes/clientes.component';
+import { EstoqueComponent } from './Components/estoque/estoque.component';
+import { AutorizacaoretiradaComponent } from './Components/autorizacaoretirada/autorizacaoretirada.component';
+import { SacComponent } from './Components/sac/sac.component';
+import { ComissaoComponent } from './Components/comissao/comissao.component';
+import { IniciorepresentanteComponent } from './Components/iniciorepresentante/iniciorepresentante.component';
+import { AnexoComponent } from './Components/anexo/anexo.component';
+import { TabprecoComponent } from './Components/tabpreco/tabpreco.component';
+import { BookComponent } from './Components/book/book.component';
+import { ProgramadosComponent } from './Components/programados/programados.component';
+// m
 import { ClientPerfilComponent } from './Components/client/Components/client_details/Components/client-perfil/client-perfil.component';
 import { GridClientPerfilComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/grid-client-perfil/grid-client-perfil.component';
 import { SolicitacaoDevolucaoComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/solicitacao-devolucao/solicitacao-devolucao.component';
@@ -31,6 +45,20 @@ import { FormsModule } from '@angular/forms';
     ClientGridComponent,
     Min_loadingComponent,
     Client_detailsComponent,
+
+    PedidoandamentoComponent,
+    PedidosComponent,
+    ClientesComponent,
+    EstoqueComponent,
+    AutorizacaoretiradaComponent,
+    SacComponent,
+    ComissaoComponent,
+    IniciorepresentanteComponent,
+    AnexoComponent,
+    TabprecoComponent,
+    BookComponent,
+    ProgramadosComponent,
+
     ClientPerfilComponent,
     GridClientPerfilComponent,
     SolicitacaoDevolucaoComponent,
@@ -40,6 +68,7 @@ import { FormsModule } from '@angular/forms';
     NotaFiscalComponent,
     FinanceiroGridComponent,
     FinanceiroComponent,
+
   ],
   bootstrap: [ClientComponent],
   exports: [ClientComponent, GeralComponent],

@@ -49,7 +49,12 @@
     <li>
       <select class="form-select" aria-label="Default select">
         <option selected>Selecione uma empresa</option>
-        <option *ngFor="let empresa of empresas" [value]="empresa.nome">
+        <option
+          [selected]="empresa === selectedEmpresa"
+          *ngFor="let empresa of empresas"
+          [value]="empresa.nome"
+          (click)="onChange(empresa)"
+        >
           {{ empresa.nome }}
         </option>
       </select>

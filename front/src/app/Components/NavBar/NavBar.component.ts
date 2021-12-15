@@ -15,7 +15,7 @@ import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
 })
 export class NavBarComponent implements OnInit {
   empresas: IEmpresa[] = [];
-
+  selectedEmpresa: IEmpresa | undefined;
   isOpen = false;
   aside = new AsideMenu();
   _title = '';
@@ -34,6 +34,9 @@ export class NavBarComponent implements OnInit {
 
         let nonNUll = getEmps.filter((e) => e != undefined) as IEmpresa[];
         this.empresas = nonNUll;
+
+        //Alterar posteriormente para armazenar a empresa principal do usuário
+        this.selectedEmpresa = this.empresas[0];
       }
     });
 
@@ -45,5 +48,9 @@ export class NavBarComponent implements OnInit {
     this.isOpen = !this.isOpen;
     this.aside.setValue(this.isOpen);
     this.menuAsideObs.set(this.aside);
+  }
+
+  onChange(empresa: IEmpresa) {
+    this.selectedEmpresa === empresa;
   }
 }
