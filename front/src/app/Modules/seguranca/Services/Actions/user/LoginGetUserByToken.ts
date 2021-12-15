@@ -2,7 +2,7 @@ import { IUser } from 'src/app/Domain/Models/IUser';
 import axios from 'axios';
 import { IResponse } from '../../../../../Domain/Models/IResponse';
 
-export async function GetByUserToken(
+export async function LoginGetUserByToken(
   token: string
 ): Promise<IResponse<IUser | undefined>> {
   try {
