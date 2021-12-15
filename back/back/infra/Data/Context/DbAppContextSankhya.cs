@@ -25,6 +25,8 @@ using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
 using Microsoft.Extensions.Configuration;
+using back.data.entities.TGFTPVenda;
+using back.data.entities.TCSProjeto;
 
 namespace back.infra.Data.Context
 {
@@ -62,6 +64,8 @@ namespace back.infra.Data.Context
         public DbSet<VGFTAB> VGFTAB { get; set; }
         public DbSet<AD_PANTONE> AD_PANTONE { get; set; }
         public DbSet<AD_ESTPRODCOR> AD_ESTPRODCOR { get; set; }
+        public DbSet<TGFTPV> TGFTPV { get; set; }
+        public DbSet<TCSPRJ> TCSPRJ { get; set; }
 
 
 
@@ -74,6 +78,8 @@ namespace back.infra.Data.Context
             modelBuilder.TSICIDRelationConfiguring();
             modelBuilder.TGFCTTRelationConfiguring();
             modelBuilder.AD_SALDO_PARCEIRORelationConfiguring();
+            modelBuilder.TGFTPVRelationConfiguring();
+            modelBuilder.TCSPRJRelationConfiguring();
 
             modelBuilder.Entity<TGFVEN>().HasKey(x => x.CODVEND).HasName("PrimaryKey_CODVEND");
             modelBuilder.Entity<TSIEMP>().HasKey(x => x.CODEMP).HasName("PrimaryKey_CODEMP");

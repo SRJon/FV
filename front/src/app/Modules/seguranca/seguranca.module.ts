@@ -1,16 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PerfilComponent } from './Components/perfil/perfil.component';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
-import { TelaComponent } from './Components/tela/tela.component';
-import { EmpresaComponent } from './Components/empresa/empresa.component';
-import { UsuarioComponent } from './Components/usuario/usuario.component';
-import { DiretorioComponent } from './Components/diretorio/diretorio.component';
-import { ParametroComponent } from './Components/parametro/parametro.component';
-import { TitleComponent } from './Components/tela/Components/title/title.component';
-import { TelaContentComponent } from './Components/tela/Components/tela-content/tela-content.component';
-import { TelaGridComponent } from './Components/tela/Components/tela-grid/tela-grid.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { EditTelaComponentComponent } from './Components/tela/Components/tela-content/edit-tela-component/edit-tela-component.component';
 import { EmpresaGridComponent } from './Components/empresa/Components/empresa-grid/empresa-grid.component';
 import { EditEmpresaComponentComponent } from './Components/empresa/Components/empresa-content/edit-empresa-component/edit-empresa-component.component';
@@ -25,6 +18,15 @@ import { PerfilGridComponent } from './Components/perfil/Components/perfil-grid/
 import { UsuarioGridComponent } from './Components/usuario/Components/usuario-grid/usuario-grid.component';
 import { UsuarioContentComponent } from './Components/usuario/Components/usuario-content/usuario-content.component';
 import { EditUsuarioComponentComponent } from './Components/usuario/Components/usuario-content/edit-usuario-component/edit-usuario-component.component';
+
+
+import * as perfil from './Components/perfil';
+import * as tela from './Components/tela';
+import * as diretorio from './Components/diretorio';
+import * as parametro from './Components/parametro';
+import * as emp from './Components/empresa';
+import * as user from './Components/usuario';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { EditUsuarioComponentComponent } from './Components/usuario/Components/u
     ReactiveFormsModule,
   ],
   declarations: [
+
     PerfilComponent,
     TelaComponent,
     EmpresaComponent,
@@ -56,8 +59,31 @@ import { EditUsuarioComponentComponent } from './Components/usuario/Components/u
     UsuarioGridComponent,
     UsuarioContentComponent,
     EditUsuarioComponentComponent,
+
+    perfil.PerfilComponent,
+    perfil.PerfilGridComponent,
+    tela.TelaComponent,
+    tela.TitleComponent,
+    tela.TelaContentComponent,
+    tela.TelaGridComponent,
+    tela.EditTelaComponentComponent,
+    user.UsuarioComponent,
+    user.UsuarioEditModalComponent,
+    emp.EmpresaComponent,
+    emp.EmpresaGridComponent,
+    emp.EditEmpresaComponentComponent,
+    emp.EmpresaContentComponent,
+    parametro.ParametroComponent,
+    parametro.ParametroGridComponent,
+    parametro.ParametroContentComponent,
+    parametro.EditParametroComponentComponent,
+    diretorio.DiretorioComponent,
+    diretorio.DiretorioContentComponent,
+    diretorio.DiretorioGridComponent,
+    diretorio.EditDiretorioComponentComponent,
+
   ],
-  bootstrap: [PerfilComponent],
-  exports: [TitleComponent],
+  bootstrap: [perfil.PerfilComponent],
+  exports: [tela.TitleComponent],
 })
 export class SegurancaModule {}

@@ -27,6 +27,7 @@ namespace back.data.entities.TGFParceiro
             modelBuilder.Entity<TGFPAR>().Property(p => p.Identinscestad).HasColumnName("IDENTINSCESTAD");
             modelBuilder.Entity<TGFPAR>().Property(p => p.Inscestadnauf).HasColumnName("INSCESTADNAUF");
             modelBuilder.Entity<TGFPAR>().Property(p => p.Cgc_cpf).HasColumnName("CGC_CPF");
+            modelBuilder.Entity<TGFPAR>().Property(p => p.Cliente).HasColumnName("CLIENTE");
 
             return modelBuilder;
         }

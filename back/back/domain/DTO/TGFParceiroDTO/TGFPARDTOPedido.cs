@@ -1,13 +1,13 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using back.domain.entities;
 
-namespace back.data.entities.TGFParceiro
+namespace back.domain.DTO.TGFParceiroDTO
 {
-    public class TGFPAR : ITGFPAR
+    public class TGFPARDTOPedido : ITGFPAR
     {
-        [Key]
-        [Column("CODPARC")]
         public int Codparc { get; set; }
         public short Codvend { get; set; }
         public string Nomeparc { get; set; }
@@ -30,5 +30,7 @@ namespace back.data.entities.TGFParceiro
         public string Inscestadnauf { get; set; }
         public string Cgc_cpf { get; set; }
         public decimal Limcred { get; set; }
+        public string Cliente { get; set; }
+        public string ClassIfiCms { get; set; }
     }
 }

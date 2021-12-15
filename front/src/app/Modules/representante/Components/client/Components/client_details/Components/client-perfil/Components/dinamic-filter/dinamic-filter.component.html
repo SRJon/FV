@@ -1,0 +1,39 @@
+<div class="filters">
+  <ul class="topUl">
+    <li *ngFor="let model of models; let i = index">
+      <ul class="subUl">
+        <li>
+          <span>Filtrar por</span>
+        </li>
+        <li>
+          <select class="form-select" [(ngModel)]="models[i].key">
+            <option>Empresa</option>
+            <option>Pedido</option>
+            <option>Projeto</option>
+          </select>
+        </li>
+        <li>
+          <span>valor</span>
+        </li>
+        <li>
+          <select class="form-select" [(ngModel)]="models[i].value">
+            <option>Começa com</option>
+            <option>Contém</option>
+          </select>
+        </li>
+        <li
+          class="li_icon_plus"
+          (click)="!(i == 0 && inputs > 1) ? addInput() : replaceInput()"
+        >
+          <i
+            class="fas fa-minus"
+            *ngIf="i == 0 && inputs > 1; else elseBlock"
+          ></i>
+          <ng-template #elseBlock>
+            <i class="fas fa-plus-circle" else></i>
+          </ng-template>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

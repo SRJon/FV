@@ -4,7 +4,6 @@ namespace back.domain.entities
 {
     public interface ITGFPAR
     {
-        public int Codparc { get; set; }
         public short Codvend { get; set; }
         public string Nomeparc { get; set; }
         public string Razaosocial { get; set; }
@@ -25,6 +24,8 @@ namespace back.domain.entities
         public string Inscestadnauf { get; set; }
         public string Cgc_cpf { get; set; }
         public decimal Limcred { get; set; }
+        public string Cliente { get; set; }
+        public string ClassIfiCms { get; set; }
 
     }
 }

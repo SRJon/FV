@@ -12,6 +12,6 @@ namespace back.domain.Repositories
         public Task<TSIBAIDTO> GetById(int id);
         public Task<TSIBAIDTO> GetByNome(string nomeEnd);
         public TSIBAIDTO AtribuicaoValoresCliente(TSIBAIDTO endereco, SintegraCNPJ cnpj);
-        public Task<bool> Create(TSIBAIDTO tsibai);
+        public Task<bool> Create(TSIBAIDTOCreate tsibai);
     }
 }

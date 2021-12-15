@@ -7,7 +7,7 @@ namespace back.domain.entities
 {
     public interface ITSICID
     {
-        public int CodCid { get; set; }
+
         public Nullable<short> Uf { get; set; }
         public string NomeCid { get; set; }
         public string Ddd { get; set; }

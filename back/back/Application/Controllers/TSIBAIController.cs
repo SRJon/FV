@@ -17,7 +17,7 @@ using Microsoft.Extensions.Logging;
 namespace back.Application.Controllers
 {
     [Route("api/[controller]")]
-    public class TSIBAIController : Controller
+    public class TSIBAIController : ControllerBase
     {
         private readonly ITSIBAIRepository _ITSIBAIRepository;
         private readonly IMapper _mapper;
@@ -81,9 +81,9 @@ namespace back.Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("Create")]
-        public async Task<ActionResult<IResponse<bool>>> create(TSIBAIDTO tsiend)
+        public async Task<ActionResult<IResponse<bool>>> create(TSIBAIDTOCreate tsiend)
         {
-
+            tsiend.Dtalter = System.DateTime.Now;
             var response = new Response<bool>();
             try
             {

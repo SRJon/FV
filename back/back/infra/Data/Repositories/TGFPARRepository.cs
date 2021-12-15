@@ -103,6 +103,7 @@ namespace back.infra.Data.Repositories
             }
 
             cliente.Cgc_cpf = cnpj.Cnpj;
+            cliente.Cliente = "S";
 
             return cliente;
         }

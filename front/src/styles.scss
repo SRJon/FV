@@ -51,6 +51,7 @@ td {
   line-height: 1.4;
   position: relative;
   text-align: center;
+  min-height: 40px;
 }
 
 tbody tr:nth-child(2n) {
@@ -64,7 +65,7 @@ tbody tr:nth-child(2n) {
   color: $gray;
 }
 .row100 > td:hover {
-  // color: $gray;
+  color: $gray;
   font-weight: 400;
   color: $darkgray;
   border: 1px solid $darkgray;

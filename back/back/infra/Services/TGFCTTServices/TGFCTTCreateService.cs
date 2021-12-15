@@ -6,6 +6,7 @@ using AutoMapper;
 using back.data.entities.TGFContato;
 using back.domain.DTO.TGFContatoDTO;
 using back.infra.Data.Context;
+using back.infra.Data.Utils;
 using back.MappingConfig;
 
 namespace back.infra.Services.TGFCTTServices
@@ -13,11 +14,15 @@ namespace back.infra.Services.TGFCTTServices
     public static class TGFCTTCreateService
     {
         private static readonly IMapper _mapper = MapperConfig.MapperConfiguration().CreateMapper();
-        public static Task<bool> Create(this DbAppContextSankhya ctx, TGFCTTDTOCreate comprador)
+        public static async Task<bool> Create(this DbAppContextSankhya ctx, TGFCTTDTOCreate comprador)
         {
-            ctx.TGFCTT.Add(_mapper.Map<TGFCTT>(comprador));
-            var result = ctx.SaveChanges();
-            return result > 0 ? Task.FromResult(true) : Task.FromResult(false);
+            var json = comprador.ProductEntityToJson("Contato");
+
+            var result = await APISankhya.SankhyaCRUDPostAsync(json);
+            var resposta = result.Substring(result.IndexOf(":", 22) + 2, 1);
+
+            return resposta == "1" ? (true) : (false);
+            ;
         }
 
 
