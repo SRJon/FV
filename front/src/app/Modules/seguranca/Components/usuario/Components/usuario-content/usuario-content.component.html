@@ -14,7 +14,8 @@
           [paginate]="paginate"
           [totalItems]="paginate.totalItems"
           (nextSelection)="onNextSelection($event)"
-        ></app-usuario-grid>
+        >
+        </app-usuario-grid>
         <app-edit-usuario-component
           [usuario]="initialParam"
           *ngIf="isOpen"
