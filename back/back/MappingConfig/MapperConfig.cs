@@ -25,7 +25,6 @@ using back.data.entities.TSIEndereco;
 using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
-
 using back.data.entities.TGFVEN;
 using back.data.entities.TSIEMP;
 using back.data.entities.UserEmp;
@@ -41,7 +40,7 @@ using back.data.entities.TGFPRO;
 using back.data.entities.VGFTAB;
 using back.data.entities.AD_PANTONE;
 using back.data.entities.AD_ESTPRODCOR;
-
+using back.data.entities.DataViews.VIEW_AD_PEDIDOS;
 
 namespace back.MappingConfig
 {
@@ -74,6 +73,7 @@ namespace back.MappingConfig
                 cfg.CreateVersaoProjetosMapper();
                 cfg.CreateVersionDetailsMapper();
                 cfg.CreateAD_VGFRPVDetailsMapper();
+                cfg.CreateAD_PEDIDOSDetailsMapper();
                 cfg.CreateTGFPARMapper();
                 cfg.CreateTSIENDMapper();
                 cfg.CreateTSIBAIMapper();

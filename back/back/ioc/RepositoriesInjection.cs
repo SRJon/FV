@@ -55,6 +55,7 @@ namespace back.ioc
             services.AddScoped<IVGFTABRepository, VGFTABRepository>();
             services.AddScoped<IAD_PANTONERepository, AD_PANTONERepository>();
             services.AddScoped<IAD_ESTPRODCORRepository, AD_ESTPRODCORRepository>();
+            services.AddScoped<IAD_PEDIDOSRepository, AD_PEDIDOSRepository>();
 
             return services;
         }

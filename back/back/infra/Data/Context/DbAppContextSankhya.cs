@@ -25,6 +25,7 @@ using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
 using Microsoft.Extensions.Configuration;
+using back.data.entities.DataViews.VIEW_AD_PEDIDOS;
 
 namespace back.infra.Data.Context
 {
@@ -51,6 +52,7 @@ namespace back.infra.Data.Context
         public DbSet<TGFVEN> TGFVEN { get; set; }
         public DbSet<TSIEMP> TSIEMP { get; set; }
         public DbSet<AD_TIPNEG> AD_TIPNEG { get; set; }
+        public DbSet<AD_PEDIDOS> AD_PEDIDOS { get; set; }
         public DbSet<AD_SALDO_PARCEIRO> AD_SALDO_PARCEIRO { get; set; }
         public DbSet<AD_ESTPROGPROD> AD_ESTPROGPROD { get; set; }
         public DbSet<AD_FAMGR1> AD_FAMGR1 { get; set; }
@@ -68,6 +70,7 @@ namespace back.infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AD_VGFRPVRelationConfiguring();
+            modelBuilder.AD_PEDIDOSRelationConfiguring();
             modelBuilder.TGFPARRelationConfiguring();
             modelBuilder.TSIENDRelationConfiguring();
             modelBuilder.TSIBAIRelationConfiguring();
@@ -100,7 +103,6 @@ namespace back.infra.Data.Context
             var isProduction = _config.GetValue<bool>("isProduction");
             if (!isProduction)
             {
-
                 optionsBuilder.LogTo(Console.WriteLine);
             }
             base.OnConfiguring(optionsBuilder);

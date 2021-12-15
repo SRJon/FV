@@ -29,7 +29,6 @@ namespace back.infra.Data.Repositories
         }
 
 
-
         public async Task<Response<List<AD_VGFRPVSaldoDTO>>> GetAllPaginateAsync(int page, int limit, int codVendedor)
         {
             var response = new Response<List<AD_VGFRPVSaldoDTO>>();
