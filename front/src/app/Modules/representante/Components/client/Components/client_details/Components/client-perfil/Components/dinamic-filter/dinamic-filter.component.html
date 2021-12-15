@@ -6,7 +6,11 @@
           <span>Filtrar por</span>
         </li>
         <li>
-          <select class="form-select" [(ngModel)]="models[i].key">
+          <select
+            class="form-select"
+            [(ngModel)]="models[i].key"
+            (change)="onchange()"
+          >
             <option>Empresa</option>
             <option>Pedido</option>
             <option>Projeto</option>
@@ -16,7 +20,11 @@
           <span>valor</span>
         </li>
         <li>
-          <select class="form-select" [(ngModel)]="models[i].value">
+          <select
+            class="form-select"
+            [(ngModel)]="models[i].value"
+            (change)="onchange()"
+          >
             <option>Começa com</option>
             <option>Contém</option>
           </select>

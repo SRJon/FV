@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dinamic-filter',
@@ -8,16 +8,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DinamicFilterComponent implements OnInit {
   @Input() inputs = 1;
   models: { value: string; key: string }[] = [];
+  @Output() onChange = new EventEmitter<{ value: string; key: string }[]>();
   constructor() {
     this.reshape();
   }
   reshape() {
     for (let index = 0; index < this.inputs; index++) {
       this.models.push({
-        value: '',
         key: '',
+        value: '',
       });
     }
+  }
+  onchange() {
+    this.onChange.emit(this.models);
   }
 
   ngOnInit(): void {}

@@ -10,7 +10,8 @@ export class ClientPerfilComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-  to() {
-    return JSON.stringify(this.data);
+
+  onChange(m: { value: string; key: string }[]) {
+    this.data = m;
   }
 }
