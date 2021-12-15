@@ -57,6 +57,7 @@ namespace back.ioc
             services.AddScoped<IAD_ESTPRODCORRepository, AD_ESTPRODCORRepository>();
             services.AddScoped<ITGFTPVRepository, TGFTPVRepository>();
             services.AddScoped<ITCSPRJRepository, TCSPRJRepository>();
+            services.AddScoped<ITGFCABRepository, TGFCABRepository>();
 
             return services;
         }
