@@ -11,10 +11,10 @@ namespace back.data.entities.TGFTPVenda
     public class TGFTPV : ITGFTPV
     {
         [Key]
-        [Column("CODTIPVENDA")]
+        [Column("CODTIPVENDA", Order = 0)]
         public short Codtipvenda { get; set; }
         [Key]
-        [Column("DHALTER")]
+        [Column("DHALTER", Order = 1)]
         public DateTime Dhalter { get; set; }
         public string Descrtipvenda { get; set; }
         public string Subtipovenda { get; set; }

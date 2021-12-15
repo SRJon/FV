@@ -21,7 +21,7 @@ namespace back.Application.Controllers
         private readonly IMapper _mapper;
         protected readonly ITGFCTTRepository _TGFCTTRepository;
 
-        public TGFCTTController(IMapper mapper, ITGFCTTRepository tGFCTTRepository)
+        public TGFCTTController(ITGFCTTRepository tGFCTTRepository)
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _TGFCTTRepository = tGFCTTRepository;

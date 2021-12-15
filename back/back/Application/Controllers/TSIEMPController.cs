@@ -1,5 +1,5 @@
 ﻿using back.data.http;
-using back.domain.DTO.TSIEMP;
+using back.domain.DTO.TSIEmpDTO;
 using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;

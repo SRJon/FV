@@ -14,6 +14,11 @@ namespace back.data.entities.TGFTPVenda
 
             cfg.CreateMap<TGFTPV, TGFTPVDTO>();
             cfg.CreateMap<TGFTPVDTO, TGFTPV>();
+
+            cfg.CreateMap<TGFTPV, TGFTPVDTONF>();
+            cfg.CreateMap<TGFTPVDTONF, TGFTPV>();
+            cfg.CreateMap<TGFTPVDTO, TGFTPVDTONF>();
+            cfg.CreateMap<TGFTPVDTONF, TGFTPVDTO>();
             return cfg;
         }
     }

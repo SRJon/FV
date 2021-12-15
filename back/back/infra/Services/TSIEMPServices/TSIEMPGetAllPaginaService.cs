@@ -1,4 +1,4 @@
-﻿using back.data.entities.TSIEMP;
+﻿using back.data.entities.TSIEmpresa;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

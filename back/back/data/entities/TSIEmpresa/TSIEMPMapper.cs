@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using back.domain.DTO.TSIEMP;
+using back.domain.DTO.TSIEmpDTO;
 
-namespace back.data.entities.TSIEMP
+namespace back.data.entities.TSIEmpresa
 {
     public static class TSIEMPMapper
     {
@@ -12,6 +12,12 @@ namespace back.data.entities.TSIEMP
 
             cfg.CreateMap<TSIEMP, TSIEMPDTO>();
             cfg.CreateMap<TSIEMPDTO, TSIEMP>();
+
+            cfg.CreateMap<TSIEMP, TSIEMPDTONF>();
+            cfg.CreateMap<TSIEMPDTONF, TSIEMP>();
+
+            cfg.CreateMap<TSIEMPDTO, TSIEMPDTONF>();
+            cfg.CreateMap<TSIEMPDTONF, TSIEMPDTO>();
 
             return cfg;
         }

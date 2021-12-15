@@ -12,6 +12,8 @@ namespace back.data.entities.TGFTPVenda
         {
 
             modelBuilder.Entity<TGFTPV>().HasKey(u => new { u.Codtipvenda, u.Dhalter });
+
+            #region  "Relação modelo <> sankhya"
             modelBuilder.Entity<TGFTPV>().Property(p => p.Codtipvenda).HasColumnName("CODTIPVENDA");
             modelBuilder.Entity<TGFTPV>().Property(p => p.Dhalter).HasColumnName("DHALTER");
             modelBuilder.Entity<TGFTPV>().Property(p => p.Descrtipvenda).HasColumnName("DESCRTIPVENDA");
@@ -72,6 +74,7 @@ namespace back.data.entities.TGFTPVenda
             modelBuilder.Entity<TGFTPV>().Property(p => p.TimQtdParc).HasColumnName("TIMQTDPARC");
             modelBuilder.Entity<TGFTPV>().Property(p => p.Ad_Codemp).HasColumnName("AD_CODEMP");
             modelBuilder.Entity<TGFTPV>().Property(p => p.Ad_Tipo).HasColumnName("AD_TIPO");
+            #endregion
 
             return modelBuilder;
         }
