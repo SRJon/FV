@@ -31,7 +31,10 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.TGFCAB.Where(u => u.codparc == codParc).Include(o => o.TGFTPV).Include(o => o.Empresa).Skip(base.skip).OrderBy(o => o.numnota).Take(base.limit);
+                var savedSearches = contexto.TGFCAB.Include(o => o.Empresa).Include(o => o.TGFTPV)
+                                                   .Where(u => u.codparc == codParc && u.tipmov == "V" && u.statusnota == "L" && u.statusnfe == "A")
+                                                   .OrderBy(o => o.numnota);
+
                 List<TGFCABNuNotaDTO> dTOs = new List<TGFCABNuNotaDTO>();
 
                 var notas = await savedSearches.ToListAsync();
