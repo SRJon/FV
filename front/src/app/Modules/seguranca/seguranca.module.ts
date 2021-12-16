@@ -22,7 +22,6 @@ import * as user from './Components/usuario';
     perfil.PerfilComponent,
     perfil.PerfilGridComponent,
     tela.TelaComponent,
-    tela.TitleComponent,
     tela.TelaContentComponent,
     tela.TelaGridComponent,
     tela.EditTelaComponentComponent,
@@ -44,6 +43,5 @@ import * as user from './Components/usuario';
     diretorio.EditDiretorioComponentComponent,
   ],
   bootstrap: [perfil.PerfilComponent],
-  exports: [tela.TitleComponent],
 })
 export class SegurancaModule {}

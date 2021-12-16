@@ -11,14 +11,16 @@ export class DiretorioComponent implements OnInit {
   title: string = 'Diretório';
   description: string = '';
   _title: string = '';
+
   constructor(
     private titleService: Title,
     private globalTitle: GlobalTitle<string>
   ) {
     this.titleService.setTitle(this.title);
-    this.globalTitle.getObservable().subscribe((value) => {
+    this.globalTitle.getObs((value: string) => {
       this._title = value;
     });
+    this.globalTitle.setValue(this.title);
   }
 
   getHeigth(): number {
@@ -26,7 +28,5 @@ export class DiretorioComponent implements OnInit {
     return doc ? doc.clientHeight : 0;
   }
 
-  ngOnInit(): void {
-    this.globalTitle.setValue(this.title);
-  }
+  ngOnInit(): void {}
 }

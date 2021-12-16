@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Grid } from 'src/app/Shared';
-import { UserService } from '../../Services/user.service';
-import { IUser } from '../../../../Domain/Models/IUser';
-import { AlertsService } from '../../../../Repository/Alerts/alerts.service';
 import { Title } from '@angular/platform-browser';
 import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
 @Component({
@@ -14,14 +10,16 @@ export class UsuarioComponent implements OnInit {
   title: string = 'Usuário';
   description: string = '';
   _title: string = '';
+
   constructor(
     private titleService: Title,
     private globalTitle: GlobalTitle<string>
   ) {
     this.titleService.setTitle(this.title);
-    this.globalTitle.getObservable().subscribe((value) => {
+    this.globalTitle.getObs((value: string) => {
       this._title = value;
     });
+    this.globalTitle.setValue(this.title);
   }
 
   getHeigth(): number {
@@ -29,7 +27,5 @@ export class UsuarioComponent implements OnInit {
     return doc ? doc.clientHeight : 0;
   }
 
-  ngOnInit(): void {
-    this.globalTitle.setValue(this.title);
-  }
+  ngOnInit(): void {}
 }
