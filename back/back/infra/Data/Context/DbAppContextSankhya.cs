@@ -28,6 +28,7 @@ using Microsoft.Extensions.Configuration;
 using back.data.entities.TGFTPVenda;
 using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
+using back.data.entities.View_AD_DEVSOLICITACAO;
 
 namespace back.infra.Data.Context
 {
@@ -68,6 +69,7 @@ namespace back.infra.Data.Context
         public DbSet<TGFTPV> TGFTPV { get; set; }
         public DbSet<TCSPRJ> TCSPRJ { get; set; }
         public DbSet<TGFCAB> TGFCAB { get; set; }
+        public DbSet<AD_DEVSOLICITACAO> AD_DEVSOLICITACAO { get; set; }
 
 
 
@@ -84,6 +86,7 @@ namespace back.infra.Data.Context
             modelBuilder.TGFTPVRelationConfiguring();
             modelBuilder.TCSPRJRelationConfiguring();
             modelBuilder.TGFCABRelationConfiguring();
+            modelBuilder.AD_DEVSOLICITACAORelationConfiguring();
 
             modelBuilder.Entity<TGFVEN>().HasKey(x => x.CODVEND).HasName("PrimaryKey_CODVEND");
             modelBuilder.Entity<TSIEMP>().HasKey(x => x.CODEMP).HasName("PrimaryKey_CODEMP");

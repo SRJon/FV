@@ -44,6 +44,7 @@ using back.data.entities.AD_ESTPRODCOR;
 using back.data.entities.TGFTPVenda;
 using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
+using back.data.entities.View_AD_DEVSOLICITACAO;
 
 namespace back.MappingConfig
 {
@@ -101,6 +102,7 @@ namespace back.MappingConfig
                 cfg.CreateAD_ESTPRODCORMapper();
                 cfg.CreateTGFTPVMapper();
                 cfg.CreateTCSPRJMapper();
+                cfg.CreateAD_DEVSOLICITACAOMapper();
 
             });
             return configuration;
