@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.http;
@@ -25,6 +26,25 @@ namespace back.Application.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        public async Task<ActionResult<IResponse<List<AD_PEDIDOSDTO>>>> getAll(int page = 1, int limit = 10){
+
+            var response = new Response<List<AD_PEDIDOSDTO>>();
+
+            try
+            {
+                var result = await _AD_PEDIDOS_Repository.GetAllPaginateAsync(page, limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+            }
+            catch (System.Exception)
+            {
+                response.SetConfig(400, "Erro ao buscar as Condições de pagamento", false);
+            }
+            return response.GetResponse();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
         [Route("GetByNunota")]
 
         public async Task<ActionResult<IResponse<AD_PEDIDOSDTO>>> getByNunota(int Nunota)
@@ -45,7 +65,7 @@ namespace back.Application.Controllers
                     response.SetConfig(404, "Pedido não encontrado.", false);
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
                 response.SetConfig(400, "Erro ao buscar pedido", false);
             }
