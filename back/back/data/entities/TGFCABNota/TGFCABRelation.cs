@@ -11,8 +11,8 @@ namespace back.data.entities.TGFCABNota
     {
         public static ModelBuilder TGFCABRelationConfiguring(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TGFCAB>().HasOne(c => c.Empresa).WithOne().HasForeignKey<TGFCAB>(c => c.codemp);
-            modelBuilder.Entity<TGFCAB>().HasOne(e => e.TGFTPV).WithOne().HasForeignKey<TGFCAB>(p => new { p.codtipvenda, p.dhtipvenda });
+            modelBuilder.Entity<TGFCAB>().HasOne(c => c.Empresa).WithMany().HasForeignKey(c => c.codemp);
+            modelBuilder.Entity<TGFCAB>().HasOne(e => e.TGFTPV).WithMany().HasForeignKey(p => new { p.codtipvenda, p.dhtipvenda });
 
 
             #region "Parametrização Entity <> Sankhya"
