@@ -45,6 +45,7 @@ using back.data.entities.TGFTPVenda;
 using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
 using back.data.entities.View_AD_DEVSOLICITACAO;
+using back.data.entities.TGFinanceiro;
 
 namespace back.MappingConfig
 {
@@ -86,6 +87,7 @@ namespace back.MappingConfig
                 cfg.CreateTSIEMPMapper();
                 cfg.CreateAD_TIPNEGMapper();
                 cfg.CreateTGFCABMapper();
+                cfg.CreateTGFFINMapper();
 
                 cfg.CreateAD_SALDO_PARCEIROMapper();
                 //cfg.CreateMap<Teste, testeDTO>();
