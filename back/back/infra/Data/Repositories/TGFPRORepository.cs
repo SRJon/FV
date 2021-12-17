@@ -31,7 +31,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.TGFPRO.Skip(base.skip).OrderBy(o => o.CodProd).Take(base.limit);
+                var savedSearches = contexto.TGFPRO.Skip(base.skip).OrderBy(o => o.codprod).Take(base.limit);
                 List<TGFPRODTO> dTOs = new List<TGFPRODTO>();
 
                 var parceiros = await savedSearches.ToListAsync();
