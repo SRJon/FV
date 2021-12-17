@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.Book;
 
-namespace back.data.entities.Book
+namespace back.data.entities.BookAmostra
 {
     public static class BookMapper
     {

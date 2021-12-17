@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using back.data.entities.BookAnexo;
+using back.data.entities.BookAnexoAmostra;
 using back.data.http;
 using back.domain.DTO.BookAnexo;
+using back.domain.DTO.TGFProdutoDTO;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.BookAnexoServices;
@@ -18,11 +19,13 @@ namespace back.infra.Data.Repositories
     {
         private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
+        private readonly ITGFPRORepository _TGFPRORepository;
 
-        public BookAnexoRepository(DbContexts ctxs) : base()
+        public BookAnexoRepository(DbContexts ctxs, ITGFPRORepository TGFPRORepository) : base()
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
+            _TGFPRORepository = TGFPRORepository;
 
         }
 
@@ -117,6 +120,29 @@ namespace back.infra.Data.Repositories
                 });
             }
             return _ctxs.GetVFU().UpdateBookAnexoServices(_mapper.Map<BookAnexoDTOUpdateDTO>(BookAnexo), BookAnexo.Id);
+        }
+
+        //TODO FAZER ISSO AQUI
+        public Task<Response<List<BookAnexoAmostraDTO>>> GetAllBookAmostra(int page, int limit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<BookAnexoAmostraDTO> GetBycodProdBookAmostra(int codProd)
+        {
+            var rmapper = _mapper.Map<BookAnexoAmostraDTO>(await this._ctxs.
+            GetVFU()
+            .GetBycodProdService(codProd));
+            try
+            {
+                rmapper.TGFPRO = _mapper.Map<TGFPROAmostraDTO>(await _TGFPRORepository.GetByCodProd(codProd));
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            return rmapper;
         }
     }
 }

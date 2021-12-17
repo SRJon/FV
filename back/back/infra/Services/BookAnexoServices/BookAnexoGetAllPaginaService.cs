@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using back.data.entities.BookAnexo;
+using back.data.entities.BookAnexoAmostra;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 

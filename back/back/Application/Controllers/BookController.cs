@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using back.data.entities.Book;
+using back.data.entities.BookAmostra;
 using back.data.entities.Enterprise;
+using back.data.entities.Enterprise.BookAnexoAmostra;
 using back.data.http;
 using back.domain.DTO.Book;
 using back.domain.entities;

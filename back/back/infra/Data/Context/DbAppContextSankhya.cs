@@ -9,7 +9,7 @@ using back.data.entities.DataViews.VIEW_AD_VGFRPV;
 using back.data.entities.TGFEXC;
 using back.data.entities.TGFIPI;
 using back.data.entities.TGFParceiro;
-using back.data.entities.TGFPRO;
+using back.data.entities.TGFProduto;
 using back.data.entities.TGFVEN;
 using back.data.entities.TSIEmpresa;
 using back.data.entities.VGFTAB;

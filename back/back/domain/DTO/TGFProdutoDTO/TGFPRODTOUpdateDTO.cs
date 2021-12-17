@@ -1,9 +1,9 @@
 ﻿using back.domain.entities;
 using System;
 
-namespace back.domain.DTO.TGFPRO
+namespace back.domain.DTO.TGFProdutoDTO
 {
-    public class TGFPRODTO : ITGFPRO
+    public class TGFPRODTOUpdateDTO : ITGFPRO
     {
         public int codprod { get; set; }
         public string descrprod { get; set; }

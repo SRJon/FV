@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace back.data.entities.TGFPRO
+namespace back.data.entities.TGFProduto
 {
     public class TGFPRO : ITGFPRO
     {

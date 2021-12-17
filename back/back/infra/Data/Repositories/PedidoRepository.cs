@@ -100,7 +100,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TGFTPV = await _ITITGFTPVRepository.GetByCODTIPVENDA((int)result.CondPagCodTipVenda, (DateTime)result.CondPagDhAlter);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TGFTPV = null;
             }
@@ -108,7 +108,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TCSPRJ = await _ITCSPRJRepository.GetByCODTIPVENDA((int)result.ProjetoCod);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TCSPRJ = null;
             }
@@ -116,7 +116,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TGFPAR = _mapper.Map<TGFPARDTOPedido>(await _ITGFPARRepository.GetById((int)result.ClienteRemCod));
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TGFPAR = null;
             }

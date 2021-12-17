@@ -1,6 +1,6 @@
-namespace back.data.entities.Enterprise
+﻿namespace back.data.entities.TGFProduto
 {
-    public class BookGetAllEntity
+    public class TGFPROGetAllEntity
     {
         public int page { get; set; }
         public int limit { get; set; }

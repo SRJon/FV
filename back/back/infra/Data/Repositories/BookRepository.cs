@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using back.data.entities.Book;
+using back.data.entities.BookAmostra;
 using back.data.http;
 using back.domain.DTO.Book;
 using back.domain.Repositories;

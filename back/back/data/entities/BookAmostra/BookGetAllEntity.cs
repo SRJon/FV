@@ -1,6 +1,6 @@
-namespace back.data.entities.Enterprise
+namespace back.data.entities.Enterprise.BookAmostra
 {
-    public class BookAnexoGetAllEntity
+    public class BookGetAllEntity
     {
         public int page { get; set; }
         public int limit { get; set; }

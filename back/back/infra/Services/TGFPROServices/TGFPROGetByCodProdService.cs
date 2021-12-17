@@ -1,4 +1,4 @@
-﻿using back.data.entities.TGFPRO;
+﻿using back.data.entities.TGFProduto;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

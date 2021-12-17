@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using back.data.http;
-using back.domain.DTO.TGFPRO;
+using back.domain.DTO.TGFProdutoDTO;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.TGFPROServices;
