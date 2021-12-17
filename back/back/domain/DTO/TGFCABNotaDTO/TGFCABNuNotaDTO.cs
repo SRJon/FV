@@ -15,7 +15,6 @@ namespace back.domain.DTO.TGFCABNotaDTO
         public int nunota { get; set; }
         public int numnota { get; set; }
 
-        #region "teste"
 
         public DateTime? dtfatur { get; set; }//FRONT
         public double? vlrnota { get; set; }//nota
@@ -23,13 +22,14 @@ namespace back.domain.DTO.TGFCABNotaDTO
         public double? ad_perccom { get; set; }//FRONT
         public int codparc { get; set; }
 
-        #endregion
-
         public short codemp { get; set; }
         public virtual TSIEMPDTONF Empresa { get; set; }
         public short codtipvenda { get; set; }
         public DateTime dtalter { get; set; }
         public virtual TGFTPVDTONF TGFTPV { get; set; }
+        public string tipmov { get; set; }
+        public string statusnota { get; set; }
+        public string statusnfe { get; set; }
 
     }
 }
