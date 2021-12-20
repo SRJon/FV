@@ -11,7 +11,7 @@ namespace back.data.entities.BookAmostra
     {
         public static ModelBuilder BookRelationConfiguring(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>().HasOne<BookAnexo>(u => u.bookAnexo).WithMany(u => u.book);
+            // modelBuilder.Entity<Book>().HasMany<BookAnexo>().WithOne(u => u.book).HasForeignKey(u => u.CodProd);
             return modelBuilder;
         }
     }

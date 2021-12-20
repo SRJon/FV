@@ -17,7 +17,7 @@ namespace back.data.entities.BookAnexoAmostra
         public string Extensao { get; set; }
         public int? Tamanho { get; set; }
         public int? Seq { get; set; }
-        public virtual ICollection<Book> book { get; set; }
+        public virtual Book book { get; set; }
         [ForeignKey("CodProd")]
         public virtual TGFPRO tgfproduto { get; set; }
     }

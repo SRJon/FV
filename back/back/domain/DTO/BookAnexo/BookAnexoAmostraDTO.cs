@@ -12,7 +12,7 @@ namespace back.domain.DTO.BookAnexo
         public int Id { get; set; }
         public int? CodProd { get; set; }
         public string Descricao { get; set; }
-        public virtual ICollection<BookAmostraDTO> book { get; set; }
+        public virtual BookAmostraDTO book { get; set; }
         public virtual TGFPROAmostraDTO TGFPRO { get; set; }
 
 

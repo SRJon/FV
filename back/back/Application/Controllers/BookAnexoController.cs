@@ -180,6 +180,28 @@ namespace back.Application.Controllers
             return response.GetResponse();
         }
 
+        [HttpGet]
+        [Authorize]
+        [Route("GetAllBookAmostra")]
+        public async Task<ActionResult<IResponse<List<BookAnexoAmostraDTO>>>> GetAllBookAmostraAsync([FromQuery] BookAnexoGetAllEntity payload)
+
+        {
+            var response = new Response<List<BookAnexoAmostraDTO>>();
+            try
+            {
+                var result = await _BookAnexoRepository.GetAllBookAmostra(payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
+
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar o book Amostra" + InnerExceptionMessage.InnerExceptionError(e), false);
+            }
+            return response.GetResponse();
+        }
+
     }
 
 }

@@ -12,7 +12,7 @@ namespace back.data.entities.BookAnexoAmostra
         public static ModelBuilder BookAnexoRelationConfiguring(this ModelBuilder modelBuilder)
         {
             //TODO trocar a chave primaria
-            modelBuilder.Entity<BookAnexo>().HasMany<Book>(u => u.book).WithOne(u => u.bookAnexo).HasForeignKey(u => u.CodProd);
+            modelBuilder.Entity<BookAnexo>().HasOne<Book>(u => u.book).WithMany(u => u.bookAnexo).HasForeignKey(u => u.CodProd);
             return modelBuilder;
         }
 
