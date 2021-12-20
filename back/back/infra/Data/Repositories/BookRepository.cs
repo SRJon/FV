@@ -62,6 +62,12 @@ namespace back.infra.Data.Repositories
             GetVFU()
             .GetByIdService(id));
         }
+        public async Task<BookAmostraDTO> GetByCodProd(int codProd)
+        {
+            return _mapper.Map<BookAmostraDTO>(await this._ctxs.
+            GetVFU()
+            .GetByCodProdService(codProd));
+        }
 
         public Task<bool> Create(Book Book)
         {

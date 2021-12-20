@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.BookAnexoAmostra;
 using back.data.http;
+using back.domain.DTO.Book;
 using back.domain.DTO.BookAnexo;
 using back.domain.DTO.TGFProdutoDTO;
 using back.domain.Repositories;
@@ -20,12 +21,14 @@ namespace back.infra.Data.Repositories
         private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
         private readonly ITGFPRORepository _TGFPRORepository;
+        private readonly IBookRepository _BookRepository;
 
-        public BookAnexoRepository(DbContexts ctxs, ITGFPRORepository TGFPRORepository) : base()
+        public BookAnexoRepository(DbContexts ctxs, ITGFPRORepository TGFPRORepository, IBookRepository bookRepository) : base()
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
             _TGFPRORepository = TGFPRORepository;
+            _BookRepository = bookRepository;
 
         }
 
@@ -138,6 +141,8 @@ namespace back.infra.Data.Repositories
                 foreach (var bookAnexo in dTOs)
                 {
                     bookAnexo.TGFPRO = _mapper.Map<TGFPROAmostraDTO>(await _TGFPRORepository.GetByCodProd((int)bookAnexo.CodProd));
+                    bookAnexo.book = _mapper.Map<BookAmostraDTO>(await this._BookRepository.GetByCodProd((int)bookAnexo.CodProd));
+
                 }
 
                 response.Data = dTOs;
@@ -148,8 +153,9 @@ namespace back.infra.Data.Repositories
                 response.StatusCode = 200;
                 return response;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+
                 response.Data = null;
                 response.StatusCode = 400;
                 return response;

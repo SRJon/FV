@@ -13,6 +13,12 @@ namespace back.data.entities.BookAmostra
             cfg.CreateMap<Book, BookDTO>();
             cfg.CreateMap<BookDTO, Book>();
 
+            cfg.CreateMap<Book, BookAmostraDTO>();
+            cfg.CreateMap<BookAmostraDTO, Book>();
+
+            cfg.CreateMap<BookAmostraDTO, BookDTO>();
+            cfg.CreateMap<BookDTO, BookAmostraDTO>();
+
             return cfg;
         }
 

@@ -11,7 +11,7 @@ namespace back.domain.DTO.Book
         public int Id { get; set; }
         public int CodProd { get; set; }
         public DateTime DtAtualizacao { get; set; }
-        public virtual ICollection<BookAnexoAmostraDTO> bookAnexo { get; set; }
+        // public virtual ICollection<BookAnexoAmostraDTO> bookAnexo { get; set; }
 
     }
 }
