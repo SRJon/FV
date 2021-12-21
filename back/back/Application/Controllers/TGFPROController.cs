@@ -23,7 +23,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<IResponse<List<TGFPRODTO>>>> GetAll(int page = 1, int limit = 10)
         {
             var response = new Response<List<TGFPRODTO>>();

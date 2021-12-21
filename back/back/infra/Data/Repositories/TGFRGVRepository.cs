@@ -69,8 +69,10 @@ namespace back.infra.Data.Repositories
             var response = new Response<List<TGFRGVDTO>>();
             var contexto = _ctxs.GetSankhya();
             try
-            {                                
-                var savedSearches = contexto.TGFRGV.Where(o => o.CODVEND == CODVEND).Include(u=>u.TGFGRU).OrderBy(o => o.CODGRUPOPROD);
+            {  
+                
+                // CONDIÇÕES DO SELECT UTILIZADAS NO AMBIENTE ATUAL DE PRODUÇÃO
+                var savedSearches = contexto.TGFRGV.Where(o => o.CODVEND == CODVEND && o.CODGRUPOPROD  > 0 && o.CODGRUPOPROD != 960000000).Include(u=>u.TGFGRU).OrderBy(o => o.CODGRUPOPROD);
                 List<TGFRGVDTO> dTOs = new List<TGFRGVDTO>();
 
                 var parceiros = await savedSearches.ToListAsync();

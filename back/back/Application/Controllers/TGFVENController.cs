@@ -29,7 +29,7 @@ namespace back.Application.Controllers
          * Consulta todos os registros e quantidade de páginas da tabela TGFVEN
          */
         [HttpGet]
-        //[Authorize]
+        [Authorize]
 
         public async Task<ActionResult<IResponse<List<TGFVENDTO>>>> GetAll(int page = 1, int limit = 10)
         {
@@ -51,7 +51,7 @@ namespace back.Application.Controllers
          * Consulta do registro pelo código da empresa "CODEMP" da tabela TGFVEN
          */
         [HttpGet("{CODVEND}")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<Response<TGFVENDTO>>> GetByCODVEND(int CODVEND)
         {
 

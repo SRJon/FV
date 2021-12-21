@@ -30,7 +30,7 @@ namespace back.Application.Controllers
         * Consulta todos os registros e quantidade de páginas da tabela TGFGRU
         */
         [HttpGet]
-        //[Authorize]
+        [Authorize]
 
         public async Task<ActionResult<IResponse<List<TGFGRUDTO>>>> GetAll(int page = 1, int limit = 10)
         {
@@ -52,7 +52,7 @@ namespace back.Application.Controllers
          * Consulta do registro pelo código do Grupo de Produto "CODGRUPOPROD" da tabela TGFGRU
          */
         [HttpGet("CodGrupoProd/{CODGRUPOPROD}")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<Response<TGFGRUDTO>>> GetByCODGRUPOPROD(int CODGRUPOPROD)
         {
 
