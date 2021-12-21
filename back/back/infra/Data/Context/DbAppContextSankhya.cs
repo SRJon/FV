@@ -86,7 +86,7 @@ namespace back.infra.Data.Context
             modelBuilder.TGFTPVRelationConfiguring();
             modelBuilder.TCSPRJRelationConfiguring();
             modelBuilder.TGFCABRelationConfiguring();
-            //modelBuilder.TGFRGVRelationConfiguring();
+            modelBuilder.TGFRGVRelationConfiguring();
 
             modelBuilder.Entity<TGFVEN>().HasKey(x => x.CODVEND).HasName("PrimaryKey_CODVEND");
             modelBuilder.Entity<TSIEMP>().HasKey(x => x.CODEMP).HasName("PrimaryKey_CODEMP");
@@ -102,7 +102,7 @@ namespace back.infra.Data.Context
             modelBuilder.Entity<AD_PANTONE>().HasKey(x => x.CodCor).HasName("PrimaryKey_CodCor");
             modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
             modelBuilder.Entity<TGFRGV>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
-            modelBuilder.Entity<TGFGRU>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
+            modelBuilder.Entity<TGFGRU>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");            
         }
 
 

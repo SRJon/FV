@@ -13,6 +13,9 @@ namespace back.data.entities.TGFGrupoProduto
             cfg.CreateMap<TGFGRU, TGFGRUDTO>();
             cfg.CreateMap<TGFGRUDTO, TGFGRU>();
 
+            cfg.CreateMap<TGFGRU, TGFGRUDTOList>();
+            cfg.CreateMap<TGFGRUDTOList, TGFGRU>();
+
             return cfg;
         }
     }

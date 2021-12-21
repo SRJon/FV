@@ -7,6 +7,7 @@ namespace back.data.entities.TGFGrupoProduto
 {
     public class TGFGRU : ITGFGRU
     {
+        
         public int CODGRUPOPROD { get; set; }
         public string DESCRGRUPOPROD { get; set; }
         public int CODGRUPAI { get; set; }
@@ -51,7 +52,6 @@ namespace back.data.entities.TGFGrupoProduto
         public int? CODCTACTBEFD { get; set; }
         public string FORCAEXPECONECT { get; set; }
         public int? NUVERSAO { get; set; }
-        public string CONSGRUPRODCAT42 { get; set; }        
-        //public virtual ICollection<TGFRGV> TGFRGV { get; set; }
+        public string CONSGRUPRODCAT42 { get; set; }               
     }
 }

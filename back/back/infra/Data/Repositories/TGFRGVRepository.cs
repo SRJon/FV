@@ -70,7 +70,7 @@ namespace back.infra.Data.Repositories
             var contexto = _ctxs.GetSankhya();
             try
             {                                
-                var savedSearches = contexto.TGFRGV.Where(o => o.CODVEND == CODVEND).OrderBy(o => o.CODGRUPOPROD);
+                var savedSearches = contexto.TGFRGV.Where(o => o.CODVEND == CODVEND).Include(u=>u.TGFGRU).OrderBy(o => o.CODGRUPOPROD);
                 List<TGFRGVDTO> dTOs = new List<TGFRGVDTO>();
 
                 var parceiros = await savedSearches.ToListAsync();
