@@ -44,6 +44,8 @@ using back.data.entities.AD_ESTPRODCOR;
 using back.data.entities.TGFTPVenda;
 using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
+using back.data.entities.TGFGrupoProdutoVendedor;
+using back.data.entities.TGFGrupoProduto;
 
 namespace back.MappingConfig
 {
@@ -101,6 +103,8 @@ namespace back.MappingConfig
                 cfg.CreateAD_ESTPRODCORMapper();
                 cfg.CreateTGFTPVMapper();
                 cfg.CreateTCSPRJMapper();
+                cfg.CreateTGFRGVMapper();
+                cfg.CreateTGFGRUMapper();
 
             });
             return configuration;
