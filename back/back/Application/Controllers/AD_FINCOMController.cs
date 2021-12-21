@@ -67,10 +67,30 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+        [HttpGet]
+        [Authorize]
+        [Route("GetAllByCodVend")]
+        public async Task<ActionResult<IResponse<List<AD_FINCOMDTO>>>> GetAllByCodVendAsync(int codVend, [FromQuery] AD_VGFRPVGetAllEntity payload)
+        {
+            var response = new Response<List<AD_FINCOMDTO>>();
+            try
+            {
+
+                var result = await _AD_FINCOMRepository.GetAllPaginateAsync(payload.page, payload.limit, codVend);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(404, "Erro ao buscar as Comissões", false);
+            }
+            return response.GetResponse();
+        }
 
         [HttpGet]
         [Authorize]
-        [Route("GetByIdParc")]
+        [Route("GetByNuFin")]
 
         public async Task<ActionResult<IResponse<AD_FINCOMDTO>>> getById(int nuFim)
         {
