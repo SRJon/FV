@@ -28,6 +28,8 @@ using Microsoft.Extensions.Configuration;
 using back.data.entities.TGFTPVenda;
 using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
+using back.data.entities.TGFGrupoProdutoVendedor;
+using back.data.entities.TGFGrupoProduto;
 
 namespace back.infra.Data.Context
 {
@@ -68,8 +70,8 @@ namespace back.infra.Data.Context
         public DbSet<TGFTPV> TGFTPV { get; set; }
         public DbSet<TCSPRJ> TCSPRJ { get; set; }
         public DbSet<TGFCAB> TGFCAB { get; set; }
-
-
+        public DbSet<TGFRGV> TGFRGV { get; set; }
+        public DbSet<TGFGRU> TGFGRU { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -84,6 +86,7 @@ namespace back.infra.Data.Context
             modelBuilder.TGFTPVRelationConfiguring();
             modelBuilder.TCSPRJRelationConfiguring();
             modelBuilder.TGFCABRelationConfiguring();
+            //modelBuilder.TGFRGVRelationConfiguring();
 
             modelBuilder.Entity<TGFVEN>().HasKey(x => x.CODVEND).HasName("PrimaryKey_CODVEND");
             modelBuilder.Entity<TSIEMP>().HasKey(x => x.CODEMP).HasName("PrimaryKey_CODEMP");
@@ -98,8 +101,10 @@ namespace back.infra.Data.Context
             modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab");
             modelBuilder.Entity<AD_PANTONE>().HasKey(x => x.CodCor).HasName("PrimaryKey_CodCor");
             modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
-
+            modelBuilder.Entity<TGFRGV>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
+            modelBuilder.Entity<TGFGRU>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
         }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
