@@ -46,6 +46,7 @@ using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
 using back.data.entities.View_AD_DEVSOLICITACAO;
 using back.data.entities.TGFinanceiro;
+using back.data.entities.ViewAD_FINCOM;
 
 namespace back.MappingConfig
 {
@@ -105,6 +106,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFTPVMapper();
                 cfg.CreateTCSPRJMapper();
                 cfg.CreateAD_DEVSOLICITACAOMapper();
+                cfg.CreateAD_FINCOMMapper();
 
             });
             return configuration;
