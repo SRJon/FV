@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using back.data.entities.Book;
+using back.data.entities.BookAmostra;
 using back.data.http;
 using back.domain.DTO.Book;
 using back.domain.Repositories;
@@ -61,6 +61,12 @@ namespace back.infra.Data.Repositories
             return _mapper.Map<BookDTO>(await this._ctxs.
             GetVFU()
             .GetByIdService(id));
+        }
+        public async Task<BookAmostraDTO> GetByCodProd(int codProd)
+        {
+            return _mapper.Map<BookAmostraDTO>(await this._ctxs.
+            GetVFU()
+            .GetByCodProdService(codProd));
         }
 
         public Task<bool> Create(Book Book)

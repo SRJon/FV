@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.BookAnexo;
 
-namespace back.data.entities.BookAnexo
+namespace back.data.entities.BookAnexoAmostra
 {
     public static class BookAnexoMapper
     {
@@ -12,6 +12,13 @@ namespace back.data.entities.BookAnexo
 
             cfg.CreateMap<BookAnexo, BookAnexoDTO>();
             cfg.CreateMap<BookAnexoDTO, BookAnexo>();
+
+            cfg.CreateMap<BookAnexo, BookAnexoAmostraDTO>();
+            cfg.CreateMap<BookAnexoAmostraDTO, BookAnexo>();
+
+            cfg.CreateMap<BookAnexoDTO, BookAnexoAmostraDTO>();
+            cfg.CreateMap<BookAnexoAmostraDTO, BookAnexoDTO>();
+
 
             return cfg;
         }

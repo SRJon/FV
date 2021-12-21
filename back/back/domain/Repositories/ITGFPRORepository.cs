@@ -1,5 +1,5 @@
 ﻿using back.data.http;
-using back.domain.DTO.TGFPRO;
+using back.domain.DTO.TGFProdutoDTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
