@@ -63,11 +63,33 @@ namespace back.infra.Data.Repositories
             return rmapper;
         }
 
-        public async Task<TGFRGVDTO> GetByCODVEND(short CODVEND)
+        public async Task<Response<List<TGFRGVDTO>>> GetByCODVEND(short CODVEND)
         {
-            var res = await this._ctxs.GetSankhya().GetByCODVENDService(CODVEND);
-            var rmapper = _mapper.Map<TGFRGVDTO>(res);
-            return rmapper;
+
+            var response = new Response<List<TGFRGVDTO>>();
+            var contexto = _ctxs.GetSankhya();
+            try
+            {                                
+                var savedSearches = contexto.TGFRGV.Where(o => o.CODVEND == CODVEND).OrderBy(o => o.CODGRUPOPROD);
+                List<TGFRGVDTO> dTOs = new List<TGFRGVDTO>();
+
+                var parceiros = await savedSearches.ToListAsync();
+                parceiros.ForEach(e => dTOs.Add(_mapper.Map<TGFRGVDTO>(e)));
+
+                response.Data = dTOs;                
+                response.Success = true;
+                response.StatusCode = 200;
+                return response;
+
+            }
+            catch (System.Exception e)
+            {
+
+                response.StatusCode = 400;
+                response.Message = e.Message;
+                return response;
+            }
+       
         }
     }
 }

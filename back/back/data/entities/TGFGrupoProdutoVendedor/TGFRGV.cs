@@ -1,8 +1,5 @@
-﻿using back.data.entities.TGFGrupoProduto;
-using back.domain.entities;
+﻿using back.domain.entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace back.data.entities.TGFGrupoProdutoVendedor
 {

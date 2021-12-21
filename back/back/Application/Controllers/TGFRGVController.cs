@@ -77,34 +77,27 @@ namespace back.Application.Controllers
             return Ok(response);
         }
 
-        /*
+       /*
         * Consulta do registro pelo código de vendedor "CODVEND" da tabela TGFRGV
         */
         [HttpGet("CodVend/{CODVEND}")]
         //[Authorize]
-        public async Task<ActionResult<Response<TGFRGVDTO>>> GetByCODVEND(short CODVEND)
+        public async Task<ActionResult<IResponse<List<TGFRGVDTO>>>> GetByCODVEND(short CODVEND)
         {
-
-            var response = new Response<TGFRGVDTO>();
+            var response = new Response<List<TGFRGVDTO>>();
             try
             {
-                TGFRGVDTO result = await this._TGFRGVRepository.GetByCODVEND(CODVEND);
-                if (result != null)
-                {
-                    response.SetConfig(200);
-                    response.Data = result;
-                }
-                else
-                {
-                    response.SetConfig(404, "Grupo de Produto do Vendedor não encontrado", false);
-                }
+                var result = await this._TGFRGVRepository.GetByCODVEND(CODVEND);
+                response.SetConfig(200);
+                response.Data = result.Data;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                response.SetConfig(400, "Erro ao buscar o vendedor " + e.Message, false);
+                response.SetConfig(400, "Erro ao buscar os Vendedores", false);
             }
-            return Ok(response);
+            return response.GetResponse();
         }
+
 
     }
 }
