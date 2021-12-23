@@ -32,7 +32,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.TGFPAR.Skip(base.skip).OrderBy(o => o.Codparc).Take(base.limit);
+                var savedSearches = contexto.TGFPAR.Skip(base.skip).OrderBy(o => o.codparc).Take(base.limit);
                 List<TGFPARDTO> dTOs = new List<TGFPARDTO>();
 
                 var parceiros = await savedSearches.ToListAsync();
@@ -87,23 +87,23 @@ namespace back.infra.Data.Repositories
 
         public TGFPARDTO AtribuicaoValoresCliente(TGFPARDTO cliente, SintegraCNPJ cnpj)
         {
-            cliente.Codparcmatriz = cliente.Codparc;
-            cliente.Razaosocial = cnpj.Nome;
-            cliente.Nomeparc = cnpj.Nome;
-            cliente.Tippessoa = 'J';
-            cliente.Numend = cnpj.Numero.ToString();
-            cliente.Complemento = cnpj.Complemento;
-            cliente.Telefone = cnpj.Telefone;
-            cliente.Email = cnpj.Email;
-            cliente.Cep = cnpj.Cep;
-            cliente.Socios = new List<string>();
+            cliente.codparcmatriz = cliente.codparc;
+            cliente.razaosocial = cnpj.Nome;
+            cliente.nomeparc = cnpj.Nome;
+            cliente.tippessoa = 'J';
+            cliente.numend = cnpj.Numero.ToString();
+            cliente.complemento = cnpj.Complemento;
+            cliente.telefone = cnpj.Telefone;
+            cliente.email = cnpj.Email;
+            cliente.cep = cnpj.Cep;
+            cliente.socios = new List<string>();
             foreach (var socio in cnpj.Qsa)
             {
-                cliente.Socios.Add(socio.Nome);
+                cliente.socios.Add(socio.Nome);
             }
 
-            cliente.Cgc_cpf = cnpj.Cnpj;
-            cliente.Cliente = "S";
+            cliente.cgc_cpf = cnpj.Cnpj;
+            cliente.cliente = "S";
 
             return cliente;
         }

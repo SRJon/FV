@@ -29,7 +29,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.TGFVEN.Skip(base.skip).OrderBy(o => o.CODVEND).Take(base.limit);
+                var savedSearches = contexto.TGFVEN.Skip(base.skip).OrderBy(o => o.codvend).Take(base.limit);
                 List<TGFVENDTO> dTOs = new List<TGFVENDTO>();
 
                 var parceiros = await savedSearches.ToListAsync();

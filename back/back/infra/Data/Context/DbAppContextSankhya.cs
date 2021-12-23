@@ -92,20 +92,33 @@ namespace back.infra.Data.Context
             modelBuilder.TGFFINRelationConfiguring();
             modelBuilder.TSIEMPRelationConfiguring();
             modelBuilder.TGFPRORelationConfiguring();
+            modelBuilder.AD_ESTPRODCORRelationConfiguring();
+            modelBuilder.AD_ESTPROGPRODRelationConfiguring();
+            modelBuilder.AD_FAMGR1RelationConfiguring();
+            modelBuilder.AD_FAMGR2RelationConfiguring();
+            modelBuilder.AD_FAMGR3RelationConfiguring();
+            modelBuilder.AD_PANTONERelationConfiguring();
+            modelBuilder.AD_TIPNEGRelationConfiguring();
+            modelBuilder.TGFEXCRelationConfiguring();
+            modelBuilder.TGFIPIRelationConfiguring();
+            modelBuilder.TGFVENRelationConfiguring();
+            modelBuilder.VGFTABRelationConfiguring();
 
-            modelBuilder.Entity<TGFVEN>().HasKey(x => x.CODVEND).HasName("PrimaryKey_CODVEND");
+
+
+            modelBuilder.Entity<TGFVEN>().HasKey(x => x.codvend).HasName("PrimaryKey_CODVEND");
             modelBuilder.Entity<TSIEMP>().HasKey(x => x.CODEMP).HasName("PrimaryKey_CODEMP");
-            modelBuilder.Entity<AD_TIPNEG>().HasKey(x => x.CodTipVenda).HasName("PrimaryKey_CodTipVenda");
-            modelBuilder.Entity<AD_ESTPROGPROD>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
+            //modelBuilder.Entity<AD_TIPNEG>().HasKey(x => x.CodTipVenda).HasName("PrimaryKey_CodTipVenda"); VIEW SEM CHAVE
+            //modelBuilder.Entity<AD_ESTPROGPROD>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp"); VIEW SEM CHAVE
             modelBuilder.Entity<AD_FAMGR1>().HasKey(x => x.CodProdgr1).HasName("PrimaryKey_CodProdgr1");
             modelBuilder.Entity<AD_FAMGR2>().HasKey(x => x.CodProdgr1).HasName("PrimaryKey_CodProdgr1");
             modelBuilder.Entity<AD_FAMGR3>().HasKey(x => x.CodProdgr1).HasName("PrimaryKey_CodProdgr1");
             modelBuilder.Entity<TGFEXC>().HasKey(x => x.NuTab).HasName("PrimaryKey_NuTab");
             modelBuilder.Entity<TGFIPI>().HasKey(x => x.CodIpi).HasName("PrimaryKey_CodIpi");
             modelBuilder.Entity<TGFPRO>().HasKey(x => x.codprod).HasName("PrimaryKey_CodProd");
-            modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab");
+            //modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab"); VIEW SEM CHAVE
             modelBuilder.Entity<AD_PANTONE>().HasKey(x => x.CodCor).HasName("PrimaryKey_CodCor");
-            modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
+            //modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp"); VIEW SEM CHAVE
 
         }
 

@@ -11,6 +11,7 @@ namespace back.data.entities.TGFPRO
         public static ModelBuilder TGFPRORelationConfiguring(this ModelBuilder modelBuilder)
         {
             #region "Entity<>modelo"
+            modelBuilder.Entity<TGFPRO>().HasKey(u => u.codprod);
             modelBuilder.Entity<TGFPRO>().Property(p => p.codprod).HasColumnName("CODPROD");
             modelBuilder.Entity<TGFPRO>().Property(p => p.descrprod).HasColumnName("DESCRPROD");
             modelBuilder.Entity<TGFPRO>().Property(p => p.compldesc).HasColumnName("COMPLDESC");

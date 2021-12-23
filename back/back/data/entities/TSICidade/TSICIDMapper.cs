@@ -15,6 +15,8 @@ namespace back.data.entities.TSICidade
             cfg.CreateMap<TSICIDDTO, TSICID>();
             cfg.CreateMap<TSICID, TSICIDDTO>();
             cfg.CreateMap<TSICIDDTO, TSICID>();
+            cfg.CreateMap<TSICID, TSICIDDTOCreate>();
+            cfg.CreateMap<TSICIDDTOCreate, TSICID>();
             return cfg;
         }
     }
