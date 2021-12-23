@@ -1,0 +1,19 @@
+<div class="h-100">
+  <div class="body-content">
+    <div class="row">
+      <div class="head" style="padding: 20px 0px 0px 30px">
+        <button class="btn btn-primary" (click)="openModal(false)">
+          CRIAR PERFIL
+        </button>
+      </div>
+    </div>
+    <div class="row pb-5">
+      <div class="pt-4">
+        <app-perfil-grid [listGrid]="perfils.data" [paginate]="paginate" [totalItems]="paginate.totalItems"
+          (nextSelection)="onNextSelection($event)"></app-perfil-grid>
+        <app-edit-perfil-component [perfil]="initialParam" *ngIf="isOpen" (onCloseModal)="openModal($event)">
+        </app-edit-perfil-component>
+      </div>
+    </div>
+  </div>
+</div>

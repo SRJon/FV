@@ -1,56 +1,52 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IDiretorio } from 'src/app/Domain/Models/IDiretorio';
-import { DirectoryService } from 'src/app/Modules/seguranca/Services/directory.service';
+import { IPerfil } from 'src/app/Domain/Models/IPerfil';
+import { PerfilService } from 'src/app/Modules/seguranca/Services/perfil.service';
 import { AlertsService } from 'src/app/Repository/Alerts/alerts.service';
-import { EditDiretorioWords } from './edit-diretorio-words';
+import { EditPerfilWords } from './edit-perfil-words';
 
 @Component({
-  selector: 'app-edit-diretorio-component',
-  templateUrl: './edit-diretorio-component.component.html',
-  styleUrls: ['./edit-diretorio-component.component.scss'],
+  selector: 'app-edit-perfil-component',
+  templateUrl: './edit-perfil-component.component.html',
+  styleUrls: ['./edit-perfil-component.component.scss'],
 })
-export class EditDiretorioComponentComponent implements OnInit {
+export class EditPerfilComponentComponent implements OnInit {
   isLoading: boolean = true;
-  @Input() diretorio: IDiretorio | undefined;
+  @Input() perfil: IPerfil | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
-  words: EditDiretorioWords;
+  words: EditPerfilWords;
   isValid: boolean = false;
   serviceForm: FormGroup;
 
   constructor(
-    private directoryService: DirectoryService,
+    private perfilService: PerfilService,
     private alertsService: AlertsService,
     private fb: FormBuilder
   ) {
-    this.words = EditDiretorioWords.getInstance();
+    this.words = EditPerfilWords.getInstance();
     this.serviceForm = this.fb.group({
-      tipo: ['', Validators.required],
-      link: ['', Validators.required],
-      virtual: ['', Validators.required],
+      nome: ['', Validators.required],
     });
   }
 
   async onConfirm() {
     if (this.serviceForm.invalid) return;
-    if (this.diretorio) {
-      let id = this.diretorio.id || 0;
-      id > 0 ? this.Doupdate() : this.DoCreate();
+    if (this.perfil) {
+      let id = this.perfil.id || 0;
+      id > 0 ? this.DoUpdate() : this.DoCreate();
     }
   }
   async DoCreate() {
     try {
-      if (this.diretorio) {
-        var response = await this.directoryService.createDirectory(
-          this.diretorio
-        );
+      if (this.perfil) {
+        var response = await this.perfilService.createPerfil(this.perfil);
         if (response.success && response.data) {
           this.alertsService.showAlert(response.message);
           this.onCloseModal.emit(true);
         }
       } else {
         this.alertsService.showAlert(
-          'Não foi possível criar o diretorio!',
+          'Não foi possível criar o perfil!',
           'error'
         );
       }
@@ -60,12 +56,10 @@ export class EditDiretorioComponentComponent implements OnInit {
       this.onClose();
     }
   }
-  async Doupdate() {
+  async DoUpdate() {
     try {
-      if (this.diretorio) {
-        let result = await this.directoryService.updateDirectory(
-          this.diretorio
-        );
+      if (this.perfil) {
+        let result = await this.perfilService.updatePerfil(this.perfil);
         if (result.success && result.data) {
           this.alertsService.showAlert(result.message);
         }
@@ -78,8 +72,8 @@ export class EditDiretorioComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllDirectory();
-    this.words.indexTitle = this.diretorio && this.diretorio.id ? 1 : 0;
+    this.getAllNamesPerfil();
+    this.words.indexTitle = this.perfil && this.perfil.id ? 1 : 0;
   }
 
   onClose() {
@@ -88,8 +82,8 @@ export class EditDiretorioComponentComponent implements OnInit {
       $('.modal-backdrop').remove();
     }, 500);
   }
-  async getAllDirectory() {
-    let result = await this.directoryService.getDirectory(0, 0);
+  async getAllNamesPerfil() {
+    let result = await this.perfilService.getAllNamesPerfil(0, 0);
     this.setLoading(false);
     // @ts-ignore: Unreachable code error
     $('.select2-danger').select2();

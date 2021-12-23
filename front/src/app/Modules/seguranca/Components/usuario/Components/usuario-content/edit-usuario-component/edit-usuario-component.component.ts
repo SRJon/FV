@@ -92,7 +92,7 @@ export class EditUsuarioComponentComponent implements OnInit {
 
   ngOnInit(): void {
     //this.getAllUser();
-    this.getAllPerfis();
+    this.getAllNamesPerfis();
     this.words.indexTitle = this.usuario && this.usuario.id ? 1 : 0;
   }
 
@@ -115,8 +115,8 @@ export class EditUsuarioComponentComponent implements OnInit {
     }
   }
 
-  async getAllPerfis() {
-    let response = await this.perfilService.getAllNames(0, 0);
+  async getAllNamesPerfis() {
+    let response = await this.perfilService.getAllNamesPerfil(0, 0);
     this.setLoading(false);
     this.perfis = response.data;
   }
