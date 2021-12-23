@@ -28,7 +28,7 @@ export class EstoqueGridComponent implements OnInit {
     this.userG.getObservable().subscribe((user) => {
       let codVend = user.vendedorUCod;
 
-      //Se existir um códdido de vendedor do Sankhya é realiza a consulta aos grupo de produtos relacionados ao vendedor
+      //Se existir um código de vendedor do Sankhya é realiza a consulta aos grupo de produtos relacionados ao vendedor
       if (codVend) {
         this.getGrupoProduto(codVend);
       }

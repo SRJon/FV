@@ -22,7 +22,6 @@ export class GlobalTitle<T> {
   setValue(value: T) {
     setTimeout(() => {
       let titleDom = document.querySelector('title') as HTMLTitleElement;
-      console.log(titleDom);
       titleDom.innerHTML = String(value);
 
       this.setObservable(value);
