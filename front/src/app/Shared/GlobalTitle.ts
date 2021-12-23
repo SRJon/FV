@@ -15,13 +15,18 @@ export class GlobalTitle<T> {
   getObservable = (): Observable<T> => this.observavel.asObservable();
   getObs = (f: any) => {
     let ff = (value: T) => {
-      (document.querySelector('title') as HTMLTitleElement).innerHTML =
-        String(value);
       f(value);
     };
     return this.getObservable().subscribe(ff);
   };
   setValue(value: T) {
-    this.setObservable(value);
+    setTimeout(() => {
+      let titleDom = document.querySelector('title') as HTMLTitleElement;
+      console.log(titleDom);
+      titleDom.innerHTML = String(value);
+
+      this.setObservable(value);
+      // this.updateMessage();
+    }, 1);
   }
 }
