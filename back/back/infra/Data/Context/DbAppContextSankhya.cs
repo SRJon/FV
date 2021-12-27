@@ -30,6 +30,7 @@ using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
 using back.data.entities.TGFGrupoProdutoVendedor;
 using back.data.entities.TGFGrupoProduto;
+using back.data.entities;
 
 namespace back.infra.Data.Context
 {
@@ -72,6 +73,7 @@ namespace back.infra.Data.Context
         public DbSet<TGFCAB> TGFCAB { get; set; }
         public DbSet<TGFRGV> TGFRGV { get; set; }
         public DbSet<TGFGRU> TGFGRU { get; set; }
+        public DbSet<AD_ESTCODPROD> AD_ESTCODPROD { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -102,7 +104,8 @@ namespace back.infra.Data.Context
             modelBuilder.Entity<AD_PANTONE>().HasKey(x => x.CodCor).HasName("PrimaryKey_CodCor");
             modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
             modelBuilder.Entity<TGFRGV>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
-            modelBuilder.Entity<TGFGRU>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");            
+            modelBuilder.Entity<TGFGRU>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
+            modelBuilder.Entity<AD_ESTCODPROD>().HasNoKey();
         }
 
 

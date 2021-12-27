@@ -60,6 +60,7 @@ namespace back.ioc
             services.AddScoped<ITGFCABRepository, TGFCABRepository>();
             services.AddScoped<ITGFRGVRepository, TGFRGVRepository>();
             services.AddScoped<ITGFGRURepository, TGFGRURepository>();
+            services.AddScoped<IAD_ESTCODPRODRepository, AD_ESTCODPRODRepository>();
 
             return services;
         }

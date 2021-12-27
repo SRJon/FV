@@ -46,6 +46,7 @@ using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
 using back.data.entities.TGFGrupoProdutoVendedor;
 using back.data.entities.TGFGrupoProduto;
+using back.data.entities.AD_Estoque;
 
 namespace back.MappingConfig
 {
@@ -105,6 +106,7 @@ namespace back.MappingConfig
                 cfg.CreateTCSPRJMapper();
                 cfg.CreateTGFRGVMapper();
                 cfg.CreateTGFGRUMapper();
+                cfg.CreateAD_ESTCODPRODMapper();
 
             });
             return configuration;
