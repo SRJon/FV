@@ -31,6 +31,7 @@ using back.data.entities.TGFCABNota;
 using back.data.entities.TGFGrupoProdutoVendedor;
 using back.data.entities.TGFGrupoProduto;
 using back.data.entities;
+using back.data.entities.AD_Estoque;
 
 namespace back.infra.Data.Context
 {
