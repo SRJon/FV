@@ -4,7 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using back.data.entities.TGFCABNota;
+using back.data.entities.TGFParceiro;
 using back.data.entities.TSIEmpresa;
+using back.data.entities.View_AD_ITEDEVSOLICITACAO;
 using back.domain.entities;
 
 namespace back.data.entities.View_AD_DEVSOLICITACAO
@@ -15,7 +17,6 @@ namespace back.data.entities.View_AD_DEVSOLICITACAO
         public string TipFrete { get; set; }
         public DateTime? DtNeg { get; set; }
         public string TipoDev { get; set; }
-        public int? CodParc { get; set; }
         public string Desconto { get; set; }
         public double? PercDesc { get; set; }
         public int? CodVend { get; set; }
@@ -44,9 +45,16 @@ namespace back.data.entities.View_AD_DEVSOLICITACAO
 
 
         public int? CodEmp { get; set; }
-        // public virtual TSIEMP Empresa { get; set; }
+        [ForeignKey("CodEmp")]
+        public virtual TSIEMP Empresa { get; set; }
         public int? NuNota { get; set; }
         [ForeignKey("NuNota")]
         public virtual TGFCAB TGFCAB { get; set; }
+
+        [ForeignKey("Nusoldev")]
+        public virtual ICollection<AD_ITEDEVSOLICITACAO> AD_ITEDEVSOLICITACAO { get; set; }
+        public int? CodParc { get; set; }
+        [ForeignKey("CodParc")]
+        public virtual TGFPAR TGFPAR { get; set; }
     }
 }

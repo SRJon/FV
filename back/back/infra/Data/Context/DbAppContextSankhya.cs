@@ -31,6 +31,7 @@ using back.data.entities.TGFGrupoProdutoVendedor;
 using back.data.entities.TGFGrupoProduto;
 using back.data.entities.View_AD_DEVSOLICITACAO;
 using back.data.entities.TGFinanceiro;
+using back.data.entities.View_AD_ITEDEVSOLICITACAO;
 
 namespace back.infra.Data.Context
 {
@@ -109,6 +110,7 @@ namespace back.infra.Data.Context
             modelBuilder.TGFIPIRelationConfiguring();
             modelBuilder.TGFVENRelationConfiguring();
             modelBuilder.VGFTABRelationConfiguring();
+            modelBuilder.AD_ITEDEVSOLICITACAORelationConfiguring();
 
 
 

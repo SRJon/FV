@@ -48,6 +48,7 @@ using back.data.entities.TGFGrupoProdutoVendedor;
 using back.data.entities.TGFGrupoProduto;
 using back.data.entities.View_AD_DEVSOLICITACAO;
 using back.data.entities.TGFinanceiro;
+using back.data.entities.View_AD_ITEDEVSOLICITACAO;
 
 namespace back.MappingConfig
 {
@@ -109,6 +110,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFRGVMapper();
                 cfg.CreateTGFGRUMapper();
                 cfg.CreateAD_DEVSOLICITACAOMapper();
+                cfg.CreateAD_ITEDEVSOLICITACAOMapper();
 
             });
             return configuration;
