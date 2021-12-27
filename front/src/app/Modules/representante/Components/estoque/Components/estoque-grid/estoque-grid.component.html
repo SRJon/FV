@@ -1,0 +1,55 @@
+<div class="row" style="padding: 0px 30px">
+  <div class="card-default">
+    <div class="card-header">
+      <form>
+        <div class="row">
+          <div class="col-sm-2">
+            <!-- text input -->
+            <div class="form-group">
+              <label>PRODUTO</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <!-- select -->
+            <div class="form-group">
+              <label>GRUPO DE PRODUTO</label>
+              <select class="form-select" aria-label="Default select">
+                <option selected>SELECIONE UM GRUPO</option>
+                <option *ngFor="let grp of grpPrd" [value]="grp.codgrupoprod" (click)="onChange(grp)">
+                  {{ grp.descrgrupoprod }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <!-- text input -->
+            <div class="form-group">
+              <label>DESCRIÇÃO</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <!-- text input -->
+            <div class="form-group">
+              <label>COMPLEMENTO</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <!-- text input -->
+            <div class="form-group text-center">
+              <label>RELATÓRIOS</label>
+              <div class="form-group">
+                <button class="btn"><i class="fa fa-clock"></i></button>
+                <button class="btn"><i class="fa fa-box"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <!-- /.card -->
+</div>

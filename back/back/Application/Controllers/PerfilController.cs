@@ -49,7 +49,7 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao criar a perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
+                response.SetConfig(400, "Erro ao criar o perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }
@@ -74,7 +74,7 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar a perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
+                response.SetConfig(400, "Erro ao buscar o perfil" + InnerExceptionMessage.InnerExceptionError(e), false);
             }
             return response.GetResponse();
         }

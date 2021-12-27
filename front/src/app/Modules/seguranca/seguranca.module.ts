@@ -10,6 +10,7 @@ import * as diretorio from './Components/diretorio';
 import * as parametro from './Components/parametro';
 import * as emp from './Components/empresa';
 import * as user from './Components/usuario';
+import { EditPerfilComponentComponent } from './Components/perfil/Components/perfil-content/edit-perfil-component/edit-perfil-component.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,6 @@ import * as user from './Components/usuario';
     perfil.PerfilComponent,
     perfil.PerfilGridComponent,
     tela.TelaComponent,
-    tela.TitleComponent,
     tela.TelaContentComponent,
     tela.TelaGridComponent,
     tela.EditTelaComponentComponent,
@@ -42,8 +42,11 @@ import * as user from './Components/usuario';
     diretorio.DiretorioContentComponent,
     diretorio.DiretorioGridComponent,
     diretorio.EditDiretorioComponentComponent,
+    perfil.PerfilComponent,
+    perfil.PerfilGridComponent,
+    perfil.EditPerfilComponentComponent,
+    perfil.PerfilContentComponent,
   ],
   bootstrap: [perfil.PerfilComponent],
-  exports: [tela.TitleComponent],
 })
 export class SegurancaModule {}
