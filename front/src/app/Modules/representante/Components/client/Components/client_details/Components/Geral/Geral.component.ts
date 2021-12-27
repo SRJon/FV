@@ -21,4 +21,11 @@ export class GeralComponent implements OnInit {
       `$1.$2.$3/$4-$5`
     );
   }
+
+  priceComputed() {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(this.data.limcred);
+  }
 }

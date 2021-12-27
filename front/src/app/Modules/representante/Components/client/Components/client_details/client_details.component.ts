@@ -30,7 +30,6 @@ export class Client_detailsComponent implements OnInit {
       this.id = params.get('id');
       if (this.id) {
         this.service.GetByParc(Number(this.id)).then((response) => {
-          console.log(response);
           this.data.parceiro = response.data;
         });
       }
