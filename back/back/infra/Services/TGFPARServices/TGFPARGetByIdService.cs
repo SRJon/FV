@@ -9,7 +9,7 @@ namespace back.infra.Services.TGFPARServices
     {
         public static Task<TGFPAR> GetByIdService(this DbAppContextSankhya ctx, int id)
         {
-            var b = ctx.TGFPAR.FirstOrDefaultAsync(x => x.Codparc == id);
+            var b = ctx.TGFPAR.FirstOrDefaultAsync(x => x.codparc == id);
             return b;
         }
     }

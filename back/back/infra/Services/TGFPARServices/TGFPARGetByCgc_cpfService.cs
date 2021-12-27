@@ -9,7 +9,7 @@ namespace back.infra.Services.TGFPARServices
     {
         public static Task<TGFPAR> GetByCNPJService(this DbAppContextSankhya ctx, string cgc_cpf)
         {
-            var result = ctx.TGFPAR.FirstOrDefaultAsync(x => x.Cgc_cpf == cgc_cpf);
+            var result = ctx.TGFPAR.FirstOrDefaultAsync(x => x.cgc_cpf == cgc_cpf);
             return result;
         }
     }

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace back.data.entities.TGFProduto
+namespace back.data.entities.TGFPRO
 {
     public static class TGFPRORelation
     {
         public static ModelBuilder TGFPRORelationConfiguring(this ModelBuilder modelBuilder)
         {
-            #region "Parametrização Entity <> Sankhya"
+            #region "Entity<>modelo"
             modelBuilder.Entity<TGFPRO>().HasKey(u => u.codprod);
             modelBuilder.Entity<TGFPRO>().Property(p => p.codprod).HasColumnName("CODPROD");
             modelBuilder.Entity<TGFPRO>().Property(p => p.descrprod).HasColumnName("DESCRPROD");
@@ -564,5 +564,6 @@ namespace back.data.entities.TGFProduto
             #endregion
             return modelBuilder;
         }
+
     }
 }

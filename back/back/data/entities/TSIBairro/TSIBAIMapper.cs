@@ -13,6 +13,11 @@ namespace back.data.entities.TSIBairro
         {
             cfg.CreateMap<TSIBAI, TSIBAIDTO>();
             cfg.CreateMap<TSIBAIDTO, TSIBAI>();
+
+            cfg.CreateMap<TSIBAI, TSIBAIDTOCreate>();
+            cfg.CreateMap<TSIBAIDTOCreate, TSIBAI>();
+            cfg.CreateMap<TSIBAIDTO, TSIBAIDTOCreate>();
+            cfg.CreateMap<TSIBAIDTOCreate, TSIBAIDTO>();
             return cfg;
         }
 
