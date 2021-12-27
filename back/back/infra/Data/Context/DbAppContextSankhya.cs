@@ -9,7 +9,7 @@ using back.data.entities.DataViews.VIEW_AD_VGFRPV;
 using back.data.entities.TGFEXC;
 using back.data.entities.TGFIPI;
 using back.data.entities.TGFParceiro;
-using back.data.entities.TGFPRO;
+using back.data.entities.TGFProduto;
 using back.data.entities.TGFVEN;
 using back.data.entities.TSIEmpresa;
 using back.data.entities.VGFTAB;
@@ -30,6 +30,7 @@ using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
 using back.data.entities.View_AD_DEVSOLICITACAO;
 using back.data.entities.TGFinanceiro;
+using back.data.entities.TGFPRO;
 
 namespace back.infra.Data.Context
 {
@@ -117,6 +118,7 @@ namespace back.infra.Data.Context
             modelBuilder.Entity<TGFIPI>().HasKey(x => x.CodIpi).HasName("PrimaryKey_CodIpi");
             modelBuilder.Entity<TGFPRO>().HasKey(x => x.codprod).HasName("PrimaryKey_CodProd");
             //modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab"); VIEW SEM CHAVE
+            // modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab");
             modelBuilder.Entity<AD_PANTONE>().HasKey(x => x.CodCor).HasName("PrimaryKey_CodCor");
             //modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp"); VIEW SEM CHAVE
 

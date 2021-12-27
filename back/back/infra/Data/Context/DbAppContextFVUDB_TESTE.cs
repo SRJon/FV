@@ -3,8 +3,8 @@ using System;
 using back.data.entities.AnexoCont;
 using back.data.entities.AnexoDev;
 using back.data.entities.AnexoRep;
-using back.data.entities.Book;
-using back.data.entities.BookAnexo;
+using back.data.entities.BookAmostra;
+using back.data.entities.BookAnexoAmostra;
 using back.data.entities.BProduto;
 using back.data.entities.BProdutoImg;
 using back.data.entities.Diretorio;
@@ -88,6 +88,9 @@ namespace back.infra.Data.Context
             modelBuilder.InformativoRelationConfiguring();
             modelBuilder.UserEmpRelationConfiguring();
             modelBuilder.EmpresaRelationConfiguring();
+            modelBuilder.BookAnexoRelationConfiguring();
+            modelBuilder.BookRelationConfiguring();
+            modelBuilder.ScreenRelationConfiguring();
 
         }
 

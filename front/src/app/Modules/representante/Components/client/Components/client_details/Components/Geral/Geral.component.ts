@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IAvgfrpvgetall } from 'src/app/Domain/Models/IAvgfrpvgetall';
 
 @Component({
   selector: 'app-Geral',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./Geral.component.scss'],
 })
 export class GeralComponent implements OnInit {
+  @Input() data!: IAvgfrpvgetall;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.data, 'sssssssssssssssssss');
+  }
 }
