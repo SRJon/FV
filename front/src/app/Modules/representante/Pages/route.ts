@@ -32,11 +32,11 @@ export class Route implements IRoutes {
         component: BookComponent,
       },
       {
-        path: 'clientes/details/:id',
+        path: 'wpclientes/details/:id',
         component: Client_detailsComponent,
       },
       {
-        path: 'clientes',
+        path: 'wpclientes',
         component: ClientComponent,
       },
       {
