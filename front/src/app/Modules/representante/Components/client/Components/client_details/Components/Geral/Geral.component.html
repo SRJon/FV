@@ -1,18 +1,19 @@
 <div class="container">
   <div class="content">
-    <ng-template *ngIf="data">
+    <ng-template [ngIf]="data">
       <ul>
         <li>
           <strong>CÓDIGO</strong>
-          <span>3734</span>
+          <span>{{ data.codparc }}</span>
         </li>
+
         <li>
           <strong>RAZÃO SOCIAL</strong>
           <span>PEQUIM TEXTIL LTDA</span>
         </li>
         <li>
           <strong>CNPJ/CPF</strong>
-          <span>09.344.716/0001-80</span>
+          <span>{{ cpfComputed() }}</span>
         </li>
         <li>
           <strong>E-MAIL</strong>
