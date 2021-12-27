@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using back.domain.DTO.TGFPRO;
+using back.domain.DTO.TGFProdutoDTO;
 
-namespace back.data.entities.TGFPRO
+namespace back.data.entities.TGFProduto
 {
     public static class TGFPROMapper
     {
@@ -12,6 +12,12 @@ namespace back.data.entities.TGFPRO
 
             cfg.CreateMap<TGFPRO, TGFPRODTO>();
             cfg.CreateMap<TGFPRODTO, TGFPRO>();
+
+            cfg.CreateMap<TGFPRO, TGFPROAmostraDTO>();
+            cfg.CreateMap<TGFPROAmostraDTO, TGFPRO>();
+
+            cfg.CreateMap<TGFPRODTO, TGFPROAmostraDTO>();
+            cfg.CreateMap<TGFPROAmostraDTO, TGFPRODTO>();
 
             return cfg;
         }

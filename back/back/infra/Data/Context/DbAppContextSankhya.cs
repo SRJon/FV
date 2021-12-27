@@ -9,7 +9,7 @@ using back.data.entities.DataViews.VIEW_AD_VGFRPV;
 using back.data.entities.TGFEXC;
 using back.data.entities.TGFIPI;
 using back.data.entities.TGFParceiro;
-using back.data.entities.TGFPRO;
+using back.data.entities.TGFProduto;
 using back.data.entities.TGFVEN;
 using back.data.entities.TSIEmpresa;
 using back.data.entities.VGFTAB;
@@ -18,7 +18,6 @@ using back.data.entities.TSIEndereco;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Threading.Tasks;
 
 using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
@@ -30,6 +29,8 @@ using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
 using back.data.entities.TGFGrupoProdutoVendedor;
 using back.data.entities.TGFGrupoProduto;
+using back.data.entities.View_AD_DEVSOLICITACAO;
+using back.data.entities.TGFinanceiro;
 
 namespace back.infra.Data.Context
 {
@@ -72,6 +73,10 @@ namespace back.infra.Data.Context
         public DbSet<TGFCAB> TGFCAB { get; set; }
         public DbSet<TGFRGV> TGFRGV { get; set; }
         public DbSet<TGFGRU> TGFGRU { get; set; }
+        public DbSet<TGFFIN> TGFFIN { get; set; }
+        public DbSet<AD_DEVSOLICITACAO> AD_DEVSOLICITACAO { get; set; }
+
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -88,21 +93,43 @@ namespace back.infra.Data.Context
             modelBuilder.TGFCABRelationConfiguring();
             modelBuilder.TGFRGVRelationConfiguring();
 
-            modelBuilder.Entity<TGFVEN>().HasKey(x => x.CODVEND).HasName("PrimaryKey_CODVEND");
+            modelBuilder.Entity<TGFVEN>().HasKey(x => x.codvend).HasName("PrimaryKey_CODVEND");
+            modelBuilder.AD_DEVSOLICITACAORelationConfiguring();
+            modelBuilder.TGFFINRelationConfiguring();
+            modelBuilder.TSIEMPRelationConfiguring();
+            modelBuilder.TGFPRORelationConfiguring();
+            modelBuilder.AD_ESTPRODCORRelationConfiguring();
+            modelBuilder.AD_ESTPROGPRODRelationConfiguring();
+            modelBuilder.AD_FAMGR1RelationConfiguring();
+            modelBuilder.AD_FAMGR2RelationConfiguring();
+            modelBuilder.AD_FAMGR3RelationConfiguring();
+            modelBuilder.AD_PANTONERelationConfiguring();
+            modelBuilder.AD_TIPNEGRelationConfiguring();
+            modelBuilder.TGFEXCRelationConfiguring();
+            modelBuilder.TGFIPIRelationConfiguring();
+            modelBuilder.TGFVENRelationConfiguring();
+            modelBuilder.VGFTABRelationConfiguring();
+
+
+
+            modelBuilder.Entity<TGFVEN>().HasKey(x => x.codvend).HasName("PrimaryKey_CODVEND");
             modelBuilder.Entity<TSIEMP>().HasKey(x => x.CODEMP).HasName("PrimaryKey_CODEMP");
-            modelBuilder.Entity<AD_TIPNEG>().HasKey(x => x.CodTipVenda).HasName("PrimaryKey_CodTipVenda");
-            modelBuilder.Entity<AD_ESTPROGPROD>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
+            //modelBuilder.Entity<AD_TIPNEG>().HasKey(x => x.CodTipVenda).HasName("PrimaryKey_CodTipVenda"); VIEW SEM CHAVE
+            //modelBuilder.Entity<AD_ESTPROGPROD>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp"); VIEW SEM CHAVE
             modelBuilder.Entity<AD_FAMGR1>().HasKey(x => x.CodProdgr1).HasName("PrimaryKey_CodProdgr1");
             modelBuilder.Entity<AD_FAMGR2>().HasKey(x => x.CodProdgr1).HasName("PrimaryKey_CodProdgr1");
             modelBuilder.Entity<AD_FAMGR3>().HasKey(x => x.CodProdgr1).HasName("PrimaryKey_CodProdgr1");
             modelBuilder.Entity<TGFEXC>().HasKey(x => x.NuTab).HasName("PrimaryKey_NuTab");
             modelBuilder.Entity<TGFIPI>().HasKey(x => x.CodIpi).HasName("PrimaryKey_CodIpi");
-            modelBuilder.Entity<TGFPRO>().HasKey(x => x.CodProd).HasName("PrimaryKey_CodProd");
-            modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab");
+            modelBuilder.Entity<TGFPRO>().HasKey(x => x.codprod).HasName("PrimaryKey_CodProd");
+            //modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab"); VIEW SEM CHAVE
+            // modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab");
             modelBuilder.Entity<AD_PANTONE>().HasKey(x => x.CodCor).HasName("PrimaryKey_CodCor");
             modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
             modelBuilder.Entity<TGFRGV>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
-            modelBuilder.Entity<TGFGRU>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");            
+            modelBuilder.Entity<TGFGRU>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
+            //modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp"); VIEW SEM CHAVE
+
         }
 
 

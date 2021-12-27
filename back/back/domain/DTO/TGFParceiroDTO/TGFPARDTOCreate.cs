@@ -4,30 +4,30 @@ using back.domain.entities;
 
 namespace back.domain.DTO.TGFParceiroDTO
 {
-    public class TGFPARDTOCreate : ToJsonClass, ITGFPAR
+    public class TGFPARDTOCreate : ToJsonClass
     {
-        public short Codvend { get; set; }
-        public string Nomeparc { get; set; }
-        public string Razaosocial { get; set; }
-        public char Tippessoa { get; set; }
-        public int? Codparcmatriz { get; set; }
-        public int Codend { get; set; }
-        public string Numend { get; set; }
-        public string Complemento { get; set; }
-        public int Codbai { get; set; }
-        public int Codcid { get; set; }
-        public int Codreg { get; set; }
-        public string Cep { get; set; }
-        public string Caixapostal { get; set; }
-        public string Telefone { get; set; }
-        public short? Ramal { get; set; }
-        public string Fax { get; set; }
-        public string Email { get; set; }
-        public string Identinscestad { get; set; }
-        public string Inscestadnauf { get; set; }
-        public string Cgc_cpf { get; set; }
-        public decimal Limcred { get; set; }
-        public string Cliente { get; set; }
-        public string ClassIfiCms { get; set; }//C pra consumidor final sem inscrição; R para inscrição estadual
+        public short codvend { get; set; }
+        public string nomeparc { get; set; }
+        public string razaosocial { get; set; }
+        public char tippessoa { get; set; }
+        public int? codparcmatriz { get; set; }
+        public int codend { get; set; }
+        public string numend { get; set; }
+        public string complemento { get; set; }
+        public int codbai { get; set; }
+        public int codcid { get; set; }
+        public int codreg { get; set; }
+        public string cep { get; set; }
+        public string caixapostal { get; set; }
+        public string telefone { get; set; }
+        public short? ramal { get; set; }
+        public string fax { get; set; }
+        public string email { get; set; }
+        public string identinscestad { get; set; }
+        public string inscestadnauf { get; set; }
+        public string cgc_cpf { get; set; }
+        public decimal? limcred { get; set; }
+        public string cliente { get; set; }
+        public string classificms { get; set; }//C pra consumidor final sem inscrição; R para inscrição estadual
     }
 }

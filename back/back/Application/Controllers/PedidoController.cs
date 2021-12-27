@@ -44,6 +44,26 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+        [HttpGet]
+        [Authorize]
+        [Route("GetAllByCodParc")]
+        public async Task<ActionResult<IResponse<List<PedidoDTO>>>> GetAllByCodParcAsync([FromQuery] PedidoItemGetAllEntity payload, int codParc)
+
+        {
+            var response = new Response<List<PedidoDTO>>();
+            try
+            {
+                var result = await _PedidoRepository.GetAllPaginateAsyncByParc(codParc, payload.page, payload.limit);
+                response.SetConfig(200);
+                response.Data = result.Data;
+                response.setHttpAtr(result);
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar os Pedidos" + InnerExceptionMessage.InnerExceptionError(e), false);
+            }
+            return response.GetResponse();
+        }
 
         [HttpGet("{id}")]
         [Authorize]

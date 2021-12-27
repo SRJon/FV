@@ -89,6 +89,61 @@ namespace back.infra.Data.Repositories
                 return response;
             }
         }
+        public async Task<Response<List<PedidoDTO>>> GetAllPaginateAsyncByParc(int codParc, int page, int limit)
+        {
+            var response = new Response<List<PedidoDTO>>();
+            var contexto = _ctxs.GetVFU();
+            try
+            {
+                base.ValidPaginate(page, limit);
+                var savedSearches = contexto.Pedido.Include(u => u.Usuario).Include(e => e.Empresa).Include(p => p.PedidoItem).Where(u => u.ClienteCod == codParc).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+
+                List<PedidoDTO> dTOs = new List<PedidoDTO>();
+
+                var Pedidos = await savedSearches.ToListAsync();
+                Pedidos.ForEach(e => dTOs.Add(_mapper.Map<PedidoDTO>(e)));
+                foreach (var dto in dTOs)
+                {
+                    try
+                    {
+                        dto.TGFTPV = await _ITITGFTPVRepository.GetByCODTIPVENDA((int)dto.CondPagCodTipVenda, (DateTime)dto.CondPagDhAlter);
+                    }
+                    catch (System.Exception)
+                    {
+                        dto.TGFTPV = null;
+                    }
+                    try
+                    {
+                        dto.TCSPRJ = await _ITCSPRJRepository.GetByCODTIPVENDA((int)dto.ProjetoCod);
+                    }
+                    catch (System.Exception)
+                    {
+                        dto.TCSPRJ = null;
+                    }
+                    try
+                    {
+                        dto.TGFPAR = _mapper.Map<TGFPARDTOPedido>(await _ITGFPARRepository.GetById((int)dto.ClienteCod));
+                    }
+                    catch (System.Exception)
+                    {
+                        dto.TGFPAR = null;
+                    }
+                }
+                response.Data = dTOs;
+                response.TotalPages = await contexto.Pedido.CountAsync();
+                response.Page = page;
+                response.TotalPages = base.getTotalPages(response.TotalPages);
+                response.Success = true;
+                response.StatusCode = 200;
+                return response;
+            }
+            catch (Exception)
+            {
+                response.Data = null;
+                response.StatusCode = 400;
+                return response;
+            }
+        }
 
         public async Task<PedidoDTO> GetById(int id)
         {
@@ -100,7 +155,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TGFTPV = await _ITITGFTPVRepository.GetByCODTIPVENDA((int)result.CondPagCodTipVenda, (DateTime)result.CondPagDhAlter);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TGFTPV = null;
             }
@@ -108,7 +163,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TCSPRJ = await _ITCSPRJRepository.GetByCODTIPVENDA((int)result.ProjetoCod);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TCSPRJ = null;
             }
@@ -116,7 +171,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TGFPAR = _mapper.Map<TGFPARDTOPedido>(await _ITGFPARRepository.GetById((int)result.ClienteRemCod));
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TGFPAR = null;
             }

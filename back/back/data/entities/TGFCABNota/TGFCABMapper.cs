@@ -17,6 +17,9 @@ namespace back.data.entities.TGFCABNota
             cfg.CreateMap<TGFCAB, TGFCABNuNotaDTO>();
             cfg.CreateMap<TGFCABNuNotaDTO, TGFCAB>();
 
+            cfg.CreateMap<TGFCAB, TGFCABDevolucaoDTO>();
+            cfg.CreateMap<TGFCABDevolucaoDTO, TGFCAB>();
+
             return cfg;
         }
     }

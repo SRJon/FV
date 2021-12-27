@@ -1,5 +1,5 @@
 ﻿using back.data.http;
-using back.domain.DTO.TGFPRO;
+using back.domain.DTO.TGFProdutoDTO;
 using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;

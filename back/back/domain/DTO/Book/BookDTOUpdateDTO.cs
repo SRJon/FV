@@ -9,5 +9,6 @@ namespace back.domain.DTO.Book
         public int CodProd { get; set; }
         public DateTime DtInclusao { get; set; }
         public bool Ativo { get; set; }
+        public DateTime DtAtualizacao { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace back.infra.Services.TGFPARServices
     {
         public static int GetLastIdCreated(this DbAppContextSankhya ctx)
         {
-            var lastId = ctx.TGFPAR.FirstOrDefault(p => p.Codparc == (ctx.TGFPAR.Max(x => x.Codparc)));
-            return lastId.Codparc;
+            var lastId = ctx.TGFPAR.FirstOrDefault(p => p.codparc == (ctx.TGFPAR.Max(x => x.codparc)));
+            return lastId.codparc;
         }
     }
 }
