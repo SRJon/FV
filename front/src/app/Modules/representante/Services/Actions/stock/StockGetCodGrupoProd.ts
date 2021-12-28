@@ -2,7 +2,7 @@ import { ITGFRGV } from './../../../../../Domain/Models/ITGFRGV';
 import axios from 'axios';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
 
-export async function getCodGrupoProd(
+export async function GetCodGrupoProd(
   CODVEND: number
 ): Promise<IResponse<ITGFRGV[]>> {
   try {
