@@ -33,6 +33,7 @@ namespace back.Application.Controllers
                 var result = await _AD_FAMGR3Repository.GetAllPaginateAsync(page, limit);
                 response.SetConfig(200);
                 response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception)
             {

@@ -1,5 +1,4 @@
 using AutoMapper;
-using back.Application.Controllers;
 using back.data.entities.AnexoCont;
 using back.data.entities.AnexoDev;
 using back.data.entities.AnexoRep;
@@ -48,6 +47,7 @@ using back.data.entities.TGFGrupoProdutoVendedor;
 using back.data.entities.TGFGrupoProduto;
 using back.data.entities.View_AD_DEVSOLICITACAO;
 using back.data.entities.TGFinanceiro;
+using back.data.entities.AD_Estoque;
 
 namespace back.MappingConfig
 {
@@ -109,6 +109,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFRGVMapper();
                 cfg.CreateTGFGRUMapper();
                 cfg.CreateAD_DEVSOLICITACAOMapper();
+                cfg.CreateAD_ESTCODPRODMapper();
 
             });
             return configuration;
