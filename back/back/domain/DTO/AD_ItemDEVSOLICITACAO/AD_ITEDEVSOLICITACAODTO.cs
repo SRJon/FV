@@ -15,5 +15,6 @@ namespace back.domain.DTO.AD_ItemDEVSOLICITACAO
         public string ocorrencia { get; set; }
         public double? preco { get; set; }
         public double? aliqipi { get; set; }
+
     }
 }

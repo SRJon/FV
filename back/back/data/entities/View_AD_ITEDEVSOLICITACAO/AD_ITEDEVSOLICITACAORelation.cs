@@ -17,8 +17,8 @@ namespace back.data.entities.View_AD_ITEDEVSOLICITACAO
             modelBuilder.Entity<AD_ITEDEVSOLICITACAO>().Property(p => p.codprod).HasColumnName("CODPROD");
             modelBuilder.Entity<AD_ITEDEVSOLICITACAO>().Property(p => p.qtdneg).HasColumnName("QTDNEG");
             modelBuilder.Entity<AD_ITEDEVSOLICITACAO>().Property(p => p.ocorrencia).HasColumnName("OCORRENCIA");
-            modelBuilder.Entity<AD_ITEDEVSOLICITACAO>().Property(p => p.nusoldev).HasColumnName("PRECO");
-            modelBuilder.Entity<AD_ITEDEVSOLICITACAO>().Property(p => p.nusoldev).HasColumnName("ALIQIPI");
+            modelBuilder.Entity<AD_ITEDEVSOLICITACAO>().Property(p => p.preco).HasColumnName("PRECO");
+            modelBuilder.Entity<AD_ITEDEVSOLICITACAO>().Property(p => p.aliqipi).HasColumnName("ALIQIPI");
 
             return modelBuilder;
         }

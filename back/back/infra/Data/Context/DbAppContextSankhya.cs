@@ -76,6 +76,7 @@ namespace back.infra.Data.Context
         public DbSet<TGFGRU> TGFGRU { get; set; }
         public DbSet<TGFFIN> TGFFIN { get; set; }
         public DbSet<AD_DEVSOLICITACAO> AD_DEVSOLICITACAO { get; set; }
+        public DbSet<AD_ITEDEVSOLICITACAO> AD_ITEDEVSOLICITACAO { get; set; }
 
 
 

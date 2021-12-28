@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.http;
+using back.domain.DTO.AD_ItemDEVSOLICITACAO;
 using back.domain.DTO.TSIEmpDTO;
 using back.domain.DTO.View_AD_DEVSOLICITACAODTO;
 using back.domain.entities;
@@ -25,13 +26,15 @@ namespace back.Application.Controllers
         private readonly IAD_DEVSOLICITACAORepository _AD_DEVSOLICITACAO;
         private readonly IUserRepository _UserRepository;
         private readonly ITSIEMPRepository _TSIEMPRepository;
+        private readonly IAD_ITEDEVSOLICITACAORepository _AD_ITEDEVSOLICITACAORepository;
 
-        public AD_DEVSOLICITACAOController(IAD_DEVSOLICITACAORepository aD_DEVSOLICITACAO, ITSIEMPRepository TSIEMPRepository, IUserRepository UserRepository)
+        public AD_DEVSOLICITACAOController(IAD_DEVSOLICITACAORepository aD_DEVSOLICITACAO, ITSIEMPRepository TSIEMPRepository, IUserRepository UserRepository, IAD_ITEDEVSOLICITACAORepository AD_ITEDEVSOLICITACAORepository)
         {
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _AD_DEVSOLICITACAO = aD_DEVSOLICITACAO;
             _UserRepository = UserRepository;
             _TSIEMPRepository = TSIEMPRepository;
+            _AD_ITEDEVSOLICITACAORepository = AD_ITEDEVSOLICITACAORepository;
         }
 
 
@@ -95,6 +98,7 @@ namespace back.Application.Controllers
         {
             var response = new Response<List<AD_DEVSOLICITACAOSACDTO>>();
             string token = "";
+            double total = 0;
             var authorization = Request.Headers[HeaderNames.Authorization];
             if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
             {
@@ -105,18 +109,25 @@ namespace back.Application.Controllers
 
             try
             {
-
                 var result = await _AD_DEVSOLICITACAO.GetAllDevolucaoSACPaginateAsync(page, limit, (int)user.VendedorUCod);
                 foreach (var devoluca in result.Data)
                 {
                     devoluca.Empresa = _mapper.Map<TSIEMPDTOSAC>(await this._TSIEMPRepository.GetByCODEMP((int)devoluca.CodEmp));
+                    var iteDevSolicitacao = await _AD_ITEDEVSOLICITACAORepository.GetAllIteDevolucaoSac(devoluca.Nusoldev);
+                    total = 0;
+                    foreach (var item in iteDevSolicitacao)
+                    {
+                        total += (item.qtdneg == null ? 0 : (double)item.qtdneg) * (item.preco == null ? 0 : (double)item.preco);
+                    }
+                    devoluca.Total = total;
                 }
                 response.SetConfig(200);
                 response.Data = result.Data;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                response.SetConfig(400, "Erro ao buscar SAC", false);
+
+                response.SetConfig(400, "Erro ao buscar SAC" + e.Message, false);
             }
             return response.GetResponse();
         }
