@@ -20,6 +20,11 @@ namespace back.data.entities.TGFCABNota
             cfg.CreateMap<TGFCAB, TGFCABDevolucaoDTO>();
             cfg.CreateMap<TGFCABDevolucaoDTO, TGFCAB>();
 
+            cfg.CreateMap<TGFCAB, TGFCABSACDTO>();
+            cfg.CreateMap<TGFCABSACDTO, TGFCAB>();
+            cfg.CreateMap<TGFCABDTO, TGFCABSACDTO>();
+            cfg.CreateMap<TGFCABSACDTO, TGFCABDTO>();
+
             return cfg;
         }
     }

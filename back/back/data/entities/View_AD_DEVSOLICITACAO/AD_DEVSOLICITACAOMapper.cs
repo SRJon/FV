@@ -17,6 +17,11 @@ namespace back.data.entities.View_AD_DEVSOLICITACAO
             cfg.CreateMap<AD_DEVSOLICITACAO, AD_DEVSOLICITACAODTODevolucao>();
             cfg.CreateMap<AD_DEVSOLICITACAODTODevolucao, AD_DEVSOLICITACAO>();
 
+            cfg.CreateMap<AD_DEVSOLICITACAO, AD_DEVSOLICITACAOSACDTO>();
+            cfg.CreateMap<AD_DEVSOLICITACAOSACDTO, AD_DEVSOLICITACAO>();
+            cfg.CreateMap<AD_DEVSOLICITACAODTO, AD_DEVSOLICITACAOSACDTO>();
+            cfg.CreateMap<AD_DEVSOLICITACAOSACDTO, AD_DEVSOLICITACAODTO>();
+
             return cfg;
         }
 

@@ -58,6 +58,43 @@ namespace back.infra.Data.Repositories
             }
         }
 
+        public async Task<Response<List<AD_DEVSOLICITACAOSACDTO>>> GetAllDevolucaoSACPaginateAsync(int page, int limit, int codVend)
+        {
+            var response = new Response<List<AD_DEVSOLICITACAOSACDTO>>();
+            var contexto = _ctxs.GetSankhya();
+            try
+            {
+                base.ValidPaginate(page, limit);
+                var savedSearches = contexto.AD_DEVSOLICITACAO
+                                                   .Include(o => o.TGFCAB)
+                                                   .Include(u => u.TGFPAR)
+                                                        .ThenInclude(p => p.tsicid)
+                                                   .Where(u => u.CodVend == codVend)
+                                                   .OrderBy(u => u.Nusoldev);
+
+                List<AD_DEVSOLICITACAOSACDTO> dTOs = new List<AD_DEVSOLICITACAOSACDTO>();
+
+                var notas = await savedSearches.ToListAsync();
+                notas.ForEach(e => dTOs.Add(_mapper.Map<AD_DEVSOLICITACAOSACDTO>(e)));
+
+                response.Data = dTOs;
+                response.TotalPages = await contexto.AD_DEVSOLICITACAO.CountAsync();
+                response.Page = page;
+                response.TotalPages = base.getTotalPages(response.TotalPages);
+                response.Success = true;
+                response.StatusCode = 200;
+                return response;
+
+            }
+            catch (System.Exception e)
+            {
+
+                response.StatusCode = 400;
+                response.Message = e.Message;
+                return response;
+            }
+        }
+
         public async Task<AD_DEVSOLICITACAODTODevolucao> GetDevolucaoByNuSoldev(int nuSoldev)
         {
             var res = await this._ctxs.GetSankhya().GetDevolucaoByNuDev(nuSoldev);

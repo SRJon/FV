@@ -45,8 +45,8 @@ namespace back.data.entities.View_AD_DEVSOLICITACAO
 
 
         public int? CodEmp { get; set; }
-        [ForeignKey("CodEmp")]
-        public virtual TSIEMP Empresa { get; set; }
+        // [ForeignKey("CodEmp")]
+        // public virtual TSIEMP Empresa { get; set; }
         public int? NuNota { get; set; }
         [ForeignKey("NuNota")]
         public virtual TGFCAB TGFCAB { get; set; }

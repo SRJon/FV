@@ -12,6 +12,9 @@ namespace back.data.entities.View_AD_DEVSOLICITACAO
         {
             modelBuilder.Entity<AD_DEVSOLICITACAO>().HasOne(c => c.TGFCAB).WithMany().HasForeignKey(c => c.NuNota);
             modelBuilder.Entity<AD_DEVSOLICITACAO>().HasMany(c => c.AD_ITEDEVSOLICITACAO).WithOne().HasForeignKey(c => c.nusoldev);
+            //modelBuilder.Entity<AD_DEVSOLICITACAO>().HasOne(c => c.Empresa).WithMany().HasForeignKey(c => c.CodEmp);
+            modelBuilder.Entity<AD_DEVSOLICITACAO>().HasOne(c => c.TGFPAR).WithMany().HasForeignKey(c => c.CodParc);
+
             #region "Parametrização Entity <> Sankhya"
             modelBuilder.Entity<AD_DEVSOLICITACAO>().HasNoKey();
             modelBuilder.Entity<AD_DEVSOLICITACAO>().Property(p => p.Nusoldev).HasColumnName("NUSOLDEV");
