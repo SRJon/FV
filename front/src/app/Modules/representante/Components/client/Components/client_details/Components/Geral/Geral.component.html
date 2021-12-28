@@ -2,28 +2,18 @@
   <div class="content">
     <ng-template [ngIf]="data">
       <ul>
-        <li>
-          <strong>CÓDIGO</strong>
-          <span>{{ data.codparc }}</span>
-        </li>
-
-        <li>
-          <strong>RAZÃO SOCIAL</strong>
-          <span>{{ data.razaosocial }}</span>
-        </li>
-        <li>
-          <strong>CNPJ/CPF</strong>
-          <span>{{ cpfComputed() }}</span>
-        </li>
-        <li>
-          <strong>E-MAIL</strong>
-          <span>{{ data.email }}</span>
-        </li>
-        <li>
-          <strong>LIMITE DE CRÉDITO</strong>
-
-          <span>{{ priceComputed() }}</span>
-        </li>
+        <li><strong>CÓDIGO</strong></li>
+        <li><strong>RAZÃO SOCIAL</strong></li>
+        <li><strong>CNPJ/CPF</strong></li>
+        <li><strong>E-MAIL</strong></li>
+        <li><strong>LIMITE DE CRÉDITO</strong></li>
+      </ul>
+      <ul>
+        <li>{{ data.codparc }}</li>
+        <li>{{ data.razaosocial }}</li>
+        <li>{{ cpfComputed() }}</li>
+        <li>{{ data.email }}</li>
+        <li>{{ priceComputed() }}</li>
       </ul>
     </ng-template>
   </div>
