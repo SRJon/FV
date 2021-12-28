@@ -22,7 +22,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<IResponse<List<AD_ESTCODPRODDTO>>>> GetAll(int page = 1, int limit = 10, int Produto = -1, int CodGrupoProd = -1, string DescrProd = null, string ComplDesc = null)
         {
             var response = new Response<List<AD_ESTCODPRODDTO>>();
@@ -31,6 +31,7 @@ namespace back.Application.Controllers
                 var result = await _AD_ESTCODPRODRepository.GetSearchPaginateAsync(page, limit, Produto, CodGrupoProd, DescrProd, ComplDesc);
                 response.SetConfig(200);
                 response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception)
             {

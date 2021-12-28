@@ -49,7 +49,51 @@
         </div>
       </form>
     </div>
+    <!-- /.card -->
 
+    <table data-vertable="ver5" style="border: 1px solid #6c757d">
+      <thead>
+        <tr class="row100 head">
+          <th class="column100 column{{ toNumber(i, 2, true) }}" [attr.data-column]="'column' + toNumber(i, 2, true)"
+            *ngFor="let title of listTitle; let i = index">
+            {{ getTitle(title) }}
+          </th>
+          <th class="column100  column{{ lastI }}" attr.data-column="column{{ lastI }}">
+            Açoes
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listGrid">
+          <td *ngFor="let title of listTitle" [ngSwitch]="getType(item[title])">
+            <!-- {{ item[title] }} -->
+            <span *ngSwitchCase="'boolean'"><input type="checkbox" [checked]="item[title]" /></span>
+            <span *ngSwitchDefault>{{ item[title] }}</span>
+          </td>
+          <td>
+            <ul class="listActions">
+              <li class="pr-1 pt-3">
+                <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#modal-default"
+                  (click)="openModal(item)">
+                  <i class="fa fa-pen"></i>
+                </button>
+              </li>
+
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row pt-2">
+      <div class="col-lg-4 col-md-4 -col-sm-12">
+        <b>
+          Mostrando {{ paginate.currentPage }} a 10 de
+          {{ paginate.total * paginate.pageSize }} páginas
+        </b>
+      </div>
+      <div class="col-lg-8 col-md-8 -col-sm-12">
+        <ul id="table_id_paginate" class="pagination d-flex justify-content-end"></ul>
+      </div>
+    </div>
   </div>
-  <!-- /.card -->
 </div>
