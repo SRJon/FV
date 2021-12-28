@@ -29,13 +29,9 @@ using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
 using back.data.entities.TGFGrupoProdutoVendedor;
 using back.data.entities.TGFGrupoProduto;
-<<<<<<< HEAD
 using back.data.entities.View_AD_DEVSOLICITACAO;
 using back.data.entities.TGFinanceiro;
-=======
-using back.data.entities;
 using back.data.entities.AD_Estoque;
->>>>>>> 8eb8681184bec0872ae68f13f0ef29cb8d33056e
 
 namespace back.infra.Data.Context
 {
@@ -78,14 +74,11 @@ namespace back.infra.Data.Context
         public DbSet<TGFCAB> TGFCAB { get; set; }
         public DbSet<TGFRGV> TGFRGV { get; set; }
         public DbSet<TGFGRU> TGFGRU { get; set; }
-<<<<<<< HEAD
         public DbSet<TGFFIN> TGFFIN { get; set; }
         public DbSet<AD_DEVSOLICITACAO> AD_DEVSOLICITACAO { get; set; }
 
 
-=======
         public DbSet<AD_ESTCODPROD> AD_ESTCODPROD { get; set; }
->>>>>>> 8eb8681184bec0872ae68f13f0ef29cb8d33056e
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -134,15 +127,12 @@ namespace back.infra.Data.Context
             //modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab"); VIEW SEM CHAVE
             // modelBuilder.Entity<VGFTAB>().HasKey(x => x.CodTab).HasName("PrimaryKey_CodTab");
             modelBuilder.Entity<AD_PANTONE>().HasKey(x => x.CodCor).HasName("PrimaryKey_CodCor");
-            // modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp");
+            modelBuilder.Entity<AD_ESTPRODCOR>().HasNoKey();
             modelBuilder.Entity<TGFRGV>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
             modelBuilder.Entity<TGFGRU>().HasKey(x => x.CODGRUPOPROD).HasName("PrimaryKey_CODGRUPOPROD");
-<<<<<<< HEAD
             //modelBuilder.Entity<AD_ESTPRODCOR>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp"); VIEW SEM CHAVE
 
-=======
             modelBuilder.Entity<AD_ESTCODPROD>().HasNoKey();
->>>>>>> 8eb8681184bec0872ae68f13f0ef29cb8d33056e
         }
 
 
