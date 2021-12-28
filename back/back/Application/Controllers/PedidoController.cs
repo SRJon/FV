@@ -47,10 +47,10 @@ namespace back.Application.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetAllByCodParc")]
-        public async Task<ActionResult<IResponse<List<PedidoDTO>>>> GetAllByCodParcAsync([FromQuery] PedidoItemGetAllEntity payload, int codParc)
+        public async Task<ActionResult<IResponse<List<PedidoClienteDTO>>>> GetAllByCodParcAsync([FromQuery] PedidoItemGetAllEntity payload, int codParc)
 
         {
-            var response = new Response<List<PedidoDTO>>();
+            var response = new Response<List<PedidoClienteDTO>>();
             try
             {
                 var result = await _PedidoRepository.GetAllPaginateAsyncByParc(codParc, payload.page, payload.limit);

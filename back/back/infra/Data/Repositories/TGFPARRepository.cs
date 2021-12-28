@@ -71,6 +71,13 @@ namespace back.infra.Data.Repositories
 
             return rmapper;
         }
+        public async Task<TGFPARClienteBasicoDTO> GetClienteBasicoById(int id)
+        {
+            var res = await this._ctxs.GetSankhya().GetByIdService(id);
+            var rmapper = _mapper.Map<TGFPARClienteBasicoDTO>(res);
+
+            return rmapper;
+        }
 
         public Task<bool> Create(TGFPARDTOCreate cliente)
         {

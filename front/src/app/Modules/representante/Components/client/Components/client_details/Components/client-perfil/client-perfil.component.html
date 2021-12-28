@@ -7,8 +7,14 @@
       ></app-dinamic-filter>
     </div>
     <div class="row mt-2 h-75">
-      <div class="content" style="overflow-y: scroll; max-height: 344px">
-        <app-grid-client-perfil></app-grid-client-perfil>
+      <div
+        class="content"
+        [style]="'overflow-y: scroll; max-height:' + size + 'px'"
+      >
+        <app-grid-client-perfil
+          [listGrid]="listGrid"
+          (onResized)="onResized($event)"
+        ></app-grid-client-perfil>
       </div>
     </div>
   </div>
