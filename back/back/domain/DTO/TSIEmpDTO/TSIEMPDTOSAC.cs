@@ -7,7 +7,7 @@ namespace back.domain.DTO.TSIEmpDTO
 {
     public class TSIEMPDTOSAC
     {
-        public short CODEMP { get; set; }
-        public string NOMEFANTASIA { get; set; }
+        public short codemp { get; set; }
+        public string nomefantasia { get; set; }
     }
 }

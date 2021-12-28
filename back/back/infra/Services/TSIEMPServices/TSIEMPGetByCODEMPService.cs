@@ -7,6 +7,6 @@ namespace back.infra.Services.TSIEMPServices
 {
     public static class TSIEMPGetByCODEMPService
     {
-        public static Task<TSIEMP> GetByCODEMPService(this DbAppContextSankhya ctx, int CODEMP) => ctx.TSIEMP.FirstOrDefaultAsync(x => x.CODEMP == CODEMP);
+        public static Task<TSIEMP> GetByCODEMPService(this DbAppContextSankhya ctx, int CODEMP) => ctx.TSIEMP.FirstOrDefaultAsync(x => x.codemp == CODEMP);
     }
 }

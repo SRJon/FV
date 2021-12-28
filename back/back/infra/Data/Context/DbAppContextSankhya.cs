@@ -115,7 +115,7 @@ namespace back.infra.Data.Context
 
 
             modelBuilder.Entity<TGFVEN>().HasKey(x => x.codvend).HasName("PrimaryKey_CODVEND");
-            modelBuilder.Entity<TSIEMP>().HasKey(x => x.CODEMP).HasName("PrimaryKey_CODEMP");
+            modelBuilder.Entity<TSIEMP>().HasKey(x => x.codemp).HasName("PrimaryKey_CODEMP");
             //modelBuilder.Entity<AD_TIPNEG>().HasKey(x => x.CodTipVenda).HasName("PrimaryKey_CodTipVenda"); VIEW SEM CHAVE
             //modelBuilder.Entity<AD_ESTPROGPROD>().HasKey(x => x.CodEmp).HasName("PrimaryKey_CodEmp"); VIEW SEM CHAVE
             modelBuilder.Entity<AD_FAMGR1>().HasKey(x => x.CodProdgr1).HasName("PrimaryKey_CodProdgr1");

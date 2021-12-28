@@ -30,7 +30,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.TSIEMP.Skip(base.skip).OrderBy(o => o.CODEMP).Take(base.limit);
+                var savedSearches = contexto.TSIEMP.Skip(base.skip).OrderBy(o => o.codemp).Take(base.limit);
                 List<TSIEMPDTO> dTOs = new List<TSIEMPDTO>();
 
                 var parceiros = await savedSearches.ToListAsync();
