@@ -1,3 +1,4 @@
-import { getCodGrupoProd } from './StockGetCodGrupoProd';
+import { GetAdEstCodProd } from './StockGetAd_EstCodProd';
+import { GetCodGrupoProd } from './StockGetCodGrupoProd';
 
-export { getCodGrupoProd };
+export { GetCodGrupoProd, GetAdEstCodProd };

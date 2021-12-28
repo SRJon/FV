@@ -14,7 +14,7 @@ import { UserGlobal } from 'src/app/Shared';
 })
 export class EstoqueGridComponent implements OnInit {
   vendGrpPrd: IResponse<ITGFRGV[]>;
-  grpPrd: ITGFGRU[] = [];
+  selectGrpPrd: ITGFGRU[] = [];
   selectedGrpPrd!: ITGFGRU;
 
   constructor(
@@ -38,12 +38,12 @@ export class EstoqueGridComponent implements OnInit {
   getGrupoProduto(codVend: number) {
     this.StockService.getCodGrupoProd(codVend).then((response) => {
       if (response.data) {
-        this.grpPrd = response.data.map((e) => e.tgfgru);
+        this.selectGrpPrd = response.data.map((e) => e.tgfgru);
       }
     });
   }
 
-  onChange(grpPrd: ITGFGRU) {
-    this.selectedGrpPrd = grpPrd;
+  onChange(selectGrpPrd: ITGFGRU) {
+    this.selectedGrpPrd = selectGrpPrd;
   }
 }

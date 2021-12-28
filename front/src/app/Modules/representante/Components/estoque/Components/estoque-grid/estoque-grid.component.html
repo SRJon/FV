@@ -16,7 +16,7 @@
               <label>GRUPO DE PRODUTO</label>
               <select class="form-select" aria-label="Default select">
                 <option selected>SELECIONE UM GRUPO</option>
-                <option *ngFor="let grp of grpPrd" [value]="grp.codgrupoprod" (click)="onChange(grp)">
+                <option *ngFor="let grp of selectGrpPrd" [value]="grp.codgrupoprod" (click)="onChange(grp)">
                   {{ grp.descrgrupoprod }}
                 </option>
               </select>
