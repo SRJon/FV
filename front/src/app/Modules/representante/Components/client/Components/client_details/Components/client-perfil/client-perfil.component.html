@@ -12,9 +12,16 @@
         [style]="'overflow-y: scroll; max-height:' + size + 'px'"
       >
         <app-grid-client-perfil
+          [paginate]="paginate"
           [listGrid]="listGrid"
           (onResized)="onResized($event)"
         ></app-grid-client-perfil>
+      </div>
+      <div class="row">
+        <ul
+          id="table_id_paginate"
+          class="pagination d-flex justify-content-end"
+        ></ul>
       </div>
     </div>
   </div>
