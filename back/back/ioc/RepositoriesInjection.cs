@@ -63,6 +63,7 @@ namespace back.ioc
             services.AddScoped<IAD_DEVSOLICITACAORepository, AD_DEVSOLICITACAORepository>();
             services.AddScoped<ITGFFINRepository, TGFFINRepository>();
             services.AddScoped<IAD_ITEDEVSOLICITACAORepository, AD_ITEDEVSOLICITACAORepository>();
+            services.AddScoped<IAD_ESTCODPRODRepository, AD_ESTCODPRODRepository>();
 
             return services;
         }

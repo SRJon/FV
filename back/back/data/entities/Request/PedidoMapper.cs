@@ -16,6 +16,11 @@ namespace back.data.entities.Request
             cfg.CreateMap<Pedido, PedidoDTOItemless>();
             cfg.CreateMap<PedidoDTOItemless, Pedido>();
 
+            cfg.CreateMap<Pedido, PedidoClienteDTO>();
+            cfg.CreateMap<PedidoClienteDTO, Pedido>();
+            cfg.CreateMap<PedidoDTO, PedidoClienteDTO>();
+            cfg.CreateMap<PedidoClienteDTO, PedidoDTO>();
+
             return cfg;
         }
 

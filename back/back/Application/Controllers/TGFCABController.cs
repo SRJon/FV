@@ -99,6 +99,7 @@ namespace back.Application.Controllers
                 var result = await _TGFCABRespotory.GetAllPaginateAsync(codParc, page, limit);
                 response.SetConfig(200);
                 response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception)
             {

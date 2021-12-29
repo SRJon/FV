@@ -54,6 +54,7 @@ namespace back.Application.Controllers
                 var result = await _TGFPARRepository.GetAllPaginateAsync(page, limit);
                 response.SetConfig(200);
                 response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception)
             {
@@ -72,6 +73,37 @@ namespace back.Application.Controllers
             try
             {
                 TGFPARDTO result = await this._TGFPARRepository.GetById(id);
+                if (result != null)
+                {
+                    response.SetConfig(200);
+                    response.Data = result;
+                }
+                else
+                {
+                    response.SetConfig(404, "Parceiro não encontrado", false);
+                }
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar parceiro " + e.Message, false);
+            }
+
+
+
+
+            return response.GetResponse();
+        }
+        [HttpGet]
+        [Authorize]
+        [Route("GetClienteBasicoById")]
+        public async Task<ActionResult<IResponse<TGFPARClienteBasicoDTO>>> GetClienteBasicoById(int id)
+        {
+            var response = new Response<TGFPARClienteBasicoDTO>();
+
+
+            try
+            {
+                TGFPARClienteBasicoDTO result = await this._TGFPARRepository.GetClienteBasicoById(id);
                 if (result != null)
                 {
                     response.SetConfig(200);

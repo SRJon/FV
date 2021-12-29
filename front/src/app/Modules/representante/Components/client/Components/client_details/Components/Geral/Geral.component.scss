@@ -12,3 +12,13 @@ ul {
     }
   }
 }
+
+.content {
+  display: flex;
+}
+.content > ul:nth-last-child(1) li {
+  text-align: left;
+}
+.content > ul:nth-last-child(2) li {
+  text-align: right;
+}

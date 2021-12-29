@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAvgfrpvgetall } from 'src/app/Domain/Models/IAvgfrpvgetall';
+import { Pedido } from 'src/app/Domain/Models/IPedido';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
 import * as actions from './Action';
 
@@ -18,5 +19,8 @@ export class ADVGFRPVService {
   }
   async GetByParc(codParc: number = 1): Promise<IResponse<IAvgfrpvgetall>> {
     return await actions.GetByParc(codParc);
+  }
+  async GetAllByCodParc(codParc: number = 1): Promise<IResponse<Pedido[]>> {
+    return await actions.GetAllByCodParc(codParc);
   }
 }
