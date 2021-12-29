@@ -1,6 +1,6 @@
 <div class="row" style="padding: 0px 30px">
   <div class="card-default">
-    <div class="card-header" style="border: 1px solid #6c757d">
+    <div class="card-header" style="border: 1px solid #6c757d;">
       <form>
         <div class="row">
           <div class="col-sm-2">
@@ -14,10 +14,10 @@
             <!-- select -->
             <div class="form-group">
               <label>GRUPO DE PRODUTO</label>
-              <select class="form-select" aria-label="Default select">
+              <select class="form-select" aria-label="Default select" style="font-size: 0.9em;">
                 <option selected>SELECIONE UM GRUPO</option>
                 <option *ngFor="let grp of selectGrpPrd" [value]="grp.codgrupoprod" (click)="onChange(grp)">
-                  {{ grp.descrgrupoprod }}
+                  {{grp.codgrupoprod}} - {{ grp.descrgrupoprod }}
                 </option>
               </select>
             </div>

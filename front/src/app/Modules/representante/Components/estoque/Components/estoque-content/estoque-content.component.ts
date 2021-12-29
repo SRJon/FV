@@ -27,10 +27,14 @@ export class EstoqueContentComponent implements OnInit {
     this.initialParam = {
       produto: 0,
       codgrupoprod: 0,
+      descrgrupoprod: '',
       aD_CODANT: '',
       codvol: '',
       descrprod: '',
       compldesc: '',
+      aD_LARGURATECIDO: 0,
+      aD_GRAMATURA: 0,
+      ncm: '',
       percentual: 0,
     };
   }
