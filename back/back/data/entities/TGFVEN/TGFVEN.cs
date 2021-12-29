@@ -1,7 +1,7 @@
 ﻿using back.domain.entities;
 using System;
 
-namespace back.data.entities.TGFVEN
+namespace back.data.entities.TGFVendedor
 {
     public class TGFVEN : ITGFVEN
     {

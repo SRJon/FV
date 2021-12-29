@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace back.data.entities.AD_FAMGR3
+namespace back.data.entities.AD_FamiliaGR3
 {
     public static class AD_FAMGR3Relation
     {

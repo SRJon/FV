@@ -1,4 +1,4 @@
-﻿using back.data.entities.AD_ESTPROGPROD;
+﻿using back.data.entities.View_AD_ESTPROGPROD;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

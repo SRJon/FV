@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace back.data.entities.AD_ESTPRODCOR
+namespace back.data.entities.View_AD_ESTPRODCOR
 {
     public static class AD_ESTPRODCORMapper
     {

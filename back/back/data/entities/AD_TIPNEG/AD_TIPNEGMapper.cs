@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.AD_TIPNEG;
 
-namespace back.data.entities.AD_TIPNEG
+namespace back.data.entities.View_AD_TIPNEG
 {
     public static class AD_TIPNEGMapper
     {

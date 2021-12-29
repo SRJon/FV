@@ -1,4 +1,4 @@
-﻿using back.data.entities.AD_FAMGR3;
+﻿using back.data.entities.AD_FamiliaGR3;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

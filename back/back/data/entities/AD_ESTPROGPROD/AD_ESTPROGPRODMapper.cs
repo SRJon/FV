@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.AD_ESTPROGPROD;
 
-namespace back.data.entities.AD_ESTPROGPROD
+namespace back.data.entities.View_AD_ESTPROGPROD
 {
     public static class AD_ESTPROGPRODMapper
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace back.data.entities.AD_PANTONE
+namespace back.data.entities.AD_PANTONE_Cor
 {
     public static class AD_PANTONERelation
     {

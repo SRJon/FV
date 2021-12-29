@@ -1,6 +1,6 @@
 ﻿using back.domain.entities;
 
-namespace back.data.entities.TGFIPI
+namespace back.data.entities.TGFIPImposto
 {
     public class TGFIPI : ITGFIPI
     {

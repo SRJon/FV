@@ -1,6 +1,6 @@
 ﻿using back.domain.entities;
 
-namespace back.data.entities.AD_PANTONE
+namespace back.data.entities.AD_PANTONE_Cor
 {
     public class AD_PANTONE : IAD_PANTONE
     {

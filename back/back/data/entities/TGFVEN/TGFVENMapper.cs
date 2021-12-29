@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.TGFVEN;
 
-namespace back.data.entities.TGFVEN
+namespace back.data.entities.TGFVendedor
 {
     public static class TGFVENMapper
     {

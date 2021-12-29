@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using back.data.entities.TGFVEN;
+using back.data.entities.TGFVendedor;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 

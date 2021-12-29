@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace back.data.entities.AD_ESTPROGPROD
+namespace back.data.entities.View_AD_ESTPROGPROD
 {
     public static class AD_ESTPROGPRODRelation
     {

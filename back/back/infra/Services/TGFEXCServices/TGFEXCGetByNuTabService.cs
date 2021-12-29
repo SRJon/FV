@@ -1,4 +1,4 @@
-﻿using back.data.entities.TGFEXC;
+﻿using back.data.entities.TGFEXCProduto;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

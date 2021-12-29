@@ -1,4 +1,4 @@
-﻿using back.data.entities.VGFTAB;
+﻿using back.data.entities.View_VGFTAB;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

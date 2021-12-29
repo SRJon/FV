@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace back.data.entities.AD_TIPNEG
+namespace back.data.entities.View_AD_TIPNEG
 {
     public static class AD_TIPNEGRelation
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace back.data.entities.VGFTAB
+namespace back.data.entities.View_VGFTAB
 {
     public static class VGFTABRelation
     {

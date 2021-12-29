@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.TGFEXC;
 
-namespace back.data.entities.TGFEXC
+namespace back.data.entities.TGFEXCProduto
 {
     public static class TGFEXCMapper
     {

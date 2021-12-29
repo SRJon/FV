@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.VGFTAB;
 
-namespace back.data.entities.VGFTAB
+namespace back.data.entities.View_VGFTAB
 {
     public static class VGFTABMapper
     {

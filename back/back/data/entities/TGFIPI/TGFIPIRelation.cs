@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace back.data.entities.TGFIPI
+namespace back.data.entities.TGFIPImposto
 {
     public static class TGFIPIRelation
     {
