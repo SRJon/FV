@@ -16,6 +16,7 @@ import { IAD_ESTCODPROD } from 'src/app/Domain/Models/IAD_ESTCODPROD';
 import { Paginate } from 'src/app/Domain/Models/Paginate';
 import * as shareds from 'src/app/Shared';
 import { AlertsService } from 'src/app/Repository/Alerts/alerts.service';
+import { AuthenticationService } from 'src/app/Modules/login/Services/Authentication.service';
 @Component({
   selector: 'app-estoque-grid',
   templateUrl: './estoque-grid.component.html',
@@ -34,6 +35,9 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
   @Output() nextSelection = new EventEmitter<number>();
 
   selectedRecord: IAD_ESTCODPROD | undefined;
+  currentUser!: IUser;
+
+  isDetail: boolean = false;
 
   lastI = 0;
 
@@ -73,16 +77,15 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
     this.grid.createGrid({ selectorHtml: '#table_id', paging: false });
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.initGrid();
-    this.userG.getObservable().subscribe((user) => {
-      let codVend = user.vendedorUCod;
 
-      //Se existir um código de vendedor do Sankhya é realiza a consulta aos grupo de produtos relacionados ao vendedor
-      if (codVend) {
-        this.getGrupoProduto(codVend);
-      }
-    });
+    //Método utilizado para salvar os dados do usuário globalmente
+    this.currentUser = await AuthenticationService.getGlobalUser();
+
+    if (this.currentUser.vendedorUCod) {
+      this.getGrupoProduto(this.currentUser.vendedorUCod);
+    }
   }
 
   getGrupoProduto(codVend: number) {
@@ -165,5 +168,10 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
 
   toNumber(value: any, t: any, isTitle: boolean = false) {
     return Number(value) + Number(t);
+  }
+
+  onDetail(obj: IAD_ESTCODPROD | undefined): void {
+    this.selectedRecord = obj;
+    alert(obj);
   }
 }

@@ -48,6 +48,9 @@ export class MainSidebarContainerComponent implements OnInit {
     this.user = user.data;
     let e: IUsuarioEmp[] = [];
     this.userG.setObservable(this.user || ({ usuarioEmp: e } as IUser));
+    // @ts-ignore: Unreachable code error
+    AuthenticationService.setGlogalUser(user.data);
+    //console.table(AuthenticationService.getGlobalUser());
   }
 
   async getAll() {

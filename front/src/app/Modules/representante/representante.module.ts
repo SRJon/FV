@@ -33,6 +33,8 @@ import { FinanceiroComponent } from './Components/client/Components/client_detai
 import { FormsModule } from '@angular/forms';
 import { EstoqueGridComponent } from './Components/estoque/Components/estoque-grid/estoque-grid.component';
 import { EstoqueContentComponent } from './Components/estoque/Components/estoque-content/estoque-content.component';
+import { DetailEstoqueComponentComponent } from './Components/estoque/Components/estoque-content/detail-estoque-component/detail-estoque-component.component';
+import { ReportEstoqueComponentComponent } from './Components/estoque/Components/estoque-content/report-estoque-component/report-estoque-component.component';
 
 @NgModule({
   imports: [
@@ -72,6 +74,8 @@ import { EstoqueContentComponent } from './Components/estoque/Components/estoque
     FinanceiroComponent,
     EstoqueGridComponent,
     EstoqueContentComponent,
+    DetailEstoqueComponentComponent,
+    ReportEstoqueComponentComponent,
   ],
   bootstrap: [ClientComponent],
   exports: [ClientComponent, GeralComponent],
