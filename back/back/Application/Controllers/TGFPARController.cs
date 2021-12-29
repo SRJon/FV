@@ -54,6 +54,7 @@ namespace back.Application.Controllers
                 var result = await _TGFPARRepository.GetAllPaginateAsync(page, limit);
                 response.SetConfig(200);
                 response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception)
             {
@@ -72,6 +73,37 @@ namespace back.Application.Controllers
             try
             {
                 TGFPARDTO result = await this._TGFPARRepository.GetById(id);
+                if (result != null)
+                {
+                    response.SetConfig(200);
+                    response.Data = result;
+                }
+                else
+                {
+                    response.SetConfig(404, "Parceiro não encontrado", false);
+                }
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar parceiro " + e.Message, false);
+            }
+
+
+
+
+            return response.GetResponse();
+        }
+        [HttpGet]
+        [Authorize]
+        [Route("GetClienteBasicoById")]
+        public async Task<ActionResult<IResponse<TGFPARClienteBasicoDTO>>> GetClienteBasicoById(int id)
+        {
+            var response = new Response<TGFPARClienteBasicoDTO>();
+
+
+            try
+            {
+                TGFPARClienteBasicoDTO result = await this._TGFPARRepository.GetClienteBasicoById(id);
                 if (result != null)
                 {
                     response.SetConfig(200);
@@ -155,8 +187,8 @@ namespace back.Application.Controllers
                                 endereco = _TSIENDRepository.AtribuicaoValoresCliente(endereco, cnpj);
                                 var resultEnd = _TSIENDRepository.Create(_mapper.Map<TSIENDDTOCreate>(endereco));
                             }
-                            cliente.Codend = endereco.Codend;
-                            cliente.Endereco = cnpj.Logradouro;
+                            cliente.codend = endereco.Codend;
+                            cliente.endereco = cnpj.Logradouro;
                         }
                         catch (System.Exception err)
                         {
@@ -172,8 +204,8 @@ namespace back.Application.Controllers
                                 bairro = _TSIBAIRepository.AtribuicaoValoresCliente(bairro, cnpj);
                                 var resultBai = _TSIBAIRepository.Create(_mapper.Map<TSIBAIDTOCreate>(bairro));
                             }
-                            cliente.Codbai = bairro.CodBai;
-                            cliente.Bairro = cnpj.Bairro;
+                            cliente.codbai = bairro.CodBai;
+                            cliente.bairro = cnpj.Bairro;
                         }
                         catch (System.Exception err)
                         {
@@ -189,15 +221,15 @@ namespace back.Application.Controllers
                                 cidade = _TSICIDRepository.AtribuicaoValoresCliente(cidade, cnpj);
                                 var resultBai = _TSICIDRepository.Create(_mapper.Map<TSICIDDTOCreate>(cidade));
                             }
-                            cliente.Codcid = cidade.CodCid;
-                            cliente.Cidade = cnpj.Municipio;
-                            cliente.Uf = cnpj.Uf;
+                            cliente.codcid = cidade.CodCid;
+                            cliente.cidade = cnpj.Municipio;
+                            cliente.uf = cnpj.Uf;
                         }
                         catch (System.Exception err)
                         {
                             response.SetConfig(400, "Erro ao criar o cidade  do cliente" + InnerExceptionMessage.InnerExceptionError(err), false);
                         }
-                        cliente.Codparc = _TGFPARRepository.GetLastIdCreated() + 1;
+                        cliente.codparc = _TGFPARRepository.GetLastIdCreated() + 1;
                         cliente = _TGFPARRepository.AtribuicaoValoresCliente(cliente, cnpj);
                         response.SetConfig(200);
                     }
@@ -226,9 +258,9 @@ namespace back.Application.Controllers
                     foreach (var comprador in clienteComprador.Compradores)
                     {
                         comprador.Codparc = _TGFPARRepository.GetLastIdCreated();
-                        comprador.CodEnd = clienteComprador.Cliente.Codend;
-                        comprador.CodBai = clienteComprador.Cliente.Codbai;
-                        comprador.CodBai = clienteComprador.Cliente.Codcid;
+                        comprador.CodEnd = clienteComprador.Cliente.codend;
+                        comprador.CodBai = clienteComprador.Cliente.codbai;
+                        comprador.CodBai = clienteComprador.Cliente.codcid;
                         try
                         {
                             result = await this._TGFCTTRepository.Create(comprador);

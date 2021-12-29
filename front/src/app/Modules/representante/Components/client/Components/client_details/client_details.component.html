@@ -1,4 +1,5 @@
 <div class="container">
+  {{ selected }}
   <div class="row">
     <div class="pt-5 col-12">
       <div class="content">
@@ -35,12 +36,15 @@
           <!-- /.card-header -->
           <div class="card-body">
             <div class="tab-content h-100">
-              <div class="tab-pane h-100" id="tab_1">
-                <app-Geral></app-Geral>
+              <div class="tab-pane active h-100" id="tab_1">
+                <app-Geral
+                  [data]="data.parceiro"
+                  *ngIf="selected == 0"
+                ></app-Geral>
               </div>
               <!-- /.tab-pane -->
-              <div class="tab-pane active h-100" id="tab_2">
-                <app-client-perfil></app-client-perfil>
+              <div class="tab-pane h-100" id="tab_2">
+                <app-client-perfil *ngIf="selected == 1"></app-client-perfil>
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane h-100" id="tab_3">

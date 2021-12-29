@@ -11,7 +11,7 @@ namespace back.Application.BaseControllers
     {
         private string stringToModel(string model, string p)
         {
-            return $"modelBuilder.Entity<{model.ToUpper()}>().Property(p => p.{p.ToLower()}).HasColumnName({p.ToUpper()})";
+            return $"modelBuilder.Entity<{model.ToUpper()}>().Property(p => p.{p.ToLower()}).HasColumnName('{p.ToUpper()}')";
         }
         [HttpPost]
         [AllowAnonymous]

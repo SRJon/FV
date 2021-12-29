@@ -89,24 +89,24 @@ namespace back.infra.Data.Repositories
                 return response;
             }
         }
-        public async Task<Response<List<PedidoDTO>>> GetAllPaginateAsyncByParc(int codParc, int page, int limit)
+        public async Task<Response<List<PedidoClienteDTO>>> GetAllPaginateAsyncByParc(int codParc, int page, int limit)
         {
-            var response = new Response<List<PedidoDTO>>();
+            var response = new Response<List<PedidoClienteDTO>>();
             var contexto = _ctxs.GetVFU();
             try
             {
                 base.ValidPaginate(page, limit);
                 var savedSearches = contexto.Pedido.Include(u => u.Usuario).Include(e => e.Empresa).Include(p => p.PedidoItem).Where(u => u.ClienteCod == codParc).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
 
-                List<PedidoDTO> dTOs = new List<PedidoDTO>();
+                List<PedidoClienteDTO> dTOs = new List<PedidoClienteDTO>();
 
                 var Pedidos = await savedSearches.ToListAsync();
-                Pedidos.ForEach(e => dTOs.Add(_mapper.Map<PedidoDTO>(e)));
+                Pedidos.ForEach(e => dTOs.Add(_mapper.Map<PedidoClienteDTO>(e)));
                 foreach (var dto in dTOs)
                 {
                     try
                     {
-                        dto.TGFTPV = await _ITITGFTPVRepository.GetByCODTIPVENDA((int)dto.CondPagCodTipVenda, (DateTime)dto.CondPagDhAlter);
+                        dto.TGFTPV = _mapper.Map<TGFTPVPedidoClienteDTO>(await _ITITGFTPVRepository.GetByCODTIPVENDA((int)dto.CondPagCodTipVenda, (DateTime)dto.CondPagDhAlter));
                     }
                     catch (System.Exception)
                     {
@@ -114,15 +114,7 @@ namespace back.infra.Data.Repositories
                     }
                     try
                     {
-                        dto.TCSPRJ = await _ITCSPRJRepository.GetByCODTIPVENDA((int)dto.ProjetoCod);
-                    }
-                    catch (System.Exception)
-                    {
-                        dto.TCSPRJ = null;
-                    }
-                    try
-                    {
-                        dto.TGFPAR = _mapper.Map<TGFPARDTOPedido>(await _ITGFPARRepository.GetById((int)dto.ClienteCod));
+                        dto.TGFPAR = _mapper.Map<TGFPARPedidoClienteDTO>(await _ITGFPARRepository.GetById((int)dto.ClienteCod));
                     }
                     catch (System.Exception)
                     {
@@ -155,7 +147,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TGFTPV = await _ITITGFTPVRepository.GetByCODTIPVENDA((int)result.CondPagCodTipVenda, (DateTime)result.CondPagDhAlter);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TGFTPV = null;
             }
@@ -163,7 +155,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TCSPRJ = await _ITCSPRJRepository.GetByCODTIPVENDA((int)result.ProjetoCod);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TCSPRJ = null;
             }
@@ -171,7 +163,7 @@ namespace back.infra.Data.Repositories
             {
                 result.TGFPAR = _mapper.Map<TGFPARDTOPedido>(await _ITGFPARRepository.GetById((int)result.ClienteRemCod));
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 result.TGFPAR = null;
             }

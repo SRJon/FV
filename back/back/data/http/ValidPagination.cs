@@ -26,9 +26,17 @@ namespace back.data.http
         }
         protected int getTotalPages(int totalPages)
         {
-
-
             var result = totalPages / this.limit;
+
+            /*
+             * Verifica através da operação de módulo se existem registros na página posterior
+             */
+            if(totalPages % this.limit > 0 && result >= 1)
+            {
+                result++;
+            }
+
+
             return result == 0 ? 0 : result;
         }
     }

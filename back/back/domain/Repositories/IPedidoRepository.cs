@@ -9,7 +9,7 @@ namespace back.domain.Repositories
     public interface IPedidoRepository
     {
         public Task<Response<List<PedidoDTO>>> GetAllPaginateAsync(int page, int limit);
-        public Task<Response<List<PedidoDTO>>> GetAllPaginateAsyncByParc(int codParc, int page, int limit);
+        public Task<Response<List<PedidoClienteDTO>>> GetAllPaginateAsyncByParc(int codParc, int page, int limit);
         public Task<PedidoDTO> GetById(int id);
         public Task<bool> Create(Pedido Pedido);
         public Task<bool> Delete(int id);

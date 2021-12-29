@@ -1,14 +1,93 @@
-<p>perfil-grid works!</p>
-
-<table data-vertable="ver5">
-  <thead>
-    <tr class="row100 head">
-      <th class="column100 column1">s</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="row100">
-      <td class="column100 column1">s</td>
-    </tr>
-  </tbody>
-</table>
+<div class="row" style="padding: 0px 30px">
+  <table data-vertable="ver5" style="border: 1px solid #6c757d">
+    <thead>
+      <tr class="row100 head">
+        <th class="column100 column{{ toNumber(i, 2, true) }}" [attr.data-column]="'column' + toNumber(i, 2, true)"
+          *ngFor="let title of listTitle; let i = index">
+          {{ getTitle(title) }}
+        </th>
+        <th class="column100  column{{ lastI }}" attr.data-column="column{{ lastI }}">
+          Açoes
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listGrid">
+        <td *ngFor="let title of listTitle" [ngSwitch]="getType(item[title])">
+          <!-- {{ item[title] }} -->
+          <span *ngSwitchCase="'boolean'"><input type="checkbox" [checked]="item[title]" /></span>
+          <span *ngSwitchDefault>{{ item[title] }}</span>
+        </td>
+        <td>
+          <ul class="listActions">
+            <li class="pr-1 pt-3">
+              <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#modal-default"
+                (click)="openModal(item)">
+                <i class="fa fa-pen"></i>
+              </button>
+            </li>
+            <li class="pl-1 pt-3">
+              <button class="btn btn-outline-secondary" (click)="onDelete(item)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row pt-2">
+    <div class="col-lg-4 col-md-4 -col-sm-12">
+      <b>
+        Mostrando {{ paginate.currentPage }} a 10 de
+        {{ paginate.total * paginate.pageSize }} páginas
+      </b>
+    </div>
+    <div class="col-lg-8 col-md-8 -col-sm-12">
+      <ul id="table_id_paginate" class="pagination d-flex justify-content-end"></ul>
+    </div>
+  </div>
+  <div id="perfil_grid_edit_component" *ngIf="selectedRecord && !isDelete">
+    <app-edit-perfil-component [perfil]="selectedRecord" (onCloseModal)="stateModal($event)">
+    </app-edit-perfil-component>
+  </div>
+</div>
+<!--  TODO modal delete -->
+<div class="modal fade show" id="modal" style="
+    display: block;
+    padding-right: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  " aria-hidden="true" role="dialog" *ngIf="isDelete">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #343a40; color: white">
+        <h4 class="modal-title">DESEJA EXCLUIR O PERFIL?</h4>
+        <button style="color: white" type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="onModalClose(true)">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Id: <strong>{{ selectedRecord?.id }}</strong>
+        </p>
+        <p>
+          Nome: <strong>{{ selectedRecord?.nome }}</strong>
+        </p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onModalClose(true)">
+          FECHAR
+        </button>
+        <button type="button" class="btn btn-danger" (click)="onModalClose(false)">
+          SALVAR
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

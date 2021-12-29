@@ -31,6 +31,8 @@ import { NotaFiscalComponent } from './Components/client/Components/client_detai
 import { FinanceiroGridComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/financeiro-grid/financeiro-grid.component';
 import { FinanceiroComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/financeiro/financeiro.component';
 import { FormsModule } from '@angular/forms';
+import { EstoqueGridComponent } from './Components/estoque/Components/estoque-grid/estoque-grid.component';
+import { EstoqueContentComponent } from './Components/estoque/Components/estoque-content/estoque-content.component';
 
 @NgModule({
   imports: [
@@ -68,7 +70,8 @@ import { FormsModule } from '@angular/forms';
     NotaFiscalComponent,
     FinanceiroGridComponent,
     FinanceiroComponent,
-
+    EstoqueGridComponent,
+    EstoqueContentComponent,
   ],
   bootstrap: [ClientComponent],
   exports: [ClientComponent, GeralComponent],

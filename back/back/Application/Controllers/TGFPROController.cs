@@ -1,5 +1,5 @@
 ﻿using back.data.http;
-using back.domain.DTO.TGFPRO;
+using back.domain.DTO.TGFProdutoDTO;
 using back.domain.entities;
 using back.domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -23,7 +23,7 @@ namespace back.Application.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<IResponse<List<TGFPRODTO>>>> GetAll(int page = 1, int limit = 10)
         {
             var response = new Response<List<TGFPRODTO>>();
@@ -32,6 +32,7 @@ namespace back.Application.Controllers
                 var result = await _TGFPRORepository.GetAllPaginateAsync(page, limit);
                 response.SetConfig(200);
                 response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception)
             {

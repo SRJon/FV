@@ -1,10 +1,9 @@
 using AutoMapper;
-using back.Application.Controllers;
 using back.data.entities.AnexoCont;
 using back.data.entities.AnexoDev;
 using back.data.entities.AnexoRep;
-using back.data.entities.Book;
-using back.data.entities.BookAnexo;
+using back.data.entities.BookAmostra;
+using back.data.entities.BookAnexoAmostra;
 using back.data.entities.BProduto;
 using back.data.entities.BProdutoImg;
 using back.data.entities.Diretorio;
@@ -37,16 +36,19 @@ using back.data.entities.AD_FAMGR2;
 using back.data.entities.AD_FAMGR3;
 using back.data.entities.TGFEXC;
 using back.data.entities.TGFIPI;
-using back.data.entities.TGFPRO;
+using back.data.entities.TGFProduto;
 using back.data.entities.VGFTAB;
 using back.data.entities.AD_PANTONE;
 using back.data.entities.AD_ESTPRODCOR;
 using back.data.entities.TGFTPVenda;
 using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
+using back.data.entities.TGFGrupoProdutoVendedor;
+using back.data.entities.TGFGrupoProduto;
 using back.data.entities.View_AD_DEVSOLICITACAO;
 using back.data.entities.TGFinanceiro;
 using back.data.entities.ViewAD_FINCOM;
+using back.data.entities.AD_Estoque;
 
 namespace back.MappingConfig
 {
@@ -105,8 +107,11 @@ namespace back.MappingConfig
                 cfg.CreateAD_ESTPRODCORMapper();
                 cfg.CreateTGFTPVMapper();
                 cfg.CreateTCSPRJMapper();
+                cfg.CreateTGFRGVMapper();
+                cfg.CreateTGFGRUMapper();
                 cfg.CreateAD_DEVSOLICITACAOMapper();
                 cfg.CreateAD_FINCOMMapper();
+                cfg.CreateAD_ESTCODPRODMapper();
 
             });
             return configuration;

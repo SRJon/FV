@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IPerfil } from 'src/app/Domain/Models/IPerfil';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
-import { getallNames } from './Actions/perfil/perfilGetAllOnly';
+import * as actions from './Actions';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +9,31 @@ import { getallNames } from './Actions/perfil/perfilGetAllOnly';
 export class PerfilService {
   constructor() {}
 
-  async getAllNames(
+  public async getAllPerfil(
     page: number,
-    limit: number
+    pageSize: number
   ): Promise<IResponse<IPerfil[]>> {
-    var response = getallNames(page, limit);
-    return response;
+    return await actions.perfil.PerfilGetAll(page, pageSize);
+  }
+
+  public async getAllNamesPerfil(
+    page: number,
+    pageSize: number
+  ): Promise<IResponse<IPerfil[]>> {
+    return await actions.perfil.PerfilGetAllNames(page, pageSize);
+  }
+
+  public async deletePerfil(id: number): Promise<IResponse<boolean>> {
+    return await actions.perfil.PerfilDelete(id);
+  }
+
+  public async updatePerfil(perfil: IPerfil): Promise<IResponse<boolean>> {
+    var result = await actions.perfil.PerfilUpdate(perfil);
+    return result;
+  }
+
+  public async createPerfil(perfil: IPerfil): Promise<IResponse<boolean>> {
+    var result = await actions.perfil.PerfilCreate(perfil);
+    return result;
   }
 }

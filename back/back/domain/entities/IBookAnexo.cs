@@ -1,4 +1,4 @@
-﻿using back.data.entities.Book;
+﻿using back.data.entities.BookAmostra;
 using System;
 using System.Collections.Generic;
 using System.Linq;
