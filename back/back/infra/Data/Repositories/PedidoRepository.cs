@@ -96,7 +96,8 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.Pedido.Include(u => u.Usuario).Include(e => e.Empresa).Include(p => p.PedidoItem).Where(u => u.ClienteCod == codParc).Skip(base.skip).OrderBy(o => o.Id).Take(base.limit);
+                var research = contexto.Pedido.Include(u => u.Usuario).Include(e => e.Empresa).Include(p => p.PedidoItem).Where(u => u.ClienteCod == codParc).Skip(base.skip).OrderBy(o => o.Id);
+                var savedSearches = research.Take(base.limit);
 
                 List<PedidoClienteDTO> dTOs = new List<PedidoClienteDTO>();
 
@@ -122,7 +123,7 @@ namespace back.infra.Data.Repositories
                     }
                 }
                 response.Data = dTOs;
-                response.TotalPages = await contexto.Pedido.CountAsync();
+                response.TotalPages = await research.CountAsync();
                 response.Page = page;
                 response.TotalPages = base.getTotalPages(response.TotalPages);
                 response.Success = true;

@@ -16,6 +16,7 @@ export class PaginateShare {
   setAttr(res: IResponse<any>) {
     this.paginate.currentPage = res.page;
     this.paginate.pageSize = res.totalPages;
+    this.paginate.setPage();
   }
   setPaginate(callback = (e: any) => {}): void {
     // @ts-ignore: Unreachable code error

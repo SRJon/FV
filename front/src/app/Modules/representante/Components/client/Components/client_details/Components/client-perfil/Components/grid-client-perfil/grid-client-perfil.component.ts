@@ -7,6 +7,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Pedido } from 'src/app/Domain/Models/IPedido';
+import { PaginateShare } from 'src/app/Shared';
 
 @Component({
   selector: 'app-grid-client-perfil',
@@ -16,9 +17,14 @@ import { Pedido } from 'src/app/Domain/Models/IPedido';
 export class GridClientPerfilComponent implements OnInit {
   @Input() listGrid: Pedido[] = [];
   contentHeight: number = 0;
-  @Output() onResized = new EventEmitter<number>();
+  @Output() onResized: EventEmitter<number>;
+  @Output() onPageChange: EventEmitter<number>;
+  @Input() paginate!: PaginateShare;
 
-  constructor() {}
+  constructor() {
+    this.onPageChange = new EventEmitter<number>();
+    this.onResized = new EventEmitter<number>();
+  }
 
   ngOnInit(): void {
     this.getSize();
@@ -34,7 +40,7 @@ export class GridClientPerfilComponent implements OnInit {
     )?.clientHeight;
 
     this.contentHeight = contentHeight || 0;
-    this.contentHeight -= 79;
+    this.contentHeight -= 150;
     this.contentHeight = this.contentHeight < 0 ? 0 : this.contentHeight;
     console.log(document.body.clientWidth);
     if (document.body.clientWidth <= 768) {

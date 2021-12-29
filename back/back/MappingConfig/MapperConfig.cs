@@ -48,6 +48,7 @@ using back.data.entities.TGFGrupoProduto;
 using back.data.entities.View_AD_DEVSOLICITACAO;
 using back.data.entities.TGFinanceiro;
 using back.data.entities.View_AD_ITEDEVSOLICITACAO;
+using back.data.entities.ViewAD_FINCOM;
 using back.data.entities.AD_Estoque;
 
 namespace back.MappingConfig
@@ -111,6 +112,7 @@ namespace back.MappingConfig
                 cfg.CreateTGFGRUMapper();
                 cfg.CreateAD_DEVSOLICITACAOMapper();
                 cfg.CreateAD_ITEDEVSOLICITACAOMapper();
+                cfg.CreateAD_FINCOMMapper();
                 cfg.CreateAD_ESTCODPRODMapper();
 
             });
