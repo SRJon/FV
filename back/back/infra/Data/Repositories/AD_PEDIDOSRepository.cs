@@ -1,16 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.http;
 using back.domain.DTO.AD_PEDIDOSDTO;
-using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.AD_PEDIDOSServices;
 using back.MappingConfig;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace back.infra.Data.Repositories

@@ -30,6 +30,7 @@ using back.data.entities.TSIEMP;
 using back.data.entities.UserEmp;
 using back.data.entities.AD_TIPNEG;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
+using back.data.entities.DataViews.VIEW_AD_GERAL_PV;
 using back.data.entities.AD_ESTPROGPROD;
 using back.data.entities.AD_FAMGR1;
 using back.data.entities.AD_FAMGR2;
@@ -74,6 +75,7 @@ namespace back.MappingConfig
                 cfg.CreateVersionDetailsMapper();
                 cfg.CreateAD_VGFRPVDetailsMapper();
                 cfg.CreateAD_PEDIDOSDetailsMapper();
+                cfg.CreateAD_GERAL_PVDetailsMapper();
                 cfg.CreateTGFPARMapper();
                 cfg.CreateTSIENDMapper();
                 cfg.CreateTSIBAIMapper();
