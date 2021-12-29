@@ -25,6 +25,12 @@ namespace back.data.entities.TSIEmpresa
             cfg.CreateMap<TSIEMPDTO, TSIEMPDevolucaoDTO>();
             cfg.CreateMap<TSIEMPDevolucaoDTO, TSIEMPDTO>();
 
+            cfg.CreateMap<TSIEMP, TSIEMPDTOSAC>();
+            cfg.CreateMap<TSIEMPDTOSAC, TSIEMP>();
+
+            cfg.CreateMap<TSIEMPDTO, TSIEMPDTOSAC>();
+            cfg.CreateMap<TSIEMPDTOSAC, TSIEMPDTO>();
+
             return cfg;
         }
     }

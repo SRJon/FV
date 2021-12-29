@@ -10,6 +10,7 @@ namespace back.domain.Repositories
     public interface IAD_DEVSOLICITACAORepository
     {
         public Task<AD_DEVSOLICITACAODTODevolucao> GetDevolucaoByNuSoldev(int nuSoldev);
-        public Task<Response<List<AD_DEVSOLICITACAODTODevolucao>>> GetAllDevolucaoPaginateAsync(int page, int limit, int codParc);
+        public Task<Response<List<AD_DEVSOLICITACAODTODevolucao>>> GetAllDevolucaoPaginateAsync(int page, int limit, int codVend);
+        public Task<Response<List<AD_DEVSOLICITACAOSACDTO>>> GetAllDevolucaoSACPaginateAsync(int page, int limit, int codVend);
     }
 }

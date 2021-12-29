@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using back.data.entities.TSICidade;
 using back.domain.entities;
 
 namespace back.data.entities.TGFParceiro
@@ -19,7 +20,6 @@ namespace back.data.entities.TGFParceiro
         public string numend { get; set; }
         public string complemento { get; set; }
         public int codbai { get; set; }
-        public int codcid { get; set; }
         public int codreg { get; set; }
         public string cep { get; set; }
         public string caixapostal { get; set; }
@@ -289,5 +289,8 @@ namespace back.data.entities.TGFParceiro
         public string ad_nomecontato { get; set; }
         public string ad_solicitresc { get; set; }
         public string chavepix { get; set; }
+        public int codcid { get; set; }
+        [ForeignKey("codcid")]
+        public virtual TSICID tsicid { get; set; }
     }
 }

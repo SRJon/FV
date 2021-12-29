@@ -7,9 +7,9 @@ namespace back.domain.DTO.TSIEmpDTO
 {
     public class TSIEMPDevolucaoDTO
     {
-        public short CODEMP { get; set; }
-        public string NOMEFANTASIA { get; set; }
-        public string RAZAOSOCIAL { get; set; }
+        public short codemp { get; set; }
+        public string nomefantasia { get; set; }
+        public string razaosocial { get; set; }
 
     }
 }

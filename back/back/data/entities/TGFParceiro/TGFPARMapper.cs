@@ -18,6 +18,10 @@ namespace back.data.entities.TGFParceiro
             cfg.CreateMap<TGFPARDTO, TGFPARDTOPedido>();
             cfg.CreateMap<TGFPARDTOPedido, TGFPARDTO>();
 
+            cfg.CreateMap<TGFPARDTO, TGFPARSACDTO>();
+            cfg.CreateMap<TGFPARSACDTO, TGFPARDTO>();
+            cfg.CreateMap<TGFPAR, TGFPARSACDTO>();
+            cfg.CreateMap<TGFPARSACDTO, TGFPAR>();
             cfg.CreateMap<TGFPARDTO, TGFPARClienteBasicoDTO>();
             cfg.CreateMap<TGFPARClienteBasicoDTO, TGFPARDTO>();
             cfg.CreateMap<TGFPAR, TGFPARClienteBasicoDTO>();
