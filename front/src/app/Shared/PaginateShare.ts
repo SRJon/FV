@@ -4,9 +4,19 @@ import { Paginate } from '../Domain/Models/Paginate';
 export class PaginateShare {
   paginateHtml: HTMLElement | null = null;
   paginate: Paginate;
+  showPageNumbers: boolean = false;
 
   public constructor() {
     this.paginate = new Paginate(1, 1, [1]);
+  }
+  setEnabePageNumbers(value: boolean) {
+    this.showPageNumbers = value;
+
+    this.setPaginate();
+  }
+  reset() {
+    // @ts-ignore: Unreachable code error
+    this.paginateHtml.empty();
   }
   setHtml(id: string) {
     // @ts-ignore: Unreachable code error
@@ -18,11 +28,20 @@ export class PaginateShare {
     this.paginate.pageSize = res.totalPages;
     this.paginate.setPage();
   }
-  setPaginate(callback = (e: any) => {}): void {
+  setPaginate(
+    callback = (e: any) => {
+      e;
+    }
+  ): void {
+    this.reset();
+    this.paginate.setPage();
     // @ts-ignore: Unreachable code error
     this.paginateHtml.pagination({
-      total: this.paginate.pageSize * 10,
+      total: this.paginate.pageSize * this.paginate.limit,
       current: this.paginate.currentPage,
+      pageSize: this.paginate.limit,
+      showPageNumbers: this.showPageNumbers,
+      showNavigator: true,
       click: function (e: any) {
         // ctx.paginate.currentPage = e.current;
         // ctx.clickOnPagination(e.current);

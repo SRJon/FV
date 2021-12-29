@@ -11,9 +11,7 @@ export class GeralComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.data, 'sssssssssssssssssss');
-  }
+  ngOnInit() {}
 
   cpfComputed() {
     return this.data.cgc_cpf.replace(

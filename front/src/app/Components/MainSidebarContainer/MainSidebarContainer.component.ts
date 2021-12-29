@@ -61,11 +61,7 @@ export class MainSidebarContainerComponent implements OnInit {
 
       granScreens.forEach((e, i) => {
         let related = subScreens.filter((sub) => sub.telaId == e.id);
-
         related.sort((a, b) => (b.ordem > a.ordem ? -1 : 1));
-        // console.log(related.map((e) => e.ordem));
-        // console.log(related);
-
         granScreens[i].relateds = related;
       });
       granScreens.sort((a, b) => (b.ordem > a.ordem ? -1 : 1));

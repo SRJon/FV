@@ -75,3 +75,16 @@ table {
   display: table;
   table-layout: fixed;
 }
+@media screen and (max-width: 768px) {
+  #table_id_paginate {
+    li {
+      display: none !important;
+    }
+    li:last-child {
+      display: block !important;
+    }
+    li:first-child {
+      display: block !important;
+    }
+  }
+}

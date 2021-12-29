@@ -10,8 +10,6 @@ export class SalesPlotComponent implements OnInit {
   res: any[] = [];
   constructor() {
     //@ts-ignore
-    console.log(chart.registerables);
-    //@ts-ignore
     chart.Chart.register(...chart.registerables);
   }
   ngOnInit(): void {
@@ -42,9 +40,9 @@ export class SalesPlotComponent implements OnInit {
       },
       options: {
         scales: {},
-        onResize: (newSize: any): void => {
-          console.log(chart, newSize);
-        },
+        // onResize: (newSize: any): void => {
+        //   console.log(chart, newSize);
+        // },
       },
     });
     var plot2 = document.getElementById('plot2') as HTMLCanvasElement;
@@ -74,9 +72,9 @@ export class SalesPlotComponent implements OnInit {
       },
       options: {
         scales: {},
-        onResize: (newSize: any): void => {
-          console.log(chart, newSize);
-        },
+        // onResize: (newSize: any): void => {
+        //   console.log(chart, newSize);
+        // },
       },
     });
 

@@ -44,8 +44,6 @@ export class LoginMenuComponent implements OnInit {
 
   Login() {
     if (this.serviceForm.valid) {
-      console.log(this.serviceForm.get('password'));
-      console.log(this.serviceForm.get('user'));
       this.onSubmit.emit(this.loginEntity);
       return;
     } else {

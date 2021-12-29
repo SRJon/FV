@@ -42,7 +42,6 @@ export class GridClientPerfilComponent implements OnInit {
     this.contentHeight = contentHeight || 0;
     this.contentHeight -= 150;
     this.contentHeight = this.contentHeight < 0 ? 0 : this.contentHeight;
-    console.log(document.body.clientWidth);
     if (document.body.clientWidth <= 768) {
       this.contentHeight -= 30;
     }

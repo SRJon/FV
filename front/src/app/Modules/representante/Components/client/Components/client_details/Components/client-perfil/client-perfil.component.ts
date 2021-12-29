@@ -43,5 +43,10 @@ export class ClientPerfilComponent implements OnInit {
   }
   onResized(m: number) {
     this.size = m;
+    if (document.body.clientWidth <= 768) {
+      this.paginate.setEnabePageNumbers(false);
+    } else {
+      this.paginate.setEnabePageNumbers(true);
+    }
   }
 }
