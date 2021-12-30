@@ -1,22 +1,22 @@
-<div class="row" style="padding: 0px 30px">
+<div class="row" style="padding: 0px 30px; font-size: 0.7em;">
   <div class="card-default">
     <div class="card-header" style="border: 1px solid #6c757d;">
       <form>
         <div class="row">
           <div class="col-sm-2">
-            <!-- text input -->
+            <!-- number input -->
             <div class="form-group">
               <label>PRODUTO</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" (change)="onProductChange($event)">
             </div>
           </div>
           <div class="col-sm-2">
             <!-- select -->
             <div class="form-group">
               <label>GRUPO DE PRODUTO</label>
-              <select class="form-select" aria-label="Default select" style="font-size: 0.9em;">
-                <option selected>SELECIONE UM GRUPO</option>
-                <option *ngFor="let grp of selectGrpPrd" [value]="grp.codgrupoprod" (click)="onChange(grp)">
+              <select class="form-select form-control" aria-label="Default select" style="font-size: 1em;">
+                <option selected (click)="onChangeSelectNull()">SELECIONE UM GRUPO</option>
+                <option *ngFor="let grp of selectGrpPrd" [value]="grp.codgrupoprod" (click)="onChangeSelect(grp)">
                   {{grp.codgrupoprod}} - {{ grp.descrgrupoprod }}
                 </option>
               </select>
@@ -26,14 +26,14 @@
             <!-- text input -->
             <div class="form-group">
               <label>DESCRIÇÃO</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" (change)="onDescChange($event)">
             </div>
           </div>
           <div class="col-sm-3">
             <!-- text input -->
             <div class="form-group">
               <label>COMPLEMENTO</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" (change)="onComplDescChange($event)">
             </div>
           </div>
           <div class="col-sm-2">

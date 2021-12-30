@@ -1,3 +1,4 @@
+import { ITGFRGV } from 'src/app/Domain/Models/ITGFRGV';
 import { Component, OnInit } from '@angular/core';
 import { IAD_ESTCODPROD } from 'src/app/Domain/Models/IAD_ESTCODPROD';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
@@ -89,6 +90,73 @@ export class EstoqueContentComponent implements OnInit {
       this.codgrupoprod,
       this.descrprod,
       this.compldesc
+    );
+  }
+  ProdutoFilter(produto: number) {
+    //~~ => converte string para int
+    if (~~produto > 0) {
+      this.getAll(
+        1,
+        10,
+        produto,
+        this.codgrupoprod,
+        this.descrprod,
+        this.compldesc
+      );
+    } else {
+      this.getAll(
+        1,
+        10,
+        this.produto,
+        this.codgrupoprod,
+        this.descrprod,
+        this.compldesc
+      );
+    }
+  }
+
+  CodGrupoProdFilter(CodGrupoProd: number) {
+    //~~ => converte string para int
+    if (~~CodGrupoProd > 0) {
+      this.getAll(
+        1,
+        10,
+        this.produto,
+        CodGrupoProd,
+        this.descrprod,
+        this.compldesc
+      );
+    } else {
+      this.getAll(
+        1,
+        10,
+        this.produto,
+        this.codgrupoprod,
+        this.descrprod,
+        this.compldesc
+      );
+    }
+  }
+
+  DescFilter(description: string) {
+    this.getAll(
+      1,
+      10,
+      this.produto,
+      this.codgrupoprod,
+      description,
+      this.compldesc
+    );
+  }
+
+  ComplDescFilter(compldesc: string) {
+    this.getAll(
+      1,
+      10,
+      this.produto,
+      this.codgrupoprod,
+      this.descrprod,
+      compldesc
     );
   }
 }

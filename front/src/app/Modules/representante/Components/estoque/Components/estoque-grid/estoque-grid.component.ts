@@ -62,6 +62,11 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
 
   grid: shareds.Grid;
 
+  @Output() onProdutoFilterChange;
+  @Output() onCodGrupoProdFilterChange;
+  @Output() onDescFilterChange;
+  @Output() onComplFilterChange;
+
   constructor(
     private userG: UserGlobal<IUser>,
     private StockService: StockService,
@@ -71,6 +76,10 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
 
     this.grid = new shareds.Grid();
     this.paginate = new Paginate(2000, 50);
+    this.onProdutoFilterChange = new EventEmitter<number>();
+    this.onCodGrupoProdFilterChange = new EventEmitter<number>();
+    this.onDescFilterChange = new EventEmitter<string>();
+    this.onComplFilterChange = new EventEmitter<string>();
   }
 
   initGrid(): void {
@@ -105,8 +114,13 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
     return this.listGridTitle[index];
   }
 
-  onChange(selectGrpPrd: ITGFGRU) {
+  onChangeSelect(selectGrpPrd: ITGFGRU) {
     this.selectedGrpPrd = selectGrpPrd;
+    this.onCodGrupoProdChange(this.selectedGrpPrd.codgrupoprod);
+  }
+
+  onChangeSelectNull() {
+    this.onCodGrupoProdChange(0);
   }
 
   clickOnPagination(page: number): void {
@@ -173,5 +187,21 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
   onDetail(obj: IAD_ESTCODPROD | undefined): void {
     this.selectedRecord = obj;
     alert(obj);
+  }
+
+  onProductChange(produto: any) {
+    this.onProdutoFilterChange.emit(produto.target.value);
+  }
+
+  onCodGrupoProdChange(codGrupoProd: number) {
+    this.onCodGrupoProdFilterChange.emit(codGrupoProd);
+  }
+
+  onDescChange(desc: any) {
+    this.onDescFilterChange.emit(desc.target.value);
+  }
+
+  onComplDescChange(complDesc: any) {
+    this.onComplFilterChange.emit(complDesc.target.value);
   }
 }

@@ -6,7 +6,10 @@
     <div class="row pb-5">
       <div class="pt-4">
         <app-estoque-grid [listGrid]="estoques.data" [paginate]="paginate" [totalItems]="paginate.totalItems"
-          (nextSelection)="onNextSelection($event)"></app-estoque-grid>
+          (nextSelection)="onNextSelection($event)" (onDescFilterChange)="DescFilter($event)"
+          (onComplFilterChange)="ComplDescFilter($event)" (onProdutoFilterChange)="ProdutoFilter($event)"
+          (onCodGrupoProdFilterChange)="CodGrupoProdFilter($event)">
+        </app-estoque-grid>
       </div>
     </div>
   </div>
