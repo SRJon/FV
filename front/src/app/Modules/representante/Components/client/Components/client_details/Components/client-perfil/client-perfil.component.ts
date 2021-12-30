@@ -32,7 +32,7 @@ export class ClientPerfilComponent implements OnInit {
         this.services.GetAllByCodParc(Number(this.id)).then((result) => {
           this.listGrid = result.data;
           this.paginate.setAttr(result);
-          this.paginate.setPaginate();
+          this.paginate.setPaginate(console.log);
         });
       }
     });

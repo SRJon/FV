@@ -5,6 +5,7 @@ export class PaginateShare {
   paginateHtml: HTMLElement | null = null;
   paginate: Paginate;
   showPageNumbers: boolean = false;
+  callback: any;
 
   public constructor() {
     this.paginate = new Paginate(1, 1, [1]);
@@ -33,6 +34,9 @@ export class PaginateShare {
       e;
     }
   ): void {
+    if (!this.callback) {
+      this.callback = callback;
+    }
     this.reset();
     this.paginate.setPage();
     // @ts-ignore: Unreachable code error
@@ -45,7 +49,7 @@ export class PaginateShare {
       click: function (e: any) {
         // ctx.paginate.currentPage = e.current;
         // ctx.clickOnPagination(e.current);
-        callback(e.current);
+        this.callback(e.current);
       },
     });
   }

@@ -48,4 +48,8 @@ export class GridClientPerfilComponent implements OnInit {
 
     this.onResized.emit(this.contentHeight);
   }
+  computedDate(data: Date) {
+    let d = new Date(data);
+    return d.toLocaleDateString('pt-BR');
+  }
 }

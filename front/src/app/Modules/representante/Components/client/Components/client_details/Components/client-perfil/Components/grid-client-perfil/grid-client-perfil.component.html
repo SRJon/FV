@@ -32,15 +32,24 @@
         {{ item.estoque }}
       </td>
       <td data-column="column5" class="column100 column5">{{ item.frete }}</td>
-      <td data-column="column6" class="column100 column6 ocult">60 DIAS</td>
-      <td data-column="column7" class="column100 column7 ocult">Não</td>
-      <td data-column="column8" class="column100 column8 ocult">Não</td>
-      <td data-column="column9" class="column100 column9 ocult"></td>
-      <td data-column="column10" class="column100 column10 ocult">Não</td>
+      <td data-column="column6" class="column100 column6 ocult">
+        <input type="checkbox" [checked]="item.remessa" disabled />
+      </td>
+      <td data-column="column7" class="column100 column7 ocult">
+        {{ item.tgfpar.nomeparc }}
+      </td>
+      <td data-column="column8" class="column100 column8 ocult">
+        {{ computedDate(item.condPagDhAlter) }}
+      </td>
+      <td data-column="column9" class="column100 column9 ocult">
+        <input type="checkbox" [checked]="item.pilotagem" disabled />
+      </td>
+      <td data-column="column10" class="column100 column10 ocult">
+        <input type="checkbox" [checked]="item.ld != 'N'" disabled />
+      </td>
       <td data-column="column11" class="column100 column11 ocult">
-        26/04/2021 16:00:52
+        {{ computedDate(item.dtEnvio) }}
       </td>
     </tr>
   </tbody>
 </table>
-page: {{ paginate?.paginate?.listPage }}
