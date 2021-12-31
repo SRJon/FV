@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using back.data.http;
 using back.domain.DTO.AD_GERAL_PVDTO;
 
 namespace back.domain.Repositories

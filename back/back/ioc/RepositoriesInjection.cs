@@ -57,7 +57,8 @@ namespace back.ioc
             services.AddScoped<IAD_ESTPRODCORRepository, AD_ESTPRODCORRepository>();
             services.AddScoped<IAD_PEDIDOSRepository, AD_PEDIDOSRepository>();
             services.AddScoped<IAD_GERAL_PVRepository, AD_GERAL_PVRepository>();
-
+            services.AddScoped<IAD_EXTRA_PVRepository, AD_EXTRA_PVRepository>();
+            
             return services;
         }
     }
