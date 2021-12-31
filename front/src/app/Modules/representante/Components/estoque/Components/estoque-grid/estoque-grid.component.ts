@@ -17,6 +17,7 @@ import { Paginate } from 'src/app/Domain/Models/Paginate';
 import * as shareds from 'src/app/Shared';
 import { AlertsService } from 'src/app/Repository/Alerts/alerts.service';
 import { AuthenticationService } from 'src/app/Modules/login/Services/Authentication.service';
+import { EstoqueSearch } from 'src/app/Domain/Models/estoqueSearch';
 @Component({
   selector: 'app-estoque-grid',
   templateUrl: './estoque-grid.component.html',

@@ -30,7 +30,7 @@ import { GridNotaFiscalComponent } from './Components/client/Components/client_d
 import { NotaFiscalComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/nota-fiscal/nota-fiscal.component';
 import { FinanceiroGridComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/financeiro-grid/financeiro-grid.component';
 import { FinanceiroComponent } from './Components/client/Components/client_details/Components/client-perfil/Components/financeiro/financeiro.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EstoqueGridComponent } from './Components/estoque/Components/estoque-grid/estoque-grid.component';
 import { EstoqueContentComponent } from './Components/estoque/Components/estoque-content/estoque-content.component';
 import { DetailEstoqueComponentComponent } from './Components/estoque/Components/estoque-content/detail-estoque-component/detail-estoque-component.component';
@@ -42,6 +42,7 @@ import { ReportEstoqueComponentComponent } from './Components/estoque/Components
     RepresentanteRoutingModule,
     SegurancaModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     GeralComponent,
