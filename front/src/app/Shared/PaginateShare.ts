@@ -30,11 +30,10 @@ export class PaginateShare {
     this.paginate.setPage();
   }
   setPaginate(callback?: any): void {
-    console.log(this);
-
-    if (!callback) {
+    if (!!callback) {
       console.log(this.callback, 'callback');
       this.callback = callback;
+      console.log(this.callback, 'callback2');
     }
     this.reset();
     this.paginate.setPage();
@@ -47,11 +46,7 @@ export class PaginateShare {
       showPageNumbers: this.showPageNumbers,
       showNavigator: true,
       click: function (e: any) {
-        // ctx.paginate.currentPage = e.current;
-        // ctx.clickOnPagination(e.current);
         instance.callback(e);
-        console.log(instance);
-        // this.callback(e.current);
       },
     });
   }

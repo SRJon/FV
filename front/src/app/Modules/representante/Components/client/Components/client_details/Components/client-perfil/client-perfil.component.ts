@@ -55,7 +55,10 @@ export class ClientPerfilComponent implements OnInit {
       .then((result) => {
         this.listGrid = result.data;
         this.paginate.setAttr(result);
-        this.paginate.setPaginate((e: any) => console.log('e', e));
+        this.paginate.setPaginate(
+          (e: { current: number; length: number; total: number }) =>
+            this.getAll(e.current, e.length)
+        );
       });
   }
 }
