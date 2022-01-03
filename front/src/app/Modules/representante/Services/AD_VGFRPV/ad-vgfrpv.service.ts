@@ -27,4 +27,7 @@ export class ADVGFRPVService {
   ): Promise<IResponse<Pedido[]>> {
     return await actions.GetAllByCodParc(codParc, page, limit);
   }
+  async GetAllNF(codParc: number, page: number, limit: number) {
+    return await actions.GetAllNF(codParc, page, limit);
+  }
 }

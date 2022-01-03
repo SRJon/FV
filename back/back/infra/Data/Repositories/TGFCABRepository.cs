@@ -37,11 +37,11 @@ namespace back.infra.Data.Repositories
 
                 List<TGFCABNuNotaDTO> dTOs = new List<TGFCABNuNotaDTO>();
 
-                var notas = await savedSearches.ToListAsync();
+                var notas = await savedSearches.Skip(base.skip).Take(limit).ToListAsync();
                 notas.ForEach(e => dTOs.Add(_mapper.Map<TGFCABNuNotaDTO>(e)));
 
                 response.Data = dTOs;
-                response.TotalPages = await contexto.TGFCAB.CountAsync();
+                response.TotalPages = await savedSearches.CountAsync();
                 response.Page = page;
                 response.TotalPages = base.getTotalPages(response.TotalPages);
                 response.Success = true;

@@ -5,8 +5,14 @@
     </div>
     <div class="row mt-2 h-75">
       <div class="content" style="overflow-y: scroll; max-height: 344px">
-        <app-grid-nota-fiscal></app-grid-nota-fiscal>
+        <app-grid-nota-fiscal [listGrid]="listGrid"></app-grid-nota-fiscal>
       </div>
+    </div>
+    <div class="row">
+      <ul
+        id="table_id_paginate"
+        class="pagination d-flex justify-content-end"
+      ></ul>
     </div>
   </div>
 </div>

@@ -25,6 +25,8 @@ export class EmpresaContentComponent implements OnInit {
       vlrMinFrete: 0,
       vlrMinPedido: 0,
       codEmp: 0,
+      nomefantasia: '',
+      razaosocial: '',
     };
   }
   ngOnInit(): void {
