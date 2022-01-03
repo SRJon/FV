@@ -1,4 +1,4 @@
-﻿namespace back.data.entities.VGFTAB
+﻿namespace back.data.entities.View_VGFTAB
 {
     public class VGFTABGetAllEntity
     {

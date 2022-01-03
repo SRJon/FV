@@ -1,4 +1,4 @@
-﻿using back.data.entities.AD_TIPNEG;
+﻿using back.data.entities.View_AD_TIPNEG;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

@@ -1,6 +1,6 @@
 ﻿using back.domain.entities;
 
-namespace back.data.entities.AD_FAMGR2
+namespace back.data.entities.AD_FamiliaGR2
 {
     public class AD_FAMGR2 : IAD_FAMGR2
     {

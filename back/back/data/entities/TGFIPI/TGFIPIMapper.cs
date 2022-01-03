@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.TGFIPI;
 
-namespace back.data.entities.TGFIPI
+namespace back.data.entities.TGFIPImposto
 {
     public static class TGFIPIMapper
     {

@@ -1,4 +1,4 @@
-﻿namespace back.data.entities.TGFEXC
+﻿namespace back.data.entities.TGFEXCProduto
 {
     public class TGFEXCGetAllEntity
     {

@@ -1,4 +1,4 @@
-﻿using back.data.entities.TGFIPI;
+﻿using back.data.entities.TGFIPImposto;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

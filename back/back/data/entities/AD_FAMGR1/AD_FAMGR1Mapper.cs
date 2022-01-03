@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.AD_FAMGR1;
 
-namespace back.data.entities.AD_FAMGR1
+namespace back.data.entities.AD_FamiliaGR1
 {
     public static class AD_FAMGR1Mapper
     {

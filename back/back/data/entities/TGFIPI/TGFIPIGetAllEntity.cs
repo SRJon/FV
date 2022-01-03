@@ -1,4 +1,4 @@
-﻿namespace back.data.entities.TGFIPI
+﻿namespace back.data.entities.TGFIPImposto
 {
     public class TGFIPIGetAllEntity
     {

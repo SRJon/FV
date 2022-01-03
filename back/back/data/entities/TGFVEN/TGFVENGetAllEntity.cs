@@ -1,4 +1,4 @@
-﻿namespace back.data.entities.TGFVEN
+﻿namespace back.data.entities.TGFVendedor
 {
     public class TGFVENGetAllEntity
     {
