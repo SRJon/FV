@@ -26,7 +26,7 @@ namespace back.infra.Data.Repositories
         // Métido auxiliar para verificar se a variável tipo string está nula ou vazia
         private static bool IsNullOrEmpty(string text)
         {
-            return text == null || text == string.Empty;            
+            return text == null || text == string.Empty;
         }
 
         /*
@@ -39,27 +39,22 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.AD_ESTCODPROD.Skip(base.skip).OrderBy(o => o.PRODUTO).Take(base.limit);
+                var savedSearches = contexto.AD_ESTCODPROD.Take(int.MaxValue);
 
-                if(Produto != -1) savedSearches = savedSearches.Where(x => x.PRODUTO == Produto);
-                if(CodGrupoProd != -1) savedSearches = savedSearches.Where(x => x.CODGRUPOPROD == CodGrupoProd);
-                if(!IsNullOrEmpty(DescrProd)) savedSearches = savedSearches.Where(x => x.DESCRPROD.Contains(DescrProd));
+                if (Produto != -1) savedSearches = savedSearches.Where(x => x.PRODUTO == Produto);
+                if (CodGrupoProd != -1) savedSearches = savedSearches.Where(x => x.CODGRUPOPROD == CodGrupoProd);
+                if (!IsNullOrEmpty(DescrProd)) savedSearches = savedSearches.Where(x => x.DESCRPROD.Contains(DescrProd));
                 if (!IsNullOrEmpty(ComplDesc)) savedSearches = savedSearches.Where(x => x.COMPLDESC.Contains(ComplDesc));
 
                 List<AD_ESTCODPRODDTO> dTOs = new List<AD_ESTCODPRODDTO>();
 
-                var parceiros = await savedSearches.ToListAsync();
-                //parceiros.ForEach(e => dTOs.Add(_mapper.Map<AD_ESTCODPRODDTO>(e)));
-                foreach( var e in parceiros)
-                {
-                    dTOs.Add(_mapper.Map<AD_ESTCODPRODDTO>(e));
-                }
+                var parceiros = await savedSearches.Skip(this.skip).OrderBy(e => e.PRODUTO).Take(this.limit).ToListAsync();
+                parceiros.ForEach(e => dTOs.Add(_mapper.Map<AD_ESTCODPRODDTO>(e)));
+
 
                 response.Data = dTOs;
-                response.TotalPages = await contexto.AD_ESTCODPROD.CountAsync();
+                response.TotalPages = this.getTotalPages(await savedSearches.CountAsync());
                 response.Page = page;
-                response.TotalPages = (response.TotalPages / base.limit) + 1;
-                response.TotalPages = response.TotalPages == 0 ? 0 : response.TotalPages;
                 response.Success = true;
                 response.StatusCode = 200;
                 return response;
@@ -73,6 +68,6 @@ namespace back.infra.Data.Repositories
                 return response;
             }
         }
-      
+
     }
 }

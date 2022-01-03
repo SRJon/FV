@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { IUser } from 'src/app/Domain/Models/IUser';
 
 @Injectable({
   providedIn: 'root',
@@ -47,5 +48,26 @@ export class AuthenticationService {
   }
   removeToken() {
     localStorage.removeItem('token');
+  }
+
+  static setGlogalUser(user: any) {
+    // @ts-ignore: Unreachable code error
+    window._5653435435435435435354354345845843584346845846466446_244_u_s_e_r =
+      user;
+  }
+  static async getGlobalUser(): Promise<IUser> {
+    let response: any;
+
+    return await new Promise((r) => {
+      const interval = setInterval(() => {
+        response =
+          // @ts-ignore: Unreachable code error
+          window._5653435435435435435354354345845843584346845846466446_244_u_s_e_r;
+        if (response) {
+          r(response);
+          clearInterval(interval);
+        }
+      }, 10);
+    });
   }
 }

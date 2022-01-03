@@ -3,6 +3,7 @@ import { IAD_ESTCODPROD } from 'src/app/Domain/Models/IAD_ESTCODPROD';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
 import { Paginate } from 'src/app/Domain/Models/Paginate';
 import { StockService } from 'src/app/Modules/representante/Services/stock.service';
+import { EstoqueSearch } from 'src/app/Domain/Models/estoqueSearch';
 
 @Component({
   selector: 'app-estoque-content',
@@ -19,6 +20,7 @@ export class EstoqueContentComponent implements OnInit {
   codgrupoprod: number = -1;
   descrprod: string = '';
   compldesc: string = '';
+  estoqueSearch: EstoqueSearch;
 
   constructor(private stockService: StockService) {
     this.estoques = {} as IResponse<IAD_ESTCODPROD[]>;
@@ -27,47 +29,38 @@ export class EstoqueContentComponent implements OnInit {
     this.initialParam = {
       produto: 0,
       codgrupoprod: 0,
+      descrgrupoprod: '',
       aD_CODANT: '',
       codvol: '',
       descrprod: '',
       compldesc: '',
+      aD_LARGURATECIDO: 0,
+      aD_GRAMATURA: 0,
+      ncm: '',
       percentual: 0,
     };
+    this.estoqueSearch = EstoqueSearch.getInstance();
   }
   ngOnInit(): void {
-    this.getAll(
-      1,
-      10,
-      this.produto,
-      this.codgrupoprod,
-      this.descrprod,
-      this.compldesc
-    );
+    this.getAll(1, 10);
   }
 
   openModal(isClose: boolean) {
     this.isOpen = !isClose;
     if (isClose) {
-      this.getAll(
-        this.paginate.currentPage,
-        10,
-        this.produto,
-        this.codgrupoprod,
-        this.descrprod,
-        this.compldesc
-      );
+      this.getAll(this.paginate.currentPage, 10);
     }
   }
-  getAll(
-    page: number,
-    limit: number = 10,
-    Produto: number = -1,
-    CodGrupoProd: number = -1,
-    DescrProd: string,
-    ComplDesc: string
-  ) {
+  getAll(page: number, limit: number = 10) {
     this.stockService
-      .getAdEstCodProd(page, limit, Produto, CodGrupoProd, DescrProd, ComplDesc)
+      .getAdEstCodProd(
+        page,
+        limit,
+        this.estoqueSearch.produto,
+        this.estoqueSearch.codgrupoprod,
+        this.estoqueSearch.descrprod,
+        this.estoqueSearch.compldesc
+      )
       .then((response) => {
         this.estoques = response;
         this.paginate.pageSize = response.totalPages;
@@ -78,13 +71,37 @@ export class EstoqueContentComponent implements OnInit {
 
   onNextSelection(page: number) {
     this.paginate.currentPage = page;
-    this.getAll(
-      page,
-      10,
-      this.produto,
-      this.codgrupoprod,
-      this.descrprod,
-      this.compldesc
-    );
+    this.getAll(page, 10);
+  }
+  ProdutoFilter(produto: number) {
+    //~~ => converte string para int
+    if (~~produto > 0) {
+      this.estoqueSearch.produto = produto;
+      this.getAll(1, 10);
+    } else {
+      this.estoqueSearch.produto = -1;
+      this.getAll(1, 10);
+    }
+  }
+
+  CodGrupoProdFilter(codGrupoProd: number) {
+    //~~ => converte string para int
+    if (~~codGrupoProd > 0) {
+      this.estoqueSearch.codgrupoprod = codGrupoProd;
+      this.getAll(1, 10);
+    } else {
+      this.estoqueSearch.codgrupoprod = -1;
+      this.getAll(1, 10);
+    }
+  }
+
+  DescFilter(description: string) {
+    this.estoqueSearch.descrprod = description;
+    this.getAll(1, 10);
+  }
+
+  ComplDescFilter(compldesc: string) {
+    this.estoqueSearch.compldesc = compldesc;
+    this.getAll(1, 10);
   }
 }
