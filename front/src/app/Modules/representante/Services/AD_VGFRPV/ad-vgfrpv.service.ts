@@ -20,7 +20,11 @@ export class ADVGFRPVService {
   async GetByParc(codParc: number = 1): Promise<IResponse<IAvgfrpvgetall>> {
     return await actions.GetByParc(codParc);
   }
-  async GetAllByCodParc(codParc: number = 1): Promise<IResponse<Pedido[]>> {
-    return await actions.GetAllByCodParc(codParc);
+  async GetAllByCodParc(
+    codParc: number = 1,
+    page: number = 1,
+    limit: number = 10
+  ): Promise<IResponse<Pedido[]>> {
+    return await actions.GetAllByCodParc(codParc, page, limit);
   }
 }

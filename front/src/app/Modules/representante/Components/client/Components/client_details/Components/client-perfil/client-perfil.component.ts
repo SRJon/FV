@@ -29,11 +29,10 @@ export class ClientPerfilComponent implements OnInit {
     this._Activatedroute.paramMap.subscribe((params) => {
       this.id = params.get('id') as string;
       if (this.id) {
-        this.services.GetAllByCodParc(Number(this.id)).then((result) => {
-          this.listGrid = result.data;
-          this.paginate.setAttr(result);
-          this.paginate.setPaginate(console.log);
-        });
+        this.getAll(
+          this.paginate.paginate.currentPage,
+          this.paginate.paginate.limit
+        );
       }
     });
   }
@@ -48,5 +47,15 @@ export class ClientPerfilComponent implements OnInit {
     } else {
       this.paginate.setEnabePageNumbers(true);
     }
+  }
+
+  getAll(page: number, limit: number) {
+    this.services
+      .GetAllByCodParc(Number(this.id), page, limit)
+      .then((result) => {
+        this.listGrid = result.data;
+        this.paginate.setAttr(result);
+        this.paginate.setPaginate((e: any) => console.log('e', e));
+      });
   }
 }

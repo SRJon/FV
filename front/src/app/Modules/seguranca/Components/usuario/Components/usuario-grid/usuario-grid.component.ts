@@ -120,7 +120,7 @@ export class UsuarioGridComponent implements OnInit {
   setPaginate(): void {
     this.grid.sharePaginate.setHtml('#table_id_paginate');
     this.grid.sharePaginate.paginate = this.paginate;
-    this.grid.sharePaginate.setPaginate((e) => {
+    this.grid.sharePaginate.setPaginate((e: any) => {
       this.clickOnPagination(e);
     });
     this.grid.render();

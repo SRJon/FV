@@ -29,16 +29,16 @@ export class PaginateShare {
     this.paginate.pageSize = res.totalPages;
     this.paginate.setPage();
   }
-  setPaginate(
-    callback = (e: any) => {
-      e;
-    }
-  ): void {
-    if (!this.callback) {
+  setPaginate(callback?: any): void {
+    console.log(this);
+
+    if (!callback) {
+      console.log(this.callback, 'callback');
       this.callback = callback;
     }
     this.reset();
     this.paginate.setPage();
+    let instance = this;
     // @ts-ignore: Unreachable code error
     this.paginateHtml.pagination({
       total: this.paginate.pageSize * this.paginate.limit,
@@ -49,7 +49,9 @@ export class PaginateShare {
       click: function (e: any) {
         // ctx.paginate.currentPage = e.current;
         // ctx.clickOnPagination(e.current);
-        this.callback(e.current);
+        instance.callback(e);
+        console.log(instance);
+        // this.callback(e.current);
       },
     });
   }
