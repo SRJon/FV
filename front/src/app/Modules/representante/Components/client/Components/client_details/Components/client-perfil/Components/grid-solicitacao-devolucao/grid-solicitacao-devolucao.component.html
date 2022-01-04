@@ -12,15 +12,31 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="row100">
-      <td data-column="column1" class="column100 column1">2996</td>
-      <td data-column="column2" class="column100 column2">LITORAL COMERCIO</td>
-      <td data-column="column3" class="column100 column3">173194</td>
-      <td data-column="column4" class="column100 column4">02/09/2020</td>
-      <td data-column="column5" class="column100 column5">Parcial</td>
-      <td data-column="column6" class="column100 column6">Sim</td>
-      <td data-column="column7" class="column100 column7">23,34</td>
-      <td data-column="column8" class="column100 column8">2,00</td>
+    <tr class="row100" *ngFor="let item of listGrid">
+      <td data-column="column1" class="column100 column1">
+        {{ item.nusoldev }}
+      </td>
+      <td data-column="column2" class="column100 column2">
+        {{ item.empresa.nomefantasia }}
+      </td>
+      <td data-column="column3" class="column100 column3">
+        {{ item.tgfcab.numnota }}
+      </td>
+      <td data-column="column4" class="column100 column4">
+        {{ convertDate(item.dtNeg) }}
+      </td>
+      <td data-column="column5" class="column100 column5">
+        {{ converType(item.tipoDev) }}
+      </td>
+      <td data-column="column6" class="column100 column6">
+        {{ item.desconto == "S" ? "Sim" : "Não" }}
+      </td>
+      <td data-column="column7" class="column100 column7">
+        {{ item.percDesc }}
+      </td>
+      <td data-column="column8" class="column100 column8">
+        {{ item.comissao }}
+      </td>
     </tr>
   </tbody>
 </table>
