@@ -17,7 +17,9 @@ namespace back.domain.entities
         public Nullable<Double> AD_LARGURATECIDO { get; set; }        
         public Nullable<Double> AD_GRAMATURA { get; set; }
         public String NCM { get; set; }
+        public Nullable<Double> AD_RENDIMENTOTECIDO { get; set; }
         public Nullable<Double> PERCENTUAL { get; set; }
+        public String AD_BRIEFING { get; set; }
 
     }
 }

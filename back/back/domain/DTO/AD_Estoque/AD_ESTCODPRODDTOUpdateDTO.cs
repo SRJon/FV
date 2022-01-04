@@ -15,6 +15,7 @@ namespace back.domain.DTO.AD_Estoque
         public double? AD_LARGURATECIDO { get; set; }
         public double? AD_GRAMATURA { get; set; }
         public string NCM { get; set; }
-     
+        public double? AD_RENDIMENTOTECIDO { get; set; }
+        public string AD_BRIEFING { get; set; }
     }
 }
