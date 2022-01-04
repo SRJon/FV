@@ -34,7 +34,7 @@ using back.data.entities.TGFinanceiro;
 using back.data.entities.View_AD_ITEDEVSOLICITACAO;
 using back.data.entities.ViewAD_FINCOM;
 using back.data.entities.AD_Estoque;
-
+using back.data.entities.View_AD_PED;
 
 namespace back.infra.Data.Context
 {
@@ -81,6 +81,7 @@ namespace back.infra.Data.Context
         public DbSet<AD_DEVSOLICITACAO> AD_DEVSOLICITACAO { get; set; }
         public DbSet<AD_ITEDEVSOLICITACAO> AD_ITEDEVSOLICITACAO { get; set; }
         public DbSet<AD_FINCOM> AD_FINCOM { get; set; }
+        public DbSet<AD_PED> AD_PED { get; set; }
 
 
         public DbSet<AD_ESTCODPROD> AD_ESTCODPROD { get; set; }
@@ -119,6 +120,7 @@ namespace back.infra.Data.Context
             modelBuilder.TGFVENRelationConfiguring();
             modelBuilder.VGFTABRelationConfiguring();
             modelBuilder.AD_ITEDEVSOLICITACAORelationConfiguring();
+            modelBuilder.AD_PEDRelationConfiguring();
 
 
 
