@@ -30,4 +30,7 @@ export class ADVGFRPVService {
   async GetAllNF(codParc: number, page: number, limit: number) {
     return await actions.GetAllNF(codParc, page, limit);
   }
+  async GetSolicitacaoDevolucao(codParc: number, page: number, limit: number) {
+    return await actions.GetSolicitacaoDevolucao(codParc, page, limit);
+  }
 }
