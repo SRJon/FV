@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { INotaFiscal } from 'src/app/Domain/Models/INotaFiscal';
 import { ADVGFRPVService } from 'src/app/Modules/representante/Services/AD_VGFRPV/ad-vgfrpv.service';
@@ -13,11 +13,13 @@ export class NotaFiscalComponent implements OnInit {
   id: string = '';
   listGrid: INotaFiscal[] = [];
   paginate: PaginateShare;
+  contentHeight: number;
 
   constructor(
     private _Activatedroute: ActivatedRoute,
     private service: ADVGFRPVService
   ) {
+    this.contentHeight = 0;
     this.paginate = new PaginateShare();
     this._Activatedroute.paramMap.subscribe((params) => {
       this.id = params.get('id') as string;
@@ -27,6 +29,7 @@ export class NotaFiscalComponent implements OnInit {
   ngOnInit(): void {
     this.paginate.setHtml('#table_id_paginate');
     this.getAll();
+    this.getSize();
   }
 
   getAll(page: number = 1, limit = 10) {
@@ -37,5 +40,17 @@ export class NotaFiscalComponent implements OnInit {
         this.getAll(e.current, e.limit);
       });
     });
+  }
+  @HostListener('window:resize', ['$event'])
+  getSize() {
+    let doc = document.querySelector('#tab_3 > app-nota-fiscal > div > div');
+    let contentHeight = doc?.clientHeight;
+
+    this.contentHeight = contentHeight || 0;
+    this.contentHeight -= 150;
+    this.contentHeight = this.contentHeight < 0 ? 0 : this.contentHeight;
+    if (document.body.clientWidth <= 768) {
+      this.contentHeight -= 30;
+    }
   }
 }
