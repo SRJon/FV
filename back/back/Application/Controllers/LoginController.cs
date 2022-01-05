@@ -1,3 +1,4 @@
+using System.Net.Mail;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.entities.Login;
@@ -7,6 +8,7 @@ using back.domain.DTO.Login;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.DTO.Authentication;
+using back.infra.Data.Repositories;
 using back.infra.Data.Utils;
 using back.infra.Services.Authentication;
 using back.MappingConfig;
@@ -40,7 +42,9 @@ namespace back.Application.Controllers
             {
                 Usuario userCredentials = _userRepository.GetByIdAsync(int.Parse(UserId.ToString()));
                 var token = TokenService.GenerateToken(userCredentials.ToDto());
+                EmailRepository.SendEmail("teste", "destinatario@teste.com.br");
                 return Ok(new { token });
+
             }
             return BadRequest("Invalid login");
         }
