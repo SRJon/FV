@@ -73,8 +73,8 @@
             <span *ngSwitchDefault>{{ item[title] }}</span>
           </td>
           <td class="listActions pt-1 pb-1">
-            <button type="button" class="m-1 btn btn-outline-secondary" (click)="onDetail(item)" style="width: 40px;"
-              data-toggle="tooltip" data-placement="bottom" title="Informações">
+            <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#modal-detail-estoque"
+              (click)="onDetail(item)" data-placement="bottom" title="Informações" style="width: 40px; height: 40px;">
               <i class="fa fa-info"></i>
             </button>
           </td>

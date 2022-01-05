@@ -187,7 +187,8 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
 
   onDetail(obj: IAD_ESTCODPROD | undefined): void {
     this.selectedRecord = obj;
-    alert(obj);
+
+    console.table(this.selectedRecord);
   }
 
   onProductChange(produto: any) {
