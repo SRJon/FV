@@ -20,7 +20,7 @@ namespace back.Application.Controllers
         private readonly IAD_STATUSRepository _STATUSRepository;
         private readonly IMapper _mapper;
 
-        public AD_STATUSController(IAD_STATUSRepository sTATUSRepository, IMapper mapper)
+        public AD_STATUSController(IAD_STATUSRepository sTATUSRepository)
         {
             _STATUSRepository = sTATUSRepository;
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
