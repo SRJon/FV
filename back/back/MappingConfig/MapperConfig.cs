@@ -51,6 +51,7 @@ using back.data.entities.View_AD_ITEDEVSOLICITACAO;
 using back.data.entities.ViewAD_FINCOM;
 using back.data.entities.AD_Estoque;
 using back.data.entities.View_AD_PED;
+using back.data.entities.AD_STATUSLit;
 
 namespace back.MappingConfig
 {
@@ -116,6 +117,7 @@ namespace back.MappingConfig
                 cfg.CreateAD_FINCOMMapper();
                 cfg.CreateAD_ESTCODPRODMapper();
                 cfg.CreateAD_PEDMapper();
+                cfg.CreateAD_STATUSMapper();
 
 
             });

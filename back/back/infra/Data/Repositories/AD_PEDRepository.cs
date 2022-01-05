@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 namespace back.infra.Data.Repositories
 {
     public class AD_PEDRepository : ValidPagination, IAD_PEDRepository
-    {//TODO AD_PEDREPOSITORY
+    {
         private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
 

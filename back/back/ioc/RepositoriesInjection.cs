@@ -66,6 +66,7 @@ namespace back.ioc
             services.AddScoped<IAD_FINCOMRepository, AD_FINCOMRepository>();
             services.AddScoped<IAD_ESTCODPRODRepository, AD_ESTCODPRODRepository>();
             services.AddScoped<IAD_PEDRepository, AD_PEDRepository>();
+            services.AddScoped<IAD_STATUSRepository, AD_STATUSRepository>();
 
             return services;
         }
