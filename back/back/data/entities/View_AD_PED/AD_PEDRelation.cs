@@ -10,6 +10,9 @@ namespace back.data.entities.View_AD_PED
     {
         public static ModelBuilder AD_PEDRelationConfiguring(this ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AD_PED>().HasNoKey();
+            // modelBuilder.Entity<AD_PED>().HasOne(c => c.AD_STATUS).WithOne().HasPrincipalKey<AD_PED>(p => p.pedNunota);
+            //modelBuilder.Entity<AD_PED>().HasOne(c => c.AD_SOLCAN).WithOne().HasPrincipalKey<AD_PED>(p => p.pedNunota);
             #region "Parametrização Entity <> Sankhya"
             modelBuilder.Entity<AD_PED>().HasNoKey();
             modelBuilder.Entity<AD_PED>().Property(p => p.codemp).HasColumnName("CODEMP");

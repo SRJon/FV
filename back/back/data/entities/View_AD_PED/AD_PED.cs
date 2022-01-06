@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using back.data.entities.AD_SOLCANota;
+using back.data.entities.AD_STATUSLit;
 using back.domain.entities;
 
 namespace back.data.entities.View_AD_PED
@@ -40,5 +42,6 @@ namespace back.data.entities.View_AD_PED
         public string motvcanc { get; set; }
         public DateTime? dtmov { get; set; }
         public string statusPed { get; set; }
+
     }
 }

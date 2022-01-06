@@ -10,6 +10,8 @@ namespace back.data.entities.AD_SOLCANota
     {
         public static ModelBuilder AD_SOLCANRelationConfiguring(this ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<AD_SOLCAN>().HasOne(c => c.AD_PED).WithOne().HasForeignKey<AD_SOLCAN>(p => p.NuNota);
+
             #region "Parametrização Entity <> Sankhya"
             modelBuilder.Entity<AD_SOLCAN>().HasKey(u => u.NuNota);
             modelBuilder.Entity<AD_SOLCAN>().Property(p => p.NuNota).HasColumnName("NUNOTA");

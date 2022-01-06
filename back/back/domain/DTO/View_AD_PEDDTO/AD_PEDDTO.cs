@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using back.domain.DTO.AD_SOLCAN;
+using back.domain.DTO.AD_STATUS;
 using back.domain.entities;
 
 namespace back.domain.DTO.View_AD_PEDDTO
@@ -40,5 +42,7 @@ namespace back.domain.DTO.View_AD_PEDDTO
         public string motvcanc { get; set; }
         public DateTime? dtmov { get; set; }
         public string statusPed { get; set; }
+        public virtual AD_STATUSDTO AD_STATUS { get; set; }
+        public virtual AD_SOLCANDTO AD_SOLCAN { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using back.data.entities.View_AD_PED;
 using back.domain.entities;
 
 namespace back.data.entities.AD_SOLCANota
@@ -23,5 +24,6 @@ namespace back.data.entities.AD_SOLCANota
         public string MotivoNegado { get; set; }
         public int? CodParc { get; set; }
         public int? Ad_PedidoId { get; set; }
+        //public virtual AD_PED AD_PED { get; set; }
     }
 }
