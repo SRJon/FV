@@ -68,6 +68,7 @@ namespace back.ioc
             services.AddScoped<IAD_PEDRepository, AD_PEDRepository>();
             services.AddScoped<IAD_STATUSRepository, AD_STATUSRepository>();
             services.AddScoped<IAD_SOLCANRepository, AD_SOLCANRepository>();
+            services.AddScoped<IAD_PEDIDOCANCELAMENTORepository, AD_PEDIDOCANCELAMENTORepository>();
 
             return services;
         }

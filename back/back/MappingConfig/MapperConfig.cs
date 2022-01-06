@@ -53,6 +53,7 @@ using back.data.entities.AD_Estoque;
 using back.data.entities.View_AD_PED;
 using back.data.entities.AD_STATUSLit;
 using back.data.entities.AD_SOLCANota;
+using back.data.entities.View_AD_PEDIDOCANCELAMENTO;
 
 namespace back.MappingConfig
 {
@@ -120,6 +121,7 @@ namespace back.MappingConfig
                 cfg.CreateAD_PEDMapper();
                 cfg.CreateAD_STATUSMapper();
                 cfg.CreateAD_SOLCANMapper();
+                cfg.CreateAD_PEDIDOCANCELAMENTOMapper();
 
 
             });

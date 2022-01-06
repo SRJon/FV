@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.http;
+using back.domain.DTO.AD_PEDIDOCANCELAMENTO;
 using back.domain.DTO.AD_SOLCAN;
 using back.domain.DTO.View_AD_PEDDTO;
 using back.domain.entities;
@@ -23,16 +24,15 @@ namespace back.Application.Controllers
     {
         private readonly IUserRepository _UserRepository;
         private readonly IAD_PEDRepository _PEDRepository;
-        private readonly IAD_STATUSRepository _STATUSRepository;
-        private readonly IAD_SOLCANRepository _SOLCANRepository;
+        private readonly IAD_PEDIDOCANCELAMENTORepository _PEDIDOCANCELAMENTORepository;
         private readonly IMapper _mapper;
 
-        public AD_PEDController(IUserRepository userRepository, IAD_PEDRepository pEDRepository, IAD_STATUSRepository aD_STATUSRepository, IAD_SOLCANRepository aD_SOLCANRepository)
+        public AD_PEDController(IUserRepository userRepository, IAD_PEDRepository pEDRepository, IAD_STATUSRepository aD_STATUSRepository, IAD_SOLCANRepository aD_SOLCANRepository, IAD_PEDIDOCANCELAMENTORepository _ADPEDIDOCANCELAMENTORepository)
         {
             _UserRepository = userRepository;
             _PEDRepository = pEDRepository;
-            _STATUSRepository = aD_STATUSRepository;
-            _SOLCANRepository = aD_SOLCANRepository;
+            _PEDIDOCANCELAMENTORepository = _ADPEDIDOCANCELAMENTORepository;
+
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
         }
 
@@ -67,7 +67,7 @@ namespace back.Application.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetAllPedidosCancelamento")]
-        public async Task<ActionResult<IResponse<List<AD_PEDPedidoDTO>>>> GetAllPedidoCancelamento(string pesquisa, int page = 1, int limit = 10)
+        public async Task<ActionResult<IResponse<List<AD_PEDIDOCANCELAMENTODTO>>>> GetAllPedidoCancelamento(string pesquisa, int page = 1, int limit = 10)
         {
             string token = "";
             var authorization = Request.Headers[HeaderNames.Authorization];
@@ -78,15 +78,10 @@ namespace back.Application.Controllers
             var id = TokenService.getIdByToken(token);
             var user = await _UserRepository.GetById(id);
 
-            var response = new Response<List<AD_PEDPedidoDTO>>();
+            var response = new Response<List<AD_PEDIDOCANCELAMENTODTO>>();
             try
             {
-                var result = await _PEDRepository.GetAllPaginateAsync(Convert.ToInt16(user.VendedorUCod), pesquisa, page, limit);
-                foreach (var pedido in result.Data)
-                {
-                    pedido.AD_SOLCAN = _mapper.Map<AD_SOLCancelamentoDTO>(await _SOLCANRepository.GetByNuNota(pedido.pedNunota));
-                    pedido.AD_STATUS = await _STATUSRepository.GetByNuNota(pedido.pedNunota);
-                }
+                var result = await _PEDIDOCANCELAMENTORepository.GetAllPaginateAsync(Convert.ToInt16(user.VendedorUCod), pesquisa, page, limit);
                 response.SetConfig(200);
                 response.Data = result.Data;
             }
@@ -109,8 +104,6 @@ namespace back.Application.Controllers
                 if (result != null)
                 {
                     response.SetConfig(200);
-                    result.AD_SOLCAN = await _SOLCANRepository.GetByNuNota(result.pedNunota);
-                    result.AD_STATUS = await _STATUSRepository.GetByNuNota(result.pedNunota);
                     response.Data = result;
                 }
                 else

@@ -27,8 +27,6 @@ namespace back.domain.DTO.View_AD_PEDDTO
         public string motvcanc { get; set; }
         public int codparc { get; set; }
         public int? codParcDest { get; set; }
-        public virtual AD_STATUSDTO AD_STATUS { get; set; }
-        public virtual AD_SOLCancelamentoDTO AD_SOLCAN { get; set; }
 
     }
 }

@@ -37,6 +37,7 @@ using back.data.entities.AD_Estoque;
 using back.data.entities.View_AD_PED;
 using back.data.entities.AD_STATUSLit;
 using back.data.entities.AD_SOLCANota;
+using back.data.entities.View_AD_PEDIDOCANCELAMENTO;
 
 namespace back.infra.Data.Context
 {
@@ -86,6 +87,7 @@ namespace back.infra.Data.Context
         public DbSet<AD_PED> AD_PED { get; set; }
         public DbSet<AD_STATUS> AD_STATUS { get; set; }
         public DbSet<AD_SOLCAN> AD_SOLCAN { get; set; }
+        public DbSet<AD_PEDIDOCANCELAMENTO> AD_PEDIDOCANCELAMENTO { get; set; }
 
 
         public DbSet<AD_ESTCODPROD> AD_ESTCODPROD { get; set; }
@@ -127,6 +129,7 @@ namespace back.infra.Data.Context
             modelBuilder.AD_PEDRelationConfiguring();
             modelBuilder.AD_STATUSRelationConfiguring();
             modelBuilder.AD_SOLCANRelationConfiguring();
+            modelBuilder.AD_PEDEDIDOCANCELAMENTORelationConfiguring();
 
 
 
