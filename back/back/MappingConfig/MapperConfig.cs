@@ -42,6 +42,7 @@ using back.data.entities.AD_PANTONE;
 using back.data.entities.AD_ESTPRODCOR;
 using back.data.entities.DataViews.VIEW_AD_PEDIDOS;
 using back.data.entities.DataViews.VIEW_AD_EXTRA_PV;
+using back.data.entities.DataViews.VIEW_AD_PRODUTO_PV;
 
 namespace back.MappingConfig
 {
@@ -77,6 +78,7 @@ namespace back.MappingConfig
                 cfg.CreateAD_PEDIDOSDetailsMapper();
                 cfg.CreateAD_GERAL_PVDetailsMapper();
                 cfg.CreateAD_EXTRA_PVDetailsMapper();
+                cfg.CreateAD_PRODUTO_PVDetailsMapper();
                 cfg.CreateTGFPARMapper();
                 cfg.CreateTSIENDMapper();
                 cfg.CreateTSIBAIMapper();

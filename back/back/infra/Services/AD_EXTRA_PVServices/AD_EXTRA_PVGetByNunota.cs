@@ -9,7 +9,7 @@ namespace back.infra.Services.AD_EXTRA_PVServices
     {
         public static Task<AD_EXTRA_PV> GetByNunotaServices(this DbAppContextSankhya ctx, int Nunota)
         {
-            var result =  ctx.AD_EXTRA_PV.FirstOrDefaultAsync(x => x.Nunota == Nunota);
+            var result = ctx.AD_EXTRA_PV.FirstOrDefaultAsync(x => x.Nunota == Nunota);
 
             return result;
         }

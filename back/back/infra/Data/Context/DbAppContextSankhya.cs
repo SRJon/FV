@@ -18,7 +18,6 @@ using back.data.entities.TSIEndereco;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Threading.Tasks;
 
 using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
@@ -28,6 +27,7 @@ using Microsoft.Extensions.Configuration;
 using back.data.entities.DataViews.VIEW_AD_PEDIDOS;
 using back.data.entities.DataViews.VIEW_AD_GERAL_PV;
 using back.data.entities.DataViews.VIEW_AD_EXTRA_PV;
+using back.data.entities.DataViews.VIEW_AD_PRODUTO_PV;
 
 namespace back.infra.Data.Context
 {
@@ -57,6 +57,7 @@ namespace back.infra.Data.Context
         public DbSet<AD_PEDIDOS> AD_PEDIDOS { get; set; }
         public DbSet<AD_GERAL_PV> AD_GERAL_PV { get; set; }
         public DbSet<AD_EXTRA_PV> AD_EXTRA_PV {get; set;}
+        public DbSet<AD_PRODUTO_PV> AD_PRODUTO_PV {get; set;}
         public DbSet<AD_SALDO_PARCEIRO> AD_SALDO_PARCEIRO { get; set; }
         public DbSet<AD_ESTPROGPROD> AD_ESTPROGPROD { get; set; }
         public DbSet<AD_FAMGR1> AD_FAMGR1 { get; set; }
@@ -77,6 +78,7 @@ namespace back.infra.Data.Context
             modelBuilder.AD_PEDIDOSRelationConfiguring();
             modelBuilder.AD_GERAL_PVRelationConfiguring();
             modelBuilder.AD_EXTRA_PVRelationConfiguring();
+            modelBuilder.AD_PRODUTO_PVRelationConfiguring();
             modelBuilder.TGFPARRelationConfiguring();
             modelBuilder.TSIENDRelationConfiguring();
             modelBuilder.TSIBAIRelationConfiguring();

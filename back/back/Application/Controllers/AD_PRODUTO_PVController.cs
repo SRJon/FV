@@ -1,7 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using back.data.http;
-using back.domain.DTO.AD_EXTRA_PVDTO;
+using back.domain.DTO.AD_PRODUTO_PV;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.MappingConfig;
@@ -12,29 +15,29 @@ namespace back.Application.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AD_EXTRA_PVController : ControllerBase
+    public class AD_PRODUTO_PVController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IAD_EXTRA_PVRepository _AD_EXTRA_PVRepository;   
+        private readonly IAD_PRODUTO_PVRepository _AD_PRODUTO_PVRepository;
         private readonly IUserRepository _UserRepository;
 
-        public AD_EXTRA_PVController(IAD_EXTRA_PVRepository AD_EXTRA_PV_Repository)
+        public AD_PRODUTO_PVController(IAD_PRODUTO_PVRepository AD_PRODUTO_PV_Repository)
         {
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
-            _AD_EXTRA_PVRepository = AD_EXTRA_PV_Repository;
+            _AD_PRODUTO_PVRepository = AD_PRODUTO_PV_Repository;
         }
 
         [HttpGet]
         [AllowAnonymous]
         [Route("GetByNunota")]
 
-        public async Task<ActionResult<IResponse<AD_EXTRA_PVDTO>>> getByNunota(int Nunota){
+        public async Task<ActionResult<IResponse<AD_PRODUTO_PVDTO>>> getByNunota(int Nunota) {
             
-            var response = new Response<AD_EXTRA_PVDTO>();
+            var response = new Response<AD_PRODUTO_PVDTO>();
 
             try
             {
-                var result = await this._AD_EXTRA_PVRepository.GetByNunota(Nunota);
+                AD_PRODUTO_PVDTO result = await this._AD_PRODUTO_PVRepository.GetByNunota(Nunota);
 
                 if (result != null)
                 {
@@ -43,7 +46,7 @@ namespace back.Application.Controllers
                 }
                 else
                 {
-                    response.SetConfig(404, "Pedido não encontrado.", false);
+                    response.SetConfig(404, "Pedido não encontrado", false);
                 }
             }
             catch (System.Exception)
