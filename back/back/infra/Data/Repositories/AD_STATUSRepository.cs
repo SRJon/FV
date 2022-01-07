@@ -64,5 +64,18 @@ namespace back.infra.Data.Repositories
             GetSankhya()
             .GetByNuNotaService(NuNota));
         }
+
+        public async Task<bool> GetFaturado(int NuNota)
+        {
+            bool faturado = false;
+            var status = _mapper.Map<AD_STATUSDTO>(await this._ctxs.
+            GetSankhya()
+            .GetByNuNotaService(NuNota));
+            if (status.StatusLit == "FAT")
+                faturado = true;
+            else
+                faturado = false;
+            return faturado;
+        }
     }
 }

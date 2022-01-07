@@ -72,5 +72,34 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetFaturado")]
+        public async Task<ActionResult<IResponse<bool>>> GetFaturado(int NuNota)
+        {
+            var response = new Response<bool>();
+            try
+            {
+                var result = await this._STATUSRepository.GetFaturado(NuNota);
+                if (result == true)
+                {
+                    response.SetConfig(200, "Pedido já faturado");
+                    response.Data = result;
+                }
+                else
+                {
+                    response.SetConfig(200, "Pedido não faturado");
+                    response.Data = result;
+                }
+
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar status " + e.Message, false);
+            }
+            return response.GetResponse();
+        }
+
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using back.data.http;
 using back.domain.DTO.AD_SOLCAN;
+using back.domain.DTO.View_AD_PEDDTO;
 using back.domain.entities;
 using back.domain.Repositories;
 using back.infra.Services.Authentication;
@@ -22,13 +23,17 @@ namespace back.Application.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IAD_SOLCANRepository _SOLCANRepository;
+        private readonly IAD_STATUSRepository _STATUSRepository;
+        private readonly IAD_PEDRepository _PEDRepository;
         private readonly IUserRepository _UserRepository;
 
-        public AD_SOLCANController(IUserRepository userRepository, IAD_SOLCANRepository sOLCANRepository)
+        public AD_SOLCANController(IUserRepository userRepository, IAD_SOLCANRepository sOLCANRepository, IAD_PEDRepository aD_PEDRepository, IAD_STATUSRepository aD_STATUSRepository)
         {
             _UserRepository = userRepository;
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _SOLCANRepository = sOLCANRepository;
+            _PEDRepository = aD_PEDRepository;
+            _STATUSRepository = aD_STATUSRepository;
         }
 
         [HttpGet]
@@ -76,6 +81,29 @@ namespace back.Application.Controllers
                 else
                 {
                     response.SetConfig(404, "SOLCAN não encontrado", false);
+                }
+            }
+            catch (System.Exception e)
+            {
+                response.SetConfig(400, "Erro ao buscar SOLCAN " + e.Message, false);
+            }
+            return response.GetResponse();
+        }
+        [HttpPost]
+        [Authorize]
+        [Route("PostCancelamento")]
+        public async Task<ActionResult<IResponse<AD_PEDFaturadoDTO>>> GetCancelamento(AD_SOLCANPropostaDTO solcanProposta)
+        {
+            var response = new Response<AD_PEDFaturadoDTO>();
+            bool faturado = false;
+            try
+            {
+                faturado = await this._STATUSRepository.GetFaturado(solcanProposta.NuNota);
+                if (faturado)
+                {
+                    AD_PEDFaturadoDTO AD_PED = _mapper.Map<AD_PEDFaturadoDTO>(await this._PEDRepository.GetByNuNota(solcanProposta.NuNota));
+                    response.Data = AD_PED;
+                    response.SetConfig(200);
                 }
             }
             catch (System.Exception e)

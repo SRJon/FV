@@ -158,6 +158,7 @@ namespace back.infra.Data.Repositories
 
                 response.Data = null;
                 response.StatusCode = 400;
+                response.Message = e.Message + " Inner - " + e.InnerException.Message;
                 return response;
             }
         }

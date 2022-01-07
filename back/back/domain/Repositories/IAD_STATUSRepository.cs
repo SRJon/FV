@@ -11,5 +11,6 @@ namespace back.domain.Repositories
     {
         public Task<Response<List<AD_STATUSDTO>>> GetAllPaginateAsync(int page, int limit);
         public Task<AD_STATUSDTO> GetByNuNota(int NuNota);
+        public Task<bool> GetFaturado(int NuNota);
     }
 }

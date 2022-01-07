@@ -77,6 +77,12 @@ namespace back.infra.Data.Repositories
             GetSankhya()
             .GetByNFService(numNota));
         }
+        public async Task<AD_PEDDTO> GetByNuNota(int nuNota)
+        {
+            return _mapper.Map<AD_PEDDTO>(await this._ctxs.
+            GetSankhya()
+            .GetByNuNotaService(nuNota));
+        }
         public async Task<AD_PEDDTO> GetByPedidoId(int pedidoId)
         {
             return _mapper.Map<AD_PEDDTO>(await this._ctxs.

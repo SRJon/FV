@@ -15,6 +15,7 @@ namespace back.domain.Repositories
         public Task<AD_PEDDTO> GetByValor(double valor);
         public Task<AD_PEDDTO> GetBySituacao(string status);
         public Task<AD_PEDDTO> GetByPedidoId(int pedidoId);
+        public Task<AD_PEDDTO> GetByNuNota(int nuNota);
         public Task<Response<List<AD_PEDPedidoDTO>>> GetAllPaginateAsync(short codVend, string pesquisa, int page, int limit);
     }
 }

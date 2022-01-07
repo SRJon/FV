@@ -19,6 +19,11 @@ namespace back.data.entities.AD_SOLCANota
             cfg.CreateMap<AD_SOLCANDTO, AD_SOLCancelamentoDTO>();
             cfg.CreateMap<AD_SOLCancelamentoDTO, AD_SOLCANDTO>();
 
+            cfg.CreateMap<AD_SOLCAN, AD_SOLCANPropostaDTO>();
+            cfg.CreateMap<AD_SOLCANPropostaDTO, AD_SOLCAN>();
+            cfg.CreateMap<AD_SOLCANDTO, AD_SOLCANPropostaDTO>();
+            cfg.CreateMap<AD_SOLCANPropostaDTO, AD_SOLCANDTO>();
+
             return cfg;
         }
     }
