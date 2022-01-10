@@ -41,7 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'testestadsasaçsmda,dsmamsdasda-----------s-----------'",
+      "pre-commit": "lint-staged",
       "pre-push": "echo 'testestadsasaçsmda,dsmamsdasda----------------------'"
     }
   },
