@@ -53,7 +53,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'testestadsasaçsmda,dsmamsdasda----------------------'",
+      "pre-commit": "echo 'testestadsasaçsmda,dsmamsdasda-----------s-----------'",
       "pre-push": "echo 'testestadsasaçsmda,dsmamsdasda----------------------'"
     }
   }
