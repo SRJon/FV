@@ -43,7 +43,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged --allow-empty",
-      "pre-push": "echo 'testestadsasaçsmda,dsmamsdasda----------------------'"
+      "pre-push": "npm compodoc:build"
     }
   },
   "dependencies": {
