@@ -16,7 +16,7 @@
   "private": true,
   "lint-staged": {
     "*.ts": [
-      "prettier --write",
+      "prettier --write .",
       
       "git add"
     ],
@@ -26,15 +26,15 @@
     ],
 
     "*.css": [
-      "prettier --write",
+      "prettier --write .",
       "git add"
     ],
     "*.scss": [
-      "prettier --write",
+      "prettier --write .",
       "git add"
     ],
     "*.cs": [
-      "prettier --write",
+      "prettier --write .",
       
       "git add"
     ]
