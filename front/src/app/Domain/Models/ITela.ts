@@ -5,13 +5,12 @@ export interface ITela {
   addUrl: string;
   target: string;
   nivel: boolean;
-  ordem: number;
+            ordem: number;
   modulo: string;
   sd: boolean;
   imagemSd: string;
   iconClass: string;
   telaId: number | undefined;
   relateds: ITela[];
-
   tela: ITela | null;
 }
