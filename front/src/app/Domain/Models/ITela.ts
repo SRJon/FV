@@ -5,8 +5,8 @@ export interface ITela {
   addUrl: string;
   target: string;
   nivel: boolean;
-               ordem: number;
-      modulo: string;
+                    ordem: number;
+              modulo: string;
   sd: boolean;
   imagemSd: string;
   iconClass: string;
