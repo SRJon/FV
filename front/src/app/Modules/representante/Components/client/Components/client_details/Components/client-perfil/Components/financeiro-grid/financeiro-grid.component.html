@@ -10,13 +10,25 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="row100">
-      <td data-column="column1" class="column100 column1">LITORAL COMERCIO</td>
-      <td data-column="column2" class="column100 column2">198416</td>
-      <td data-column="column3" class="column100 column3">198416\3</td>
-      <td data-column="column4" class="column100 column4">14/09/2021</td>
-      <td data-column="column5" class="column100 column5">13/12/2021</td>
-      <td data-column="column6" class="column100 column6">1.674,56</td>
+    <tr class="row100" *ngFor="let item of listGrid">
+      <td data-column="column1" class="column100 column1">
+        {{ item.empresa.nomefantasia }}
+      </td>
+      <td data-column="column2" class="column100 column2">
+        {{ item.numnota }}
+      </td>
+      <td data-column="column3" class="column100 column3">
+        {{ item.numnota + "\\" + item.desdobramento }}
+      </td>
+      <td data-column="column4" class="column100 column4">
+        {{ computedDate(item.dtneg) }}
+      </td>
+      <td data-column="column5" class="column100 column5">
+        {{ computedDate(item.dtvenc) }}
+      </td>
+      <td data-column="column6" class="column100 column6">
+        {{ item.vlrdesdob }}
+      </td>
     </tr>
   </tbody>
 </table>

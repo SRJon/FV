@@ -6,4 +6,6 @@ export interface IEmpresa {
   codEmp: number | undefined;
   nomefantasia: string;
   razaosocial: string;
+
+  codemp?: number;
 }

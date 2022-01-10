@@ -1,7 +1,6 @@
 export interface IAD_ESTCODPROD {
   produto: number;
   codgrupoprod: number;
-  descrgrupoprod: string;
   aD_CODANT: string;
   codvol: string;
   descrprod: string;
@@ -10,4 +9,6 @@ export interface IAD_ESTCODPROD {
   aD_GRAMATURA: number | null;
   ncm: string;
   percentual: number | null;
+  aD_RENDIMENTOTECIDO: number;
+  aD_BRIEFING: string;
 }
