@@ -42,7 +42,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --allow-empty"
+      "pre-commit": "lint-staged --allow-empty",
+      "pre-push": "npm run compodoc:build"
     }
   },
   "dependencies": {
