@@ -16,7 +16,7 @@
   "private": true,
   "lint-staged": {
     "*.ts": [
-      
+
       "eslint --fix",
       "git add"
     ],
@@ -26,23 +26,23 @@
     ],
 
     "*.css": [
-      
+
       "git add"
     ],
     "*.scss": [
-      
+
       "git add"
     ],
     "*.cs": [
-      
+
       "eslint --fix",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run compodoc:build"
+      "pre-commit": "echo 'ok'",
+      "pre-push": "lint-staged"
     }
   },
   "dependencies": {
