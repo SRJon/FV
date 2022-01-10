@@ -11,12 +11,6 @@
     "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
     "compodoc:serve": "compodoc -s"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'testestadsasaçsmda,dsmamsdasda-----------s-----------'",
-      "pre-push": "echo 'testestadsasaçsmda,dsmamsdasda----------------------'"
-    }
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
