@@ -38,11 +38,11 @@ namespace back.infra.Data.Repositories
 
                 List<TGFFINClienteDTO> dTOs = new List<TGFFINClienteDTO>();
 
-                var notas = await savedSearches.ToListAsync();
+                var notas = await savedSearches.Skip(base.skip).Take(base.limit).ToListAsync();
                 notas.ForEach(e => dTOs.Add(_mapper.Map<TGFFINClienteDTO>(e)));
 
                 response.Data = dTOs;
-                response.TotalPages = await contexto.TGFFIN.CountAsync();
+                response.TotalPages = await savedSearches.CountAsync();
                 response.Page = page;
                 response.TotalPages = base.getTotalPages(response.TotalPages);
                 response.Success = true;

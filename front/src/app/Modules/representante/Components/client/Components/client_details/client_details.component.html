@@ -47,13 +47,15 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane h-100" id="tab_3">
-                <app-nota-fiscal></app-nota-fiscal>
+                <app-nota-fiscal *ngIf="selected == 2"></app-nota-fiscal>
               </div>
               <div class="tab-pane h-100" id="tab_4">
-                <app-solicitacao-devolucao></app-solicitacao-devolucao>
+                <app-solicitacao-devolucao
+                  *ngIf="selected == 3"
+                ></app-solicitacao-devolucao>
               </div>
               <div class="tab-pane h-100" id="tab_5">
-                <app-financeiro></app-financeiro>
+                <app-financeiro *ngIf="selected == 4"></app-financeiro>
               </div>
               <!-- /.tab-pane -->
             </div>

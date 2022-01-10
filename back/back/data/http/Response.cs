@@ -25,8 +25,16 @@ namespace back.data.http
         }
         public void setHttpAtr(Response<O> data = null)
         {
-            this.Page = data.Page;
+            this._copyFrom(data);
+        }
+        private void _copyFrom(Response<O> data)
+        {
             this.TotalPages = data.TotalPages;
+            this.Page = data.Page;
+            this.StatusCode = data.StatusCode;
+            this.Message = data.Message;
+            this.Success = data.Success;
+            this.Data = data.Data;
         }
 
         public ActionResult<IResponse<O>> GetResponse()

@@ -29,7 +29,6 @@ export class EstoqueContentComponent implements OnInit {
     this.initialParam = {
       produto: 0,
       codgrupoprod: 0,
-      descrgrupoprod: '',
       aD_CODANT: '',
       codvol: '',
       descrprod: '',
@@ -38,6 +37,8 @@ export class EstoqueContentComponent implements OnInit {
       aD_GRAMATURA: 0,
       ncm: '',
       percentual: 0,
+      aD_RENDIMENTOTECIDO: 0,
+      aD_BRIEFING: '',
     };
     this.estoqueSearch = EstoqueSearch.getInstance();
   }

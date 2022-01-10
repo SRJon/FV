@@ -96,8 +96,8 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var research = contexto.Pedido.Include(u => u.Usuario).Include(e => e.Empresa).Include(p => p.PedidoItem).Where(u => u.ClienteCod == codParc).Skip(base.skip).OrderBy(o => o.Id);
-                var savedSearches = research.Take(base.limit);
+                var research = contexto.Pedido.Include(u => u.Usuario).Include(e => e.Empresa).Include(p => p.PedidoItem).Where(u => u.ClienteCod == codParc).Take(int.MaxValue).OrderBy(o => o.Id);
+                var savedSearches = research.Skip(base.skip).Take(base.limit);
 
                 List<PedidoClienteDTO> dTOs = new List<PedidoClienteDTO>();
 

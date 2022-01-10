@@ -31,9 +31,7 @@ export class PaginateShare {
   }
   setPaginate(callback?: any): void {
     if (!!callback) {
-      console.log(this.callback, 'callback');
       this.callback = callback;
-      console.log(this.callback, 'callback2');
     }
     this.reset();
     this.paginate.setPage();

@@ -9,6 +9,8 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Reflection;
 
 namespace back
 {
@@ -33,6 +35,10 @@ namespace back
             services.AddInfraestruture(Configuration);
             services.AddSwaggerGen(c =>
             {
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "back", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
