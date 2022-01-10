@@ -14,36 +14,33 @@
   "private": true,
   "lint-staged": {
     "*.ts": [
-
+      "prettier --write",
       "eslint --fix",
       "git add"
     ],
     "*.js": [
-        "eslint --fix",
+      "eslint --fix",
       "git add"
     ],
 
     "*.css": [
-              "eslint --fix",
-
+      "prettier --write",
       "git add"
     ],
     "*.scss": [
-              "eslint --fix",
-
+      "prettier --write",
       "git add"
     ],
     "*.cs": [
-              "eslint --fix",
-
-
+      "prettier --write",
+      "eslint --fix",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged --allow-empty",
-      "pre-push": "npm run compodoc:build"
+      "pre-push": "npm run compodoc:build&&git ac'doc'"
     }
   },
   "dependencies": {
