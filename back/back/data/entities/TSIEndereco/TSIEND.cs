@@ -5,6 +5,9 @@ using back.domain.entities;
 
 namespace back.data.entities.TSIEndereco
 {
+    /// <summary>
+    /// Entidade Sankhya de endereço
+    /// </summary>
     public class TSIEND : ITSIEND
     {
         [Key]

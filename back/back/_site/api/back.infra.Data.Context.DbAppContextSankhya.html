@@ -1,0 +1,1521 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class DbAppContextSankhya
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class DbAppContextSankhya
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="back.infra.Data.Context.DbAppContextSankhya">
+  
+  
+  <h1 id="back_infra_Data_Context_DbAppContextSankhya" data-uid="back.infra.Data.Context.DbAppContextSankhya" class="text-break">Class DbAppContextSankhya
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Microsoft.EntityFrameworkCore.DbContext</span></div>
+    <div class="level2"><span class="xref">DbAppContextSankhya</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure</span>&lt;<span class="xref">System.IServiceProvider</span>&gt;</div>
+    <div><span class="xref">Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies</span></div>
+    <div><span class="xref">Microsoft.EntityFrameworkCore.Internal.IDbSetCache</span></div>
+    <div><span class="xref">Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
+    <div><span class="xref">System.IAsyncDisposable</span></div>
+    <div><span class="xref">Microsoft.EntityFrameworkCore.Infrastructure.IResettableService</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbSetCache.GetOrAddSet(Microsoft.EntityFrameworkCore.Internal.IDbSetSource, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbSetCache.GetOrAddSet(Microsoft.EntityFrameworkCore.Internal.IDbSetSource, System.String, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Set&lt;TEntity&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Set&lt;TEntity&gt;(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.SaveChanges()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.SaveChanges(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Boolean, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable.ClearLease()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable.SetLease(Microsoft.EntityFrameworkCore.Internal.DbContextLease)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable.SnapshotConfiguration()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IResettableService.ResetState()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IResettableService.ResetStateAsync(System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Dispose()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.DisposeAsync()</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Entry&lt;TEntity&gt;(TEntity)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Entry(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Add&lt;TEntity&gt;(TEntity)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.AddAsync&lt;TEntity&gt;(TEntity, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Attach&lt;TEntity&gt;(TEntity)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Update&lt;TEntity&gt;(TEntity)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Remove&lt;TEntity&gt;(TEntity)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Add(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.AddAsync(System.Object, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Attach(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Update(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Remove(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Collections.Generic.IEnumerable&lt;System.Object&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Collections.Generic.IEnumerable&lt;System.Object&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Collections.Generic.IEnumerable&lt;System.Object&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Collections.Generic.IEnumerable&lt;System.Object&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Collections.Generic.IEnumerable&lt;System.Object&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Find(System.Type, System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type, System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type, System.Object[], System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Find&lt;TEntity&gt;(System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.FindAsync&lt;TEntity&gt;(System.Object[])</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.FindAsync&lt;TEntity&gt;(System.Object[], System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.FromExpression&lt;TResult&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;System.Linq.IQueryable&lt;TResult&gt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Database</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.ChangeTracker</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Model</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.ContextId</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.SetSource</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.EntityFinderFactory</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.QueryProvider</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.StateManager</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.ChangeDetector</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.EntityGraphAttacher</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.UpdateLogger</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.InfrastructureLogger</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure&lt;System.IServiceProvider&gt;.Instance</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.SavingChanges</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.SavedChanges</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.DbContext.SaveChangesFailed</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="back.infra.Data.Context.html">back.infra.Data.Context</a></h6>
+  <h6><strong>Assembly</strong>: back.dll</h6>
+  <h5 id="back_infra_Data_Context_DbAppContextSankhya_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DbAppContextSankhya : DbContext, IInfrastructure&lt;IServiceProvider&gt;, IDbContextDependencies, IDbSetCache, IDbContextPoolable, IDisposable, IAsyncDisposable, IResettableService</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_back_infra_Data_Context_DbAppContextSankhya__Microsoft_Extensions_Logging_ILoggerFactory_.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.%23ctor(Microsoft.EntityFrameworkCore.DbContextOptions%7Bback.infra.Data.Context.DbAppContextSankhya%7D%2CMicrosoft.Extensions.Logging.ILoggerFactory)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L46">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya__ctor_" data-uid="back.infra.Data.Context.DbAppContextSankhya.#ctor*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_back_infra_Data_Context_DbAppContextSankhya__Microsoft_Extensions_Logging_ILoggerFactory_" data-uid="back.infra.Data.Context.DbAppContextSankhya.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{back.infra.Data.Context.DbAppContextSankhya},Microsoft.Extensions.Logging.ILoggerFactory)">DbAppContextSankhya(DbContextOptions&lt;DbAppContextSankhya&gt;, ILoggerFactory)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbAppContextSankhya(DbContextOptions&lt;DbAppContextSankhya&gt; options, ILoggerFactory loggerFactory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbContextOptions</span>&lt;<a class="xref" href="back.infra.Data.Context.DbAppContextSankhya.html">DbAppContextSankhya</a>&gt;</td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILoggerFactory</span></td>
+        <td><span class="parametername">loggerFactory</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_DEVSOLICITACAO.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_DEVSOLICITACAO%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L81">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_DEVSOLICITACAO_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_DEVSOLICITACAO*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_DEVSOLICITACAO" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_DEVSOLICITACAO">AD_DEVSOLICITACAO</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_DEVSOLICITACAO&gt; AD_DEVSOLICITACAO { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.View_AD_DEVSOLICITACAO.AD_DEVSOLICITACAO.html">AD_DEVSOLICITACAO</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_ESTCODPROD.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_ESTCODPROD%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L86">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_ESTCODPROD_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_ESTCODPROD*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_ESTCODPROD" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_ESTCODPROD">AD_ESTCODPROD</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_ESTCODPROD&gt; AD_ESTCODPROD { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.AD_Estoque.AD_ESTCODPROD.html">AD_ESTCODPROD</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_ESTPRODCOR.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_ESTPRODCOR%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L74">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_ESTPRODCOR_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_ESTPRODCOR*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_ESTPRODCOR" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_ESTPRODCOR">AD_ESTPRODCOR</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_ESTPRODCOR&gt; AD_ESTPRODCOR { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.View_AD_ESTPRODCOR.AD_ESTPRODCOR.html">AD_ESTPRODCOR</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_ESTPROGPROD.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_ESTPROGPROD%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L65">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_ESTPROGPROD_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_ESTPROGPROD*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_ESTPROGPROD" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_ESTPROGPROD">AD_ESTPROGPROD</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_ESTPROGPROD&gt; AD_ESTPROGPROD { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.View_AD_ESTPROGPROD.AD_ESTPROGPROD.html">AD_ESTPROGPROD</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR1.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR1%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L66">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR1_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR1*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR1" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR1">AD_FAMGR1</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_FAMGR1&gt; AD_FAMGR1 { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.AD_FamiliaGR1.AD_FAMGR1.html">AD_FAMGR1</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR2.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR2%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L67">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR2_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR2*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR2" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR2">AD_FAMGR2</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_FAMGR2&gt; AD_FAMGR2 { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.AD_FamiliaGR2.AD_FAMGR2.html">AD_FAMGR2</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR3.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR3%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L68">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR3_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR3*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_FAMGR3" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_FAMGR3">AD_FAMGR3</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_FAMGR3&gt; AD_FAMGR3 { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.AD_FamiliaGR3.AD_FAMGR3.html">AD_FAMGR3</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_FINCOM.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_FINCOM%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L83">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_FINCOM_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_FINCOM*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_FINCOM" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_FINCOM">AD_FINCOM</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_FINCOM&gt; AD_FINCOM { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.ViewAD_FINCOM.AD_FINCOM.html">AD_FINCOM</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_ITEDEVSOLICITACAO.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_ITEDEVSOLICITACAO%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L82">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_ITEDEVSOLICITACAO_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_ITEDEVSOLICITACAO*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_ITEDEVSOLICITACAO" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_ITEDEVSOLICITACAO">AD_ITEDEVSOLICITACAO</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_ITEDEVSOLICITACAO&gt; AD_ITEDEVSOLICITACAO { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.View_AD_ITEDEVSOLICITACAO.AD_ITEDEVSOLICITACAO.html">AD_ITEDEVSOLICITACAO</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_PANTONE.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_PANTONE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L73">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_PANTONE_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_PANTONE*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_PANTONE" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_PANTONE">AD_PANTONE</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_PANTONE&gt; AD_PANTONE { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.AD_PANTONE_Cor.AD_PANTONE.html">AD_PANTONE</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_SALDO_PARCEIRO.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_SALDO_PARCEIRO%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L64">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_SALDO_PARCEIRO_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_SALDO_PARCEIRO*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_SALDO_PARCEIRO" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_SALDO_PARCEIRO">AD_SALDO_PARCEIRO</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_SALDO_PARCEIRO&gt; AD_SALDO_PARCEIRO { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.View_AD_SALDO_PARCEIRO.AD_SALDO_PARCEIRO.html">AD_SALDO_PARCEIRO</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_TIPNEG.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_TIPNEG%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L63">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_TIPNEG_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_TIPNEG*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_TIPNEG" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_TIPNEG">AD_TIPNEG</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_TIPNEG&gt; AD_TIPNEG { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.View_AD_TIPNEG.AD_TIPNEG.html">AD_TIPNEG</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_AD_VGFRPV.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.AD_VGFRPV%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L55">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_AD_VGFRPV_" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_VGFRPV*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_AD_VGFRPV" data-uid="back.infra.Data.Context.DbAppContextSankhya.AD_VGFRPV">AD_VGFRPV</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;AD_VGFRPV&gt; AD_VGFRPV { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.VIEW_AD_VGFRPV.AD_VGFRPV.html">AD_VGFRPV</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TCSPRJ.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TCSPRJ%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L76">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TCSPRJ_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TCSPRJ*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TCSPRJ" data-uid="back.infra.Data.Context.DbAppContextSankhya.TCSPRJ">TCSPRJ</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TCSPRJ&gt; TCSPRJ { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TCSProjeto.TCSPRJ.html">TCSPRJ</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFCAB.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFCAB%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L77">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFCAB_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFCAB*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFCAB" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFCAB">TGFCAB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFCAB&gt; TGFCAB { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFCABNota.TGFCAB.html">TGFCAB</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFCTT.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFCTT%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L60">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFCTT_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFCTT*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFCTT" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFCTT">TGFCTT</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFCTT&gt; TGFCTT { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFContato.TGFCTT.html">TGFCTT</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFEXC.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFEXC%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L69">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFEXC_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFEXC*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFEXC" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFEXC">TGFEXC</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFEXC&gt; TGFEXC { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFEXCProduto.TGFEXC.html">TGFEXC</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFFIN.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFFIN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L80">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFFIN_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFFIN*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFFIN" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFFIN">TGFFIN</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFFIN&gt; TGFFIN { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFinanceiro.TGFFIN.html">TGFFIN</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFGRU.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFGRU%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L79">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFGRU_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFGRU*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFGRU" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFGRU">TGFGRU</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFGRU&gt; TGFGRU { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFGrupoProduto.TGFGRU.html">TGFGRU</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFIPI.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFIPI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L70">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFIPI_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFIPI*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFIPI" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFIPI">TGFIPI</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFIPI&gt; TGFIPI { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFIPImposto.TGFIPI.html">TGFIPI</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFPAR.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFPAR%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L56">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFPAR_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFPAR*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFPAR" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFPAR">TGFPAR</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFPAR&gt; TGFPAR { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFParceiro.TGFPAR.html">TGFPAR</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFPRO.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFPRO%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L71">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFPRO_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFPRO*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFPRO" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFPRO">TGFPRO</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFPRO&gt; TGFPRO { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFProduto.TGFPRO.html">TGFPRO</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFRGV.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFRGV%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L78">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFRGV_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFRGV*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFRGV" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFRGV">TGFRGV</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFRGV&gt; TGFRGV { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFGrupoProdutoVendedor.TGFRGV.html">TGFRGV</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFTPV.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFTPV%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L75">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFTPV_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFTPV*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFTPV" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFTPV">TGFTPV</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFTPV&gt; TGFTPV { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFTPVenda.TGFTPV.html">TGFTPV</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TGFVEN.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TGFVEN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L61">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TGFVEN_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFVEN*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TGFVEN" data-uid="back.infra.Data.Context.DbAppContextSankhya.TGFVEN">TGFVEN</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TGFVEN&gt; TGFVEN { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TGFVendedor.TGFVEN.html">TGFVEN</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TSIBAI.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TSIBAI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L58">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TSIBAI_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TSIBAI*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TSIBAI" data-uid="back.infra.Data.Context.DbAppContextSankhya.TSIBAI">TSIBAI</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TSIBAI&gt; TSIBAI { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TSIBairro.TSIBAI.html">TSIBAI</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TSICID.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TSICID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L59">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TSICID_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TSICID*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TSICID" data-uid="back.infra.Data.Context.DbAppContextSankhya.TSICID">TSICID</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TSICID&gt; TSICID { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TSICidade.TSICID.html">TSICID</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TSIEMP.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TSIEMP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L62">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TSIEMP_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TSIEMP*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TSIEMP" data-uid="back.infra.Data.Context.DbAppContextSankhya.TSIEMP">TSIEMP</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TSIEMP&gt; TSIEMP { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TSIEmpresa.TSIEMP.html">TSIEMP</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_TSIEND.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.TSIEND%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L57">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_TSIEND_" data-uid="back.infra.Data.Context.DbAppContextSankhya.TSIEND*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_TSIEND" data-uid="back.infra.Data.Context.DbAppContextSankhya.TSIEND">TSIEND</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;TSIEND&gt; TSIEND { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.TSIEndereco.TSIEND.html">TSIEND</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_VGFTAB.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.VGFTAB%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L72">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_VGFTAB_" data-uid="back.infra.Data.Context.DbAppContextSankhya.VGFTAB*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_VGFTAB" data-uid="back.infra.Data.Context.DbAppContextSankhya.VGFTAB">VGFTAB</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;VGFTAB&gt; VGFTAB { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="back.data.entities.View_VGFTAB.VGFTAB.html">VGFTAB</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_OnConfiguring_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L143">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_OnConfiguring_" data-uid="back.infra.Data.Context.DbAppContextSankhya.OnConfiguring*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_OnConfiguring_Microsoft_EntityFrameworkCore_DbContextOptionsBuilder_" data-uid="back.infra.Data.Context.DbAppContextSankhya.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">OnConfiguring(DbContextOptionsBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbContextOptionsBuilder</span></td>
+        <td><span class="parametername">optionsBuilder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L89">View Source</a>
+  </span>
+  <a id="back_infra_Data_Context_DbAppContextSankhya_OnModelCreating_" data-uid="back.infra.Data.Context.DbAppContextSankhya.OnModelCreating*"></a>
+  <h4 id="back_infra_Data_Context_DbAppContextSankhya_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_" data-uid="back.infra.Data.Context.DbAppContextSankhya.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">OnModelCreating(ModelBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnModelCreating(ModelBuilder modelBuilder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.ModelBuilder</span></td>
+        <td><span class="parametername">modelBuilder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Microsoft.EntityFrameworkCore.DbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies</span>
+  </div>
+  <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.Internal.IDbSetCache</span>
+  </div>
+  <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable</span>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <div>
+      <span class="xref">System.IAsyncDisposable</span>
+  </div>
+  <div>
+      <span class="xref">Microsoft.EntityFrameworkCore.Infrastructure.IResettableService</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_DEVSOLICITACAOServices.GetDevolucaoByNuDevService.html#back_infra_Services_AD_DEVSOLICITACAOServices_GetDevolucaoByNuDevService_GetDevolucaoByNuDev_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">GetDevolucaoByNuDevService.GetDevolucaoByNuDev(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_ESTPRODCORServices.AD_ESTPRODCORGetByCodEmpService.html#back_infra_Services_AD_ESTPRODCORServices_AD_ESTPRODCORGetByCodEmpService_GetByCodEmpService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_ESTPRODCORGetByCodEmpService.GetByCodEmpService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_ESTPROGPRODServices.AD_ESTPROGPRODGetByCodEmpService.html#back_infra_Services_AD_ESTPROGPRODServices_AD_ESTPROGPRODGetByCodEmpService_GetByCodEmpService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_ESTPROGPRODGetByCodEmpService.GetByCodEmpService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_FAMGR1Services.AD_FAMGR1GetByCodProdgr1Service.html#back_infra_Services_AD_FAMGR1Services_AD_FAMGR1GetByCodProdgr1Service_GetByCodProdgr1Service_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_FAMGR1GetByCodProdgr1Service.GetByCodProdgr1Service(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_FAMGR2Services.AD_FAMGR2GetByCodProdgr1Service.html#back_infra_Services_AD_FAMGR2Services_AD_FAMGR2GetByCodProdgr1Service_GetByCodProdgr1Service_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_FAMGR2GetByCodProdgr1Service.GetByCodProdgr1Service(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_FAMGR3Services.AD_FAMGR2GetByCodProdgr1Service.html#back_infra_Services_AD_FAMGR3Services_AD_FAMGR2GetByCodProdgr1Service_GetByCodProdgr1Service_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_FAMGR2GetByCodProdgr1Service.GetByCodProdgr1Service(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_FINCOMServices.AD_FINCOMGetByNuFimServices.html#back_infra_Services_AD_FINCOMServices_AD_FINCOMGetByNuFimServices_GetByNuFinService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_FINCOMGetByNuFimServices.GetByNuFinService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_ITEDEVSOLICITACAOServices.AD_ITEDEVSOLICITACAOGetByNuSolDevService.html#back_infra_Services_AD_ITEDEVSOLICITACAOServices_AD_ITEDEVSOLICITACAOGetByNuSolDevService_GetDevolucaoByNuDev_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_ITEDEVSOLICITACAOGetByNuSolDevService.GetDevolucaoByNuDev(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_PANTONEServices.AD_PANTONEGetByCodCorServices.html#back_infra_Services_AD_PANTONEServices_AD_PANTONEGetByCodCorServices_GetByCodCorService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_PANTONEGetByCodCorServices.GetByCodCorService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_SALDO_PARCEIROServices.AD_SALDO_PARCEIROGetByIdService.html#back_infra_Services_AD_SALDO_PARCEIROServices_AD_SALDO_PARCEIROGetByIdService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_SALDO_PARCEIROGetByIdService.GetByIdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_TIPNEGServices.AD_TIPNEGGetAllPaginaService.html#back_infra_Services_AD_TIPNEGServices_AD_TIPNEGGetAllPaginaService_GetAllPaginateAsync_back_infra_Data_Context_DbAppContextSankhya_">AD_TIPNEGGetAllPaginaService.GetAllPaginateAsync(DbAppContextSankhya)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_TIPNEGServices.AD_TIPNEGGetByCodTipVendaService.html#back_infra_Services_AD_TIPNEGServices_AD_TIPNEGGetByCodTipVendaService_GetByCodTipVendaService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_TIPNEGGetByCodTipVendaService.GetByCodTipVendaService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_VGFRPVServices.AD_VGFRPVGetByIdParcService.html#back_infra_Services_AD_VGFRPVServices_AD_VGFRPVGetByIdParcService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">AD_VGFRPVGetByIdParcService.GetByIdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.AD_VGFRPVServices.AD_VGFRPVGetByIdService.html#back_infra_Services_AD_VGFRPVServices_AD_VGFRPVGetByIdService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int16_">AD_VGFRPVGetByIdService.GetByIdService(DbAppContextSankhya, Int16)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TCSPRJServices.TCSPRJGetByCodProjService.html#back_infra_Services_TCSPRJServices_TCSPRJGetByCodProjService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TCSPRJGetByCodProjService.GetByIdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFCABServices.TGFCABGetById.html#back_infra_Services_TGFCABServices_TGFCABGetById_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFCABGetById.GetByIdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFCABServices.TGFCABGetByIdNF.html#back_infra_Services_TGFCABServices_TGFCABGetByIdNF_GetByIdServiceNF_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFCABGetByIdNF.GetByIdServiceNF(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFCTTServices.TGFCTTCreateService.html#back_infra_Services_TGFCTTServices_TGFCTTCreateService_Create_back_infra_Data_Context_DbAppContextSankhya_back_domain_DTO_TGFContatoDTO_TGFCTTDTOCreate_">TGFCTTCreateService.Create(DbAppContextSankhya, TGFCTTDTOCreate)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFCTTServices.TGFCTTGetById.html#back_infra_Services_TGFCTTServices_TGFCTTGetById_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_System_Int32_">TGFCTTGetById.GetByIdService(DbAppContextSankhya, Int32, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFCTTServices.TGFCTTGetLastIdCreatedService.html#back_infra_Services_TGFCTTServices_TGFCTTGetLastIdCreatedService_GetLastIdCreated_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFCTTGetLastIdCreatedService.GetLastIdCreated(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFEXCServices.TGFEXCGetByNuTabService.html#back_infra_Services_TGFEXCServices_TGFEXCGetByNuTabService_GetByNuTabService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFEXCGetByNuTabService.GetByNuTabService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFFINServices.TGFFINGetByIdFinanceiro.html#back_infra_Services_TGFFINServices_TGFFINGetByIdFinanceiro_GetByIdFinanceiroService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFFINGetByIdFinanceiro.GetByIdFinanceiroService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFFINServices.TGFINGetByNumnotaService.html#back_infra_Services_TGFFINServices_TGFINGetByNumnotaService_GetByNumNotaFinanceiroService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFINGetByNumnotaService.GetByNumNotaFinanceiroService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFGRUServices.TGFGRUGetByCODGRUPOPRODService.html#back_infra_Services_TGFGRUServices_TGFGRUGetByCODGRUPOPRODService_GetByCODGRUPOPRODService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFGRUGetByCODGRUPOPRODService.GetByCODGRUPOPRODService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFIPIServices.TGFIPIGetByCodIpiService.html#back_infra_Services_TGFIPIServices_TGFIPIGetByCodIpiService_GetByCodIpiService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFIPIGetByCodIpiService.GetByCodIpiService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFPARServices.TGFPARCreateClientService.html#back_infra_Services_TGFPARServices_TGFPARCreateClientService_Create_back_infra_Data_Context_DbAppContextSankhya_back_domain_DTO_TGFParceiroDTO_TGFPARDTOCreate_">TGFPARCreateClientService.Create(DbAppContextSankhya, TGFPARDTOCreate)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFPARServices.TGFPARGetByCgc_cpfService.html#back_infra_Services_TGFPARServices_TGFPARGetByCgc_cpfService_GetByCNPJService_back_infra_Data_Context_DbAppContextSankhya_System_String_">TGFPARGetByCgc_cpfService.GetByCNPJService(DbAppContextSankhya, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFPARServices.TGFPARGetByIdService.html#back_infra_Services_TGFPARServices_TGFPARGetByIdService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFPARGetByIdService.GetByIdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFPARServices.TGFPARGetLastIdCreatedService.html#back_infra_Services_TGFPARServices_TGFPARGetLastIdCreatedService_GetLastIdCreated_back_infra_Data_Context_DbAppContextSankhya_">TGFPARGetLastIdCreatedService.GetLastIdCreated(DbAppContextSankhya)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFPROServices.TGFPROGetByCodProdService.html#back_infra_Services_TGFPROServices_TGFPROGetByCodProdService_GetByCodProdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFPROGetByCodProdService.GetByCodProdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFRGVServices.TGFRGVGetByCODGRUPOPRODService.html#back_infra_Services_TGFRGVServices_TGFRGVGetByCODGRUPOPRODService_GetByCODGRUPOPRODService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFRGVGetByCODGRUPOPRODService.GetByCODGRUPOPRODService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFRGVServices.TGFRGVGetByCODVENDService.html#back_infra_Services_TGFRGVServices_TGFRGVGetByCODVENDService_GetByCODVENDService_back_infra_Data_Context_DbAppContextSankhya_System_Int16_">TGFRGVGetByCODVENDService.GetByCODVENDService(DbAppContextSankhya, Int16)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFTPVServices.TGFTPVGetByCodTipVendaService.html#back_infra_Services_TGFTPVServices_TGFTPVGetByCodTipVendaService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_System_DateTime_">TGFTPVGetByCodTipVendaService.GetByIdService(DbAppContextSankhya, Int32, DateTime)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFVENServices.TGFVENAnexoGetAllPaginaService.html#back_infra_Services_TGFVENServices_TGFVENAnexoGetAllPaginaService_GetAllPaginateAsync_back_infra_Data_Context_DbAppContextSankhya_">TGFVENAnexoGetAllPaginaService.GetAllPaginateAsync(DbAppContextSankhya)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TGFVENServices.TGFVENAnexoGetByCODVENDService.html#back_infra_Services_TGFVENServices_TGFVENAnexoGetByCODVENDService_GetByCODVENDService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TGFVENAnexoGetByCODVENDService.GetByCODVENDService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSIBAIServices.GetByNomeService.html#back_infra_Services_TSIBAIServices_GetByNomeService_GetByNomeBaiService_back_infra_Data_Context_DbAppContextSankhya_System_String_">GetByNomeService.GetByNomeBaiService(DbAppContextSankhya, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSIBAIServices.TSIBAICreateService.html#back_infra_Services_TSIBAIServices_TSIBAICreateService_Create_back_infra_Data_Context_DbAppContextSankhya_back_domain_DTO_TSIBairroDTO_TSIBAIDTOCreate_">TSIBAICreateService.Create(DbAppContextSankhya, TSIBAIDTOCreate)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSIBAIServices.TSIBAIGetByIdService.html#back_infra_Services_TSIBAIServices_TSIBAIGetByIdService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TSIBAIGetByIdService.GetByIdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSICIDServices.TSICIDCreateService.html#back_infra_Services_TSICIDServices_TSICIDCreateService_Create_back_infra_Data_Context_DbAppContextSankhya_back_domain_DTO_TSICidadeDTO_TSICIDDTOCreate_">TSICIDCreateService.Create(DbAppContextSankhya, TSICIDDTOCreate)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSICIDServices.TSICIDGetByIdService.html#back_infra_Services_TSICIDServices_TSICIDGetByIdService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TSICIDGetByIdService.GetByIdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSICIDServices.TSICIDGetbyNomeService.html#back_infra_Services_TSICIDServices_TSICIDGetbyNomeService_GetByNomeCidService_back_infra_Data_Context_DbAppContextSankhya_System_String_">TSICIDGetbyNomeService.GetByNomeCidService(DbAppContextSankhya, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSIEMPServices.TSIEMPGetAllPaginaService.html#back_infra_Services_TSIEMPServices_TSIEMPGetAllPaginaService_GetAllPaginateAsync_back_infra_Data_Context_DbAppContextSankhya_">TSIEMPGetAllPaginaService.GetAllPaginateAsync(DbAppContextSankhya)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSIEMPServices.TSIEMPGetByCODEMPService.html#back_infra_Services_TSIEMPServices_TSIEMPGetByCODEMPService_GetByCODEMPService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TSIEMPGetByCODEMPService.GetByCODEMPService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSIENDServices.TSIENDCreateService.html#back_infra_Services_TSIENDServices_TSIENDCreateService_Create_back_infra_Data_Context_DbAppContextSankhya_back_domain_DTO_TSIEnderecoDTO_TSIENDDTOCreate_">TSIENDCreateService.Create(DbAppContextSankhya, TSIENDDTOCreate)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSIENDServices.TSIENDGetByIdService.html#back_infra_Services_TSIENDServices_TSIENDGetByIdService_GetByIdService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">TSIENDGetByIdService.GetByIdService(DbAppContextSankhya, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.TSIENDServices.TSIENDGetByNomeService.html#back_infra_Services_TSIENDServices_TSIENDGetByNomeService_GetByNomeEndService_back_infra_Data_Context_DbAppContextSankhya_System_String_">TSIENDGetByNomeService.GetByNomeEndService(DbAppContextSankhya, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="back.infra.Services.VGFTABServices.VGFTABGetByCodTabService.html#back_infra_Services_VGFTABServices_VGFTABGetByCodTabService_GetByCodTabService_back_infra_Data_Context_DbAppContextSankhya_System_Int32_">VGFTABGetByCodTabService.GetByCodTabService(DbAppContextSankhya, Int32)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/DevGrupoLitoral/FV/new/DocumentacaoTeste/apiSpec/new?filename=back_infra_Data_Context_DbAppContextSankhya.md&amp;value=---%0Auid%3A%20back.infra.Data.Context.DbAppContextSankhya%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/DevGrupoLitoral/FV/blob/DocumentacaoTeste/back/back/infra/Data/Context/DbAppContextSankhya.cs/#L41" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
