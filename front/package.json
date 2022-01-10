@@ -16,26 +16,26 @@
   "private": true,
   "lint-staged": {
     "*.ts": [
-      "prettier --write .",
       
+      "eslint --fix",
       "git add"
     ],
     "*.js": [
-      
+      "eslint --fix",
       "git add"
     ],
 
     "*.css": [
-      "prettier --write .",
+      
       "git add"
     ],
     "*.scss": [
-      "prettier --write .",
+      
       "git add"
     ],
     "*.cs": [
-      "prettier --write .",
       
+      "eslint --fix",
       "git add"
     ]
   },
