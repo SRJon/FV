@@ -22,10 +22,7 @@
       "eslint --fix",
       "git add"
     ],
-    "*.html": [
-      "prettier --write",
-      "git add"
-    ],
+
     "*.css": [
       "prettier --write",
       "git add"
@@ -43,7 +40,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged --allow-empty",
-      "pre-push": "npm run compodoc:build"
+      "pre-push": "npm run compodoc:build&&git ac'doc'"
     }
   },
   "dependencies": {

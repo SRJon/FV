@@ -549,50 +549,50 @@ import { ADVGFRPVService } from &#x27;src/app/Modules/representante/Services/AD_
 import { PaginateShare } from &#x27;src/app/Shared&#x27;;
 
 @Component({
-  selector: &#x27;app-financeiro&#x27;,
-  templateUrl: &#x27;./financeiro.component.html&#x27;,
-  styleUrls: [&#x27;./financeiro.component.scss&#x27;],
+	selector: &#x27;app-financeiro&#x27;,
+	templateUrl: &#x27;./financeiro.component.html&#x27;,
+	styleUrls: [&#x27;./financeiro.component.scss&#x27;],
 })
 export class FinanceiroComponent implements OnInit {
-  listGrid: INotaFinanceiro[] &#x3D; [];
-  contentHeight: number &#x3D; 0;
-  paginate: PaginateShare;
+	listGrid: INotaFinanceiro[] &#x3D; [];
+	contentHeight &#x3D; 0;
+	paginate: PaginateShare;
 
-  constructor(private services: ADVGFRPVService) {
-    this.paginate &#x3D; new PaginateShare();
-    this.listGrid &#x3D; [];
-  }
+	constructor(private services: ADVGFRPVService) {
+		this.paginate &#x3D; new PaginateShare();
+		this.listGrid &#x3D; [];
+	}
 
-  ngOnInit(): void {
-    this.paginate.setHtml(&#x27;#table_id_paginate&#x27;);
-    this.getAll(
-      this.paginate.paginate.currentPage,
-      this.paginate.paginate.limit
-    );
-    this.getSize();
-  }
-  getAll(page: number, limit: number) {
-    this.services.GetAllFinanceiro(3734, page, limit).then((res) &#x3D;&gt; {
-      this.listGrid &#x3D; res.data;
-      this.paginate.setAttr(res);
-      this.paginate.setPaginate(
-        (e: { current: number; length: number; total: number }) &#x3D;&gt;
-          this.getAll(e.current, e.length)
-      );
-    });
-  }
+	ngOnInit(): void {
+		this.paginate.setHtml(&#x27;#table_id_paginate&#x27;);
+		this.getAll(
+			this.paginate.paginate.currentPage,
+			this.paginate.paginate.limit
+		);
+		this.getSize();
+	}
+	getAll(page: number, limit: number) {
+		this.services.GetAllFinanceiro(3734, page, limit).then((res) &#x3D;&gt; {
+			this.listGrid &#x3D; res.data;
+			this.paginate.setAttr(res);
+			this.paginate.setPaginate(
+				(e: { current: number; length: number; total: number }) &#x3D;&gt;
+					this.getAll(e.current, e.length)
+			);
+		});
+	}
   @HostListener(&#x27;window:resize&#x27;, [&#x27;$event&#x27;])
-  getSize() {
-    let doc &#x3D; document.querySelector(&#x27;#tab_5&#x27;);
-    let contentHeight &#x3D; doc?.clientHeight;
+	getSize() {
+		const doc &#x3D; document.querySelector(&#x27;#tab_5&#x27;);
+		const contentHeight &#x3D; doc?.clientHeight;
 
-    this.contentHeight &#x3D; contentHeight || 0;
-    this.contentHeight -&#x3D; 150;
-    this.contentHeight &#x3D; this.contentHeight &lt; 0 ? 0 : this.contentHeight;
-    if (document.body.clientWidth &lt;&#x3D; 768) {
-      this.contentHeight -&#x3D; 30;
-    }
-  }
+		this.contentHeight &#x3D; contentHeight || 0;
+		this.contentHeight -&#x3D; 150;
+		this.contentHeight &#x3D; this.contentHeight &lt; 0 ? 0 : this.contentHeight;
+		if (document.body.clientWidth &lt;&#x3D; 768) {
+			this.contentHeight -&#x3D; 30;
+		}
+	}
 }
 </code></pre>
     </div>
