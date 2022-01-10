@@ -1,4 +1,4 @@
-﻿namespace back.data.entities.AD_ESTPRODCOR
+﻿namespace back.data.entities.View_AD_ESTPRODCOR
 {
     public class AD_ESTPRODCORGetAllEntity
     {

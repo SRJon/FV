@@ -8,7 +8,6 @@ namespace back.domain.entities
     public interface ITGFCTT
     {
         public int Codparc { get; set; }
-        public int CodContato { get; set; }
         public string NomeContato { get; set; }//COMPRADOR
         public string Apelido { get; set; }
         public string Cargo { get; set; }

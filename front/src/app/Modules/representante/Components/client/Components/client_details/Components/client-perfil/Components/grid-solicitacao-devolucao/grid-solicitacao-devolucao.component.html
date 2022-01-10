@@ -1,0 +1,42 @@
+<table>
+  <thead>
+    <tr class="row100 head">
+      <th data-column="column1" class="column100 column1">SOLICITAÇÃO</th>
+      <th data-column="column2" class="column100 column2">EMPRESA</th>
+      <th data-column="column3" class="column100 column3">NOTA FISCAL</th>
+      <th data-column="column4" class="column100 column4">DT. NEGOCIAÇÃO</th>
+      <th data-column="column5" class="column100 column5">TIPO</th>
+      <th data-column="column6" class="column100 column6">DESCONTO</th>
+      <th data-column="column7" class="column100 column7">% DESCONTO</th>
+      <th data-column="column8" class="column100 column8">% COMISSÃO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row100" *ngFor="let item of listGrid">
+      <td data-column="column1" class="column100 column1">
+        {{ item.nusoldev }}
+      </td>
+      <td data-column="column2" class="column100 column2">
+        {{ item.empresa.nomefantasia }}
+      </td>
+      <td data-column="column3" class="column100 column3">
+        {{ item.tgfcab.numnota }}
+      </td>
+      <td data-column="column4" class="column100 column4">
+        {{ convertDate(item.dtNeg) }}
+      </td>
+      <td data-column="column5" class="column100 column5">
+        {{ converType(item.tipoDev) }}
+      </td>
+      <td data-column="column6" class="column100 column6">
+        {{ item.desconto == "S" ? "Sim" : "Não" }}
+      </td>
+      <td data-column="column7" class="column100 column7">
+        {{ item.percDesc }}
+      </td>
+      <td data-column="column8" class="column100 column8">
+        {{ item.comissao }}
+      </td>
+    </tr>
+  </tbody>
+</table>

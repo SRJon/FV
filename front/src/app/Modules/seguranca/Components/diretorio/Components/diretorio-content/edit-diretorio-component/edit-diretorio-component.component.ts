@@ -50,7 +50,7 @@ export class EditDiretorioComponentComponent implements OnInit {
         }
       } else {
         this.alertsService.showAlert(
-          'Não foi possível criar a diretorio!',
+          'Não foi possível criar o diretorio!',
           'error'
         );
       }

@@ -1,0 +1,24 @@
+ul {
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  strong {
+    margin-right: 10px;
+    &::after {
+      content: ":";
+    }
+  }
+}
+
+.content {
+  display: flex;
+}
+.content > ul:nth-last-child(1) li {
+  text-align: left;
+}
+.content > ul:nth-last-child(2) li {
+  text-align: right;
+}

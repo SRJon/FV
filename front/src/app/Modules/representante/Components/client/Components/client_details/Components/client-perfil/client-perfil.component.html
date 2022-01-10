@@ -1,0 +1,28 @@
+<div class="h-100">
+  <div class="container h-100">
+    <div class="row">
+      <app-dinamic-filter
+        [inputs]="1"
+        (onChange)="onChange($event)"
+      ></app-dinamic-filter>
+    </div>
+    <div class="row mt-2 h-75">
+      <div
+        class="content"
+        [style]="'overflow-y: scroll; max-height:' + size + 'px'"
+      >
+        <app-grid-client-perfil
+          [paginate]="paginate"
+          [listGrid]="listGrid"
+          (onResized)="onResized($event)"
+        ></app-grid-client-perfil>
+      </div>
+      <div class="row">
+        <ul
+          id="table_id_paginate"
+          class="pagination d-flex justify-content-end"
+        ></ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ export class Paginate {
   pageSize: number = 10;
   listPage: number[] = [];
   totalItems: number = 0;
+  limit: number = 10;
 
   constructor(
     public total: number,

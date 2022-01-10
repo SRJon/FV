@@ -1,4 +1,4 @@
-﻿namespace back.data.entities.AD_FAMGR3
+﻿namespace back.data.entities.AD_FamiliaGR3
 {
     public class AD_FAMGR3GetAllEntity
     {

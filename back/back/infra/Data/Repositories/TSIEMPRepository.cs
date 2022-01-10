@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using back.data.http;
-using back.domain.DTO.TSIEMP;
+using back.domain.DTO.TSIEmpDTO;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.TSIEMPServices;
@@ -30,7 +30,7 @@ namespace back.infra.Data.Repositories
             try
             {
                 base.ValidPaginate(page, limit);
-                var savedSearches = contexto.TSIEMP.Skip(base.skip).OrderBy(o => o.CODEMP).Take(base.limit);
+                var savedSearches = contexto.TSIEMP.Skip(base.skip).OrderBy(o => o.codemp).Take(base.limit);
                 List<TSIEMPDTO> dTOs = new List<TSIEMPDTO>();
 
                 var parceiros = await savedSearches.ToListAsync();

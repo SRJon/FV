@@ -13,6 +13,14 @@ namespace back.data.entities.TSICidade
         {
             cfg.CreateMap<TSICID, TSICIDDTO>();
             cfg.CreateMap<TSICIDDTO, TSICID>();
+            cfg.CreateMap<TSICID, TSICIDDTO>();
+            cfg.CreateMap<TSICIDDTO, TSICID>();
+            cfg.CreateMap<TSICID, TSICIDDTOCreate>();
+            cfg.CreateMap<TSICIDDTOCreate, TSICID>();
+            cfg.CreateMap<TSICID, TSICIDSACDTO>();
+            cfg.CreateMap<TSICIDSACDTO, TSICID>();
+            cfg.CreateMap<TSICIDDTO, TSICIDSACDTO>();
+            cfg.CreateMap<TSICIDSACDTO, TSICIDDTO>();
             return cfg;
         }
     }

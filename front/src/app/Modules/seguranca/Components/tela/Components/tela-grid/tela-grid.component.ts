@@ -19,33 +19,58 @@ import * as shareds from 'src/app/Shared';
 })
 export class TelaGridComponent implements OnInit, OnChanges {
   @Input() listGrid: any[] = [];
-  titleList: string[] = [];
+  isShowing: boolean = false;
   @Input() paginate: Paginate;
   @Input() totalItems: number = 0;
   @Output() nextSelection = new EventEmitter<number>();
   selectedRecord: ITela | undefined;
   isDelete: boolean = false;
+
+  lastI = 0;
+
+  listTitle: string[] = [
+    'id',
+    'nome',
+    'url',
+    'target',
+    'nivel',
+    'ordem',
+    'modulo',
+  ];
+  listTitleGrid: string[] = [
+    'id',
+    'nome',
+    'url',
+    'target',
+    'nível',
+    'ordem',
+    'módulo',
+  ];
+
   grid: shareds.Grid;
 
   constructor(
-    private screensService: ScreensService,
+    private screenService: ScreensService,
     private alertsService: AlertsService
   ) {
-    this.titleList = [
-      'id',
-      'nome',
-      'url',
-      'target',
-      'nivel',
-      'ordem',
-      'modulo',
-    ];
     this.grid = new shareds.Grid();
+    this.lastI = this.listTitle.length + 1;
     this.paginate = new Paginate(2000, 50);
   }
+
+  showGrid(show: boolean) {
+    this.isShowing = show;
+  }
+
+  getTitle(t: string) {
+    let index = this.listTitle.indexOf(t);
+    return this.listTitleGrid[index];
+  }
+
   clickOnPagination(page: number): void {
     this.nextSelection.emit(page);
   }
+
   getType(type: string): string {
     return (typeof type).trim();
   }
@@ -55,18 +80,21 @@ export class TelaGridComponent implements OnInit, OnChanges {
       this.selectedRecord = undefined;
     }
   }
+
   openModal(obj: ITela | undefined = undefined): void {
     if (obj) {
       this.selectedRecord = this.listGrid.find((e) => e.id === obj.id);
     }
   }
+
   onDelete(obj: ITela | undefined = undefined) {
     this.selectedRecord = obj;
 
     this.isDelete = true;
   }
+
   delete(id: number) {
-    this.screensService
+    this.screenService
       .deleteScreen(id || 0)
       .then((res) => {
         this.clickOnPagination(this.paginate.currentPage);
@@ -88,6 +116,7 @@ export class TelaGridComponent implements OnInit, OnChanges {
         this.selectedRecord = undefined;
       });
   }
+
   onModalClose(isClose: boolean) {
     if (isClose) {
       this.selectedRecord = undefined;
@@ -109,12 +138,38 @@ export class TelaGridComponent implements OnInit, OnChanges {
   setPaginate(): void {
     this.grid.sharePaginate.setHtml('#table_id_paginate');
     this.grid.sharePaginate.paginate = this.paginate;
-    this.grid.sharePaginate.setPaginate((e) => {
+    this.grid.sharePaginate.setPaginate((e: any) => {
       this.clickOnPagination(e);
     });
     this.grid.render();
   }
   ngOnChanges(): void {
     this.setPaginate();
+  }
+
+  gridEvents() {
+    let inter = setInterval(() => {
+      if ($('td').length > 0) {
+        $('td').hover((e) => {
+          let index = $(e.target).index();
+          index++;
+
+          let tds = $(`td[data-column=column${index}]`);
+          tds.toggleClass('hov-column-ver5');
+
+          let childrens = e.currentTarget.parentElement?.children;
+
+          if (childrens) {
+            let ch = $(childrens);
+            ch.toggleClass('hov-column-ver5');
+          }
+        });
+        clearInterval(inter);
+      }
+    }, 100);
+  }
+
+  toNumber(value: any, t: any, isTitle: boolean = false) {
+    return Number(value) + Number(t);
   }
 }

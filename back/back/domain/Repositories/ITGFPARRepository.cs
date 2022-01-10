@@ -9,6 +9,7 @@ namespace back.domain.Repositories
     public interface ITGFPARRepository
     {
         public Task<TGFPARDTO> GetById(int id);
+        public Task<TGFPARClienteBasicoDTO> GetClienteBasicoById(int id);
         public int GetLastIdCreated();
         public Task<Response<List<TGFPARDTO>>> GetAllPaginateAsync(int page, int limit);
         public Task<TGFPARDTO> GetByCgc_cpf(string cgc_cpf);

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using back.domain.DTO.AD_PANTONE;
 
-namespace back.data.entities.AD_PANTONE
+namespace back.data.entities.AD_PANTONE_Cor
 {
     public static class AD_PANTONEMapper
     {

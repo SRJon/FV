@@ -1,14 +1,25 @@
-<div class="row">
-  <table id="table_id" class="display">
+<div class="row" style="padding: 0px 30px">
+  <table data-vertable="ver5" style="border: 1px solid #6c757d">
     <thead>
-      <tr>
-        <th *ngFor="let title of titleList">{{ getTitle(title) }}</th>
-        <th>Ações</th>
+      <tr class="row100 head">
+        <th
+          class="column100 column{{ toNumber(i, 2, true) }}"
+          [attr.data-column]="'column' + toNumber(i, 2, true)"
+          *ngFor="let title of listTitle; let i = index"
+        >
+          {{ getTitle(title) }}
+        </th>
+        <th
+          class="column100  column{{ lastI }}"
+          attr.data-column="column{{ lastI }}"
+        >
+          Açoes
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of listGrid">
-        <td *ngFor="let title of titleList" [ngSwitch]="getType(item[title])">
+        <td *ngFor="let title of listTitle" [ngSwitch]="getType(item[title])">
           <!-- {{ item[title] }} -->
           <span *ngSwitchCase="'boolean'"
             ><input type="checkbox" [checked]="item[title]"
@@ -17,18 +28,21 @@
         </td>
         <td>
           <ul class="listActions">
-            <li>
+            <li class="pr-1 pt-3">
               <button
-                class="btn btn-primary"
+                class="btn btn-outline-secondary"
                 data-toggle="modal"
                 data-target="#modal-default"
                 (click)="openModal(item)"
               >
-                <i class="fa fa-pencil-alt"></i>
+                <i class="fa fa-pen"></i>
               </button>
             </li>
-            <li>
-              <button class="btn btn-danger" (click)="onDelete(item)">
+            <li class="pl-1 pt-3">
+              <button
+                class="btn btn-outline-secondary"
+                (click)="onDelete(item)"
+              >
                 <i class="fa fa-trash"></i>
               </button>
             </li>
@@ -37,28 +51,31 @@
       </tr>
     </tbody>
   </table>
-</div>
-<div class="row pt-5">
-  <div class="col-lg-4 col-md-4 -col-sm-12">
-    Showing {{ paginate.currentPage }} to 10 of
-    {{ paginate.total * paginate.pageSize }} entries
+  <div class="row pt-2">
+    <div class="col-lg-4 col-md-4 -col-sm-12">
+      <b>
+        Mostrando {{ paginate.currentPage }} a 10 de
+        {{ paginate.total * paginate.pageSize }} páginas
+      </b>
+    </div>
+    <div class="col-lg-8 col-md-8 -col-sm-12">
+      <ul
+        id="table_id_paginate"
+        class="pagination d-flex justify-content-end"
+      ></ul>
+    </div>
   </div>
-  <div class="col-lg-8 col-md-8 -col-sm-12">
-    <ul id="table_id_paginate" class="pagination"></ul>
+  <div id="diretorio_grid_edit_component" *ngIf="selectedRecord && !isDelete">
+    <app-edit-diretorio-component
+      [diretorio]="selectedRecord"
+      (onCloseModal)="stateModal($event)"
+    ></app-edit-diretorio-component>
   </div>
 </div>
-
-<div id="diretorio_grid_edit_component" *ngIf="selectedRecord && !isDelete">
-  <app-edit-diretorio-component
-    [diretorio]="selectedRecord"
-    (onCloseModal)="stateModal($event)"
-  ></app-edit-diretorio-component>
-</div>
-
 <!--  TODO modal delete -->
 <div
   class="modal fade show"
-  id="modal-sm"
+  id="modal"
   style="
     display: block;
     padding-right: 15px;
@@ -71,11 +88,12 @@
   role="dialog"
   *ngIf="isDelete"
 >
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Deseja Excluir o Parâmetro?</h4>
+      <div class="modal-header" style="background-color: #343a40; color: white">
+        <h4 class="modal-title">DESEJA EXCLUIR O DIRETÓRIO?</h4>
         <button
+          style="color: white"
           type="button"
           class="close"
           data-dismiss="modal"
@@ -96,18 +114,18 @@
       <div class="modal-footer justify-content-between">
         <button
           type="button"
-          class="btn btn-default"
+          class="btn btn-secondary"
           data-dismiss="modal"
           (click)="onModalClose(true)"
         >
-          Fechar
+          FECHAR
         </button>
         <button
           type="button"
           class="btn btn-danger"
           (click)="onModalClose(false)"
         >
-          Salvar mudanças
+          SALVAR
         </button>
       </div>
     </div>

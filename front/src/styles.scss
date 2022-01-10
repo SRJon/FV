@@ -22,12 +22,12 @@ table {
 }
 
 th {
-  font-family: Montserrat-Medium;
+  // font-family: Montserrat-Medium;
   font-size: 12px;
   color: #fff;
   line-height: 1.4;
   text-transform: uppercase;
-  background-color: #002933;
+  background-color: #343a40;
 }
 
 .row100.head th {
@@ -51,6 +51,7 @@ td {
   line-height: 1.4;
   position: relative;
   text-align: center;
+  min-height: 40px;
 }
 
 tbody tr:nth-child(2n) {
@@ -64,7 +65,7 @@ tbody tr:nth-child(2n) {
   color: $gray;
 }
 .row100 > td:hover {
-  // color: $gray;
+  color: $gray;
   font-weight: 400;
   color: $darkgray;
   border: 1px solid $darkgray;
@@ -73,4 +74,17 @@ tbody tr:nth-child(2n) {
 table {
   display: table;
   table-layout: fixed;
+}
+@media screen and (max-width: 768px) {
+  #table_id_paginate {
+    li {
+      display: none !important;
+    }
+    li:last-child {
+      display: block !important;
+    }
+    li:first-child {
+      display: block !important;
+    }
+  }
 }

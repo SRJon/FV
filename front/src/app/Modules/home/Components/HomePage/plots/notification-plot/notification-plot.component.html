@@ -1,0 +1,63 @@
+<div class="card" style="position: relative; left: 0px; top: 0px">
+  <div class="card-header ui-sortable-handle" style="cursor: move">
+    <h3 class="card-title">
+      <i class="ion ion-clipboard mr-1"></i>
+      Notificações
+    </h3>
+
+    <!-- <div class="card-tools">
+      <ul class="pagination pagination-sm">
+        <li class="page-item"><a href="#" class="page-link">«</a></li>
+        <li class="page-item"><a href="#" class="page-link">1</a></li>
+        <li class="page-item"><a href="#" class="page-link">2</a></li>
+        <li class="page-item"><a href="#" class="page-link">3</a></li>
+        <li class="page-item"><a href="#" class="page-link">»</a></li>
+      </ul>
+    </div> -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <ul class="todo-list ui-sortable" data-widget="todo-list">
+      <li
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+        *ngFor="let item of [0, 0, 0, 0, 0, 0]"
+      >
+        <!-- drag handle -->
+        <span class="handle ui-sortable-handle">
+          <i class="fas fa-ellipsis-v"></i>
+          <i class="fas fa-ellipsis-v"></i>
+        </span>
+        <div
+          style="
+            background: #fb6e52;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2;
+          "
+        >
+          <i style="color: #fff" class="fas fa-palette"></i>
+        </div>
+
+        <!-- todo text -->
+        <span class="text">Group Records & Totalizers</span>
+        <span style="font-size: 10pt; color: #999">13/12/21 09:10</span>
+        <!-- Emphasis label -->
+        <small class="badge badge-danger">
+          <i class="far fa-clock"></i> 2 mins</small
+        >
+      </li>
+    </ul>
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer clearfix">
+    <button type="button" class="btn btn-primary float-right">
+      <i class="fas fa-plus"></i> Add item
+    </button>
+  </div>
+</div>

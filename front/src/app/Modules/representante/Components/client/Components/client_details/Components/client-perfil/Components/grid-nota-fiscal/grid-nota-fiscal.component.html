@@ -1,0 +1,40 @@
+<div class="row">
+  <table>
+    <thead>
+      <tr class="row100 head">
+        <th data-column="column1" class="column100 column1">NÚMERO</th>
+        <th data-column="column2" class="column100 column2">EMPRESA</th>
+        <th data-column="column3" class="column100 column3">
+          DT. DO FATURAMENTO
+        </th>
+        <th data-column="column4" class="column100 column4">
+          CONDIÇÃO PAGAMENTO
+        </th>
+        <th data-column="column5" class="column100 column5">% COMISSÃO</th>
+        <th data-column="column6" class="column100 column6">VALOR NOTA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row100" *ngFor="let item of listGrid">
+        <td data-column="column1" class="column100 column1">
+          {{ item.nunota }}
+        </td>
+        <td data-column="column2" class="column100 column2">
+          {{ item.empresa.nomefantasia }}
+        </td>
+        <td data-column="column3" class="column100 column3">
+          {{ item.dtfatur }}
+        </td>
+        <td data-column="column4" class="column100 column4">
+          {{ item.tgftpv.descrtipvenda }}
+        </td>
+        <td data-column="column5" class="column100 column5">
+          {{ item.ad_perccom }}
+        </td>
+        <td data-column="column6" class="column100 column6">
+          {{ item.vlrnota }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,221 @@
+<div
+  class="modal fade show"
+  id="modal-default"
+  aria-hidden="true"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <!-- style="display: none" -->
+  <div class="modal-dialog">
+    <div class="modal-content" style="height: inherit; width: inherit">
+      <!-- TODO modalLoading -->
+      <div class="overlay" id="overloadModal">
+        <i class="fas fa-2x fa-sync fa-spin"></i>
+      </div>
+      <div class="modal-header" style="background-color: #343a40; color: white">
+        <h5 class="modal-title">{{ words.title }}</h5>
+        <button
+          style="color: white"
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="onClose()"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- form start -->
+        <ng-template [ngIf]="usuario">
+          <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
+            <div class="card-body">
+              <!-- TODO idInput -->
+              <div class="form-group row">
+                <label for="IdInput" class="col-12">{{ words.idInput }}</label>
+                <input
+                  type="number"
+                  class="form-control col-10"
+                  id="IdInput"
+                  disabled
+                  [value]="usuario.id"
+                  [name]="words.idInput"
+                  required
+                />
+              </div>
+              <!-- TODO NomeInput -->
+
+              <div class="form-group row">
+                <label [for]="words.nomeInput" class="col-12">{{
+                  words.nomeInput
+                }}</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control col-10"
+                  [id]="words.nomeInput"
+                  placeholder="Digite o nome"
+                  [(ngModel)]="usuario.nome"
+                  formControlName="nome"
+                  [class.is-invalid]="serviceForm.get('nome')?.invalid"
+                  [class.is-valid]="serviceForm.get('nome')?.valid"
+                />
+                <span class="error invalid-feedback">*Requerido</span>
+              </div>
+
+              <!-- TODO LoginInput -->
+              <div class="form-group row">
+                <label class="col-12" [for]="words.loginInput">{{
+                  words.loginInput
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [id]="words.loginInput"
+                  [placeholder]="words.loginInput"
+                  [(ngModel)]="usuario.login"
+                  formControlName="login"
+                  [name]="words.loginInput"
+                  [class.is-invalid]="serviceForm.get('login')?.invalid"
+                  [class.is-valid]="serviceForm.get('login')?.valid"
+                />
+              </div>
+              <!-- TODO senhaInput -->
+              <div class="form-group row">
+                <label class="col-12" [for]="words.senhaInput">{{
+                  words.senhaInput
+                }}</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  [id]="words.senhaInput"
+                  [placeholder]="words.senhaInput"
+                  [(ngModel)]="usuario.senha"
+                  formControlName="senha"
+                  [name]="words.senhaInput"
+                  [class.is-invalid]="serviceForm.get('senha')?.invalid"
+                  [class.is-valid]="serviceForm.get('senha')?.valid"
+                />
+              </div>
+
+              <!-- TODO E-MailInput -->
+              <div class="form-group row">
+                <label class="col-12" [for]="words.emailInput">{{
+                  words.emailInput
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [id]="words.emailInput"
+                  [placeholder]="words.emailInput"
+                  [(ngModel)]="usuario.email"
+                  formControlName="email"
+                  [name]="words.emailInput"
+                />
+              </div>
+
+              <!-- TODO BoolInputs -->
+
+              <div class="row">
+                <div class="col-6 d-flex justify-content-start">
+                  <div class="form-group">
+                    <label
+                      style="font-size: 10px"
+                      [for]="words.ativoInput"
+                      class="pr-2"
+                      >{{ words.ativoInput }}</label
+                    >
+                    <input
+                      type="checkbox"
+                      [id]="words.ativoInput"
+                      placeholder="Ativo"
+                      [(ngModel)]="usuario.ativo"
+                      [name]="words.ativoInput"
+                      formControlName="ativo"
+                    />
+                  </div>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                  <div class="form-group">
+                    <label
+                      style="font-size: 10px"
+                      [for]="words.alterPassNextLogonInput"
+                      class="pr-2"
+                      >{{ words.alterPassNextLogonInput }}</label
+                    >
+                    <input
+                      type="checkbox"
+                      [id]="words.alterPassNextLogonInput"
+                      placeholder="Ativo"
+                      [(ngModel)]="usuario.altSenha"
+                      [name]="words.alterPassNextLogonInput"
+                      formControlName="alterPassNextLogonInput"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- TODO E-PerfilInput -->
+              <div class="form-group row">
+                <label class="col-12" [for]="words.perfilInput">{{
+                  words.perfilInput
+                }}</label>
+
+                <select class="form-select" aria-label="Default select">
+                  <option selected>Selecione um perfil</option>
+                  <option
+                    [attr.data-tokens]="perfil.id"
+                    [selected]="perfil.id === usuario.perfilId"
+                    *ngFor="let perfil of perfis"
+                    [value]="perfil.nome"
+                    (click)="onChange(perfil.id)"
+                  >
+                    {{ perfil.id }} -
+                    {{ perfil.nome }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- TODO dataUltima alteraçao Input -->
+              <div
+                class="form-group d-flex"
+                style="justify-content: space-around"
+              >
+                <label style="font-size: 12px"
+                  >{{ words.lastUpdatePasswordInput }}:</label
+                >
+                <span>{{
+                  usuario.dtUltAltSenha | date: "dd/MM/yyyy HH:mm"
+                }}</span>
+              </div>
+            </div>
+
+            <!-- /.card-body -->
+            <div class="modal-footer justify-content-between">
+              <button
+                (click)="onClose()"
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                FECHAR
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="this.serviceForm.invalid"
+              >
+                SALVAR
+              </button>
+            </div>
+          </form>
+        </ng-template>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

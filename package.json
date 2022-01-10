@@ -1,0 +1,22 @@
+{
+  "name": "fv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "front": "npm run start --prefix front",
+    "back": "npm run start --prefix back/back"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevGrupoLitoral/FV.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevGrupoLitoral/FV/issues"
+  },
+  "homepage": "https://github.com/DevGrupoLitoral/FV#readme"
+}

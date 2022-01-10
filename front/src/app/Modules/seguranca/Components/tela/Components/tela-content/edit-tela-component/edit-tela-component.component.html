@@ -9,14 +9,16 @@
   aria-hidden="true"
 >
   <!-- style="display: none" -->
-  <div class="modal-dialog" style="height: -webkit-fill-available; width: 50vw">
+  <div class="modal-dialog">
     <div class="modal-content" style="height: inherit; width: inherit">
       <!-- TODO modalLoading -->
       <div class="overlay" id="overloadModal">
         <i class="fas fa-2x fa-sync fa-spin"></i>
       </div>
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: #343a40; color: white">
+        <h5 class="modal-title">{{ words.title }}</h5>
         <button
+          style="color: white"
           type="button"
           class="close"
           data-dismiss="modal"
@@ -27,188 +29,180 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">{{ words.title }}</h3>
-          </div>
-          <!-- /.card-header -->
-          <!-- form start -->
-          <ng-template [ngIf]="tela">
-            <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
-              <div class="card-body">
-                <div class="form-group row">
-                  <label for="IDInput" class="col-2">{{ words.idInput }}</label>
-                  <input
-                    type="number"
-                    class="form-control col-10"
-                    id="IDInput"
-                    disabled
-                    [value]="tela.id"
-                    [name]="words.idInput"
-                    required
-                  />
-                </div>
-                <div class="form-group row">
-                  <label for="nomeInput" class="col-2"
-                    >{{ words.nomeInput }}*</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control col-10"
-                    id="nomeInput"
-                    placeholder="Digite o nome"
-                    [(ngModel)]="tela.nome"
-                    formControlName="nome"
-                    [class.is-invalid]="serviceForm.get('nome')?.invalid"
-                    [class.is-valid]="serviceForm.get('nome')?.valid"
-                  />
-                  <span class="error invalid-feedback">*Requerido</span>
-                </div>
+        <!-- form start -->
+        <ng-template [ngIf]="tela">
+          <form [formGroup]="serviceForm" (ngSubmit)="onConfirm()">
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="IDInput" class="col-2">{{ words.idInput }}</label>
+                <input
+                  type="number"
+                  class="form-control col-10"
+                  id="IDInput"
+                  disabled
+                  [value]="tela.id"
+                  [name]="words.idInput"
+                  required
+                />
+              </div>
+              <div class="form-group row">
+                <label for="nomeInput" class="col-2"
+                  >{{ words.nomeInput }}*</label
+                >
+                <input
+                  type="text"
+                  class="form-control col-10"
+                  id="nomeInput"
+                  placeholder="Digite o nome"
+                  [(ngModel)]="tela.nome"
+                  formControlName="nome"
+                  [class.is-invalid]="serviceForm.get('nome')?.invalid"
+                  [class.is-valid]="serviceForm.get('nome')?.valid"
+                />
+                <span class="error invalid-feedback">*Requerido</span>
+              </div>
 
-                <div class="form-group row">
-                  <label for="urlInput" class="col-2"
-                    >{{ words.urlInput }}*</label
-                  >
-                  <input
-                    formControlName="url"
-                    required
-                    type="text"
-                    class="form-control col-10"
-                    id="urlInput"
-                    placeholder="Digite a Url"
-                    [(ngModel)]="tela.url"
-                    [name]="words.urlInput"
-                    [class.is-invalid]="serviceForm.get('url')?.invalid"
-                    [class.is-valid]="serviceForm.get('url')?.valid"
-                  />
-                  <div class="invalid-feedback">*Requerido</div>
-                </div>
+              <div class="form-group row">
+                <label for="urlInput" class="col-2"
+                  >{{ words.urlInput }}*</label
+                >
+                <input
+                  formControlName="url"
+                  required
+                  type="text"
+                  class="form-control col-10"
+                  id="urlInput"
+                  placeholder="Digite a Url"
+                  [(ngModel)]="tela.url"
+                  [name]="words.urlInput"
+                  [class.is-invalid]="serviceForm.get('url')?.invalid"
+                  [class.is-valid]="serviceForm.get('url')?.valid"
+                />
+                <div class="invalid-feedback">*Requerido</div>
+              </div>
 
-                <div class="form-group row">
-                  <label for="targetInput" class="col-2">{{
-                    words.targetInput
+              <div class="form-group row">
+                <label for="targetInput" class="col-2">{{
+                  words.targetInput
+                }}</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control col-10"
+                  id="targetInput"
+                  placeholder="Digite a Target"
+                  [(ngModel)]="tela.target"
+                  [name]="words.targetInput"
+                />
+              </div>
+
+              <div class="form-group row">
+                <label for="OrdemInput" class="col-2">{{
+                  words.ordemInput
+                }}</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control col-10"
+                  id="OrdemInput"
+                  placeholder="Digite a Ordem"
+                  [(ngModel)]="tela.ordem"
+                  [name]="words.ordemInput"
+                />
+              </div>
+
+              <div class="form-group row">
+                <label for="ModuloInput" class="col-2">{{
+                  words.moduloInput
+                }}</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control col-10"
+                  id="ModuloInput"
+                  placeholder="Digite a Modulo"
+                  [(ngModel)]="tela.modulo"
+                  [name]="words.moduloInput"
+                />
+              </div>
+
+              <div class="form-group row">
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="nivelCheck"
+                    [(ngModel)]="tela.nivel"
+                    [name]="words.nivelInput"
+                  />
+                  <label class="form-check-label" for="nivelCheck">{{
+                    words.nivelInput
                   }}</label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control col-10"
-                    id="targetInput"
-                    placeholder="Digite a Target"
-                    [(ngModel)]="tela.target"
-                    [name]="words.targetInput"
-                  />
                 </div>
-
-                <div class="form-group row">
-                  <label for="OrdemInput" class="col-2">{{
-                    words.ordemInput
-                  }}</label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control col-10"
-                    id="OrdemInput"
-                    placeholder="Digite a Ordem"
-                    [(ngModel)]="tela.ordem"
-                    [name]="words.ordemInput"
-                  />
-                </div>
-
-                <div class="form-group row">
-                  <label for="ModuloInput" class="col-2">{{
-                    words.moduloInput
-                  }}</label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control col-10"
-                    id="ModuloInput"
-                    placeholder="Digite a Modulo"
-                    [(ngModel)]="tela.modulo"
-                    [name]="words.moduloInput"
-                  />
-                </div>
-
-                <div class="form-group row">
-                  <div class="form-check">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="nivelCheck"
-                      [(ngModel)]="tela.nivel"
-                      [name]="words.nivelInput"
-                    />
-                    <label class="form-check-label" for="nivelCheck">{{
-                      words.nivelInput
-                    }}</label>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="TelaNivelInput" class="col-2">{{
-                    words.telaNivelInput
-                  }}</label>
-                  <div class="col-12 col-sm-6" data-select2-id="29">
-                    <div class="form-group">
-                      <select
-                        class="
-                          form-control
-                          select2 select2-danger select2-hidden-accessible
-                        "
-                        data-dropdown-css-class="select2-danger"
-                        style="width: 100%"
-                        data-select2-id="12"
-                        tabindex="-1"
-                        aria-hidden="true"
-                        [(ngModel)]="tela.telaId"
-                        [name]="words.telaNivelInput"
-                        ng-change="onchange()"
+              </div>
+              <div class="form-group row">
+                <label for="TelaNivelInput" class="col-2">{{
+                  words.telaNivelInput
+                }}</label>
+                <div class="col-12 col-sm-6" data-select2-id="29">
+                  <div class="form-group">
+                    <select
+                      class="
+                        form-control
+                        select2 select2-danger select2-hidden-accessible
+                      "
+                      data-dropdown-css-class="select2-danger"
+                      style="width: 100%"
+                      data-select2-id="12"
+                      tabindex="-1"
+                      aria-hidden="true"
+                      [(ngModel)]="tela.telaId"
+                      [name]="words.telaNivelInput"
+                      ng-change="onchange()"
+                    >
+                      <option
+                        *ngFor="let sub of subTelas"
+                        selected="{{
+                          sub.id == tela.tela!.id ? 'selected' : ''
+                        }}"
                       >
-                        <option
-                          *ngFor="let sub of subTelas"
-                          selected="{{
-                            sub.id == tela.tela!.id ? 'selected' : ''
-                          }}"
+                        {{ sub.id }}-{{ sub.nome }}
+                      </option></select
+                    ><span
+                      class="
+                        select2
+                        select2-container
+                        select2-container--default
+                        select2-container--below
+                        select2-container--focus
+                        select2 select2-container
+                      "
+                      dir="ltr"
+                      data-select2-id="13"
+                      style="width: 100%; display: none"
+                    >
+                      <span class="selection">
+                        <span
+                          class="select2-selection select2-selection--single"
+                          role="combobox"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          tabindex="0"
+                          aria-disabled="false"
+                          aria-labelledby="select2-k8c8-container"
                         >
-                          {{ sub.id }}-{{ sub.nome }}
-                        </option></select
-                      ><span
-                        class="
-                          select2
-                          select2-container
-                          select2-container--default
-                          select2-container--below
-                          select2-container--focus
-                          select2 select2-container
-                        "
-                        dir="ltr"
-                        data-select2-id="13"
-                        style="width: 100%; display: none"
-                      >
-                        <span class="selection">
-                          <span
-                            class="select2-selection select2-selection--single"
-                            role="combobox"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            tabindex="0"
-                            aria-disabled="false"
-                            aria-labelledby="select2-k8c8-container"
                           >
-                            >
-                            <span
-                              class="select2-selection__arrow"
-                              role="presentation"
-                            >
-                              <b role="presentation"></b></span></span></span
-                        ><span
-                          class="dropdown-wrapper"
-                          aria-hidden="true"
-                        ></span
-                      ></span>
-                    </div>
-                    <!-- /.form-group -->
+                          <span
+                            class="select2-selection__arrow"
+                            role="presentation"
+                          >
+                            <b role="presentation"></b></span></span></span
+                      ><span class="dropdown-wrapper" aria-hidden="true"></span
+                    ></span>
                   </div>
-                  <!-- <select
+                  <!-- /.form-group -->
+                </div>
+                <!-- <select
                   class="
                     form-control
                     select2 select2-danger select2-hidden-accessible
@@ -229,42 +223,41 @@
                   </option>
                 </select> -->
 
-                  <span
-                    class="
-                      select2
-                      select2-container
-                      select2-container--default
-                      select2-container--below
-                      select2-container--focus
-                    "
-                    dir="ltr"
-                    data-select2-id="13"
-                    style="width: 100%"
-                    ><span class="dropdown-wrapper" aria-hidden="true"></span>
-                  </span>
-                </div>
+                <span
+                  class="
+                    select2
+                    select2-container
+                    select2-container--default
+                    select2-container--below
+                    select2-container--focus
+                  "
+                  dir="ltr"
+                  data-select2-id="13"
+                  style="width: 100%"
+                  ><span class="dropdown-wrapper" aria-hidden="true"></span>
+                </span>
               </div>
-              <!-- /.card-body -->
-              <div class="modal-footer justify-content-between">
-                <button
-                  (click)="onClose()"
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  [disabled]="this.serviceForm.invalid"
-                >
-                  Save changes
-                </button>
-              </div>
-            </form>
-          </ng-template>
-        </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="modal-footer justify-content-between">
+              <button
+                (click)="onClose()"
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                FECHAR
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="this.serviceForm.invalid"
+              >
+                SALVAR
+              </button>
+            </div>
+          </form>
+        </ng-template>
       </div>
     </div>
     <!-- /.modal-content -->

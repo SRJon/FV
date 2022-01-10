@@ -1,3 +1,20 @@
-<p>
-  Geral works!
-</p>
+<div class="container">
+  <div class="content">
+    <ng-template [ngIf]="data">
+      <ul>
+        <li><strong>CÓDIGO</strong></li>
+        <li><strong>RAZÃO SOCIAL</strong></li>
+        <li><strong>CNPJ/CPF</strong></li>
+        <li><strong>E-MAIL</strong></li>
+        <li><strong>LIMITE DE CRÉDITO</strong></li>
+      </ul>
+      <ul>
+        <li>{{ data.codparc }}</li>
+        <li>{{ data.razaosocial }}</li>
+        <li>{{ cpfComputed() }}</li>
+        <li>{{ data.email }}</li>
+        <li>{{ priceComputed() }}</li>
+      </ul>
+    </ng-template>
+  </div>
+</div>

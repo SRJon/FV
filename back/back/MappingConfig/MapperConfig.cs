@@ -2,8 +2,8 @@ using AutoMapper;
 using back.data.entities.AnexoCont;
 using back.data.entities.AnexoDev;
 using back.data.entities.AnexoRep;
-using back.data.entities.Book;
-using back.data.entities.BookAnexo;
+using back.data.entities.BookAmostra;
+using back.data.entities.BookAnexoAmostra;
 using back.data.entities.BProduto;
 using back.data.entities.BProdutoImg;
 using back.data.entities.Diretorio;
@@ -24,11 +24,38 @@ using back.data.entities.TSIEndereco;
 using back.data.entities.TSIBairro;
 using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
+
+using back.data.entities.TGFVendedor;
+using back.data.entities.TSIEmpresa;
+
 using back.data.entities.TGFVEN;
 using back.data.entities.TSIEMP;
+
 using back.data.entities.UserEmp;
-using back.data.entities.AD_TIPNEG;
+using back.data.entities.View_AD_TIPNEG;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
+
+using back.data.entities.View_AD_ESTPROGPROD;
+using back.data.entities.AD_FamiliaGR1;
+using back.data.entities.AD_FamiliaGR2;
+using back.data.entities.AD_FamiliaGR3;
+using back.data.entities.TGFEXCProduto;
+using back.data.entities.TGFIPImposto;
+using back.data.entities.TGFProduto;
+using back.data.entities.View_VGFTAB;
+using back.data.entities.AD_PANTONE_Cor;
+using back.data.entities.View_AD_ESTPRODCOR;
+using back.data.entities.TGFTPVenda;
+using back.data.entities.TCSProjeto;
+using back.data.entities.TGFCABNota;
+using back.data.entities.TGFGrupoProdutoVendedor;
+using back.data.entities.TGFGrupoProduto;
+using back.data.entities.View_AD_DEVSOLICITACAO;
+using back.data.entities.TGFinanceiro;
+using back.data.entities.View_AD_ITEDEVSOLICITACAO;
+using back.data.entities.ViewAD_FINCOM;
+using back.data.entities.AD_Estoque;
+
 using back.data.entities.DataViews.VIEW_AD_GERAL_PV;
 using back.data.entities.AD_ESTPROGPROD;
 using back.data.entities.AD_FAMGR1;
@@ -43,6 +70,7 @@ using back.data.entities.AD_ESTPRODCOR;
 using back.data.entities.DataViews.VIEW_AD_PEDIDOS;
 using back.data.entities.DataViews.VIEW_AD_EXTRA_PV;
 using back.data.entities.DataViews.VIEW_AD_PRODUTO_PV;
+
 
 namespace back.MappingConfig
 {
@@ -87,6 +115,8 @@ namespace back.MappingConfig
                 cfg.CreateTGFVENMapper();
                 cfg.CreateTSIEMPMapper();
                 cfg.CreateAD_TIPNEGMapper();
+                cfg.CreateTGFCABMapper();
+                cfg.CreateTGFFINMapper();
 
                 cfg.CreateAD_SALDO_PARCEIROMapper();
 
@@ -100,6 +130,14 @@ namespace back.MappingConfig
                 cfg.CreateVGFTABMapper();
                 cfg.CreateAD_PANTONEMapper();
                 cfg.CreateAD_ESTPRODCORMapper();
+                cfg.CreateTGFTPVMapper();
+                cfg.CreateTCSPRJMapper();
+                cfg.CreateTGFRGVMapper();
+                cfg.CreateTGFGRUMapper();
+                cfg.CreateAD_DEVSOLICITACAOMapper();
+                cfg.CreateAD_ITEDEVSOLICITACAOMapper();
+                cfg.CreateAD_FINCOMMapper();
+                cfg.CreateAD_ESTCODPRODMapper();
 
             });
             return configuration;

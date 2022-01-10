@@ -1,0 +1,21 @@
+<div class="h-100">
+  <div class="container h-100">
+    <div class="row">
+      <app-dinamic-filter></app-dinamic-filter>
+    </div>
+    <div class="row mt-2 h-75">
+      <div
+        class="content"
+        [style]="'overflow-y: scroll; max-height:' + contentHeight + 'px'"
+      >
+        <app-financeiro-grid [listGrid]="listGrid"></app-financeiro-grid>
+      </div>
+      <div class="row mt-2">
+        <ul
+          id="table_id_paginate"
+          class="pagination d-flex justify-content-end"
+        ></ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 ﻿using back.domain.entities;
 using System;
 
-namespace back.data.entities.AD_TIPNEG
+namespace back.data.entities.View_AD_TIPNEG
 {
     public class AD_TIPNEG : IAD_TIPNEG
     {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
 
 @Component({
   selector: 'app-diretorio',
@@ -7,8 +7,11 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./diretorio.component.scss'],
 })
 export class DiretorioComponent implements OnInit {
-  constructor(private titleService: Title) {
-    this.titleService.setTitle('Diretório');
+  title: string = 'Diretório';
+  description: string = '';
+
+  constructor(private globalTitle: GlobalTitle<string>) {
+    this.globalTitle.setValue(this.title);
   }
 
   getHeigth(): number {

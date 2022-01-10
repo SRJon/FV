@@ -7,7 +7,8 @@
   <app-MainSidebarContainer *ngIf="!isLogin"></app-MainSidebarContainer>
   <!-- Content Wrapper. Contains page content -->
   <div
-    class="{{ isLogin ? '' : 'content-wrapper' }}"
+    class=" {{ isLogin ? '' : 'content-wrapper' }}"
+
     style="height: 100%; max-height: {{ isLogin ? '100' : '91' }}vh"
     id="middleWrapper"
   >
@@ -24,7 +25,7 @@
         [style.display]="isLoading ? '' : 'none'"
       />
     </div>
-    <div class="pl-2" [style.height.px]="getHeight()">
+    <div class="pl-2" [style.height.px]="getHeight()" style="overflow: scroll">
       <!-- Control Sidebar -->
       <!-- /.control-sidebar -->
       <router-outlet></router-outlet>
@@ -47,7 +48,7 @@
     </div>
   </aside>
   <!-- Main Footer -->
-  <footer class="main-footer" [style.display]="isLogin ? 'none' : ''">
+  <footer class="main-footer" style="display: none">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">Anything you want</div>
     <!-- Default to the left -->

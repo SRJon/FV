@@ -1,7 +1,7 @@
 ﻿using back.domain.entities;
 using System;
 
-namespace back.data.entities.VGFTAB
+namespace back.data.entities.View_VGFTAB
 {
     public class VGFTAB : IVGFTAB
     {

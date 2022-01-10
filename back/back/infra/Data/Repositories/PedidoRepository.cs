@@ -6,6 +6,8 @@ using AutoMapper;
 using back.data.entities.Request;
 using back.data.http;
 using back.domain.DTO.Request;
+using back.domain.DTO.TGFParceiroDTO;
+using back.domain.DTO.TGFTPVendaDTO;
 using back.domain.Repositories;
 using back.infra.Data.Context;
 using back.infra.Services.PedidoServices;
@@ -18,11 +20,17 @@ namespace back.infra.Data.Repositories
     {
         private readonly IMapper _mapper;
         private readonly DbContexts _ctxs;
+        private readonly ITGFTPVRepository _ITITGFTPVRepository;
+        private readonly ITCSPRJRepository _ITCSPRJRepository;
+        private readonly ITGFPARRepository _ITGFPARRepository;
 
-        public PedidoRepository(DbContexts ctxs) : base()
+        public PedidoRepository(DbContexts ctxs, ITGFTPVRepository ITGFTPVRepository, ITCSPRJRepository ITCSPRJRepository, ITGFPARRepository ITGFPARRepository) : base()
         {
             this._mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
+            _ITITGFTPVRepository = ITGFTPVRepository;
+            _ITCSPRJRepository = ITCSPRJRepository;
+            _ITGFPARRepository = ITGFPARRepository;
 
         }
 
@@ -39,9 +47,83 @@ namespace back.infra.Data.Repositories
 
                 var Pedidos = await savedSearches.ToListAsync();
                 Pedidos.ForEach(e => dTOs.Add(_mapper.Map<PedidoDTO>(e)));
-
+                foreach (var dto in dTOs)
+                {
+                    try
+                    {
+                        dto.TGFTPV = await _ITITGFTPVRepository.GetByCODTIPVENDA((int)dto.CondPagCodTipVenda, (DateTime)dto.CondPagDhAlter);
+                    }
+                    catch (System.Exception)
+                    {
+                        dto.TGFTPV = null;
+                    }
+                    try
+                    {
+                        dto.TCSPRJ = await _ITCSPRJRepository.GetByCODTIPVENDA((int)dto.ProjetoCod);
+                    }
+                    catch (System.Exception)
+                    {
+                        dto.TCSPRJ = null;
+                    }
+                    try
+                    {
+                        dto.TGFPAR = _mapper.Map<TGFPARDTOPedido>(await _ITGFPARRepository.GetById((int)dto.ClienteRemCod));
+                    }
+                    catch (System.Exception)
+                    {
+                        dto.TGFPAR = null;
+                    }
+                }
                 response.Data = dTOs;
                 response.TotalPages = await contexto.Pedido.CountAsync();
+                response.Page = page;
+                response.TotalPages = base.getTotalPages(response.TotalPages);
+                response.Success = true;
+                response.StatusCode = 200;
+                return response;
+            }
+            catch (Exception)
+            {
+                response.Data = null;
+                response.StatusCode = 400;
+                return response;
+            }
+        }
+        public async Task<Response<List<PedidoClienteDTO>>> GetAllPaginateAsyncByParc(int codParc, int page, int limit)
+        {
+            var response = new Response<List<PedidoClienteDTO>>();
+            var contexto = _ctxs.GetVFU();
+            try
+            {
+                base.ValidPaginate(page, limit);
+                var research = contexto.Pedido.Include(u => u.Usuario).Include(e => e.Empresa).Include(p => p.PedidoItem).Where(u => u.ClienteCod == codParc).Take(int.MaxValue).OrderBy(o => o.Id);
+                var savedSearches = research.Skip(base.skip).Take(base.limit);
+
+                List<PedidoClienteDTO> dTOs = new List<PedidoClienteDTO>();
+
+                var Pedidos = await savedSearches.ToListAsync();
+                Pedidos.ForEach(e => dTOs.Add(_mapper.Map<PedidoClienteDTO>(e)));
+                foreach (var dto in dTOs)
+                {
+                    try
+                    {
+                        dto.TGFTPV = _mapper.Map<TGFTPVPedidoClienteDTO>(await _ITITGFTPVRepository.GetByCODTIPVENDA((int)dto.CondPagCodTipVenda, (DateTime)dto.CondPagDhAlter));
+                    }
+                    catch (System.Exception)
+                    {
+                        dto.TGFTPV = null;
+                    }
+                    try
+                    {
+                        dto.TGFPAR = _mapper.Map<TGFPARPedidoClienteDTO>(await _ITGFPARRepository.GetById((int)dto.ClienteCod));
+                    }
+                    catch (System.Exception)
+                    {
+                        dto.TGFPAR = null;
+                    }
+                }
+                response.Data = dTOs;
+                response.TotalPages = await research.CountAsync();
                 response.Page = page;
                 response.TotalPages = base.getTotalPages(response.TotalPages);
                 response.Success = true;
@@ -58,9 +140,35 @@ namespace back.infra.Data.Repositories
 
         public async Task<PedidoDTO> GetById(int id)
         {
-            return _mapper.Map<PedidoDTO>(await this._ctxs.
+            var result = _mapper.Map<PedidoDTO>(await this._ctxs.
             GetVFU()
             .GetByIdService(id));
+
+            try
+            {
+                result.TGFTPV = await _ITITGFTPVRepository.GetByCODTIPVENDA((int)result.CondPagCodTipVenda, (DateTime)result.CondPagDhAlter);
+            }
+            catch (System.Exception)
+            {
+                result.TGFTPV = null;
+            }
+            try
+            {
+                result.TCSPRJ = await _ITCSPRJRepository.GetByCODTIPVENDA((int)result.ProjetoCod);
+            }
+            catch (System.Exception)
+            {
+                result.TCSPRJ = null;
+            }
+            try
+            {
+                result.TGFPAR = _mapper.Map<TGFPARDTOPedido>(await _ITGFPARRepository.GetById((int)result.ClienteRemCod));
+            }
+            catch (System.Exception)
+            {
+                result.TGFPAR = null;
+            }
+            return result;
         }
 
         public Task<bool> Create(Pedido Pedido)

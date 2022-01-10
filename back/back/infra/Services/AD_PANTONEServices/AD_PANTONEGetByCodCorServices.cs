@@ -1,4 +1,4 @@
-﻿using back.data.entities.AD_PANTONE;
+﻿using back.data.entities.AD_PANTONE_Cor;
 using back.infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

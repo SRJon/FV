@@ -1,0 +1,34 @@
+<table>
+  <thead>
+    <tr class="row100 head">
+      <th data-column="column1" class="column100 column1">EMPRESA</th>
+      <th data-column="column2" class="column100 column2">NOTA FISCAL</th>
+      <th data-column="column3" class="column100 column3">DUPLICATA</th>
+      <th data-column="column4" class="column100 column4">DT. EMISSÃO</th>
+      <th data-column="column5" class="column100 column5">DT. VENCIMENTO</th>
+      <th data-column="column6" class="column100 column6">VALOR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row100" *ngFor="let item of listGrid">
+      <td data-column="column1" class="column100 column1">
+        {{ item.empresa.nomefantasia }}
+      </td>
+      <td data-column="column2" class="column100 column2">
+        {{ item.numnota }}
+      </td>
+      <td data-column="column3" class="column100 column3">
+        {{ item.numnota + "\\" + item.desdobramento }}
+      </td>
+      <td data-column="column4" class="column100 column4">
+        {{ computedDate(item.dtneg) }}
+      </td>
+      <td data-column="column5" class="column100 column5">
+        {{ computedDate(item.dtvenc) }}
+      </td>
+      <td data-column="column6" class="column100 column6">
+        {{ item.vlrdesdob }}
+      </td>
+    </tr>
+  </tbody>
+</table>

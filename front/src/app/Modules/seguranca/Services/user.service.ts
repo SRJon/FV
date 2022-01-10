@@ -14,7 +14,7 @@ export class UserService {
     limit = 1
   ): Promise<IResponse<IUser[]> | undefined> {
     try {
-      var result = await actions.user.GetAll(page, limit);
+      var result = await actions.user.UserGetAll(page, limit);
       return result;
     } catch (error) {
       return undefined;
@@ -23,7 +23,7 @@ export class UserService {
 
   public async getById(id: number): Promise<IResponse<IUser> | undefined> {
     try {
-      var result = await actions.user.GetById(id);
+      var result = await actions.user.UserGetById(id);
       return result;
     } catch (error) {
       return undefined;
@@ -32,7 +32,7 @@ export class UserService {
 
   public async update(user: IUser): Promise<IResponse<boolean>> {
     try {
-      var result = await actions.user.update(user);
+      var result = await actions.user.UserUpdate(user);
       return result;
     } catch (error: any) {
       return {
@@ -44,7 +44,7 @@ export class UserService {
 
   public async create(user: IUser): Promise<IResponse<boolean>> {
     try {
-      var result = await actions.user.create(user);
+      var result = await actions.user.UserCreate(user);
       return result;
     } catch (error: any) {
       return {
@@ -56,7 +56,7 @@ export class UserService {
 
   public async delete(id: number): Promise<IResponse<boolean>> {
     try {
-      var result = await actions.user.Userdelete(id);
+      var result = await actions.user.UserDelete(id);
       return result;
     } catch (error: any) {
       return {
@@ -68,11 +68,30 @@ export class UserService {
   public async getUserByToken(
     token: string
   ): Promise<IResponse<IUser | undefined>> {
-    var result = await actions.user.GetByUserToken(token);
+    var result = await actions.user.LoginGetUserByToken(token);
     if (result.data) {
       return result;
     } else {
       return {} as IResponse<IUser | undefined>;
     }
+  }
+
+  public async getUser(
+    page: number,
+    pageSize: number
+  ): Promise<IResponse<IUser[]>> {
+    return await actions.user.UserGetAll(page, pageSize);
+  }
+
+  public async deleteUser(id: number): Promise<IResponse<boolean>> {
+    return await actions.user.UserDelete(id);
+  }
+
+  public async updateUser(user: IUser): Promise<IResponse<boolean>> {
+    return await actions.user.UserUpdate(user);
+  }
+
+  public async createUser(user: IUser): Promise<IResponse<boolean>> {
+    return await actions.user.UserCreate(user);
   }
 }

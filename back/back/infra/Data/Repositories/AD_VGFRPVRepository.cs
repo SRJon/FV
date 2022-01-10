@@ -40,7 +40,7 @@ namespace back.infra.Data.Repositories
                 // .Skip(base.skip).Take(base.limit);
                 List<AD_VGFRPVSaldoDTO> dTOs = new List<AD_VGFRPVSaldoDTO>();
 
-                var AD_VGFRPV = await savedSearches.Skip(base.skip).Take(base.limit).ToListAsync();
+                var AD_VGFRPV = await savedSearches.Skip(base.skip).Take(base.limit).OrderBy(u => u.Codvend).ToListAsync();
                 AD_VGFRPV.ForEach(e => dTOs.Add(_mapper.Map<AD_VGFRPVSaldoDTO>(e)));
                 response.Data = dTOs;
                 response.TotalPages = await savedSearches.CountAsync();

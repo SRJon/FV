@@ -1,0 +1,55 @@
+<table [style.height.px]="this.contentHeight">
+  <thead>
+    <tr class="row100 head">
+      <th data-column="column1" class="column100 column1">PEDIDO</th>
+      <th data-column="column2" class="column100 column2">EMPRESA</th>
+      <th data-column="column3" class="column100 column3">COMPRADOR</th>
+      <th data-column="column4" class="column100 column4">ESTOQUE</th>
+      <th data-column="column5" class="column100 column5">FRETE</th>
+      <th data-column="column6" class="column100 column6 ocult">REMESSA</th>
+      <th data-column="column7" class="column100 column7 ocult">
+        CLIENTE REMESSA
+      </th>
+      <th data-column="column8" class="column100 column8 ocult">
+        CONDIÇÃO PAGAMENTO
+      </th>
+      <th data-column="column9" class="column100 column9 ocult">PILOTAGEM</th>
+      <th data-column="column10" class="column100 column10 ocult">LD</th>
+
+      <th data-column="column11" class="column100 column11 ocult">Dt.Envio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row100" *ngFor="let item of listGrid">
+      <td data-column="column1" class="column100 column1">{{ item.id }}</td>
+      <td data-column="column2" class="column100 column2">
+        {{ item.empresa.nome }}
+      </td>
+      <td data-column="column3" class="column100 column3">
+        {{ item.comprador }}
+      </td>
+      <td data-column="column4" class="column100 column4">
+        {{ item.estoque }}
+      </td>
+      <td data-column="column5" class="column100 column5">{{ item.frete }}</td>
+      <td data-column="column6" class="column100 column6 ocult">
+        <input type="checkbox" [checked]="item.remessa" disabled />
+      </td>
+      <td data-column="column7" class="column100 column7 ocult">
+        {{ item.tgfpar.nomeparc }}
+      </td>
+      <td data-column="column8" class="column100 column8 ocult">
+        {{ computedDate(item.condPagDhAlter) }}
+      </td>
+      <td data-column="column9" class="column100 column9 ocult">
+        <input type="checkbox" [checked]="item.pilotagem" disabled />
+      </td>
+      <td data-column="column10" class="column100 column10 ocult">
+        <input type="checkbox" [checked]="item.ld != 'N'" disabled />
+      </td>
+      <td data-column="column11" class="column100 column11 ocult">
+        {{ computedDate(item.dtEnvio) }}
+      </td>
+    </tr>
+  </tbody>
+</table>

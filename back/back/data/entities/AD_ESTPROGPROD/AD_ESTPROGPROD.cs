@@ -1,7 +1,7 @@
 ﻿using back.domain.entities;
 using System;
 
-namespace back.data.entities.AD_ESTPROGPROD
+namespace back.data.entities.View_AD_ESTPROGPROD
 {
     public class AD_ESTPROGPROD : IAD_ESTPROGPROD
     {

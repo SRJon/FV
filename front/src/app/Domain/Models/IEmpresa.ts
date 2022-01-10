@@ -4,4 +4,8 @@ export interface IEmpresa {
   vlrMinFrete: number | undefined;
   vlrMinPedido: number | undefined;
   codEmp: number | undefined;
+  nomefantasia: string;
+  razaosocial: string;
+
+  codemp?: number;
 }

@@ -1,4 +1,4 @@
-﻿namespace back.data.entities.AD_PANTONE
+﻿namespace back.data.entities.AD_PANTONE_Cor
 {
     public class AD_PANTONEGetAllEntity
     {

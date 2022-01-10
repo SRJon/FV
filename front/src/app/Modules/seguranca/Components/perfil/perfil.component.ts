@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
 
 @Component({
   selector: 'app-perfil',
@@ -7,9 +7,17 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./perfil.component.scss'],
 })
 export class PerfilComponent implements OnInit {
-  constructor(private titleService: Title) {
-    this.titleService.setTitle('Perfil');
+  title: string = 'Perfil';
+  description: string = '';
+
+  constructor(private globalTitle: GlobalTitle<string>) {}
+
+  getHeigth(): number {
+    let doc = document.querySelector('#middleWrapper');
+    return doc ? doc.clientHeight : 0;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.globalTitle.setValue(this.title);
+  }
 }
