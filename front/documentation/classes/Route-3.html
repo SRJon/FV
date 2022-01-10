@@ -62,7 +62,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/Modules/seguranca/Pages/Route.ts</code>
+            <code>src/app/Modules/representante/Pages/route.ts</code>
         </p>
 
 
@@ -129,7 +129,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/Modules/seguranca/Pages/Route.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/Modules/representante/Pages/route.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -161,7 +161,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/Modules/seguranca/Pages/Route.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/Modules/representante/Pages/route.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -195,8 +195,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">src/app/Modules/seguranca/Pages/Route.ts:41</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/Modules/representante/Pages/route.ts:80</a></div>
                 </td>
             </tr>
 
@@ -222,14 +222,21 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Routes } from &#x27;@angular/router&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PedidosComponent } from &#x27;./../Components/pedidos/pedidos.component&#x27;;
+import { TabprecoComponent } from &#x27;./../Components/tabpreco/tabpreco.component&#x27;;
+import { SacComponent } from &#x27;./../Components/sac/sac.component&#x27;;
+import { ProgramadosComponent } from &#x27;./../Components/programados/programados.component&#x27;;
+import { IniciorepresentanteComponent } from &#x27;./../Components/iniciorepresentante/iniciorepresentante.component&#x27;;
+import { EstoqueComponent } from &#x27;./../Components/estoque/estoque.component&#x27;;
+import { ComissaoComponent } from &#x27;./../Components/comissao/comissao.component&#x27;;
+import { BookComponent } from &#x27;./../Components/book/book.component&#x27;;
+import { AutorizacaoretiradaComponent } from &#x27;./../Components/autorizacaoretirada/autorizacaoretirada.component&#x27;;
+import { AnexoComponent } from &#x27;./../Components/anexo/anexo.component&#x27;;
+import { Routes } from &#x27;@angular/router&#x27;;
 import { IRoutes } from &#x27;src/app/Repository/IRoutes&#x27;;
-import { PerfilComponent } from &#x27;../Components/perfil/perfil.component&#x27;;
-import { TelaComponent } from &#x27;../Components/tela/tela.component&#x27;;
-import { EmpresaComponent } from &#x27;../Components/empresa/empresa.component&#x27;;
-import { UsuarioComponent } from &#x27;../Components/usuario/usuario.component&#x27;;
-import { DiretorioComponent } from &#x27;../Components/diretorio/diretorio.component&#x27;;
-import { ParametroComponent } from &#x27;../Components/parametro/parametro.component&#x27;;
+import { ClientComponent } from &#x27;../Components/client/client.component&#x27;;
+import { Client_detailsComponent } from &#x27;../Components/client/Components/client_details/client_details.component&#x27;;
+import { PedidoandamentoComponent } from &#x27;../Components/pedidoandamento/pedidoandamento.component&#x27;;
 
 export class Route implements IRoutes {
   routes: Routes;
@@ -237,28 +244,60 @@ export class Route implements IRoutes {
   constructor() {
     this.routes &#x3D; [
       {
-        path: &#x27;perfil&#x27;,
-        component: PerfilComponent,
+        path: &#x27;anexo&#x27;,
+        component: AnexoComponent,
       },
       {
-        path: &#x27;tela&#x27;,
-        component: TelaComponent,
+        path: &#x27;autorizacaoretirada&#x27;,
+        component: AutorizacaoretiradaComponent,
       },
       {
-        path: &#x27;empresa&#x27;,
-        component: EmpresaComponent,
+        path: &#x27;book&#x27;,
+        component: BookComponent,
       },
       {
-        path: &#x27;usuario&#x27;,
-        component: UsuarioComponent,
+        path: &#x27;wpclientes/details/:id&#x27;,
+        component: Client_detailsComponent,
       },
       {
-        path: &#x27;diretorio&#x27;,
-        component: DiretorioComponent,
+        path: &#x27;wpclientes&#x27;,
+        component: ClientComponent,
       },
       {
-        path: &#x27;parametro&#x27;,
-        component: ParametroComponent,
+        path: &#x27;comissao&#x27;,
+        component: ComissaoComponent,
+      },
+      {
+        path: &#x27;estoque&#x27;,
+        component: EstoqueComponent,
+      },
+      {
+        path: &#x27;iniciorepresentante&#x27;,
+        component: IniciorepresentanteComponent,
+      },
+      {
+        path: &#x27;iniciorepresentante&#x27;,
+        component: IniciorepresentanteComponent,
+      },
+      {
+        path: &#x27;pedidoandamento&#x27;,
+        component: PedidoandamentoComponent,
+      },
+      {
+        path: &#x27;pedidos&#x27;,
+        component: PedidosComponent,
+      },
+      {
+        path: &#x27;programados&#x27;,
+        component: ProgramadosComponent,
+      },
+      {
+        path: &#x27;sac&#x27;,
+        component: SacComponent,
+      },
+      {
+        path: &#x27;tabpreco&#x27;,
+        component: TabprecoComponent,
       },
     ];
   }
