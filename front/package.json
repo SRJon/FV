@@ -14,7 +14,7 @@
   "private": true,
   "lint-staged": {
     "*.ts": [
-      "tslint --fix",
+      "eslint --fix",
       "git add"
     ],
     "*.js": [
