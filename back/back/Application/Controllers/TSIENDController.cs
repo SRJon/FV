@@ -11,17 +11,37 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace back.Application.Controllers
 {
+    /// <summary>
+    /// Controller da TSIEND, entidade sankhya de endereço 1
+    /// </summary>
     [Route("api/[controller]")]
+    /// <summary>
+    /// Controller da TSIEND, entidade sankhya de endereço 2 
+    /// </summary> 
     public class TSIENDController : ControllerBase
     {
+        /// <summary>
+        /// Controller da TSIEND, entidade sankhya de endereço 3
+        /// </summary>
         private readonly ITSIENDRepository _ITSIENDRepository;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="iTSIENDRepository"></param>
+        /// <param name="mapper"></param>
         public TSIENDController(ITSIENDRepository iTSIENDRepository, IMapper mapper)
         {
             _ITSIENDRepository = iTSIENDRepository;
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
         }
+
+        /// <summary>
+        /// Busca de endereço por ID
+        /// </summary>
+        /// <param name="id">ID do endereço</param>
+        /// <returns>Endereço sankhya</returns>
 
         [HttpGet("{id}")]
         [Authorize]
@@ -47,6 +67,11 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+        /// <summary>
+        /// Busca de endereço no Sankhya via Nome do endereço
+        /// </summary>
+        /// <param name="nomeEnd">Nome do endereço, ex. RUA 3</param>
+        /// <returns>TSIEND</returns>
         [HttpGet]
         [Authorize]
         [Route("GetByNomeEnd")]
@@ -73,6 +98,11 @@ namespace back.Application.Controllers
             return response.GetResponse();
         }
 
+        /// <summary>
+        /// Criador de TSIEND utilizando a API do Sankhya para tal.
+        /// </summary>
+        /// <param name="tsiend">Endereço a ser criado</param>
+        /// <returns>BOOl</returns>
         [HttpPost]
         [Authorize]
         [Route("Create")]

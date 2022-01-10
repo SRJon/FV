@@ -3,6 +3,9 @@ using back.domain.entities;
 
 namespace back.domain.DTO.TSIEnderecoDTO
 {
+    /// <summary>
+    /// DTO da Classe TSIEND, responsável pelo endereço na base de dados do Sankhya
+    /// </summary>
     public class TSIENDDTO : ITSIEND
     {
         public int Codend { get; set; }
