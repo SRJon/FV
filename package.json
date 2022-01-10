@@ -24,5 +24,8 @@
       "pre-commit": "echo 'testestadsasaçsmda,dsmamsdasda-----------s-----------'",
       "pre-push": "echo 'testestadsasaçsmda,dsmamsdasda----------------------'"
     }
+  },
+  "devDependencies": {
+    "husky": "^7.0.4"
   }
 }
