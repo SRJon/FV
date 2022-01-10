@@ -40,7 +40,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged --allow-empty",
-      "pre-push": "npm run compodoc:build&&git ac'doc'"
+      "pre-push": "npm run compodoc:build"
     }
   },
   "dependencies": {
