@@ -9,9 +9,17 @@
     </div>
     <div class="row pb-5">
       <div class="pt-4">
-        <app-perfil-grid [listGrid]="perfils.data" [paginate]="paginate" [totalItems]="paginate.totalItems"
-          (nextSelection)="onNextSelection($event)"></app-perfil-grid>
-        <app-edit-perfil-component [perfil]="initialParam" *ngIf="isOpen" (onCloseModal)="openModal($event)">
+        <app-perfil-grid
+          [listGrid]="perfils.data"
+          [paginate]="paginate"
+          [totalItems]="paginate.totalItems"
+          (nextSelection)="onNextSelection($event)"
+        ></app-perfil-grid>
+        <app-edit-perfil-component
+          [perfil]="initialParam"
+          *ngIf="isOpen"
+          (onCloseModal)="openModal($event)"
+        >
         </app-edit-perfil-component>
       </div>
     </div>

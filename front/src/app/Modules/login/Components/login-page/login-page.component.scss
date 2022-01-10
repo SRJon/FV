@@ -28,7 +28,7 @@
 }
 
 .mainLogin {
-  background-image: url('/assets/image/textil.png');
+  background-image: url("/assets/image/textil.png");
   height: 100vh;
   background-size: cover;
 }
@@ -94,10 +94,11 @@ input[type="text"] {
   background-color: #fc636b;
 }
 
-.form-check-label, .text-right {
+.form-check-label,
+.text-right {
   margin-right: 20px;
   text-decoration: none;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .form-check-input:checked {
@@ -105,11 +106,12 @@ input[type="text"] {
   border-color: #fc636b;
 }
 
-.form-check-input{
-  background-color: #67594b
+.form-check-input {
+  background-color: #67594b;
 }
 
-.bottom-grid, .bottom-grid1 {
+.bottom-grid,
+.bottom-grid1 {
   display: -webkit-flex;
   color: #fff;
   justify-content: space-between;
@@ -125,7 +127,7 @@ input[type="text"] {
   text-decoration: none;
 }
 
-
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }

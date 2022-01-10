@@ -17,11 +17,11 @@
   "lint-staged": {
     "*.ts": [
       "prettier --write",
-      "eslint --fix",
+      
       "git add"
     ],
     "*.js": [
-      "eslint --fix",
+      
       "git add"
     ],
 
@@ -35,13 +35,14 @@
     ],
     "*.cs": [
       "prettier --write",
-      "eslint --fix",
+      
       "git add"
     ]
   },
   "husky": {
     "hooks": {
-
+      "pre-commit": "lint-staged --allow-empty",
+      "pre-push": "npm run compodoc:build"
     }
   },
   "dependencies": {

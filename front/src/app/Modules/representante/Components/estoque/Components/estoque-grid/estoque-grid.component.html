@@ -1,23 +1,37 @@
-<div class="row" style="padding: 0px 30px; font-size: 0.7em;">
+<div class="row" style="padding: 0px 30px; font-size: 0.7em">
   <div class="card-default">
-    <div class="card-header" style="border: 1px solid #6c757d;">
+    <div class="card-header" style="border: 1px solid #6c757d">
       <form>
         <div class="row">
           <div class="col-sm-2">
             <!-- number input -->
             <div class="form-group">
               <label>PRODUTO</label>
-              <input type="text" class="form-control" (change)="onProductChange($event)">
+              <input
+                type="text"
+                class="form-control"
+                (change)="onProductChange($event)"
+              />
             </div>
           </div>
           <div class="col-sm-2">
             <!-- select -->
             <div class="form-group">
               <label>GRUPO DE PRODUTO</label>
-              <select class="form-select form-control" aria-label="Default select" style="font-size: 1em;">
-                <option selected (click)="onChangeSelectNull()">SELECIONE UM GRUPO</option>
-                <option *ngFor="let grp of selectGrpPrd" [value]="grp.codgrupoprod" (click)="onChangeSelect(grp)">
-                  {{grp.codgrupoprod}} - {{ grp.descrgrupoprod }}
+              <select
+                class="form-select form-control"
+                aria-label="Default select"
+                style="font-size: 1em"
+              >
+                <option selected (click)="onChangeSelectNull()">
+                  SELECIONE UM GRUPO
+                </option>
+                <option
+                  *ngFor="let grp of selectGrpPrd"
+                  [value]="grp.codgrupoprod"
+                  (click)="onChangeSelect(grp)"
+                >
+                  {{ grp.codgrupoprod }} - {{ grp.descrgrupoprod }}
                 </option>
               </select>
             </div>
@@ -26,14 +40,22 @@
             <!-- text input -->
             <div class="form-group">
               <label>DESCRIÇÃO</label>
-              <input type="text" class="form-control" (change)="onDescChange($event)">
+              <input
+                type="text"
+                class="form-control"
+                (change)="onDescChange($event)"
+              />
             </div>
           </div>
           <div class="col-sm-3">
             <!-- text input -->
             <div class="form-group">
               <label>COMPLEMENTO</label>
-              <input type="text" class="form-control" (change)="onComplDescChange($event)">
+              <input
+                type="text"
+                class="form-control"
+                (change)="onComplDescChange($event)"
+              />
             </div>
           </div>
           <div class="col-sm-2">
@@ -41,8 +63,12 @@
             <div class="form-group text-center">
               <label>RELATÓRIOS</label>
               <div class="form-group">
-                <button class="m-1 btn btn-outline-secondary" data-toggle="modal" data-target="#modal-report-estoque"
-                  title="Estoque Pronta Entrega/Programado">
+                <button
+                  class="m-1 btn btn-outline-secondary"
+                  data-toggle="modal"
+                  data-target="#modal-report-estoque"
+                  title="Estoque Pronta Entrega/Programado"
+                >
                   <i class="fa fa-file"></i>
                 </button>
               </div>
@@ -56,11 +82,18 @@
     <table data-vertable="ver5" style="border: 1px solid #6c757d">
       <thead>
         <tr class="row100 head">
-          <th class="column100 column{{ toNumber(i, 2, true) }}" [attr.data-column]="'column' + toNumber(i, 2, true)"
-            *ngFor="let title of listTitle; let i = index">
+          <th
+            class="column100 column{{ toNumber(i, 2, true) }}"
+            [attr.data-column]="'column' + toNumber(i, 2, true)"
+            *ngFor="let title of listTitle; let i = index"
+          >
             {{ getTitle(title) }}
           </th>
-          <th class="column100  column{{ lastI }}" attr.data-column="column{{ lastI }}" style="width: 15%;">
+          <th
+            class="column100  column{{ lastI }}"
+            attr.data-column="column{{ lastI }}"
+            style="width: 15%"
+          >
             Açoes
           </th>
         </tr>
@@ -69,12 +102,21 @@
         <tr *ngFor="let item of listGrid">
           <td *ngFor="let title of listTitle" [ngSwitch]="getType(item[title])">
             <!-- {{ item[title] }} -->
-            <span *ngSwitchCase="'boolean'"><input type="checkbox" [checked]="item[title]" /></span>
+            <span *ngSwitchCase="'boolean'"
+              ><input type="checkbox" [checked]="item[title]"
+            /></span>
             <span *ngSwitchDefault>{{ item[title] }}</span>
           </td>
           <td class="listActions pt-1 pb-1">
-            <button type="button" class="m-1 btn btn-outline-secondary" (click)="onDetail(item)" style="width: 40px;"
-              data-toggle="tooltip" data-placement="bottom" title="Informações">
+            <button
+              type="button"
+              class="m-1 btn btn-outline-secondary"
+              (click)="onDetail(item)"
+              style="width: 40px"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Informações"
+            >
               <i class="fa fa-info"></i>
             </button>
           </td>
@@ -89,14 +131,19 @@
         </b>
       </div>
       <div class="col-lg-8 col-md-8 -col-sm-12">
-        <ul id="table_id_paginate" class="pagination d-flex justify-content-end"></ul>
+        <ul
+          id="table_id_paginate"
+          class="pagination d-flex justify-content-end"
+        ></ul>
       </div>
     </div>
   </div>
   <div id="estoque_detail_component" *ngIf="selectedRecord && !isDetail">
-    <app-detail-estoque-component [estoque]="selectedRecord" (onCloseModal)="stateModal($event)">
+    <app-detail-estoque-component
+      [estoque]="selectedRecord"
+      (onCloseModal)="stateModal($event)"
+    >
     </app-detail-estoque-component>
   </div>
-  <app-report-estoque-component>
-  </app-report-estoque-component>
+  <app-report-estoque-component> </app-report-estoque-component>
 </div>
