@@ -1,8 +1,6 @@
 using System;
 using back.Application.Mappings;
-using back.data.entities.User;
 using back.domain.Profiles;
-using back.DTO.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 
 

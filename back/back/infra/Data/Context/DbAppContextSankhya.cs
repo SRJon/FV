@@ -24,6 +24,7 @@ using back.data.entities.TSICidade;
 using back.data.entities.TGFContato;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
 using Microsoft.Extensions.Configuration;
+
 using back.data.entities.TGFTPVenda;
 using back.data.entities.TCSProjeto;
 using back.data.entities.TGFCABNota;
@@ -34,6 +35,11 @@ using back.data.entities.TGFinanceiro;
 using back.data.entities.View_AD_ITEDEVSOLICITACAO;
 using back.data.entities.ViewAD_FINCOM;
 using back.data.entities.AD_Estoque;
+
+using back.data.entities.DataViews.VIEW_AD_PEDIDOS;
+using back.data.entities.DataViews.VIEW_AD_GERAL_PV;
+using back.data.entities.DataViews.VIEW_AD_EXTRA_PV;
+using back.data.entities.DataViews.VIEW_AD_PRODUTO_PV;
 
 
 namespace back.infra.Data.Context
@@ -61,6 +67,10 @@ namespace back.infra.Data.Context
         public DbSet<TGFVEN> TGFVEN { get; set; }
         public DbSet<TSIEMP> TSIEMP { get; set; }
         public DbSet<AD_TIPNEG> AD_TIPNEG { get; set; }
+        public DbSet<AD_PEDIDOS> AD_PEDIDOS { get; set; }
+        public DbSet<AD_GERAL_PV> AD_GERAL_PV { get; set; }
+        public DbSet<AD_EXTRA_PV> AD_EXTRA_PV {get; set;}
+        public DbSet<AD_PRODUTO_PV> AD_PRODUTO_PV {get; set;}
         public DbSet<AD_SALDO_PARCEIRO> AD_SALDO_PARCEIRO { get; set; }
         public DbSet<AD_ESTPROGPROD> AD_ESTPROGPROD { get; set; }
         public DbSet<AD_FAMGR1> AD_FAMGR1 { get; set; }
@@ -89,6 +99,10 @@ namespace back.infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AD_VGFRPVRelationConfiguring();
+            modelBuilder.AD_PEDIDOSRelationConfiguring();
+            modelBuilder.AD_GERAL_PVRelationConfiguring();
+            modelBuilder.AD_EXTRA_PVRelationConfiguring();
+            modelBuilder.AD_PRODUTO_PVRelationConfiguring();
             modelBuilder.TGFPARRelationConfiguring();
             modelBuilder.TSIENDRelationConfiguring();
             modelBuilder.TSIBAIRelationConfiguring();
@@ -149,7 +163,6 @@ namespace back.infra.Data.Context
             var isProduction = _config.GetValue<bool>("isProduction");
             if (!isProduction)
             {
-
                 optionsBuilder.LogTo(Console.WriteLine);
             }
             base.OnConfiguring(optionsBuilder);
