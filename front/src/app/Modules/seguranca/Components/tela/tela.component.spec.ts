@@ -8,9 +8,8 @@ describe('TelaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TelaComponent ]
-    })
-    .compileComponents();
+      declarations: [TelaComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

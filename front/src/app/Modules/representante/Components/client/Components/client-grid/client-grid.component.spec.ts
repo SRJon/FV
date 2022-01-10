@@ -3,23 +3,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClientGridComponent } from './client-grid.component';
 
 describe('ClientGridComponent', () => {
-  let component: ClientGridComponent;
-  let fixture: ComponentFixture<ClientGridComponent>;
+    let component: ClientGridComponent;
+    let fixture: ComponentFixture<ClientGridComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ClientGridComponent ]
-    })
-    .compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [ClientGridComponent],
+        }).compileComponents();
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ClientGridComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ClientGridComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

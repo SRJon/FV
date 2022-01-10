@@ -8,9 +8,8 @@ describe('TelaGridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TelaGridComponent ]
-    })
-    .compileComponents();
+      declarations: [TelaGridComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

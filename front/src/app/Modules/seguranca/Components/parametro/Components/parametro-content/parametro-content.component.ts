@@ -12,7 +12,7 @@ import { ParameterService } from 'src/app/Modules/seguranca/Services/parameter.s
 export class ParametroContentComponent implements OnInit {
   parametros: IResponse<IParametro[]>;
   paginate: Paginate;
-  isOpen: boolean = false;
+  isOpen = false;
   initialParam: IParametro = {} as IParametro;
 
   constructor(private parameterService: ParameterService) {
@@ -36,7 +36,7 @@ export class ParametroContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 10) {
+  getAll(page: number, limit = 10) {
     this.parameterService.getParameter(page, limit).then((response) => {
       this.parametros = response;
       this.paginate.pageSize = response.totalPages;

@@ -6,7 +6,7 @@ export async function AVGFRPVGETALL(
   page: number,
   limit: number
 ): Promise<IResponse<IAvgfrpvgetall[]>> {
-  let result = await axios.get(`/api/AD_VGFRPV?page=${page}&limit${limit}`);
+  const result = await axios.get(`/api/AD_VGFRPV?page=${page}&limit${limit}`);
 
   return result.data;
 }

@@ -7,7 +7,7 @@ export async function GetSolicitacaoDevolucao(
   page: number,
   limit: number
 ): Promise<IResponse<ISolicitacaoDevolucao[]>> {
-  let response = await axios.get(
+  const response = await axios.get(
     `/api/AD_DEVSOLICITACAO/GetAllDevolucao?codParc=${codParc}&page=${page}&limit=${limit}`
   );
   return response.data;

@@ -7,8 +7,8 @@ import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
   styleUrls: ['./programados.component.scss'],
 })
 export class ProgramadosComponent implements OnInit {
-  title: string = 'Programados';
-  description: string = '';
+  title = 'Programados';
+  description = '';
 
   constructor(private globalTitle: GlobalTitle<string>) {
     this.globalTitle.setValue(this.title);

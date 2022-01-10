@@ -6,10 +6,10 @@ import { UserGetById } from './UserGetBy';
 import { UserUpdate } from './userUpdate';
 
 export {
-  LoginGetUserByToken,
-  UserGetAll,
-  UserGetById,
-  UserDelete,
-  UserUpdate,
-  UserCreate,
+    LoginGetUserByToken,
+    UserGetAll,
+    UserGetById,
+    UserDelete,
+    UserUpdate,
+    UserCreate,
 };

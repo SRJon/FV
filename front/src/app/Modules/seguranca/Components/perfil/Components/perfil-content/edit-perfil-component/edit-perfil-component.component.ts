@@ -11,11 +11,11 @@ import { EditPerfilWords } from './edit-perfil-words';
   styleUrls: ['./edit-perfil-component.component.scss'],
 })
 export class EditPerfilComponentComponent implements OnInit {
-  isLoading: boolean = true;
+  isLoading = true;
   @Input() perfil: IPerfil | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
   words: EditPerfilWords;
-  isValid: boolean = false;
+  isValid = false;
   serviceForm: FormGroup;
 
   constructor(
@@ -32,14 +32,14 @@ export class EditPerfilComponentComponent implements OnInit {
   async onConfirm() {
     if (this.serviceForm.invalid) return;
     if (this.perfil) {
-      let id = this.perfil.id || 0;
+      const id = this.perfil.id || 0;
       id > 0 ? this.DoUpdate() : this.DoCreate();
     }
   }
   async DoCreate() {
     try {
       if (this.perfil) {
-        var response = await this.perfilService.createPerfil(this.perfil);
+        const response = await this.perfilService.createPerfil(this.perfil);
         if (response.success && response.data) {
           this.alertsService.showAlert(response.message);
           this.onCloseModal.emit(true);
@@ -59,7 +59,7 @@ export class EditPerfilComponentComponent implements OnInit {
   async DoUpdate() {
     try {
       if (this.perfil) {
-        let result = await this.perfilService.updatePerfil(this.perfil);
+        const result = await this.perfilService.updatePerfil(this.perfil);
         if (result.success && result.data) {
           this.alertsService.showAlert(result.message);
         }
@@ -83,7 +83,7 @@ export class EditPerfilComponentComponent implements OnInit {
     }, 500);
   }
   async getAllNamesPerfil() {
-    let result = await this.perfilService.getAllNamesPerfil(0, 0);
+    const result = await this.perfilService.getAllNamesPerfil(0, 0);
     this.setLoading(false);
     // @ts-ignore: Unreachable code error
     $('.select2-danger').select2();
@@ -93,7 +93,7 @@ export class EditPerfilComponentComponent implements OnInit {
     this.changeStateLoadComponent();
   }
   changeStateLoadComponent() {
-    let component = document.getElementById('overloadModal');
+    const component = document.getElementById('overloadModal');
     if (component) {
       component.style.display = this.isLoading ? 'block' : 'none';
     }

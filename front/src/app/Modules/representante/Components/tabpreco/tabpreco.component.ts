@@ -7,8 +7,8 @@ import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
   styleUrls: ['./tabpreco.component.scss'],
 })
 export class TabprecoComponent implements OnInit {
-  title: string = 'Tabela de Preço';
-  description: string = '';
+  title = 'Tabela de Preço';
+  description = '';
 
   constructor(private globalTitle: GlobalTitle<string>) {
     this.globalTitle.setValue(this.title);

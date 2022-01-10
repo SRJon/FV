@@ -7,7 +7,7 @@ export async function GetAllNF(
   page: number,
   limit: number
 ): Promise<IResponse<INotaFiscal[]>> {
-  let response = await axios.get(
+  const response = await axios.get(
     `/api/TGFCAB/GetAllACABNF?codParc=${codParc}&page=${page}&limit=${limit}`
   );
   console.log(response.data);

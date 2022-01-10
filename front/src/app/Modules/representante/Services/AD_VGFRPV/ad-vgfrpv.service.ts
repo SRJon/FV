@@ -15,16 +15,16 @@ export class ADVGFRPVService {
     return await actions.AVGFRPVGETALL(page, limit);
   }
 
-  async GetByVend(codVend: number = 1): Promise<IResponse<IAvgfrpvgetall>> {
+  async GetByVend(codVend = 1): Promise<IResponse<IAvgfrpvgetall>> {
     return await actions.GetByVend(codVend);
   }
-  async GetByParc(codParc: number = 1): Promise<IResponse<IAvgfrpvgetall>> {
+  async GetByParc(codParc = 1): Promise<IResponse<IAvgfrpvgetall>> {
     return await actions.GetByParc(codParc);
   }
   async GetAllByCodParc(
-    codParc: number = 1,
-    page: number = 1,
-    limit: number = 10
+    codParc = 1,
+    page = 1,
+    limit = 10
   ): Promise<IResponse<Pedido[]>> {
     return await actions.GetAllByCodParc(codParc, page, limit);
   }
@@ -37,8 +37,8 @@ export class ADVGFRPVService {
 
   async GetAllFinanceiro(
     codparc: number,
-    page: number = 1,
-    limit: number = 10
+    page = 1,
+    limit = 10
   ): Promise<IResponse<INotaFinanceiro[]>> {
     return await actions.GetAllFinanceiro(codparc, page, limit);
   }

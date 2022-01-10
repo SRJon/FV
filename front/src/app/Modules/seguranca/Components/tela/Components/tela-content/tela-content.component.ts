@@ -12,7 +12,7 @@ import { ScreensService } from 'src/app/Modules/seguranca/Services/screens.servi
 export class TelaContentComponent implements OnInit {
   telas: IResponse<ITela[]>;
   paginate: Paginate;
-  isOpen: boolean = false;
+  isOpen = false;
   initialParam: ITela = {} as ITela;
 
   constructor(private screenService: ScreensService) {
@@ -46,7 +46,7 @@ export class TelaContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 10) {
+  getAll(page: number, limit = 10) {
     this.screenService.getScreens(page, limit).then((response) => {
       this.telas = response;
       this.paginate.pageSize = response.totalPages;

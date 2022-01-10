@@ -8,37 +8,37 @@ import { DiretorioComponent } from '../Components/diretorio/diretorio.component'
 import { ParametroComponent } from '../Components/parametro/parametro.component';
 
 export class Route implements IRoutes {
-  routes: Routes;
+    routes: Routes;
 
-  constructor() {
-    this.routes = [
-      {
-        path: 'perfil',
-        component: PerfilComponent,
-      },
-      {
-        path: 'tela',
-        component: TelaComponent,
-      },
-      {
-        path: 'empresa',
-        component: EmpresaComponent,
-      },
-      {
-        path: 'usuario',
-        component: UsuarioComponent,
-      },
-      {
-        path: 'diretorio',
-        component: DiretorioComponent,
-      },
-      {
-        path: 'parametro',
-        component: ParametroComponent,
-      },
-    ];
-  }
-  getRoutes(): Routes {
-    return this.routes;
-  }
+    constructor() {
+        this.routes = [
+            {
+                path: 'perfil',
+                component: PerfilComponent,
+            },
+            {
+                path: 'tela',
+                component: TelaComponent,
+            },
+            {
+                path: 'empresa',
+                component: EmpresaComponent,
+            },
+            {
+                path: 'usuario',
+                component: UsuarioComponent,
+            },
+            {
+                path: 'diretorio',
+                component: DiretorioComponent,
+            },
+            {
+                path: 'parametro',
+                component: ParametroComponent,
+            },
+        ];
+    }
+    getRoutes(): Routes {
+        return this.routes;
+    }
 }

@@ -6,23 +6,22 @@ import { DebugElement } from '@angular/core';
 import { MainSidebarContainerComponent } from './MainSidebarContainer.component';
 
 describe('MainSidebarContainerComponent', () => {
-  let component: MainSidebarContainerComponent;
-  let fixture: ComponentFixture<MainSidebarContainerComponent>;
+    let component: MainSidebarContainerComponent;
+    let fixture: ComponentFixture<MainSidebarContainerComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MainSidebarContainerComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [MainSidebarContainerComponent],
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MainSidebarContainerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(MainSidebarContainerComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

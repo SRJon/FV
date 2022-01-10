@@ -8,9 +8,8 @@ describe('UsuarioGridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UsuarioGridComponent ]
-    })
-    .compileComponents();
+      declarations: [UsuarioGridComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

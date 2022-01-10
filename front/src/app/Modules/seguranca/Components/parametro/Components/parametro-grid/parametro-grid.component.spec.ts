@@ -8,9 +8,8 @@ describe('ParametroGridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParametroGridComponent ]
-    })
-    .compileComponents();
+      declarations: [ParametroGridComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -6,15 +6,15 @@ import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
   styleUrls: ['./parametro.component.scss'],
 })
 export class ParametroComponent implements OnInit {
-  title: string = 'Parâmetro';
-  description: string = '';
+  title = 'Parâmetro';
+  description = '';
 
   constructor(private globalTitle: GlobalTitle<string>) {
     this.globalTitle.setValue(this.title);
   }
 
   getHeigth(): number {
-    let doc = document.querySelector('#middleWrapper');
+    const doc = document.querySelector('#middleWrapper');
     return doc ? doc.clientHeight : 0;
   }
 

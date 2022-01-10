@@ -12,12 +12,12 @@ import * as shareds from 'src/app/Shared';
 })
 export class UsuarioGridComponent implements OnInit {
   @Input() listGrid: any[] = [];
-  isShowing: boolean = false;
+  isShowing = false;
   @Input() paginate: Paginate;
-  @Input() totalItems: number = 0;
+  @Input() totalItems = 0;
   @Output() nextSelection = new EventEmitter<number>();
   selectedRecord: IUser | undefined;
-  isDelete: boolean = false;
+  isDelete = false;
 
   lastI = 0;
 
@@ -40,7 +40,7 @@ export class UsuarioGridComponent implements OnInit {
   }
 
   getTitle(t: string) {
-    let index = this.listTitle.indexOf(t);
+    const index = this.listTitle.indexOf(t);
 
     return this.listTitleGrid[index];
   }
@@ -131,19 +131,19 @@ export class UsuarioGridComponent implements OnInit {
   }
 
   gridEvents() {
-    let inter = setInterval(() => {
+    const inter = setInterval(() => {
       if ($('td').length > 0) {
         $('td').hover((e) => {
           let index = $(e.target).index();
           index++;
 
-          let tds = $(`td[data-column=column${index}]`);
+          const tds = $(`td[data-column=column${index}]`);
           tds.toggleClass('hov-column-ver5');
 
-          let childrens = e.currentTarget.parentElement?.children;
+          const childrens = e.currentTarget.parentElement?.children;
 
           if (childrens) {
-            let ch = $(childrens);
+            const ch = $(childrens);
             ch.toggleClass('hov-column-ver5');
           }
         });
@@ -152,7 +152,7 @@ export class UsuarioGridComponent implements OnInit {
     }, 100);
   }
 
-  toNumber(value: any, t: any, isTitle: boolean = false) {
+  toNumber(value: any, t: any, isTitle = false) {
     return Number(value) + Number(t);
   }
 }

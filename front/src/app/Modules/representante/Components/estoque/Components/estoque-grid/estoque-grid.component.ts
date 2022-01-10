@@ -1,11 +1,11 @@
 import { StockService } from './../../../../Services/stock.service';
 import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
 } from '@angular/core';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
 import { ITGFGRU } from 'src/app/Domain/Models/ITGFGRU';
@@ -19,46 +19,46 @@ import { AlertsService } from 'src/app/Repository/Alerts/alerts.service';
 import { AuthenticationService } from 'src/app/Modules/login/Services/Authentication.service';
 import { EstoqueSearch } from 'src/app/Domain/Models/estoqueSearch';
 @Component({
-  selector: 'app-estoque-grid',
-  templateUrl: './estoque-grid.component.html',
-  styleUrls: ['./estoque-grid.component.scss'],
+    selector: 'app-estoque-grid',
+    templateUrl: './estoque-grid.component.html',
+    styleUrls: ['./estoque-grid.component.scss'],
 })
 export class EstoqueGridComponent implements OnInit, OnChanges {
-  vendGrpPrd: IResponse<ITGFRGV[]>;
-  selectGrpPrd: ITGFGRU[] = [];
-  selectedGrpPrd!: ITGFGRU;
+    vendGrpPrd: IResponse<ITGFRGV[]>;
+    selectGrpPrd: ITGFGRU[] = [];
+    selectedGrpPrd!: ITGFGRU;
 
-  isShowing: boolean = false;
+    isShowing = false;
 
   @Input() listGrid: any[] = [];
   @Input() paginate: Paginate;
-  @Input() totalItems: number = 0;
+  @Input() totalItems = 0;
   @Output() nextSelection = new EventEmitter<number>();
 
   selectedRecord: IAD_ESTCODPROD | undefined;
   currentUser!: IUser;
 
-  isDetail: boolean = false;
+  isDetail = false;
 
   lastI = 0;
 
   listTitle: string[] = [
-    'produto',
-    'codgrupoprod',
-    'aD_CODANT',
-    'codvol',
-    'descrprod',
-    'compldesc',
-    'percentual',
+      'produto',
+      'codgrupoprod',
+      'aD_CODANT',
+      'codvol',
+      'descrprod',
+      'compldesc',
+      'percentual',
   ];
   listGridTitle: string[] = [
-    'Produto',
-    'Grupo de Produto',
-    'Código Anterior',
-    'Volume',
-    'Descrição',
-    'Complemento',
-    'Percentual',
+      'Produto',
+      'Grupo de Produto',
+      'Código Anterior',
+      'Volume',
+      'Descrição',
+      'Complemento',
+      'Percentual',
   ];
 
   grid: shareds.Grid;
@@ -73,136 +73,136 @@ export class EstoqueGridComponent implements OnInit, OnChanges {
     private StockService: StockService,
     private alertsService: AlertsService
   ) {
-    this.vendGrpPrd = {} as IResponse<ITGFRGV[]>;
+      this.vendGrpPrd = {} as IResponse<ITGFRGV[]>;
 
-    this.grid = new shareds.Grid();
-    this.paginate = new Paginate(2000, 50);
-    this.onProdutoFilterChange = new EventEmitter<number>();
-    this.onCodGrupoProdFilterChange = new EventEmitter<number>();
-    this.onDescFilterChange = new EventEmitter<string>();
-    this.onComplFilterChange = new EventEmitter<string>();
+      this.grid = new shareds.Grid();
+      this.paginate = new Paginate(2000, 50);
+      this.onProdutoFilterChange = new EventEmitter<number>();
+      this.onCodGrupoProdFilterChange = new EventEmitter<number>();
+      this.onDescFilterChange = new EventEmitter<string>();
+      this.onComplFilterChange = new EventEmitter<string>();
   }
 
   initGrid(): void {
-    this.grid.createGrid({ selectorHtml: '#table_id', paging: false });
+      this.grid.createGrid({ selectorHtml: '#table_id', paging: false });
   }
 
   async ngOnInit(): Promise<void> {
-    this.initGrid();
+      this.initGrid();
 
-    //Método utilizado para salvar os dados do usuário globalmente
-    this.currentUser = await AuthenticationService.getGlobalUser();
+      //Método utilizado para salvar os dados do usuário globalmente
+      this.currentUser = await AuthenticationService.getGlobalUser();
 
-    if (this.currentUser.vendedorUCod) {
-      this.getGrupoProduto(this.currentUser.vendedorUCod);
-    }
+      if (this.currentUser.vendedorUCod) {
+          this.getGrupoProduto(this.currentUser.vendedorUCod);
+      }
   }
 
   getGrupoProduto(codVend: number) {
-    this.StockService.getCodGrupoProd(codVend).then((response) => {
-      if (response.data) {
-        this.selectGrpPrd = response.data.map((e) => e.tgfgru);
-      }
-    });
+      this.StockService.getCodGrupoProd(codVend).then((response) => {
+          if (response.data) {
+              this.selectGrpPrd = response.data.map((e) => e.tgfgru);
+          }
+      });
   }
 
   showGrid(show: boolean) {
-    this.isShowing = show;
+      this.isShowing = show;
   }
 
   getTitle(t: string) {
-    let index = this.listTitle.indexOf(t);
-    return this.listGridTitle[index];
+      const index = this.listTitle.indexOf(t);
+      return this.listGridTitle[index];
   }
 
   onChangeSelect(selectGrpPrd: ITGFGRU) {
-    this.selectedGrpPrd = selectGrpPrd;
-    this.onCodGrupoProdChange(this.selectedGrpPrd.codgrupoprod);
+      this.selectedGrpPrd = selectGrpPrd;
+      this.onCodGrupoProdChange(this.selectedGrpPrd.codgrupoprod);
   }
 
   onChangeSelectNull() {
-    this.onCodGrupoProdChange(0);
+      this.onCodGrupoProdChange(0);
   }
 
   clickOnPagination(page: number): void {
-    this.nextSelection.emit(page);
+      this.nextSelection.emit(page);
   }
 
   getType(type: string): string {
-    return (typeof type).trim();
+      return (typeof type).trim();
   }
 
   stateModal(isClose: boolean): void {
-    if (isClose) {
-      this.selectedRecord = undefined;
-    }
+      if (isClose) {
+          this.selectedRecord = undefined;
+      }
   }
 
   openModal(obj: IAD_ESTCODPROD | undefined = undefined): void {
-    if (obj) {
-      this.selectedRecord = this.listGrid.find(
-        (e) => e.produto === obj.produto
-      );
-    }
+      if (obj) {
+          this.selectedRecord = this.listGrid.find(
+              (e) => e.produto === obj.produto
+          );
+      }
   }
 
   setPaginate(): void {
-    this.grid.sharePaginate.setHtml('#table_id_paginate');
-    this.grid.sharePaginate.paginate = this.paginate;
-    this.grid.sharePaginate.setPaginate((e: any) => {
-      this.clickOnPagination(e);
-    });
-    this.grid.render();
+      this.grid.sharePaginate.setHtml('#table_id_paginate');
+      this.grid.sharePaginate.paginate = this.paginate;
+      this.grid.sharePaginate.setPaginate((e: any) => {
+          this.clickOnPagination(e);
+      });
+      this.grid.render();
   }
 
   ngOnChanges(): void {
-    this.setPaginate();
+      this.setPaginate();
   }
 
   gridEvents() {
-    let inter = setInterval(() => {
-      if ($('td').length > 0) {
-        $('td').hover((e) => {
-          let index = $(e.target).index();
-          index++;
+      const inter = setInterval(() => {
+          if ($('td').length > 0) {
+              $('td').hover((e) => {
+                  let index = $(e.target).index();
+                  index++;
 
-          let tds = $(`td[data-column=column${index}]`);
-          tds.toggleClass('hov-column-ver5');
+                  const tds = $(`td[data-column=column${index}]`);
+                  tds.toggleClass('hov-column-ver5');
 
-          let childrens = e.currentTarget.parentElement?.children;
+                  const childrens = e.currentTarget.parentElement?.children;
 
-          if (childrens) {
-            let ch = $(childrens);
-            ch.toggleClass('hov-column-ver5');
+                  if (childrens) {
+                      const ch = $(childrens);
+                      ch.toggleClass('hov-column-ver5');
+                  }
+              });
+              clearInterval(inter);
           }
-        });
-        clearInterval(inter);
-      }
-    }, 100);
+      }, 100);
   }
 
-  toNumber(value: any, t: any, isTitle: boolean = false) {
-    return Number(value) + Number(t);
+  toNumber(value: any, t: any, isTitle = false) {
+      return Number(value) + Number(t);
   }
 
   onDetail(obj: IAD_ESTCODPROD | undefined): void {
-    this.selectedRecord = obj;
-    alert(obj);
+      this.selectedRecord = obj;
+      alert(obj);
   }
 
   onProductChange(produto: any) {
-    this.onProdutoFilterChange.emit(produto.target.value);
+      this.onProdutoFilterChange.emit(produto.target.value);
   }
 
   onCodGrupoProdChange(codGrupoProd: number) {
-    this.onCodGrupoProdFilterChange.emit(codGrupoProd);
+      this.onCodGrupoProdFilterChange.emit(codGrupoProd);
   }
 
   onDescChange(desc: any) {
-    this.onDescFilterChange.emit(desc.target.value);
+      this.onDescFilterChange.emit(desc.target.value);
   }
 
   onComplDescChange(complDesc: any) {
-    this.onComplFilterChange.emit(complDesc.target.value);
+      this.onComplFilterChange.emit(complDesc.target.value);
   }
 }

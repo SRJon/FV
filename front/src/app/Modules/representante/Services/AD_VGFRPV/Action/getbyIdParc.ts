@@ -5,7 +5,7 @@ import { IResponse } from 'src/app/Domain/Models/IResponse';
 export async function GetByParc(
   codVend: number
 ): Promise<IResponse<IAvgfrpvgetall>> {
-  let result = await axios.get(
+  const result = await axios.get(
     `/api/TGFPAR/GetClienteBasicoById?id=${codVend}`
   );
 

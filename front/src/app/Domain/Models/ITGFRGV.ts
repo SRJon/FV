@@ -1,4 +1,4 @@
-import { ITGFGRU } from "./ITGFGRU";
+import { ITGFGRU } from './ITGFGRU';
 
 export interface ITGFRGV {
   codgrupoprod: number;

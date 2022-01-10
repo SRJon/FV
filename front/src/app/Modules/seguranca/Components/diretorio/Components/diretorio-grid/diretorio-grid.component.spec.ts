@@ -8,9 +8,8 @@ describe('DiretorioGridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiretorioGridComponent ]
-    })
-    .compileComponents();
+      declarations: [DiretorioGridComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

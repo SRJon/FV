@@ -5,7 +5,9 @@ import { IResponse } from 'src/app/Domain/Models/IResponse';
 export async function GetByVend(
   codVend: number
 ): Promise<IResponse<IAvgfrpvgetall>> {
-  let result = await axios.get(`/api/AD_VGFRPV/GetByIdVend?codVend=${codVend}`);
+  const result = await axios.get(
+    `/api/AD_VGFRPV/GetByIdVend?codVend=${codVend}`
+  );
 
   return result.data;
 }

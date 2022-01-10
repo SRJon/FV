@@ -11,9 +11,8 @@ describe('PerfilGridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PerfilGridComponent ]
-    })
-    .compileComponents();
+      declarations: [PerfilGridComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

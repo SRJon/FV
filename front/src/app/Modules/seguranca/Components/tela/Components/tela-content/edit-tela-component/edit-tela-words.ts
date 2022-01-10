@@ -1,16 +1,16 @@
 export class EditTelaWords {
-  private _title: string = '';
-  private _indexTitle: number = 0;
+  private _title = '';
+  private _indexTitle = 0;
   private _titleList: string[] = ['CRIAR TELA', 'EDITAR TELA'];
-  private _idInput: string = 'Id';
-  private _nomeInput: string = 'Nome';
+  private _idInput = 'Id';
+  private _nomeInput = 'Nome';
 
-  private _urlInput: string = 'Url';
-  private _targetInput: string = 'Target';
-  private _ordemInput: string = 'Ordem';
-  private _moduloInput: string = 'Modulo';
-  private _nivelInput: string = 'Nivel';
-  private _telaNivelInput: string = 'Tela Nivel';
+  private _urlInput = 'Url';
+  private _targetInput = 'Target';
+  private _ordemInput = 'Ordem';
+  private _moduloInput = 'Modulo';
+  private _nivelInput = 'Nivel';
+  private _telaNivelInput = 'Tela Nivel';
 
   public get telaNivelInput(): string {
     return this._telaNivelInput;

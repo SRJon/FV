@@ -6,9 +6,9 @@ import { MainSidebarContainerComponent } from './Components/MainSidebarContainer
 import { NavBarComponent } from './Components/NavBar/NavBar.component';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, MainSidebarContainerComponent],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, NavBarComponent, MainSidebarContainerComponent],
+    imports: [BrowserModule, AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace back.data.entities.Abstract_Class
 {
-    public abstract class ToJsonClass
+/// <summary>
+/// 
+/// TESTE123TESTETOJSON
+/// </summary>
+public abstract class ToJsonClass
     {
-
+        /// <summary>
+        /// TESTE
+        /// </summary>
+        /// <param name="rootEntity">TESTE ROOT</param>
+        /// <returns></returns>
         public string ProductEntityToJson(string rootEntity)
 
         {

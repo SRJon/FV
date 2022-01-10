@@ -4,8 +4,8 @@ import { EmpresaGridComponent } from './Components/empresa-grid/empresa-grid.com
 import { EmpresaComponent } from './empresa.component';
 
 export {
-  EmpresaComponent,
-  EmpresaGridComponent,
-  EditEmpresaComponentComponent,
-  EmpresaContentComponent,
+    EmpresaComponent,
+    EmpresaGridComponent,
+    EditEmpresaComponentComponent,
+    EmpresaContentComponent,
 };

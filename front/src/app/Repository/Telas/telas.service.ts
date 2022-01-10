@@ -3,14 +3,14 @@ import axios from 'axios';
 import { ITela } from '../../Domain/Models/ITela';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class TelasService {
-  constructor() {}
+    constructor() {}
 
-  async getAll(perfilid: number): Promise<ITela[]> {
-    var result = await axios.get('PerfilTela/getByProfile/' + perfilid);
+    async getAll(perfilid: number): Promise<ITela[]> {
+        const result = await axios.get('PerfilTela/getByProfile/' + perfilid);
 
-    return result.data.data;
-  }
+        return result.data.data;
+    }
 }

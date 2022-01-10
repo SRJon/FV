@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class GlobalMenuService<T> {
-  constructor() {}
+    constructor() {}
 
-  observavel: Subject<T> = new Subject<T>();
+    observavel: Subject<T> = new Subject<T>();
 
-  setObservable(value: T) {
-    this.observavel.next(value);
-  }
+    setObservable(value: T) {
+        this.observavel.next(value);
+    }
 
-  getObservable = (): Observable<T> => this.observavel.asObservable();
+    getObservable = (): Observable<T> => this.observavel.asObservable();
 
-  set(value: T) {
-    this.setObservable(value);
-  }
+    set(value: T) {
+        this.setObservable(value);
+    }
 }

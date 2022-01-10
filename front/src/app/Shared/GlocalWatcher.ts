@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class GlobalWatcher<T> {
-  observavel: Subject<T> = new Subject<T>();
+    observavel: Subject<T> = new Subject<T>();
 
-  constructor() {}
-  setObservable(value: T) {
-    this.observavel.next(value);
-  }
+    constructor() {}
+    setObservable(value: T) {
+        this.observavel.next(value);
+    }
 
-  getObservable = (): Observable<T> => this.observavel.asObservable();
+    getObservable = (): Observable<T> => this.observavel.asObservable();
 }

@@ -3,8 +3,8 @@ import { IResponse } from 'src/app/Domain/Models/IResponse';
 import { IEmpresa } from 'src/app/Domain/Models/IEmpresa';
 
 export async function CompanyUpdate(
-  company: IEmpresa
+    company: IEmpresa
 ): Promise<IResponse<boolean>> {
-  let response = await axios.post('/api/Empresa/Update', company);
-  return response.data;
+    const response = await axios.post('/api/Empresa/Update', company);
+    return response.data;
 }

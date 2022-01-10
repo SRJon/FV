@@ -1,4 +1,4 @@
 export class ILogin {
-  password = '';
-  user = '';
+    password = '';
+    user = '';
 }

@@ -4,8 +4,8 @@ import { DiretorioGridComponent } from './Components/diretorio-grid/diretorio-gr
 import { DiretorioComponent } from './diretorio.component';
 
 export {
-  DiretorioContentComponent,
-  DiretorioComponent,
-  DiretorioGridComponent,
-  EditDiretorioComponentComponent,
+    DiretorioContentComponent,
+    DiretorioComponent,
+    DiretorioGridComponent,
+    EditDiretorioComponentComponent,
 };

@@ -12,7 +12,7 @@ import { DirectoryService } from 'src/app/Modules/seguranca/Services/directory.s
 export class DiretorioContentComponent implements OnInit {
   diretorios: IResponse<IDiretorio[]>;
   paginate: Paginate;
-  isOpen: boolean = false;
+  isOpen = false;
   initialParam: IDiretorio = {} as IDiretorio;
 
   constructor(private directoryService: DirectoryService) {
@@ -36,7 +36,7 @@ export class DiretorioContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 10) {
+  getAll(page: number, limit = 10) {
     this.directoryService.getDirectory(page, limit).then((response) => {
       this.diretorios = response;
       this.paginate.pageSize = response.totalPages;

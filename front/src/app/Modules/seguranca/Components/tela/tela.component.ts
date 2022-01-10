@@ -6,15 +6,15 @@ import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
   styleUrls: ['./tela.component.scss'],
 })
 export class TelaComponent implements OnInit {
-  title: string = 'Tela';
-  description: string = '';
+  title = 'Tela';
+  description = '';
 
   constructor(private globalTitle: GlobalTitle<string>) {
     this.globalTitle.setValue(this.title);
   }
 
   getHeigth(): number {
-    let doc = document.querySelector('#middleWrapper');
+    const doc = document.querySelector('#middleWrapper');
     return doc ? doc.clientHeight : 0;
   }
 

@@ -1,12 +1,12 @@
 export class AsideMenu {
-  open: boolean = false;
+    open = false;
 
-  constructor() {
-    this.open = false;
-  }
+    constructor() {
+        this.open = false;
+    }
 
-  setValue(v: boolean) {
+    setValue(v: boolean) {
     // alert(v);
-    this.open = v;
-  }
+        this.open = v;
+    }
 }

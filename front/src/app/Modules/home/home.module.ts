@@ -8,8 +8,13 @@ import { NotificationPlotComponent } from './Components/HomePage/plots/notificat
 import { SalesPlotComponent } from './Components/HomePage/plots/sales-plot/sales-plot.component';
 
 @NgModule({
-  declarations: [HomePageComponent, HeaderPlotComponent, NotificationPlotComponent, SalesPlotComponent],
-  imports: [CommonModule, HomeRoutingModule],
-  bootstrap: [HomePageComponent],
+    declarations: [
+        HomePageComponent,
+        HeaderPlotComponent,
+        NotificationPlotComponent,
+        SalesPlotComponent,
+    ],
+    imports: [CommonModule, HomeRoutingModule],
+    bootstrap: [HomePageComponent],
 })
 export class HomeModule {}

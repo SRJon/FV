@@ -13,12 +13,12 @@ import { EditUsuarioWords } from './edit-usuario-words';
   styleUrls: ['./edit-usuario-component.component.scss'],
 })
 export class EditUsuarioComponentComponent implements OnInit {
-  isLoading: boolean = true;
+  isLoading = true;
   @Input() usuario: IUser | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
   words: EditUsuarioWords;
   perfis: IPerfil[] = [];
-  isValid: boolean = false;
+  isValid = false;
   serviceForm: FormGroup;
   selectPerfil!: number;
 
@@ -43,7 +43,7 @@ export class EditUsuarioComponentComponent implements OnInit {
   async onConfirm() {
     if (this.serviceForm.invalid) return;
     if (this.usuario) {
-      let id = this.usuario.id || 0;
+      const id = this.usuario.id || 0;
       id > 0 ? this.Doupdate() : this.DoCreate();
     }
   }
@@ -54,7 +54,7 @@ export class EditUsuarioComponentComponent implements OnInit {
         if (this.selectPerfil) {
           this.usuario.perfilId = this.selectPerfil;
         }
-        var response = await this.userService.createUser(this.usuario);
+        const response = await this.userService.createUser(this.usuario);
         if (response.success && response.data) {
           this.alertsService.showAlert(response.message);
           this.onCloseModal.emit(true);
@@ -78,7 +78,7 @@ export class EditUsuarioComponentComponent implements OnInit {
         if (this.selectPerfil) {
           this.usuario.perfilId = this.selectPerfil;
         }
-        let result = await this.userService.updateUser(this.usuario);
+        const result = await this.userService.updateUser(this.usuario);
         if (result.success && result.data) {
           this.alertsService.showAlert(result.message);
         }
@@ -109,14 +109,14 @@ export class EditUsuarioComponentComponent implements OnInit {
   }
 
   changeStateLoadComponent() {
-    let component = document.getElementById('overloadModal');
+    const component = document.getElementById('overloadModal');
     if (component) {
       component.style.display = this.isLoading ? 'block' : 'none';
     }
   }
 
   async getAllNamesPerfis() {
-    let response = await this.perfilService.getAllNamesPerfil(0, 0);
+    const response = await this.perfilService.getAllNamesPerfil(0, 0);
     this.setLoading(false);
     this.perfis = response.data;
   }

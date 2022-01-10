@@ -4,14 +4,14 @@
  * Licensed under MIT
  */
 (function (factory) {
-    "use strict";
-    if (typeof define === "function" && define.amd) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
         /** AMD规范模块调用 */
-        define(["jquery"], factory);
-    } else if (typeof define === "function" && define.cmd) {
+        define(['jquery'], factory);
+    } else if (typeof define === 'function' && define.cmd) {
         /** CMD规范模块调用 */
         define(function (require, exports, module) {
-            factory(require("jquery"));
+            factory(require('jquery'));
         });
     } else {
         /** 在浏览器环境下 */
@@ -26,19 +26,19 @@
      */
     var Pagination = function ($target, options) {
         this.$target = $target;
-        this.options = $.extend({}, Pagination.DEFAULTS, this.$target.data("pagination"), typeof options == "object" && options);
+        this.options = $.extend({}, Pagination.DEFAULTS, this.$target.data('pagination'), typeof options == 'object' && options);
         this.init();
     };
     // 插件版本号
-    Pagination.VERSION = "1.4.0";
+    Pagination.VERSION = '1.4.0';
     // 插件默认值
     Pagination.DEFAULTS = {
         total: 1, // 数据总数
         current: 1, // 当前页码
         length: 10, // 每页数量
         size: 2, // 当前页码两边显示页码数量
-        prev: "&lt;", // 上一页默认符号
-        next: "&gt;", // 下一页默认符号
+        prev: '&lt;', // 上一页默认符号
+        next: '&gt;', // 下一页默认符号
         click: function (e) { } //点击回调函数
     };
     // 插件原型方法
@@ -108,11 +108,11 @@
             $target.find('li>a[data-page="' + options.current + '"]').parent().addClass('active');
             // 设置上一页样式
             if (options.current <= 1) {
-                $target.find('li>a[data-page="prev"]').parent().addClass("disabled");
+                $target.find('li>a[data-page="prev"]').parent().addClass('disabled');
             }
             // 设置下一页样式
             if (options.current >= Math.ceil(options.total / options.length)) {
-                $target.find('li>a[data-page="next"]').parent().addClass("disabled");
+                $target.find('li>a[data-page="next"]').parent().addClass('disabled');
             }
         },
         /**
@@ -143,7 +143,7 @@
             var pages = {
                 start: start,
                 end: end
-            }
+            };
             return pages;
         },
         /**
@@ -157,32 +157,32 @@
             $target.off('click');
             $target.on('click', '>li>a[data-page]', function (e) {
                 if ($(this).parent().hasClass('disabled') || $(this).parent().hasClass('active')) {
-                    return
+                    return;
                 }
-                var button = $(this).data("page");
+                var button = $(this).data('page');
                 switch (button) {
-                    case 'prev': // 上一页
-                        if (options.current > 1) {
-                            options.current--;
-                        }
-                        break;
-                    case 'next': // 下一页
-                        if (options.current < Math.ceil(options.total)) {
-                            options.current++;
-                        }
-                        break;
-                    default:
-                        button = parseInt(button);
-                        if (!isNaN(button)) {
-                            options.current = parseInt(button);
-                        }
-                        break;
+                case 'prev': // 上一页
+                    if (options.current > 1) {
+                        options.current--;
+                    }
+                    break;
+                case 'next': // 下一页
+                    if (options.current < Math.ceil(options.total)) {
+                        options.current++;
+                    }
+                    break;
+                default:
+                    button = parseInt(button);
+                    if (!isNaN(button)) {
+                        options.current = parseInt(button);
+                    }
+                    break;
                 }
                 var temp = {
                     current: options.current,
                     length: options.length,
                     total: options.total
-                }
+                };
                 if ('function' === typeof options.ajax) {
                     options.ajax(temp, function (options) {
                         return me.refresh(options);
@@ -214,8 +214,8 @@
     // 定义为jQuery插件
     $.fn.pagination = function (options) {
         this.each(function () {
-            $(this).data("pagination", new Pagination($(this), options));
+            $(this).data('pagination', new Pagination($(this), options));
         });
         return this;
-    }
+    };
 });

@@ -9,12 +9,12 @@ import { RefactorPasswordComponent } from './Components/refactor-password/refact
 import { EmailCheckComponent } from './Components/email-check/email-check.component';
 
 @NgModule({
-  declarations: [
-    LoginPageComponent,
-    LoginMenuComponent,
-    RefactorPasswordComponent,
-    EmailCheckComponent,
-  ],
-  imports: [CommonModule, LoginRoutingModule, ReactiveFormsModule, FormsModule],
+    declarations: [
+        LoginPageComponent,
+        LoginMenuComponent,
+        RefactorPasswordComponent,
+        EmailCheckComponent,
+    ],
+    imports: [CommonModule, LoginRoutingModule, ReactiveFormsModule, FormsModule],
 })
 export class LoginModule {}

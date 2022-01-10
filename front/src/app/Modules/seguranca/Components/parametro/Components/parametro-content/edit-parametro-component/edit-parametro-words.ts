@@ -1,11 +1,11 @@
 export class EditParametroWords {
-  private _title: string = '';
-  private _indexTitle: number = 0;
+  private _title = '';
+  private _indexTitle = 0;
   private _titleList: string[] = ['CRIAR PARÂMETRO', 'EDITAR PARÂMETRO'];
-  private _idInput: string = 'Id';
-  private _nomeInput: string = 'Nome';
-  private _valorInput: string = 'Valor';
-  private _descricaoInput: string = 'Descrição';
+  private _idInput = 'Id';
+  private _nomeInput = 'Nome';
+  private _valorInput = 'Valor';
+  private _descricaoInput = 'Descrição';
 
   public get title(): string {
     this._title = this._titleList[this._indexTitle];

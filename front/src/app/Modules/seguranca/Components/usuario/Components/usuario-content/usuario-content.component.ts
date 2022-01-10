@@ -12,7 +12,7 @@ import { UserService } from 'src/app/Modules/seguranca/Services/user.service';
 export class UsuarioContentComponent implements OnInit {
   usuarios: IResponse<IUser[]>;
   paginate: Paginate;
-  isOpen: boolean = false;
+  isOpen = false;
   initialParam: IUser = {} as IUser;
 
   constructor(private userService: UserService) {
@@ -45,7 +45,7 @@ export class UsuarioContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 10) {
+  getAll(page: number, limit = 10) {
     this.userService.getUser(page, limit).then((response) => {
       this.usuarios = response;
       this.paginate.pageSize = response.totalPages;

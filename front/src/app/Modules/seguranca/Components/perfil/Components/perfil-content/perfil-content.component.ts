@@ -12,7 +12,7 @@ import { PerfilService } from 'src/app/Modules/seguranca/Services/perfil.service
 export class PerfilContentComponent implements OnInit {
   perfils: IResponse<IPerfil[]>;
   paginate: Paginate;
-  isOpen: boolean = false;
+  isOpen = false;
   initialParam: IPerfil = {} as IPerfil;
 
   constructor(private perfilService: PerfilService) {
@@ -35,7 +35,7 @@ export class PerfilContentComponent implements OnInit {
       this.getAll(this.paginate.currentPage);
     }
   }
-  getAll(page: number, limit: number = 10) {
+  getAll(page: number, limit = 10) {
     this.perfilService.getAllNamesPerfil(page, limit).then((response) => {
       this.perfils = response;
       this.paginate.pageSize = response.totalPages;

@@ -6,23 +6,22 @@ import { DebugElement } from '@angular/core';
 import { GeralComponent } from './Geral.component';
 
 describe('GeralComponent', () => {
-  let component: GeralComponent;
-  let fixture: ComponentFixture<GeralComponent>;
+    let component: GeralComponent;
+    let fixture: ComponentFixture<GeralComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ GeralComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [GeralComponent],
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(GeralComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(GeralComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

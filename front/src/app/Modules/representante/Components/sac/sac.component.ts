@@ -7,8 +7,8 @@ import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
   styleUrls: ['./sac.component.scss'],
 })
 export class SacComponent implements OnInit {
-  title: string = 'SAC';
-  description: string = '';
+  title = 'SAC';
+  description = '';
 
   constructor(private globalTitle: GlobalTitle<string>) {
     this.globalTitle.setValue(this.title);

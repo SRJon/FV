@@ -16,12 +16,12 @@ import { EditTelaWords } from './edit-tela-words';
   styleUrls: ['./edit-tela-component.component.scss'],
 })
 export class EditTelaComponentComponent implements OnInit {
-  isLoading: boolean = true;
+  isLoading = true;
   @Input() tela: ITela | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
   subTelas: ITela[] = [];
   words: EditTelaWords;
-  isValid: boolean = false;
+  isValid = false;
   serviceForm: FormGroup;
 
   constructor(
@@ -39,14 +39,14 @@ export class EditTelaComponentComponent implements OnInit {
   async onConfirm() {
     if (this.serviceForm.invalid) return;
     if (this.tela) {
-      let id = this.tela.id || 0;
+      const id = this.tela.id || 0;
       id > 0 ? this.Doupdate() : this.DoCreate();
     }
   }
   async DoCreate() {
     try {
       if (this.tela) {
-        var response = await this.screensService.createScreen(this.tela);
+        const response = await this.screensService.createScreen(this.tela);
         if (response.success && response.data) {
           this.alertsService.showAlert(response.message);
           this.onCloseModal.emit(true);
@@ -63,7 +63,7 @@ export class EditTelaComponentComponent implements OnInit {
   async Doupdate() {
     try {
       if (this.tela) {
-        let result = await this.screensService.updateScreen(this.tela);
+        const result = await this.screensService.updateScreen(this.tela);
         if (result.success && result.data) {
           this.alertsService.showAlert(result.message);
         }
@@ -87,7 +87,7 @@ export class EditTelaComponentComponent implements OnInit {
     }, 500);
   }
   async getAllScreens() {
-    let result = await this.screensService.getScreens(0, 0);
+    const result = await this.screensService.getScreens(0, 0);
     this.setLoading(false);
     this.subTelas = result.data;
 
@@ -99,7 +99,7 @@ export class EditTelaComponentComponent implements OnInit {
     this.changeStateLoadComponent();
   }
   changeStateLoadComponent() {
-    let component = document.getElementById('overloadModal');
+    const component = document.getElementById('overloadModal');
     if (component) {
       component.style.display = this.isLoading ? 'block' : 'none';
     }

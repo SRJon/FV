@@ -5,7 +5,7 @@ import { Route } from './Pages/Route';
 const routes: Routes = new Route().getRoutes();
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
 export class SegurancaRoutingModule {}

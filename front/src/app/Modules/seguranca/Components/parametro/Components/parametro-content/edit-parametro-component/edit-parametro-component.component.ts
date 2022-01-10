@@ -11,11 +11,11 @@ import { EditParametroWords } from './edit-parametro-words';
   styleUrls: ['./edit-parametro-component.component.scss'],
 })
 export class EditParametroComponentComponent implements OnInit {
-  isLoading: boolean = true;
+  isLoading = true;
   @Input() parametro: IParametro | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
   words: EditParametroWords;
-  isValid: boolean = false;
+  isValid = false;
   serviceForm: FormGroup;
 
   constructor(
@@ -34,14 +34,14 @@ export class EditParametroComponentComponent implements OnInit {
   async onConfirm() {
     if (this.serviceForm.invalid) return;
     if (this.parametro) {
-      let id = this.parametro.id || 0;
+      const id = this.parametro.id || 0;
       id > 0 ? this.Doupdate() : this.DoCreate();
     }
   }
   async DoCreate() {
     try {
       if (this.parametro) {
-        var response = await this.parameterService.createParameter(
+        const response = await this.parameterService.createParameter(
           this.parametro
         );
         if (response.success && response.data) {
@@ -63,7 +63,7 @@ export class EditParametroComponentComponent implements OnInit {
   async Doupdate() {
     try {
       if (this.parametro) {
-        let result = await this.parameterService.updateParameter(
+        const result = await this.parameterService.updateParameter(
           this.parametro
         );
         if (result.success && result.data) {
@@ -89,7 +89,7 @@ export class EditParametroComponentComponent implements OnInit {
     }, 500);
   }
   async getAllParameter() {
-    let result = await this.parameterService.getParameter(0, 0);
+    const result = await this.parameterService.getParameter(0, 0);
     this.setLoading(false);
     // @ts-ignore: Unreachable code error
     $('.select2-danger').select2();
@@ -99,7 +99,7 @@ export class EditParametroComponentComponent implements OnInit {
     this.changeStateLoadComponent();
   }
   changeStateLoadComponent() {
-    let component = document.getElementById('overloadModal');
+    const component = document.getElementById('overloadModal');
     if (component) {
       component.style.display = this.isLoading ? 'block' : 'none';
     }

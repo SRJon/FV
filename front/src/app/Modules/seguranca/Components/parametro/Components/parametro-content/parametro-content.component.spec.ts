@@ -8,9 +8,8 @@ describe('ParametroContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParametroContentComponent ]
-    })
-    .compileComponents();
+      declarations: [ParametroContentComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

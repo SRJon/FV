@@ -7,7 +7,7 @@ export async function GetAllFinanceiro(
   page: number,
   limit: number
 ): Promise<IResponse<INotaFinanceiro[]>> {
-  let response = await axios.get(
+  const response = await axios.get(
     `/api/TGFFIN/GetAllFinanceiro?codParc=${codParc}&page=${page}&limit=${limit}`
   );
 

@@ -9,7 +9,9 @@
     "test": "ng test",
     "compodoc:build": "compodoc -p tsconfig.doc.json",
     "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
-    "compodoc:serve": "compodoc -s"
+    "compodoc:serve": "compodoc -s",
+    "lint": "eslint \"src/**/*.{js,ts}\" --quiet --fix"
+
   },
   "private": true,
   "lint-staged": {
@@ -39,8 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --allow-empty",
-      "pre-push": "npm run compodoc:build"
+
     }
   },
   "dependencies": {

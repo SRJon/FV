@@ -11,11 +11,11 @@ import { EditDiretorioWords } from './edit-diretorio-words';
   styleUrls: ['./edit-diretorio-component.component.scss'],
 })
 export class EditDiretorioComponentComponent implements OnInit {
-  isLoading: boolean = true;
+  isLoading = true;
   @Input() diretorio: IDiretorio | undefined;
   @Output() onCloseModal = new EventEmitter<boolean>();
   words: EditDiretorioWords;
-  isValid: boolean = false;
+  isValid = false;
   serviceForm: FormGroup;
 
   constructor(
@@ -34,14 +34,14 @@ export class EditDiretorioComponentComponent implements OnInit {
   async onConfirm() {
     if (this.serviceForm.invalid) return;
     if (this.diretorio) {
-      let id = this.diretorio.id || 0;
+      const id = this.diretorio.id || 0;
       id > 0 ? this.Doupdate() : this.DoCreate();
     }
   }
   async DoCreate() {
     try {
       if (this.diretorio) {
-        var response = await this.directoryService.createDirectory(
+        const response = await this.directoryService.createDirectory(
           this.diretorio
         );
         if (response.success && response.data) {
@@ -63,7 +63,7 @@ export class EditDiretorioComponentComponent implements OnInit {
   async Doupdate() {
     try {
       if (this.diretorio) {
-        let result = await this.directoryService.updateDirectory(
+        const result = await this.directoryService.updateDirectory(
           this.diretorio
         );
         if (result.success && result.data) {
@@ -89,7 +89,7 @@ export class EditDiretorioComponentComponent implements OnInit {
     }, 500);
   }
   async getAllDirectory() {
-    let result = await this.directoryService.getDirectory(0, 0);
+    const result = await this.directoryService.getDirectory(0, 0);
     this.setLoading(false);
     // @ts-ignore: Unreachable code error
     $('.select2-danger').select2();
@@ -99,7 +99,7 @@ export class EditDiretorioComponentComponent implements OnInit {
     this.changeStateLoadComponent();
   }
   changeStateLoadComponent() {
-    let component = document.getElementById('overloadModal');
+    const component = document.getElementById('overloadModal');
     if (component) {
       component.style.display = this.isLoading ? 'block' : 'none';
     }

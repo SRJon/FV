@@ -5,9 +5,9 @@ import { PerfilGetAllNames } from './perfilGetAllNames';
 import { PerfilUpdate } from './PerfilUpdate';
 
 export {
-  PerfilCreate,
-  PerfilDelete,
-  PerfilGetAll,
-  PerfilUpdate,
-  PerfilGetAllNames,
+    PerfilCreate,
+    PerfilDelete,
+    PerfilGetAll,
+    PerfilUpdate,
+    PerfilGetAllNames,
 };

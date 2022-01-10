@@ -3,17 +3,17 @@ import { Routes } from '@angular/router';
 import { IRoutes } from './../../../Repository/IRoutes';
 
 export class Route implements IRoutes {
-  routes: Routes;
+    routes: Routes;
 
-  constructor() {
-    this.routes = [
-      {
-        path: '',
-        component: LoginPageComponent,
-      },
-    ];
-  }
-  getRoutes(): Routes {
-    throw new Error('Method not implemented.');
-  }
+    constructor() {
+        this.routes = [
+            {
+                path: '',
+                component: LoginPageComponent,
+            },
+        ];
+    }
+    getRoutes(): Routes {
+        throw new Error('Method not implemented.');
+    }
 }

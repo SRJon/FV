@@ -9,48 +9,48 @@ import { GlobalMenuService } from 'src/app/Shared/global-menu.service';
 import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
 
 @Component({
-  selector: 'app-NavBar',
-  templateUrl: './NavBar.component.html',
-  styleUrls: ['./NavBar.component.scss'],
+    selector: 'app-NavBar',
+    templateUrl: './NavBar.component.html',
+    styleUrls: ['./NavBar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
-  empresas: IEmpresa[] = [];
-  selectedEmpresa: IEmpresa | undefined;
-  isOpen = false;
-  aside = new AsideMenu();
-  _title = '';
+    empresas: IEmpresa[] = [];
+    selectedEmpresa: IEmpresa | undefined;
+    isOpen = false;
+    aside = new AsideMenu();
+    _title = '';
 
-  constructor(
+    constructor(
     private menuAsideObs: GlobalMenuService<AsideMenu>,
     private globalTitle: GlobalTitle<string>,
     private userG: UserGlobal<IUser>
-  ) {}
-  ngOnInit() {
-    this.userG.getObservable().subscribe((user) => {
-      let emp = user.usuarioEmp;
+    ) {}
+    ngOnInit() {
+        this.userG.getObservable().subscribe((user) => {
+            const emp = user.usuarioEmp;
 
-      if (emp?.length) {
-        let getEmps = emp.map((e) => e.empresa);
+            if (emp?.length) {
+                const getEmps = emp.map((e) => e.empresa);
 
-        let nonNUll = getEmps.filter((e) => e != undefined) as IEmpresa[];
-        this.empresas = nonNUll;
+                const nonNUll = getEmps.filter((e) => e != undefined) as IEmpresa[];
+                this.empresas = nonNUll;
 
-        //Alterar posteriormente para armazenar a empresa principal do usuário
-        this.selectedEmpresa = this.empresas[0];
-      }
-    });
+                //Alterar posteriormente para armazenar a empresa principal do usuário
+                this.selectedEmpresa = this.empresas[0];
+            }
+        });
 
-    this.globalTitle.getObservable().subscribe((value) => {
-      this._title = value;
-    });
-  }
-  onMenuClickModal() {
-    this.isOpen = !this.isOpen;
-    this.aside.setValue(this.isOpen);
-    this.menuAsideObs.set(this.aside);
-  }
+        this.globalTitle.getObservable().subscribe((value) => {
+            this._title = value;
+        });
+    }
+    onMenuClickModal() {
+        this.isOpen = !this.isOpen;
+        this.aside.setValue(this.isOpen);
+        this.menuAsideObs.set(this.aside);
+    }
 
-  onChange(empresa: IEmpresa) {
-    this.selectedEmpresa === empresa;
-  }
+    onChange(empresa: IEmpresa) {
+        this.selectedEmpresa === empresa;
+    }
 }

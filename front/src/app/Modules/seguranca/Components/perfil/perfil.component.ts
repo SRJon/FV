@@ -7,13 +7,13 @@ import { GlobalTitle } from 'src/app/Shared/GlobalTitle';
   styleUrls: ['./perfil.component.scss'],
 })
 export class PerfilComponent implements OnInit {
-  title: string = 'Perfil';
-  description: string = '';
+  title = 'Perfil';
+  description = '';
 
   constructor(private globalTitle: GlobalTitle<string>) {}
 
   getHeigth(): number {
-    let doc = document.querySelector('#middleWrapper');
+    const doc = document.querySelector('#middleWrapper');
     return doc ? doc.clientHeight : 0;
   }
 

@@ -1,11 +1,11 @@
 export class EditDiretorioWords {
-  private _title: string = '';
-  private _indexTitle: number = 0;
+  private _title = '';
+  private _indexTitle = 0;
   private _titleList: string[] = ['CRIAR DIRETÓRIO', 'EDITAR DIRETÓRIO'];
-  private _idInput: string = 'Id';
-  private _tipoInput: string = 'Tipo';
-  private _linkInput: string = 'Link';
-  private _virtualInput: string = 'Virtual';
+  private _idInput = 'Id';
+  private _tipoInput = 'Tipo';
+  private _linkInput = 'Link';
+  private _virtualInput = 'Virtual';
 
   public get title(): string {
     this._title = this._titleList[this._indexTitle];

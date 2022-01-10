@@ -8,9 +8,8 @@ describe('DiretorioContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiretorioContentComponent ]
-    })
-    .compileComponents();
+      declarations: [DiretorioContentComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,20 +1,20 @@
 export class EditUsuarioWords {
-  private _title: string = '';
-  private _indexTitle: number = 0;
+  private _title = '';
+  private _indexTitle = 0;
   private _titleList: string[] = ['CRIAR USUARIO', 'EDITAR USUARIO'];
-  private _idInput: string = 'Id';
-  private _nomeInput: string = 'Nome';
-  private _emailInput: string = 'Email';
-  private _ativoInput: string = 'Ativo';
-  private _loginInput: string = 'Login';
-  private _senhaInput: string = 'Senha';
-  private _perfilIdInput: string = 'Perfil';
-  private _vendedorUCodInput: string = 'Código do Vendedor';
-  private _altSenhaInput: string = 'Alteração da Senha';
-  private _alterPassNextLogonInput: string = 'Alterar Senha Próx. Login';
-  private _lastUpdatePasswordInput: string = 'Última alteração de senha';
-  private _dtUltAltSenhaInput: string = 'Última aleração de Senha';
-  private _perfilInput: string = 'Perfil';
+  private _idInput = 'Id';
+  private _nomeInput = 'Nome';
+  private _emailInput = 'Email';
+  private _ativoInput = 'Ativo';
+  private _loginInput = 'Login';
+  private _senhaInput = 'Senha';
+  private _perfilIdInput = 'Perfil';
+  private _vendedorUCodInput = 'Código do Vendedor';
+  private _altSenhaInput = 'Alteração da Senha';
+  private _alterPassNextLogonInput = 'Alterar Senha Próx. Login';
+  private _lastUpdatePasswordInput = 'Última alteração de senha';
+  private _dtUltAltSenhaInput = 'Última aleração de Senha';
+  private _perfilInput = 'Perfil';
 
   public get title(): string {
     this._title = this._titleList[this._indexTitle];

@@ -1,16 +1,16 @@
 export class Settings {
-  isProduction: boolean;
-  static instance: Settings | null = null;
+    isProduction: boolean;
+    static instance: Settings | null = null;
 
-  constructor() {
-    this.isProduction = false;
-  }
-
-  static getInstance() {
-    let self = Settings.instance;
-    if (!self) {
-      self = new Settings();
+    constructor() {
+        this.isProduction = false;
     }
-    return self;
-  }
+
+    static getInstance() {
+        let self = Settings.instance;
+        if (!self) {
+            self = new Settings();
+        }
+        return self;
+    }
 }

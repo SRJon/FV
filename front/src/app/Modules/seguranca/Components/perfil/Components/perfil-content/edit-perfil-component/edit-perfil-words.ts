@@ -1,12 +1,12 @@
 export class EditPerfilWords {
-  private _title: string = '';
-  private _indexTitle: number = 0;
+  private _title = '';
+  private _indexTitle = 0;
   private _titleList: string[] = ['CRIAR PERFIL', 'EDITAR PERFIL'];
-  private _idInput: string = 'Id';
-  private _nomeInput: string = 'Nome';
-  private _peR_CODInput: string = 'PER_COD';
-  private _perfilTelaInput: string = 'Perfil Tela';
-  private _usuarioInput: string = 'Usuário';
+  private _idInput = 'Id';
+  private _nomeInput = 'Nome';
+  private _peR_CODInput = 'PER_COD';
+  private _perfilTelaInput = 'Perfil Tela';
+  private _usuarioInput = 'Usuário';
 
   public get title(): string {
     this._title = this._titleList[this._indexTitle];
