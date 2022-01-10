@@ -36,13 +36,12 @@ export class FinanceiroComponent implements OnInit {
 			);
 		});
 	}
-              @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize', ['$event'])
 	getSize() {
 		const doc = document.querySelector('#tab_5');
 		const contentHeight = doc?.clientHeight;
 
-		this.contentHeight = contentHeight || 0
-		;
+		this.contentHeight = contentHeight || 0;
 		this.contentHeight -= 150;
 		this.contentHeight = this.contentHeight < 0 ? 0 : this.contentHeight;
 		if (document.body.clientWidth <= 768) {
