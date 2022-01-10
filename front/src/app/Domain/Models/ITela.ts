@@ -12,5 +12,6 @@ export interface ITela {
   iconClass: string;
   telaId: number | undefined;
   relateds: ITela[];
+
   tela: ITela | null;
 }
