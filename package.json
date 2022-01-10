@@ -18,14 +18,5 @@
   "bugs": {
     "url": "https://github.com/DevGrupoLitoral/FV/issues"
   },
-  "homepage": "https://github.com/DevGrupoLitoral/FV#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'testestadsasaçsmda,dsmamsdasda-----------s-----------'",
-      "pre-push": "echo 'testestadsasaçsmda,dsmamsdasda----------------------'"
-    }
-  },
-  "devDependencies": {
-    "husky": "^7.0.4"
-  }
+  "homepage": "https://github.com/DevGrupoLitoral/FV#readme"
 }

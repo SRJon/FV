@@ -12,6 +12,12 @@
     "compodoc:serve": "compodoc -s"
   },
   "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 'testestadsasaçsmda,dsmamsdasda-----------s-----------'",
+      "pre-push": "echo 'testestadsasaçsmda,dsmamsdasda----------------------'"
+    }
+  },
   "dependencies": {
     "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",
