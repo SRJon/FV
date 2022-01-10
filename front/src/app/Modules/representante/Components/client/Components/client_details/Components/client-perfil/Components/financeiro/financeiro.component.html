@@ -4,8 +4,17 @@
       <app-dinamic-filter></app-dinamic-filter>
     </div>
     <div class="row mt-2 h-75">
-      <div class="content" style="overflow-y: scroll; max-height: 344px">
-        <app-financeiro-grid></app-financeiro-grid>
+      <div
+        class="content"
+        [style]="'overflow-y: scroll; max-height:' + contentHeight + 'px'"
+      >
+        <app-financeiro-grid [listGrid]="listGrid"></app-financeiro-grid>
+      </div>
+      <div class="row mt-2">
+        <ul
+          id="table_id_paginate"
+          class="pagination d-flex justify-content-end"
+        ></ul>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IAvgfrpvgetall } from 'src/app/Domain/Models/IAvgfrpvgetall';
 import { Pedido } from 'src/app/Domain/Models/IPedido';
 import { IResponse } from 'src/app/Domain/Models/IResponse';
+import { INotaFinanceiro } from 'src/app/Domain/Models/NotaFinanceiro';
 import * as actions from './Action';
 
 @Injectable({
@@ -32,5 +33,13 @@ export class ADVGFRPVService {
   }
   async GetSolicitacaoDevolucao(codParc: number, page: number, limit: number) {
     return await actions.GetSolicitacaoDevolucao(codParc, page, limit);
+  }
+
+  async GetAllFinanceiro(
+    codparc: number,
+    page: number = 1,
+    limit: number = 10
+  ): Promise<IResponse<INotaFinanceiro[]>> {
+    return await actions.GetAllFinanceiro(codparc, page, limit);
   }
 }

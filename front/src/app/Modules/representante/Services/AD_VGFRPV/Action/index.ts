@@ -4,6 +4,7 @@ import { GetByParc } from './getbyIdParc';
 import { GetAllByCodParc } from './GetAllByCodParc';
 import { GetAllNF } from './GetAllNF';
 import { GetSolicitacaoDevolucao } from './GetSolicitacaoDevolucao';
+import { GetAllFinanceiro } from './GetAllFinanceiro';
 
 export {
   AVGFRPVGETALL,
@@ -12,4 +13,5 @@ export {
   GetAllByCodParc,
   GetAllNF,
   GetSolicitacaoDevolucao,
+  GetAllFinanceiro,
 };

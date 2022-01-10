@@ -1,0 +1,2564 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>fv documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">fv documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  EstoqueGridComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-estoque-grid</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./estoque-grid.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./estoque-grid.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentUser" >currentUser</a>
+                            </li>
+                            <li>
+                                <a href="#grid" >grid</a>
+                            </li>
+                            <li>
+                                <a href="#isDetail" >isDetail</a>
+                            </li>
+                            <li>
+                                <a href="#isShowing" >isShowing</a>
+                            </li>
+                            <li>
+                                <a href="#lastI" >lastI</a>
+                            </li>
+                            <li>
+                                <a href="#listGridTitle" >listGridTitle</a>
+                            </li>
+                            <li>
+                                <a href="#listTitle" >listTitle</a>
+                            </li>
+                            <li>
+                                <a href="#selectedGrpPrd" >selectedGrpPrd</a>
+                            </li>
+                            <li>
+                                <a href="#selectedRecord" >selectedRecord</a>
+                            </li>
+                            <li>
+                                <a href="#selectGrpPrd" >selectGrpPrd</a>
+                            </li>
+                            <li>
+                                <a href="#vendGrpPrd" >vendGrpPrd</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clickOnPagination" >clickOnPagination</a>
+                            </li>
+                            <li>
+                                <a href="#getGrupoProduto" >getGrupoProduto</a>
+                            </li>
+                            <li>
+                                <a href="#getTitle" >getTitle</a>
+                            </li>
+                            <li>
+                                <a href="#getType" >getType</a>
+                            </li>
+                            <li>
+                                <a href="#gridEvents" >gridEvents</a>
+                            </li>
+                            <li>
+                                <a href="#initGrid" >initGrid</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onChangeSelect" >onChangeSelect</a>
+                            </li>
+                            <li>
+                                <a href="#onChangeSelectNull" >onChangeSelectNull</a>
+                            </li>
+                            <li>
+                                <a href="#onCodGrupoProdChange" >onCodGrupoProdChange</a>
+                            </li>
+                            <li>
+                                <a href="#onComplDescChange" >onComplDescChange</a>
+                            </li>
+                            <li>
+                                <a href="#onDescChange" >onDescChange</a>
+                            </li>
+                            <li>
+                                <a href="#onDetail" >onDetail</a>
+                            </li>
+                            <li>
+                                <a href="#onProductChange" >onProductChange</a>
+                            </li>
+                            <li>
+                                <a href="#openModal" >openModal</a>
+                            </li>
+                            <li>
+                                <a href="#setPaginate" >setPaginate</a>
+                            </li>
+                            <li>
+                                <a href="#showGrid" >showGrid</a>
+                            </li>
+                            <li>
+                                <a href="#stateModal" >stateModal</a>
+                            </li>
+                            <li>
+                                <a href="#toNumber" >toNumber</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#listGrid" >listGrid</a>
+                            </li>
+                            <li>
+                                <a href="#paginate" >paginate</a>
+                            </li>
+                            <li>
+                                <a href="#totalItems" >totalItems</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#nextSelection" >nextSelection</a>
+                            </li>
+                            <li>
+                                <a href="#onCodGrupoProdFilterChange" >onCodGrupoProdFilterChange</a>
+                            </li>
+                            <li>
+                                <a href="#onComplFilterChange" >onComplFilterChange</a>
+                            </li>
+                            <li>
+                                <a href="#onDescFilterChange" >onDescFilterChange</a>
+                            </li>
+                            <li>
+                                <a href="#onProdutoFilterChange" >onProdutoFilterChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userG: <a href="../injectables/UserGlobal.html" target="_self">UserGlobal&lt;IUser&gt;</a>, StockService: <a href="../injectables/StockService.html" target="_self">StockService</a>, alertsService: <a href="../injectables/AlertsService.html" target="_self">AlertsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userG</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserGlobal.html" target="_self" >UserGlobal&lt;IUser&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>StockService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StockService.html" target="_self" >StockService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AlertsService.html" target="_self" >AlertsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="listGrid"></a>
+                        <b>listGrid</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:33</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paginate"></a>
+                        <b>paginate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Paginate.html" target="_self" >Paginate</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:34</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalItems"></a>
+                        <b>totalItems</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nextSelection"></a>
+                        <b>nextSelection</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:36</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onCodGrupoProdFilterChange"></a>
+                        <b>onCodGrupoProdFilterChange</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:67</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onComplFilterChange"></a>
+                        <b>onComplFilterChange</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:69</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onDescFilterChange"></a>
+                        <b>onDescFilterChange</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:68</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onProdutoFilterChange"></a>
+                        <b>onProdutoFilterChange</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:66</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickOnPagination"></a>
+                    <span class="name">
+                        <span ><b>clickOnPagination</b></span>
+                        <a href="#clickOnPagination"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickOnPagination(page: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>page</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getGrupoProduto"></a>
+                    <span class="name">
+                        <span ><b>getGrupoProduto</b></span>
+                        <a href="#getGrupoProduto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getGrupoProduto(codVend: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>codVend</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTitle"></a>
+                    <span class="name">
+                        <span ><b>getTitle</b></span>
+                        <a href="#getTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTitle(t: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:113</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>t</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getType"></a>
+                    <span class="name">
+                        <span ><b>getType</b></span>
+                        <a href="#getType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getType(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:131</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>type</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gridEvents"></a>
+                    <span class="name">
+                        <span ><b>gridEvents</b></span>
+                        <a href="#gridEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>gridEvents()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="162"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:162</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initGrid"></a>
+                    <span class="name">
+                        <span ><b>initGrid</b></span>
+                        <a href="#initGrid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initGrid()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onChangeSelect"></a>
+                    <span class="name">
+                        <span ><b>onChangeSelect</b></span>
+                        <a href="#onChangeSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onChangeSelect(selectGrpPrd: <a href="../interfaces/ITGFGRU.html" target="_self">ITGFGRU</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:118</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>selectGrpPrd</td>
+                                    <td>
+                                                <code><a href="../interfaces/ITGFGRU.html" target="_self" >ITGFGRU</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onChangeSelectNull"></a>
+                    <span class="name">
+                        <span ><b>onChangeSelectNull</b></span>
+                        <a href="#onChangeSelectNull"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onChangeSelectNull()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:123</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCodGrupoProdChange"></a>
+                    <span class="name">
+                        <span ><b>onCodGrupoProdChange</b></span>
+                        <a href="#onCodGrupoProdChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCodGrupoProdChange(codGrupoProd: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:197</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>codGrupoProd</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onComplDescChange"></a>
+                    <span class="name">
+                        <span ><b>onComplDescChange</b></span>
+                        <a href="#onComplDescChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onComplDescChange(complDesc: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="205"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:205</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>complDesc</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDescChange"></a>
+                    <span class="name">
+                        <span ><b>onDescChange</b></span>
+                        <a href="#onDescChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDescChange(desc: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="201"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:201</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>desc</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDetail"></a>
+                    <span class="name">
+                        <span ><b>onDetail</b></span>
+                        <a href="#onDetail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDetail(obj: <a href="../interfaces/IAD_ESTCODPROD.html" target="_self">IAD_ESTCODPROD | undefined</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:188</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>obj</td>
+                                    <td>
+                                                <code><a href="../interfaces/IAD_ESTCODPROD.html" target="_self" >IAD_ESTCODPROD | undefined</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onProductChange"></a>
+                    <span class="name">
+                        <span ><b>onProductChange</b></span>
+                        <a href="#onProductChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onProductChange(produto: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:193</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>produto</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openModal"></a>
+                    <span class="name">
+                        <span ><b>openModal</b></span>
+                        <a href="#openModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openModal(obj: <a href="../interfaces/IAD_ESTCODPROD.html" target="_self">IAD_ESTCODPROD | undefined</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="141"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:141</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>obj</td>
+                                    <td>
+                                                <code><a href="../interfaces/IAD_ESTCODPROD.html" target="_self" >IAD_ESTCODPROD | undefined</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>undefined</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPaginate"></a>
+                    <span class="name">
+                        <span ><b>setPaginate</b></span>
+                        <a href="#setPaginate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPaginate()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showGrid"></a>
+                    <span class="name">
+                        <span ><b>showGrid</b></span>
+                        <a href="#showGrid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showGrid(show: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:109</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>show</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stateModal"></a>
+                    <span class="name">
+                        <span ><b>stateModal</b></span>
+                        <a href="#stateModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>stateModal(isClose: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>isClose</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toNumber"></a>
+                    <span class="name">
+                        <span ><b>toNumber</b></span>
+                        <a href="#toNumber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toNumber(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, t: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, isTitle: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="184"
+                            class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:184</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>t</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>isTitle</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUser"></a>
+                    <span class="name">
+                        <span ><b>currentUser</b></span>
+                        <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IUser.html" target="_self" >IUser</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="grid"></a>
+                    <span class="name">
+                        <span ><b>grid</b></span>
+                        <a href="#grid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Grid.html" target="_self" >shareds.Grid</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDetail"></a>
+                    <span class="name">
+                        <span ><b>isDetail</b></span>
+                        <a href="#isDetail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isShowing"></a>
+                    <span class="name">
+                        <span ><b>isShowing</b></span>
+                        <a href="#isShowing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lastI"></a>
+                    <span class="name">
+                        <span ><b>lastI</b></span>
+                        <a href="#lastI"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listGridTitle"></a>
+                    <span class="name">
+                        <span ><b>listGridTitle</b></span>
+                        <a href="#listGridTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;Produto&#x27;,
+    &#x27;Grupo de Produto&#x27;,
+    &#x27;Código Anterior&#x27;,
+    &#x27;Volume&#x27;,
+    &#x27;Descrição&#x27;,
+    &#x27;Complemento&#x27;,
+    &#x27;Percentual&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listTitle"></a>
+                    <span class="name">
+                        <span ><b>listTitle</b></span>
+                        <a href="#listTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;produto&#x27;,
+    &#x27;codgrupoprod&#x27;,
+    &#x27;aD_CODANT&#x27;,
+    &#x27;codvol&#x27;,
+    &#x27;descrprod&#x27;,
+    &#x27;compldesc&#x27;,
+    &#x27;percentual&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedGrpPrd"></a>
+                    <span class="name">
+                        <span ><b>selectedGrpPrd</b></span>
+                        <a href="#selectedGrpPrd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ITGFGRU.html" target="_self" >ITGFGRU</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedRecord"></a>
+                    <span class="name">
+                        <span ><b>selectedRecord</b></span>
+                        <a href="#selectedRecord"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IAD_ESTCODPROD.html" target="_self" >IAD_ESTCODPROD | undefined</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectGrpPrd"></a>
+                    <span class="name">
+                        <span ><b>selectGrpPrd</b></span>
+                        <a href="#selectGrpPrd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ITGFGRU.html" target="_self" >ITGFGRU[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vendGrpPrd"></a>
+                    <span class="name">
+                        <span ><b>vendGrpPrd</b></span>
+                        <a href="#vendGrpPrd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IResponse&lt;ITGFRGV[]&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/Modules/representante/Components/estoque/Components/estoque-grid/estoque-grid.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { StockService } from &#x27;./../../../../Services/stock.service&#x27;;
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from &#x27;@angular/core&#x27;;
+import { IResponse } from &#x27;src/app/Domain/Models/IResponse&#x27;;
+import { ITGFGRU } from &#x27;src/app/Domain/Models/ITGFGRU&#x27;;
+import { ITGFRGV } from &#x27;src/app/Domain/Models/ITGFRGV&#x27;;
+import { IUser } from &#x27;src/app/Domain/Models/IUser&#x27;;
+import { UserGlobal } from &#x27;src/app/Shared&#x27;;
+import { IAD_ESTCODPROD } from &#x27;src/app/Domain/Models/IAD_ESTCODPROD&#x27;;
+import { Paginate } from &#x27;src/app/Domain/Models/Paginate&#x27;;
+import * as shareds from &#x27;src/app/Shared&#x27;;
+import { AlertsService } from &#x27;src/app/Repository/Alerts/alerts.service&#x27;;
+import { AuthenticationService } from &#x27;src/app/Modules/login/Services/Authentication.service&#x27;;
+import { EstoqueSearch } from &#x27;src/app/Domain/Models/estoqueSearch&#x27;;
+@Component({
+  selector: &#x27;app-estoque-grid&#x27;,
+  templateUrl: &#x27;./estoque-grid.component.html&#x27;,
+  styleUrls: [&#x27;./estoque-grid.component.scss&#x27;],
+})
+export class EstoqueGridComponent implements OnInit, OnChanges {
+  vendGrpPrd: IResponse&lt;ITGFRGV[]&gt;;
+  selectGrpPrd: ITGFGRU[] &#x3D; [];
+  selectedGrpPrd!: ITGFGRU;
+
+  isShowing: boolean &#x3D; false;
+
+  @Input() listGrid: any[] &#x3D; [];
+  @Input() paginate: Paginate;
+  @Input() totalItems: number &#x3D; 0;
+  @Output() nextSelection &#x3D; new EventEmitter&lt;number&gt;();
+
+  selectedRecord: IAD_ESTCODPROD | undefined;
+  currentUser!: IUser;
+
+  isDetail: boolean &#x3D; false;
+
+  lastI &#x3D; 0;
+
+  listTitle: string[] &#x3D; [
+    &#x27;produto&#x27;,
+    &#x27;codgrupoprod&#x27;,
+    &#x27;aD_CODANT&#x27;,
+    &#x27;codvol&#x27;,
+    &#x27;descrprod&#x27;,
+    &#x27;compldesc&#x27;,
+    &#x27;percentual&#x27;,
+  ];
+  listGridTitle: string[] &#x3D; [
+    &#x27;Produto&#x27;,
+    &#x27;Grupo de Produto&#x27;,
+    &#x27;Código Anterior&#x27;,
+    &#x27;Volume&#x27;,
+    &#x27;Descrição&#x27;,
+    &#x27;Complemento&#x27;,
+    &#x27;Percentual&#x27;,
+  ];
+
+  grid: shareds.Grid;
+
+  @Output() onProdutoFilterChange;
+  @Output() onCodGrupoProdFilterChange;
+  @Output() onDescFilterChange;
+  @Output() onComplFilterChange;
+
+  constructor(
+    private userG: UserGlobal&lt;IUser&gt;,
+    private StockService: StockService,
+    private alertsService: AlertsService
+  ) {
+    this.vendGrpPrd &#x3D; {} as IResponse&lt;ITGFRGV[]&gt;;
+
+    this.grid &#x3D; new shareds.Grid();
+    this.paginate &#x3D; new Paginate(2000, 50);
+    this.onProdutoFilterChange &#x3D; new EventEmitter&lt;number&gt;();
+    this.onCodGrupoProdFilterChange &#x3D; new EventEmitter&lt;number&gt;();
+    this.onDescFilterChange &#x3D; new EventEmitter&lt;string&gt;();
+    this.onComplFilterChange &#x3D; new EventEmitter&lt;string&gt;();
+  }
+
+  initGrid(): void {
+    this.grid.createGrid({ selectorHtml: &#x27;#table_id&#x27;, paging: false });
+  }
+
+  async ngOnInit(): Promise&lt;void&gt; {
+    this.initGrid();
+
+    //Método utilizado para salvar os dados do usuário globalmente
+    this.currentUser &#x3D; await AuthenticationService.getGlobalUser();
+
+    if (this.currentUser.vendedorUCod) {
+      this.getGrupoProduto(this.currentUser.vendedorUCod);
+    }
+  }
+
+  getGrupoProduto(codVend: number) {
+    this.StockService.getCodGrupoProd(codVend).then((response) &#x3D;&gt; {
+      if (response.data) {
+        this.selectGrpPrd &#x3D; response.data.map((e) &#x3D;&gt; e.tgfgru);
+      }
+    });
+  }
+
+  showGrid(show: boolean) {
+    this.isShowing &#x3D; show;
+  }
+
+  getTitle(t: string) {
+    let index &#x3D; this.listTitle.indexOf(t);
+    return this.listGridTitle[index];
+  }
+
+  onChangeSelect(selectGrpPrd: ITGFGRU) {
+    this.selectedGrpPrd &#x3D; selectGrpPrd;
+    this.onCodGrupoProdChange(this.selectedGrpPrd.codgrupoprod);
+  }
+
+  onChangeSelectNull() {
+    this.onCodGrupoProdChange(0);
+  }
+
+  clickOnPagination(page: number): void {
+    this.nextSelection.emit(page);
+  }
+
+  getType(type: string): string {
+    return (typeof type).trim();
+  }
+
+  stateModal(isClose: boolean): void {
+    if (isClose) {
+      this.selectedRecord &#x3D; undefined;
+    }
+  }
+
+  openModal(obj: IAD_ESTCODPROD | undefined &#x3D; undefined): void {
+    if (obj) {
+      this.selectedRecord &#x3D; this.listGrid.find(
+        (e) &#x3D;&gt; e.produto &#x3D;&#x3D;&#x3D; obj.produto
+      );
+    }
+  }
+
+  setPaginate(): void {
+    this.grid.sharePaginate.setHtml(&#x27;#table_id_paginate&#x27;);
+    this.grid.sharePaginate.paginate &#x3D; this.paginate;
+    this.grid.sharePaginate.setPaginate((e: any) &#x3D;&gt; {
+      this.clickOnPagination(e);
+    });
+    this.grid.render();
+  }
+
+  ngOnChanges(): void {
+    this.setPaginate();
+  }
+
+  gridEvents() {
+    let inter &#x3D; setInterval(() &#x3D;&gt; {
+      if ($(&#x27;td&#x27;).length &gt; 0) {
+        $(&#x27;td&#x27;).hover((e) &#x3D;&gt; {
+          let index &#x3D; $(e.target).index();
+          index++;
+
+          let tds &#x3D; $(&#x60;td[data-column&#x3D;column${index}]&#x60;);
+          tds.toggleClass(&#x27;hov-column-ver5&#x27;);
+
+          let childrens &#x3D; e.currentTarget.parentElement?.children;
+
+          if (childrens) {
+            let ch &#x3D; $(childrens);
+            ch.toggleClass(&#x27;hov-column-ver5&#x27;);
+          }
+        });
+        clearInterval(inter);
+      }
+    }, 100);
+  }
+
+  toNumber(value: any, t: any, isTitle: boolean &#x3D; false) {
+    return Number(value) + Number(t);
+  }
+
+  onDetail(obj: IAD_ESTCODPROD | undefined): void {
+    this.selectedRecord &#x3D; obj;
+    alert(obj);
+  }
+
+  onProductChange(produto: any) {
+    this.onProdutoFilterChange.emit(produto.target.value);
+  }
+
+  onCodGrupoProdChange(codGrupoProd: number) {
+    this.onCodGrupoProdFilterChange.emit(codGrupoProd);
+  }
+
+  onDescChange(desc: any) {
+    this.onDescFilterChange.emit(desc.target.value);
+  }
+
+  onComplDescChange(complDesc: any) {
+    this.onComplFilterChange.emit(complDesc.target.value);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row&quot; style&#x3D;&quot;padding: 0px 30px; font-size: 0.7em;&quot;&gt;
+  &lt;div class&#x3D;&quot;card-default&quot;&gt;
+    &lt;div class&#x3D;&quot;card-header&quot; style&#x3D;&quot;border: 1px solid #6c757d;&quot;&gt;
+      &lt;form&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-sm-2&quot;&gt;
+            &lt;!-- number input --&gt;
+            &lt;div class&#x3D;&quot;form-group&quot;&gt;
+              &lt;label&gt;PRODUTO&lt;/label&gt;
+              &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; (change)&#x3D;&quot;onProductChange($event)&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-sm-2&quot;&gt;
+            &lt;!-- select --&gt;
+            &lt;div class&#x3D;&quot;form-group&quot;&gt;
+              &lt;label&gt;GRUPO DE PRODUTO&lt;/label&gt;
+              &lt;select class&#x3D;&quot;form-select form-control&quot; aria-label&#x3D;&quot;Default select&quot; style&#x3D;&quot;font-size: 1em;&quot;&gt;
+                &lt;option selected (click)&#x3D;&quot;onChangeSelectNull()&quot;&gt;SELECIONE UM GRUPO&lt;/option&gt;
+                &lt;option *ngFor&#x3D;&quot;let grp of selectGrpPrd&quot; [value]&#x3D;&quot;grp.codgrupoprod&quot; (click)&#x3D;&quot;onChangeSelect(grp)&quot;&gt;
+                  {{grp.codgrupoprod}} - {{ grp.descrgrupoprod }}
+                &lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+            &lt;!-- text input --&gt;
+            &lt;div class&#x3D;&quot;form-group&quot;&gt;
+              &lt;label&gt;DESCRIÇÃO&lt;/label&gt;
+              &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; (change)&#x3D;&quot;onDescChange($event)&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-sm-3&quot;&gt;
+            &lt;!-- text input --&gt;
+            &lt;div class&#x3D;&quot;form-group&quot;&gt;
+              &lt;label&gt;COMPLEMENTO&lt;/label&gt;
+              &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; (change)&#x3D;&quot;onComplDescChange($event)&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-sm-2&quot;&gt;
+            &lt;!-- text input --&gt;
+            &lt;div class&#x3D;&quot;form-group text-center&quot;&gt;
+              &lt;label&gt;RELATÓRIOS&lt;/label&gt;
+              &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                &lt;button class&#x3D;&quot;m-1 btn btn-outline-secondary&quot; data-toggle&#x3D;&quot;modal&quot; data-target&#x3D;&quot;#modal-report-estoque&quot;
+                  title&#x3D;&quot;Estoque Pronta Entrega/Programado&quot;&gt;
+                  &lt;i class&#x3D;&quot;fa fa-file&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;!-- /.card --&gt;
+
+    &lt;table data-vertable&#x3D;&quot;ver5&quot; style&#x3D;&quot;border: 1px solid #6c757d&quot;&gt;
+      &lt;thead&gt;
+        &lt;tr class&#x3D;&quot;row100 head&quot;&gt;
+          &lt;th class&#x3D;&quot;column100 column{{ toNumber(i, 2, true) }}&quot; [attr.data-column]&#x3D;&quot;&#x27;column&#x27; + toNumber(i, 2, true)&quot;
+            *ngFor&#x3D;&quot;let title of listTitle; let i &#x3D; index&quot;&gt;
+            {{ getTitle(title) }}
+          &lt;/th&gt;
+          &lt;th class&#x3D;&quot;column100  column{{ lastI }}&quot; attr.data-column&#x3D;&quot;column{{ lastI }}&quot; style&#x3D;&quot;width: 15%;&quot;&gt;
+            Açoes
+          &lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr *ngFor&#x3D;&quot;let item of listGrid&quot;&gt;
+          &lt;td *ngFor&#x3D;&quot;let title of listTitle&quot; [ngSwitch]&#x3D;&quot;getType(item[title])&quot;&gt;
+            &lt;!-- {{ item[title] }} --&gt;
+            &lt;span *ngSwitchCase&#x3D;&quot;&#x27;boolean&#x27;&quot;&gt;&lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;item[title]&quot; /&gt;&lt;/span&gt;
+            &lt;span *ngSwitchDefault&gt;{{ item[title] }}&lt;/span&gt;
+          &lt;/td&gt;
+          &lt;td class&#x3D;&quot;listActions pt-1 pb-1&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;m-1 btn btn-outline-secondary&quot; (click)&#x3D;&quot;onDetail(item)&quot; style&#x3D;&quot;width: 40px;&quot;
+              data-toggle&#x3D;&quot;tooltip&quot; data-placement&#x3D;&quot;bottom&quot; title&#x3D;&quot;Informações&quot;&gt;
+              &lt;i class&#x3D;&quot;fa fa-info&quot;&gt;&lt;/i&gt;
+            &lt;/button&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;div class&#x3D;&quot;row pt-2&quot;&gt;
+      &lt;div class&#x3D;&quot;col-lg-4 col-md-4 -col-sm-12&quot;&gt;
+        &lt;b&gt;
+          Mostrando {{ paginate.currentPage }} a 10 de
+          {{ paginate.total * paginate.pageSize }} páginas
+        &lt;/b&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-lg-8 col-md-8 -col-sm-12&quot;&gt;
+        &lt;ul id&#x3D;&quot;table_id_paginate&quot; class&#x3D;&quot;pagination d-flex justify-content-end&quot;&gt;&lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id&#x3D;&quot;estoque_detail_component&quot; *ngIf&#x3D;&quot;selectedRecord &amp;&amp; !isDetail&quot;&gt;
+    &lt;app-detail-estoque-component [estoque]&#x3D;&quot;selectedRecord&quot; (onCloseModal)&#x3D;&quot;stateModal($event)&quot;&gt;
+    &lt;/app-detail-estoque-component&gt;
+  &lt;/div&gt;
+  &lt;app-report-estoque-component&gt;
+  &lt;/app-report-estoque-component&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./estoque-grid.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.listActions {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  justify-content: center;
+}
+.column2 .column5 {
+  width: 5%;
+}
+
+.column3 .column4 .column8 {
+  width: 10%;
+}
+.column6 {
+  width: 15%;
+}
+
+.column7 {
+  width: 20%;
+}
+
+.column9 {
+  width: 20%;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="row" style="padding: 0px 30px; font-size: 0.7em;">  <div class="card-default">    <div class="card-header" style="border: 1px solid #6c757d;">      <form>        <div class="row">          <div class="col-sm-2">            <!-- number input -->            <div class="form-group">              <label>PRODUTO</label>              <input type="text" class="form-control" (change)="onProductChange($event)">            </div>          </div>          <div class="col-sm-2">            <!-- select -->            <div class="form-group">              <label>GRUPO DE PRODUTO</label>              <select class="form-select form-control" aria-label="Default select" style="font-size: 1em;">                <option selected (click)="onChangeSelectNull()">SELECIONE UM GRUPO</option>                <option *ngFor="let grp of selectGrpPrd" [value]="grp.codgrupoprod" (click)="onChangeSelect(grp)">                  {{grp.codgrupoprod}} - {{ grp.descrgrupoprod }}                </option>              </select>            </div>          </div>          <div class="col-sm-3">            <!-- text input -->            <div class="form-group">              <label>DESCRIÇÃO</label>              <input type="text" class="form-control" (change)="onDescChange($event)">            </div>          </div>          <div class="col-sm-3">            <!-- text input -->            <div class="form-group">              <label>COMPLEMENTO</label>              <input type="text" class="form-control" (change)="onComplDescChange($event)">            </div>          </div>          <div class="col-sm-2">            <!-- text input -->            <div class="form-group text-center">              <label>RELATÓRIOS</label>              <div class="form-group">                <button class="m-1 btn btn-outline-secondary" data-toggle="modal" data-target="#modal-report-estoque"                  title="Estoque Pronta Entrega/Programado">                  <i class="fa fa-file"></i>                </button>              </div>            </div>          </div>        </div>      </form>    </div>    <!-- /.card -->    <table data-vertable="ver5" style="border: 1px solid #6c757d">      <thead>        <tr class="row100 head">          <th class="column100 column{{ toNumber(i, 2, true) }}" [attr.data-column]="\'column\' + toNumber(i, 2, true)"            *ngFor="let title of listTitle; let i = index">            {{ getTitle(title) }}          </th>          <th class="column100  column{{ lastI }}" attr.data-column="column{{ lastI }}" style="width: 15%;">            Açoes          </th>        </tr>      </thead>      <tbody>        <tr *ngFor="let item of listGrid">          <td *ngFor="let title of listTitle" [ngSwitch]="getType(item[title])">            <!-- {{ item[title] }} -->            <span *ngSwitchCase="\'boolean\'"><input type="checkbox" [checked]="item[title]" /></span>            <span *ngSwitchDefault>{{ item[title] }}</span>          </td>          <td class="listActions pt-1 pb-1">            <button type="button" class="m-1 btn btn-outline-secondary" (click)="onDetail(item)" style="width: 40px;"              data-toggle="tooltip" data-placement="bottom" title="Informações">              <i class="fa fa-info"></i>            </button>          </td>        </tr>      </tbody>    </table>    <div class="row pt-2">      <div class="col-lg-4 col-md-4 -col-sm-12">        <b>          Mostrando {{ paginate.currentPage }} a 10 de          {{ paginate.total * paginate.pageSize }} páginas        </b>      </div>      <div class="col-lg-8 col-md-8 -col-sm-12">        <ul id="table_id_paginate" class="pagination d-flex justify-content-end"></ul>      </div>    </div>  </div>  <div id="estoque_detail_component" *ngIf="selectedRecord && !isDetail">    <app-detail-estoque-component [estoque]="selectedRecord" (onCloseModal)="stateModal($event)">    </app-detail-estoque-component>  </div>  <app-report-estoque-component>  </app-report-estoque-component></div></div>'
+    var COMPONENTS = [{'name': 'AnexoComponent', 'selector': 'app-anexo'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AutorizacaoretiradaComponent', 'selector': 'app-autorizacaoretirada'},{'name': 'BookComponent', 'selector': 'app-book'},{'name': 'Client_detailsComponent', 'selector': 'app-client_details'},{'name': 'ClientComponent', 'selector': 'app-client'},{'name': 'ClientesComponent', 'selector': 'app-clientes'},{'name': 'ClientGridComponent', 'selector': 'app-client-grid'},{'name': 'ClientPerfilComponent', 'selector': 'app-client-perfil'},{'name': 'ComissaoComponent', 'selector': 'app-comissao'},{'name': 'DetailEstoqueComponentComponent', 'selector': 'app-detail-estoque-component'},{'name': 'DinamicFilterComponent', 'selector': 'app-dinamic-filter'},{'name': 'DiretorioComponent', 'selector': 'app-diretorio'},{'name': 'DiretorioContentComponent', 'selector': 'app-diretorio-content'},{'name': 'DiretorioGridComponent', 'selector': 'app-diretorio-grid'},{'name': 'EditDiretorioComponentComponent', 'selector': 'app-edit-diretorio-component'},{'name': 'EditEmpresaComponentComponent', 'selector': 'app-edit-empresa-component'},{'name': 'EditParametroComponentComponent', 'selector': 'app-edit-parametro-component'},{'name': 'EditPerfilComponentComponent', 'selector': 'app-edit-perfil-component'},{'name': 'EditTelaComponentComponent', 'selector': 'app-edit-tela-component'},{'name': 'EditUsuarioComponentComponent', 'selector': 'app-edit-usuario-component'},{'name': 'EmailCheckComponent', 'selector': 'app-email-check'},{'name': 'EmpresaComponent', 'selector': 'app-empresa'},{'name': 'EmpresaContentComponent', 'selector': 'app-empresa-content'},{'name': 'EmpresaGridComponent', 'selector': 'app-empresa-grid'},{'name': 'EstoqueComponent', 'selector': 'app-estoque'},{'name': 'EstoqueContentComponent', 'selector': 'app-estoque-content'},{'name': 'EstoqueGridComponent', 'selector': 'app-estoque-grid'},{'name': 'FinanceiroComponent', 'selector': 'app-financeiro'},{'name': 'FinanceiroGridComponent', 'selector': 'app-financeiro-grid'},{'name': 'GeralComponent', 'selector': 'app-Geral'},{'name': 'GridClientPerfilComponent', 'selector': 'app-grid-client-perfil'},{'name': 'GridNotaFiscalComponent', 'selector': 'app-grid-nota-fiscal'},{'name': 'GridSolicitacaoDevolucaoComponent', 'selector': 'app-grid-solicitacao-devolucao'},{'name': 'HeaderPlotComponent', 'selector': 'app-header-plot'},{'name': 'HomePageComponent', 'selector': 'app-HomePage'},{'name': 'IniciorepresentanteComponent', 'selector': 'app-iniciorepresentante'},{'name': 'LoginMenuComponent', 'selector': 'app-login-menu'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'MainSidebarContainerComponent', 'selector': 'app-MainSidebarContainer'},{'name': 'Min_loadingComponent', 'selector': 'app-min_loading'},{'name': 'NavBarComponent', 'selector': 'app-NavBar'},{'name': 'NotaFiscalComponent', 'selector': 'app-nota-fiscal'},{'name': 'NotificationPlotComponent', 'selector': 'app-notification-plot'},{'name': 'ParametroComponent', 'selector': 'app-parametro'},{'name': 'ParametroContentComponent', 'selector': 'app-parametro-content'},{'name': 'ParametroGridComponent', 'selector': 'app-parametro-grid'},{'name': 'PedidoandamentoComponent', 'selector': 'app-pedidoandamento'},{'name': 'PedidosComponent', 'selector': 'app-pedidos'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PerfilContentComponent', 'selector': 'app-perfil-content'},{'name': 'PerfilGridComponent', 'selector': 'app-perfil-grid'},{'name': 'ProgramadosComponent', 'selector': 'app-programados'},{'name': 'RefactorPasswordComponent', 'selector': 'app-refactor-password'},{'name': 'ReportEstoqueComponentComponent', 'selector': 'app-report-estoque-component'},{'name': 'SacComponent', 'selector': 'app-sac'},{'name': 'SalesPlotComponent', 'selector': 'app-sales-plot'},{'name': 'SolicitacaoDevolucaoComponent', 'selector': 'app-solicitacao-devolucao'},{'name': 'TabprecoComponent', 'selector': 'app-tabpreco'},{'name': 'TelaComponent', 'selector': 'app-tela'},{'name': 'TelaContentComponent', 'selector': 'app-tela-content'},{'name': 'TelaGridComponent', 'selector': 'app-tela-grid'},{'name': 'UsuarioComponent', 'selector': 'app-usuario'},{'name': 'UsuarioContentComponent', 'selector': 'app-usuario-content'},{'name': 'UsuarioGridComponent', 'selector': 'app-usuario-grid'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EstoqueGridComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EstoqueGridComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

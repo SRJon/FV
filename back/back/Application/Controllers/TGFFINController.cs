@@ -87,8 +87,7 @@ namespace back.Application.Controllers
             {
 
                 var result = await _TGFFINRepository.GetAllFinanceiroPaginateAsync(page, limit, codParc);
-                response.SetConfig(200);
-                response.Data = result.Data;
+                response.setHttpAtr(result);
             }
             catch (System.Exception)
             {
