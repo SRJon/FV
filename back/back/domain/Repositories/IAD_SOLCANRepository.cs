@@ -13,5 +13,8 @@ namespace back.domain.Repositories
     {
         public Task<Response<List<AD_SOLCANDTO>>> GetAllPaginateAsync(int codVend, int page, int limit);
         public Task<AD_SOLCANDTO> GetByNuNota(int NuNota);
+        public bool ValidCancelRequest(string reason);
+        public Task<bool> CancelRequistExistsAsync(int NuNota);
+        public Task<bool> CreateSolcan(AD_SOLCANCreateDTO solcanCreate);
     }
 }

@@ -41,11 +41,19 @@ using back.data.entities.View_AD_PEDIDOCANCELAMENTO;
 
 namespace back.infra.Data.Context
 {
+    /// <summary>
+    /// Instancia do banco de dados do SANKHYA
+    /// </summary>
     public class DbAppContextSankhya : DbContext
     {
 
         ILoggerFactory _loggerFactory;
 
+        /// <summary>
+        /// Construtor padrão da instância do banco de dados do Sankhya
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="loggerFactory"></param>
         public DbAppContextSankhya(DbContextOptions<DbAppContextSankhya> options, ILoggerFactory loggerFactory)
         : base(options)
         {
@@ -53,7 +61,6 @@ namespace back.infra.Data.Context
             _ = Database.EnsureCreated();
 
         }
-
         // public DbSet<AnexoCont> AnexoCont { get; set; }
         public DbSet<AD_VGFRPV> AD_VGFRPV { get; set; }
         public DbSet<TGFPAR> TGFPAR { get; set; }
@@ -93,6 +100,10 @@ namespace back.infra.Data.Context
         public DbSet<AD_ESTCODPROD> AD_ESTCODPROD { get; set; }
 
 
+        /// <summary>
+        /// Função que configura relacionamento das entidades com outras entidades e das entidades com banco de dados
+        /// </summary>
+        /// <param name="modelBuilder">Criador do modelo</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AD_VGFRPVRelationConfiguring();

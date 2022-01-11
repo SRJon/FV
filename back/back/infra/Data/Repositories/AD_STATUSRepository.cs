@@ -23,7 +23,12 @@ namespace back.infra.Data.Repositories
             _mapper = MapperConfig.MapperConfiguration().CreateMapper();
             _ctxs = ctxs;
         }
-
+        /// <summary>
+        /// Função que retorna todos os Status da tabela AD_STATUS do sankhya
+        /// </summary>
+        /// <param name="page">pagina atual</param>
+        /// <param name="limit">limite de itens por pagina</param>
+        /// <returns>Lista de AD_STATUS</returns>
         public async Task<Response<List<AD_STATUSDTO>>> GetAllPaginateAsync(int page, int limit)
         {
             var response = new Response<List<AD_STATUSDTO>>();
@@ -57,21 +62,30 @@ namespace back.infra.Data.Repositories
             }
 
         }
-
+        /// <summary>
+        /// Função que retorna o status via NuNota
+        /// </summary>
+        /// <param name="NuNota">NuNota a ser buscado</param>
+        /// <returns>STATUS</returns>
         public async Task<AD_STATUSDTO> GetByNuNota(int NuNota)
         {
             return _mapper.Map<AD_STATUSDTO>(await this._ctxs.
             GetSankhya()
             .GetByNuNotaService(NuNota));
         }
-
+        /// <summary>
+        /// Função que busca STATUS via NuNota
+        /// Se a nota já estiver Faturada (FAT) retorna true;Se não retorna false
+        /// </summary>
+        /// <param name="NuNota">NuNota a ser buscada</param>
+        /// <returns>bool</returns>
         public async Task<bool> GetFaturado(int NuNota)
         {
             bool faturado = false;
             var status = _mapper.Map<AD_STATUSDTO>(await this._ctxs.
             GetSankhya()
             .GetByNuNotaService(NuNota));
-            if (status.StatusLit == "FAT")
+            if (status.StatusLit == "FAT" || status.StatusLit == "CA")
                 faturado = true;
             else
                 faturado = false;

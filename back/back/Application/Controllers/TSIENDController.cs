@@ -12,25 +12,19 @@ using Microsoft.AspNetCore.Mvc;
 namespace back.Application.Controllers
 {
     /// <summary>
-    /// Controller da TSIEND, entidade sankhya de endereço 1
+    /// Controller da TSIEND, entidade sankhya de endereço
     /// </summary>
     [Route("api/[controller]")]
-    /// <summary>
-    /// Controller da TSIEND, entidade sankhya de endereço 2 
-    /// </summary> 
     public class TSIENDController : ControllerBase
     {
-        /// <summary>
-        /// Controller da TSIEND, entidade sankhya de endereço 3
-        /// </summary>
         private readonly ITSIENDRepository _ITSIENDRepository;
         private readonly IMapper _mapper;
 
         /// <summary>
-        /// 
+        /// Construtor padrão da classe TSIEND de endereço
         /// </summary>
-        /// <param name="iTSIENDRepository"></param>
-        /// <param name="mapper"></param>
+        /// <param name="iTSIENDRepository">Repositório de TSIEND</param>
+        /// <param name="mapper">mapper</param>
         public TSIENDController(ITSIENDRepository iTSIENDRepository, IMapper mapper)
         {
             _ITSIENDRepository = iTSIENDRepository;
@@ -99,10 +93,10 @@ namespace back.Application.Controllers
         }
 
         /// <summary>
-        /// Criador de TSIEND utilizando a API do Sankhya para tal.
+        /// Criador de TSIEND utilizando a API do Sankhya e JSON.
         /// </summary>
         /// <param name="tsiend">Endereço a ser criado</param>
-        /// <returns>BOOl</returns>
+        /// <returns>bool</returns>
         [HttpPost]
         [Authorize]
         [Route("Create")]

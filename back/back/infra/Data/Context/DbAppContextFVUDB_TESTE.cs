@@ -34,6 +34,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace back.infra.Data.Context
 {
+    /// <summary>
+    /// Instancia do banco de dados do Força de vendas
+    /// </summary>
     public class DbAppContextFVUDB_TESTE : DbContext
     {
 
@@ -73,6 +76,10 @@ namespace back.infra.Data.Context
         public DbSet<VersionDetails> VersionDetails { get; set; }
 
 
+        /// <summary>
+        /// Função que configura relacionamento das entidades com outras entidades e das entidades com banco de dados
+        /// </summary>
+        /// <param name="modelBuilder">Criador do modelo</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

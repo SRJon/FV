@@ -18,6 +18,9 @@ using Microsoft.Net.Http.Headers;
 
 namespace back.Application.Controllers
 {
+    /// <summary>
+    /// Controller da View AD_PED (Simplificação da tela Representante-> Pedidos)
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class AD_PEDController : ControllerBase
@@ -26,7 +29,14 @@ namespace back.Application.Controllers
         private readonly IAD_PEDRepository _PEDRepository;
         private readonly IAD_PEDIDOCANCELAMENTORepository _PEDIDOCANCELAMENTORepository;
         private readonly IMapper _mapper;
-
+        /// <summary>
+        /// Construtor padrão do controller
+        /// </summary>
+        /// <param name="userRepository">Repositório de usuário</param>
+        /// <param name="pEDRepository">Repositório de PED</param>
+        /// <param name="aD_STATUSRepository">Repositório de STATUS</param>
+        /// <param name="aD_SOLCANRepository">Repositório de SOLCAN</param>
+        /// <param name="_ADPEDIDOCANCELAMENTORepository">Repositório da view pedido cancelamento</param>
         public AD_PEDController(IUserRepository userRepository, IAD_PEDRepository pEDRepository, IAD_STATUSRepository aD_STATUSRepository, IAD_SOLCANRepository aD_SOLCANRepository, IAD_PEDIDOCANCELAMENTORepository _ADPEDIDOCANCELAMENTORepository)
         {
             _UserRepository = userRepository;
@@ -37,6 +47,15 @@ namespace back.Application.Controllers
         }
 
 
+
+        /// <summary>
+        /// Get all da view AD_PED puxando somente pedidos relacionados ao vendedor logado.
+        /// Permite busca de por notaNumNota(int), nomeparc(string), vlrpedido(double) e adStatus(string), todos no mesmo campo do front
+        /// </summary>
+        /// <param name="pesquisa">Campo que diminui a lista de itens</param>
+        /// <param name="page">pagina atual</param>
+        /// <param name="limit">itens por página</param>
+        /// <returns></returns>
         [HttpGet]
         [Authorize]
         [Route("GetAllPedidos")]
@@ -64,6 +83,14 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
+        /// <summary>
+        /// Get all da view AD_PED puxando somente pedidos relacionados ao vendedor logado.
+        /// Permite busca de por notaNumNota(int), nomeparc(string), vlrpedido(double) e adStatus(string), todos no mesmo campo do front
+        /// </summary>
+        /// <param name="pesquisa">Campo que diminui a lista de itens</param>
+        /// <param name="page">pagina atual</param>
+        /// <param name="limit">itens por página</param>
+        /// <returns></returns>
         [HttpGet]
         [Authorize]
         [Route("GetAllPedidosCancelamento")]
@@ -92,6 +119,11 @@ namespace back.Application.Controllers
             return response.GetResponse();
         }
 
+        /// <summary>
+        /// Get pedido por pedidoID
+        /// </summary>
+        /// <param name="id">pedidoId a ser buscada</param>
+        /// <returns></returns>
         [HttpGet]
         [Authorize]
         [Route("GetByPedidoId")]

@@ -1,6 +1,11 @@
 
 namespace back.domain.entities
 {
+    /// <summary>
+    /// Classe abstrata de conexão com banco de dados
+    /// FVU - Força de vendas
+    /// SAANKHYA - Sankhya
+    /// </summary>
     public abstract class DbConnection
     {
         // Database teste 200.4
@@ -19,6 +24,12 @@ namespace back.domain.entities
         private string SANKHYA;
         private string GRUPOLITORAL;
 
+        /// <summary>
+        /// Construtor da conexão com banco
+        /// Se production == true, configura conexão com base de produção
+        /// Se production == false, configura conexão com base de testes
+        /// /// </summary>
+        /// <param name="production">boolean informando se é produção ou não</param>
         public DbConnection(bool production)
         {
             if (production)
@@ -27,7 +38,8 @@ namespace back.domain.entities
                 SANKHYA = SANKHYA_PROD;
                 GRUPOLITORAL = GRUPOLITORAL_PROD;
             }
-            else{
+            else
+            {
                 SANKHYA_FVU = SANKHYA_FVU_TESTE;
                 SANKHYA = SANKHYA_TESTE;
                 GRUPOLITORAL = GRUPOLITORAL_TESTE;

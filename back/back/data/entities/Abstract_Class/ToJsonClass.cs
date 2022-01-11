@@ -5,8 +5,16 @@ using System.Threading.Tasks;
 
 namespace back.data.entities.Abstract_Class
 {
+    /// <summary>
+    /// Classe que cria um Json usando os parametros de uma entidade
+    /// </summary>
     public abstract class ToJsonClass
     {
+        /// <summary>
+        /// Criação do json seguindo os dados da entidade
+        /// </summary>
+        /// <param name="rootEntity">Nome da classe que está sendo criada, por exemplo TSICID ->Cidade</param>
+        /// <returns></returns>
 
         public string ProductEntityToJson(string rootEntity)
 
