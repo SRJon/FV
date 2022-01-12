@@ -28,11 +28,6 @@ using back.data.entities.TGFContato;
 using back.data.entities.TGFVendedor;
 using back.data.entities.TSIEmpresa;
 
-using back.data.entities.TGFVEN;
-using back.data.entities.TSIEMP;
-
-using back.data.entities.UserEmp;
-using back.data.entities.View_AD_TIPNEG;
 using back.data.entities.View_AD_SALDO_PARCEIRO;
 
 using back.data.entities.View_AD_ESTPROGPROD;
@@ -57,20 +52,12 @@ using back.data.entities.ViewAD_FINCOM;
 using back.data.entities.AD_Estoque;
 
 using back.data.entities.DataViews.VIEW_AD_GERAL_PV;
-using back.data.entities.AD_ESTPROGPROD;
-using back.data.entities.AD_FAMGR1;
-using back.data.entities.AD_FAMGR2;
-using back.data.entities.AD_FAMGR3;
-using back.data.entities.TGFEXC;
-using back.data.entities.TGFIPI;
-using back.data.entities.TGFPRO;
-using back.data.entities.VGFTAB;
-using back.data.entities.AD_PANTONE;
-using back.data.entities.AD_ESTPRODCOR;
+
 using back.data.entities.DataViews.VIEW_AD_PEDIDOS;
 using back.data.entities.DataViews.VIEW_AD_EXTRA_PV;
 using back.data.entities.DataViews.VIEW_AD_PRODUTO_PV;
-
+using back.data.entities.UserEmp;
+using back.data.entities.View_AD_TIPNEG;
 
 namespace back.MappingConfig
 {
