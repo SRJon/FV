@@ -46,3 +46,7 @@ Thumbs.db
 
 .fake
 .ionide
+
+front\package-lock.json
+package-lock.json
+\package-lock.json
