@@ -11,12 +11,10 @@
     "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
     "compodoc:serve": "compodoc -s",
     "lint": "eslint \"src/**/*.{js,ts}\" --quiet --fix"
-
   },
   "private": true,
   "lint-staged": {
     "*.ts": [
-
       "eslint --fix",
       "git add"
     ],
@@ -24,17 +22,13 @@
       "eslint --fix",
       "git add"
     ],
-
     "*.css": [
-
       "git add"
     ],
     "*.scss": [
-
       "git add"
     ],
     "*.cs": [
-
       "eslint --fix",
       "git add"
     ]
@@ -78,6 +72,7 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
+    "angular2-qrscanner": "^1.0.7",
     "eslint": "^8.6.0",
     "husky": "^4.3.8",
     "jasmine-core": "~3.8.0",
