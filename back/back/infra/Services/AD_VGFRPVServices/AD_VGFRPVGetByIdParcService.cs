@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using back.data.entities.VIEW_AD_VGFRPV;
 using back.infra.Data.Context;

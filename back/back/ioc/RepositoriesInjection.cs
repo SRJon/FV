@@ -55,6 +55,7 @@ namespace back.ioc
             services.AddScoped<IVGFTABRepository, VGFTABRepository>();
             services.AddScoped<IAD_PANTONERepository, AD_PANTONERepository>();
             services.AddScoped<IAD_ESTPRODCORRepository, AD_ESTPRODCORRepository>();
+
             services.AddScoped<ITGFTPVRepository, TGFTPVRepository>();
             services.AddScoped<ITCSPRJRepository, TCSPRJRepository>();
             services.AddScoped<ITGFCABRepository, TGFCABRepository>();
@@ -70,6 +71,11 @@ namespace back.ioc
             services.AddScoped<IAD_SOLCANRepository, AD_SOLCANRepository>();
             services.AddScoped<IAD_PEDIDOCANCELAMENTORepository, AD_PEDIDOCANCELAMENTORepository>();
 
+            services.AddScoped<IAD_PEDIDOSRepository, AD_PEDIDOSRepository>();
+            services.AddScoped<IAD_GERAL_PVRepository, AD_GERAL_PVRepository>();
+            services.AddScoped<IAD_EXTRA_PVRepository, AD_EXTRA_PVRepository>();
+            services.AddScoped<IAD_PRODUTO_PVRepository, AD_PRODUTO_PVRepository>();
+            
             return services;
         }
     }

@@ -65,7 +65,6 @@ namespace back.Application.Controllers
             var response = new Response<List<TelaDTO>>();
             try
             {
-
                 var result = new Response<List<TelaDTO>>();
                 response.SetConfig(200, "");
                 response.Data = new List<TelaDTO>();
@@ -77,7 +76,6 @@ namespace back.Application.Controllers
             }
             return response.GetResponse();
         }
-
 
         [HttpGet("{id}")]
         [Authorize]
