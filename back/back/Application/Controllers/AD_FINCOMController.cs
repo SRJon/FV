@@ -63,7 +63,7 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-                response.SetConfig(404, "Erro ao buscar as Comissões", false);
+                response.SetConfig(404, "Erro ao buscar as Comissões" + e.InnerException.Message, false);
             }
             return response.GetResponse();
         }
@@ -83,7 +83,7 @@ namespace back.Application.Controllers
             }
             catch (System.Exception e)
             {
-                response.SetConfig(404, "Erro ao buscar as Comissões", false);
+                response.SetConfig(404, "Erro ao buscar as Comissões" + e.InnerException.Message, false);
             }
             return response.GetResponse();
         }

@@ -66,6 +66,10 @@ namespace back.ioc
             services.AddScoped<IAD_ITEDEVSOLICITACAORepository, AD_ITEDEVSOLICITACAORepository>();
             services.AddScoped<IAD_FINCOMRepository, AD_FINCOMRepository>();
             services.AddScoped<IAD_ESTCODPRODRepository, AD_ESTCODPRODRepository>();
+            services.AddScoped<IAD_PEDRepository, AD_PEDRepository>();
+            services.AddScoped<IAD_STATUSRepository, AD_STATUSRepository>();
+            services.AddScoped<IAD_SOLCANRepository, AD_SOLCANRepository>();
+            services.AddScoped<IAD_PEDIDOCANCELAMENTORepository, AD_PEDIDOCANCELAMENTORepository>();
 
             services.AddScoped<IAD_PEDIDOSRepository, AD_PEDIDOSRepository>();
             services.AddScoped<IAD_GERAL_PVRepository, AD_GERAL_PVRepository>();

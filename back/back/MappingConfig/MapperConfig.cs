@@ -50,6 +50,10 @@ using back.data.entities.TGFinanceiro;
 using back.data.entities.View_AD_ITEDEVSOLICITACAO;
 using back.data.entities.ViewAD_FINCOM;
 using back.data.entities.AD_Estoque;
+using back.data.entities.View_AD_PED;
+using back.data.entities.AD_STATUSLit;
+using back.data.entities.AD_SOLCANota;
+using back.data.entities.View_AD_PEDIDOCANCELAMENTO;
 
 using back.data.entities.DataViews.VIEW_AD_GERAL_PV;
 
@@ -125,6 +129,11 @@ namespace back.MappingConfig
                 cfg.CreateAD_ITEDEVSOLICITACAOMapper();
                 cfg.CreateAD_FINCOMMapper();
                 cfg.CreateAD_ESTCODPRODMapper();
+                cfg.CreateAD_PEDMapper();
+                cfg.CreateAD_STATUSMapper();
+                cfg.CreateAD_SOLCANMapper();
+                cfg.CreateAD_PEDIDOCANCELAMENTOMapper();
+
 
             });
             return configuration;

@@ -35,7 +35,10 @@ using back.data.entities.TGFinanceiro;
 using back.data.entities.View_AD_ITEDEVSOLICITACAO;
 using back.data.entities.ViewAD_FINCOM;
 using back.data.entities.AD_Estoque;
-
+using back.data.entities.View_AD_PED;
+using back.data.entities.AD_STATUSLit;
+using back.data.entities.AD_SOLCANota;
+using back.data.entities.View_AD_PEDIDOCANCELAMENTO;
 using back.data.entities.DataViews.VIEW_AD_PEDIDOS;
 using back.data.entities.DataViews.VIEW_AD_GERAL_PV;
 using back.data.entities.DataViews.VIEW_AD_EXTRA_PV;
@@ -44,11 +47,19 @@ using back.data.entities.DataViews.VIEW_AD_PRODUTO_PV;
 
 namespace back.infra.Data.Context
 {
+    /// <summary>
+    /// Instancia do banco de dados do SANKHYA
+    /// </summary>
     public class DbAppContextSankhya : DbContext
     {
 
         ILoggerFactory _loggerFactory;
 
+        /// <summary>
+        /// Construtor padrão da instância do banco de dados do Sankhya
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="loggerFactory"></param>
         public DbAppContextSankhya(DbContextOptions<DbAppContextSankhya> options, ILoggerFactory loggerFactory)
         : base(options)
         {
@@ -56,7 +67,6 @@ namespace back.infra.Data.Context
             _ = Database.EnsureCreated();
 
         }
-
         // public DbSet<AnexoCont> AnexoCont { get; set; }
         public DbSet<AD_VGFRPV> AD_VGFRPV { get; set; }
         public DbSet<TGFPAR> TGFPAR { get; set; }
@@ -91,11 +101,19 @@ namespace back.infra.Data.Context
         public DbSet<AD_DEVSOLICITACAO> AD_DEVSOLICITACAO { get; set; }
         public DbSet<AD_ITEDEVSOLICITACAO> AD_ITEDEVSOLICITACAO { get; set; }
         public DbSet<AD_FINCOM> AD_FINCOM { get; set; }
+        public DbSet<AD_PED> AD_PED { get; set; }
+        public DbSet<AD_STATUS> AD_STATUS { get; set; }
+        public DbSet<AD_SOLCAN> AD_SOLCAN { get; set; }
+        public DbSet<AD_PEDIDOCANCELAMENTO> AD_PEDIDOCANCELAMENTO { get; set; }
 
 
         public DbSet<AD_ESTCODPROD> AD_ESTCODPROD { get; set; }
 
 
+        /// <summary>
+        /// Função que configura relacionamento das entidades com outras entidades e das entidades com banco de dados
+        /// </summary>
+        /// <param name="modelBuilder">Criador do modelo</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AD_VGFRPVRelationConfiguring();
@@ -133,6 +151,10 @@ namespace back.infra.Data.Context
             modelBuilder.TGFVENRelationConfiguring();
             modelBuilder.VGFTABRelationConfiguring();
             modelBuilder.AD_ITEDEVSOLICITACAORelationConfiguring();
+            modelBuilder.AD_PEDRelationConfiguring();
+            modelBuilder.AD_STATUSRelationConfiguring();
+            modelBuilder.AD_SOLCANRelationConfiguring();
+            modelBuilder.AD_PEDEDIDOCANCELAMENTORelationConfiguring();
 
 
 
