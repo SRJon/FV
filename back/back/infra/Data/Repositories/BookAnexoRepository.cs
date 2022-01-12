@@ -153,7 +153,7 @@ namespace back.infra.Data.Repositories
                 response.StatusCode = 200;
                 return response;
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
                 response.Data = null;
